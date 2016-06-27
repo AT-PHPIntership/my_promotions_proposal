@@ -18,3 +18,13 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+/****************************  BACK - END  ***********************************/
+
+Route::group(['prefix' => 'admin'], function()
+{
+	Route::get('login', function ()
+	{
+		return view('backend.user.index');
+	});
+});
