@@ -1,16 +1,39 @@
-var elixir = require('laravel-elixir');
+var gulp = require('gulp');
 
-/*
- |--------------------------------------------------------------------------
- | Elixir Asset Management
- |--------------------------------------------------------------------------
- |
- | Elixir provides a clean, fluent API for defining some basic Gulp tasks
- | for your Laravel application. By default, we are compiling the Sass
- | file for our application, as well as publishing vendor resources.
- |
+/**
+ * Copy any needed files.
+ *
+ * Do a 'gulp copyfiles' after bower updates
  */
+gulp.task("copyfiles", function() {
 
-elixir(function(mix) {
-    mix.sass('app.scss');
+  gulp.src("vendor/bower_dl/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css")
+    .pipe(gulp.dest("public/assets/backend/css/"));
+
+  gulp.src("vendor/bower_dl/gentelella/vendors/font-awesome/css/font-awesome.min.css")
+    .pipe(gulp.dest("public/assets/backend/css/"));
+
+  gulp.src("vendor/bower_dl/gentelella/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css")
+    .pipe(gulp.dest("public/assets/backend/css/"));
+
+  gulp.src("vendor/bower_dl/gentelella/build/css/custom.min.css")
+    .pipe(gulp.dest("public/assets/backend/css/"));
+
+  gulp.src("vendor/bower_dl/gentelella/vendors/jquery/dist/jquery.min.js")
+    .pipe(gulp.dest("public/assets/backend/js/"));
+
+  gulp.src("vendor/bower_dl/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js")
+    .pipe(gulp.dest("public/assets/backend/js/"));
+
+  gulp.src("vendor/bower_dl/gentelella/vendors/fastclick/lib/fastclick.js")
+    .pipe(gulp.dest("public/assets/backend/js/"));
+
+  gulp.src("vendor/bower_dl/gentelella/vendors/nprogress/nprogress.js")
+    .pipe(gulp.dest("public/assets/backend/js/"));
+
+  gulp.src("vendor/bower_dl/gentelella/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js")
+    .pipe(gulp.dest("public/assets/backend/js/"));
+
+  gulp.src("vendor/bower_dl/gentelella/build/js/custom.min.js")
+    .pipe(gulp.dest("public/assets/backend/js/"));
 });
