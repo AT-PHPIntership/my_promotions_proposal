@@ -22,10 +22,10 @@
       <div class="main_container">
       	
       	{{-- header --}}
-        @include('backend.layouts.side_bar')
+        @include('backend.layouts.partials.side_bar')
 
         {{-- navigation --}}
-        @include('backend.layouts.navigation')
+        @include('backend.layouts.partials.navigation')
 
         <!-- page content -->
         <div class="right_col" role="main">
@@ -40,7 +40,7 @@
         <!-- /page content -->
 
         {{-- footer --}}
-        @include('backend.layouts.footer')
+        @include('backend.layouts.partials.footer')
         
       </div>
     </div>
