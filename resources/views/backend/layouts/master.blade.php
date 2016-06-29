@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Gentallela Alela! | </title>
+    <title>{{ trans('labels.label_promotion_admin') }}</title>
 
     <!-- CSS -->
     <link href="{{ asset('backend/css/vendor.css') }}" rel="stylesheet">
@@ -32,7 +32,7 @@
           <div class="">
             <div class="page-title">
               <div class="title_left">
-                <h3>Fixed Footer <small> Just add class <strong>footer_fixed</strong></small></h3>
+                
               </div>
             </div>
           </div>
