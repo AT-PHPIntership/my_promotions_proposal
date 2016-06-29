@@ -9,17 +9,12 @@
 
     <title>Gentallela Alela! | </title>
 
-    <!-- Bootstrap -->
-    <link href="{{ asset('assets/backend/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- CSS -->
+    <link href="{{ asset('backend/css/vendor.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-	<!-- Ionicons -->
-	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- jQuery custom content scroller -->
-    <link href="{{ asset('assets/backend/css/jquery.mCustomScrollbar.min.css') }}" rel="stylesheet"/>
-
-    <!-- Custom Theme Style -->
-    <link href="{{ asset('assets/backend/css/custom.min.css') }}" rel="stylesheet">
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   <!-- Ionicons -->
+   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
   </head>
 
   <body class="nav-md footer_fixed">
@@ -50,18 +45,7 @@
       </div>
     </div>
 
-    <!-- jQuery -->
-    <script src="{{ asset('assets/backend/js/jquery.min.js') }}"></script>
-    <!-- Bootstrap -->
-    <script src="{{ asset('assets/backend/js/bootstrap.min.js') }}"></script>
-    <!-- FastClick -->
-    <script src="{{ asset('assets/backend/js/fastclick.js') }}"></script>
-    <!-- NProgress -->
-    <script src="{{ asset('assets/backend/js/nprogress.js') }}"></script>
-    <!-- jQuery custom content scroller -->
-    <script src="{{ asset('assets/backend/js/jquery.mCustomScrollbar.concat.min.js') }}"></script>
-
-    <!-- Custom Theme Scripts -->
-    <script src="{{ asset('assets/backend/js/custom.min.js') }}"></script>
+    <!-- Javascript -->
+    <script src="{{ asset('backend/js/vendor.js') }}"></script>
   </body>
 </html>

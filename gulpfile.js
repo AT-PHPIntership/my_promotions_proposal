@@ -1,39 +1,44 @@
 var gulp = require('gulp');
+var elixir = require('laravel-elixir');
+
+/*
+ |--------------------------------------------------------------------------
+ | Elixir Asset Management
+ |--------------------------------------------------------------------------
+ |
+ | Elixir provides a clean, fluent API for defining some basic Gulp tasks
+ | for your Laravel application. By default, we are compiling the Sass
+ | file for our application, as well as publishing vendor resources.
+ |
+ */
 
 /**
- * Copy any needed files.
- *
- * Do a 'gulp copyfiles' after bower updates
+ * Default gulp is to run this elixir stuff
  */
-gulp.task("copyfiles", function() {
+elixir(function(mix) {
 
-  gulp.src("vendor/bower_dl/gentelella/vendors/bootstrap/dist/css/bootstrap.min.css")
-    .pipe(gulp.dest("public/assets/backend/css/"));
+  // Combine scripts
+  mix.scripts([
+      'vendors/jquery/dist/jquery.min.js',
+      'vendors/bootstrap/dist/js/bootstrap.min.js',
+      'vendors/fastclick/lib/fastclick.js',
+      'vendors/nprogress/nprogress.js',
+      'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
+      'build/js/custom.min.js'
+    ],
+    'public/backend/js/vendor.js',
+    'vendor/bower_dl/gentelella'
+  );
 
-  gulp.src("vendor/bower_dl/gentelella/vendors/font-awesome/css/font-awesome.min.css")
-    .pipe(gulp.dest("public/assets/backend/css/"));
-
-  gulp.src("vendor/bower_dl/gentelella/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css")
-    .pipe(gulp.dest("public/assets/backend/css/"));
-
-  gulp.src("vendor/bower_dl/gentelella/build/css/custom.min.css")
-    .pipe(gulp.dest("public/assets/backend/css/"));
-
-  gulp.src("vendor/bower_dl/gentelella/vendors/jquery/dist/jquery.min.js")
-    .pipe(gulp.dest("public/assets/backend/js/"));
-
-  gulp.src("vendor/bower_dl/gentelella/vendors/bootstrap/dist/js/bootstrap.min.js")
-    .pipe(gulp.dest("public/assets/backend/js/"));
-
-  gulp.src("vendor/bower_dl/gentelella/vendors/fastclick/lib/fastclick.js")
-    .pipe(gulp.dest("public/assets/backend/js/"));
-
-  gulp.src("vendor/bower_dl/gentelella/vendors/nprogress/nprogress.js")
-    .pipe(gulp.dest("public/assets/backend/js/"));
-
-  gulp.src("vendor/bower_dl/gentelella/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js")
-    .pipe(gulp.dest("public/assets/backend/js/"));
-
-  gulp.src("vendor/bower_dl/gentelella/build/js/custom.min.js")
-    .pipe(gulp.dest("public/assets/backend/js/"));
+  // Compile css
+  mix.styles([
+  	  'vendors/bootstrap/dist/css/bootstrap.min.css',
+      'vendors/font-awesome/css/font-awesome.min.css',
+      'vendors/iCheck/skins/flat/green.css',
+      'vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css',
+      'build/css/custom.min.css'
+  ], 
+    'public/backend/css/vendor.css',
+    'vendor/bower_dl/gentelella'
+  );
 });
