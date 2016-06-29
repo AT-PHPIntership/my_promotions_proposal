@@ -27,7 +27,7 @@
                        <span>&gt;</span>
                     </li>
                     <li class="home">&nbsp;
-                        Men / Women&nbsp;
+                       Sale&nbsp;
                     </li>
                 </ul>
                 <ul class="previous">

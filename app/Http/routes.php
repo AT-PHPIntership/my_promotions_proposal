@@ -41,6 +41,9 @@ Route::get('list', function() {
 Route::get('sale', function() {
     return view('frontend.dashboard.listPromotion');
 });
+Route::get('contact', function() {
+    return view('frontend.dashboard.contact');
+});
 Route::get('business', function() {
     return view('frontend.business.index');
 });

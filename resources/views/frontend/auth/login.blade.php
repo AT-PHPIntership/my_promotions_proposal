@@ -5,7 +5,7 @@
    	 <div class="container">
    	   <h3>Account</h3>
 		<div class="col-md-7 account-top">
-		  <form>
+		  <form action="{{ url('business') }}">
 			<div> 	
 				<span>Email*</span>
 				<input type="text"> 
@@ -18,7 +18,7 @@
 		   </form>
 		</div>
 		<div class="col-md-5 left-account ">
-			<a href="single.html"><img class="img-responsive " src="{{ asset('asset/frontend/images/s4.jpg') }}" alt=""/></a>
+			<a href="#"><img class="img-responsive " src="{{ asset('asset/frontend/images/s4.jpg') }}" alt=""/></a>
 			<div class="five-in">
 			<h1>35% </h1><span>discount</span>
 			</div>

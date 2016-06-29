@@ -31,60 +31,50 @@
                     <table class="table table-striped">
                     <thead>
                       <tr>
-                        <th>Title</th>
-                        <th colspan="2">Tools</th>
+                        <th>Name</th>
+                        <th>Datetime</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr>
-                        <td>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</td>
-                        <td><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td><a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        <td>David Beckham</td>
+                        <td>26/06/2016</td>
                       </tr>
                       <tr>
-                        <td>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</td>
-                        <td><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td><a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        <td>David Beckham</td>
+                        <td>26/06/2016</td>
                       </tr>
                       <tr>
-                        <td>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</td>
-                        <td><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td><a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        <td>David Beckham</td>
+                        <td>26/06/2016</td>
                       </tr>
                       <tr>
-                        <td>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</td>
-                        <td><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td><a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        <td>David Beckham</td>
+                        <td>26/06/2016</td>
                       </tr>
                       <tr>
-                        <td>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</td>
-                        <td><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td><a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        <td>David Beckham</td>
+                        <td>26/06/2016</td>
                       </tr>
                       <tr>
-                        <td>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</td>
-                        <td><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td><a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        <td>David Beckham</td>
+                        <td>26/06/2016</td>
                       </tr>
                       <tr>
-                        <td>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</td>
-                        <td><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td><a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        <td>David Beckham</td>
+                        <td>26/06/2016</td>
                       </tr>
                       <tr>
-                        <td>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</td>
-                        <td><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td><a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        <td>David Beckham</td>
+                        <td>26/06/2016</td>
                       </tr>
                       <tr>
-                        <td>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</td>
-                        <td><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td><a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        <td>David Beckham</td>
+                        <td>26/06/2016</td>
                       </tr>
                       <tr>
-                        <td>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour,</td>
-                        <td><a href="#"><button type="button" class="btn btn-warning">Edit</button></a></td>
-                        <td><a href="#"><button type="button" class="btn btn-danger">Delete</button></a></td>
+                        <td>David Beckham</td>
+                        <td>26/06/2016</td>
                       </tr>
                     </tbody>
                   </table>

@@ -105,7 +105,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                         </div>
                         </li>		
 			<li class="active grid"><a class="color3" href="{{ url('sale') }}">Sale</a></li>
-			<li><a class="color7" href="404.html">Contact</a></li>
+			<li><a class="color7" href="{{ url('contact') }}">Contact</a></li>
 			<div class="clearfix"> </div>
 			</ul>
 			</div>
