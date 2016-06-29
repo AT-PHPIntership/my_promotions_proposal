@@ -1,0 +1,14 @@
+{
+  "name": "my_promotions_proposal",
+  "description": "My Promotions Proposal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor/bower_dl",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "gentelella": "^1.3.0"
+  }
+}
