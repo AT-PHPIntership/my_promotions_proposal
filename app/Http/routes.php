@@ -11,10 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/', function () {
+    return view('frontend.layouts.master');
+});
+
+Route::get('/index', function () {
+    return view('frontend.dashboard.index');
+});

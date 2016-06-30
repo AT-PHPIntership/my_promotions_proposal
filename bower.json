@@ -1,0 +1,16 @@
+{
+  "name": "my_promotion_proposal",
+  "description": "My Promotion Proposal",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor/bower_dl",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.0.0",
+    "bootstrap": "^3.3.6",
+    "bootswatch-dist": "3.3.5-sandstone"
+  }
+}
