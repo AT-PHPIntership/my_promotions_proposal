@@ -12,6 +12,10 @@
 */
 
 
+Route::get('/', function () {
+    return view('backend.layouts.master');
+});
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
