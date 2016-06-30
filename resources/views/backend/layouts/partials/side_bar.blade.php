@@ -17,6 +17,8 @@
         <ul class="nav side-menu">
           <li><a><i class="fa fa-home"></i> {{ trans('labels.label_dasboard') }} </a>               
           </li>
+          <li><a href="{{ url('admin/user') }}"><i class="fa fa-user"></i> {{ trans('labels.label_user') }} </a>               
+          </li>
         </ul>
       </div>
 
