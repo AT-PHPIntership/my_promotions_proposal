@@ -16,4 +16,12 @@ class Rating extends Model
     protected $fillable = [
         'content', 'score', 'user_id', 'promotion_id', 'created_day'
     ];
+    
+    public function promotion() {
+        return $this->belongsTo('App\Models\Promotion');
+    }
+    
+    public function user() {
+        return $this->belongsTo('App\Models\User');
+    }
 }

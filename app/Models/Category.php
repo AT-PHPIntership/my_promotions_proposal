@@ -16,4 +16,8 @@ class Category extends Model
     protected $fillable = [
         'name', 'parent_id'
     ];
+    
+    public function promotions(){
+        return $this->hasMany('App\Models\Promotion');
+    } 
 }

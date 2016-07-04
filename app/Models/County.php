@@ -16,4 +16,12 @@ class County extends Model
     protected $fillable = [
         'name', 'city_id'
     ];
+    
+    public function businesses(){
+        return $this->belongsToMany('App\Models\Business', 'business_counties');
+    }
+    
+    public function city(){
+        return $this->belongsTo('App\Models\City');
+    }
 }
