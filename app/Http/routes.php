@@ -11,6 +11,7 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('backend.layouts.master');
 });
@@ -18,3 +19,11 @@ Route::get('/', function () {
 Route::auth();
 
 Route::get('/home', 'HomeController@index');
+
+Route::get('/', function () {
+    return view('frontend.layouts.master');
+});
+
+Route::get('/index', function () {
+    return view('frontend.dashboard.index');
+});
