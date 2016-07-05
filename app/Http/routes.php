@@ -11,10 +11,16 @@
 |
 */
 
-Route::get('/', function () {
-    return view('backend.layouts.master');
+Route::group(['prefix' => 'admin'], function () {
+
+	// login backend
+	Route::get('login', 'Backend\AuthController@getLogin');
+	Route::post('login', 'Backend\AuthController@postLogin');
+	Route::get('logout', 'Backend\AuthController@getLogout')->middleware('admin');
+
+	// dashboard
+	Route::get('dashboard', function(){
+		return view('backend.dashboard.index');
+	})->middleware('admin');
 });
 
-Route::auth();
-
-Route::get('/home', 'HomeController@index');

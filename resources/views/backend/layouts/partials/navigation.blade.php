@@ -8,11 +8,11 @@
       <ul class="nav navbar-nav navbar-right">
         <li class="">
           <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <img src="images/img.jpg" alt="">John Doe
+            <img src="{{ asset('backend/image/' . Auth::guard('admin')->user()->image) }}">{{ Auth::guard('admin')->user()->name }}
             <span class=" fa fa-angle-down"></span>
           </a>
           <ul class="dropdown-menu dropdown-usermenu pull-right">
-            <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> {{ trans('labels.label_logout') }}</a></li>
+            <li><a href="{{ url('admin/logout') }}"><i class="fa fa-sign-out pull-right"></i> {{ trans('labels.label_logout') }}</a></li>
           </ul>
         </li>
 
