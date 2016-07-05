@@ -27,21 +27,19 @@
                                     <th>{{ trans('labels.label_id') }}</th> 
                                     <th>{{ trans('labels.label_name') }}</th> 
                                     <th>{{ trans('labels.label_action') }}</th> 
-                                    
                                 </tr> 
                             </thead> 
                             <tbody> 
+                                @foreach ($cities as $citie)
                                 <tr> 
-                                    @foreach ($cities as $citie)
                                     <td>{{$citie['id']}}</td> 
                                     <td>{{$citie['name']}}</td>
                                     <td>
                                         <a class="btn btn-info btn-xs" href="#">Edit</a>
                                         <a class="btn btn-danger btn-xs" href="#">Delete</a>
                                     </td> 
-                                    
                                 </tr> 
-                                    @endforeach
+                                @endforeach
                             </tbody> 
                         </table> 
                     </div> 
