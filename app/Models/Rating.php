@@ -20,7 +20,7 @@ class Rating extends Model
     /**
      * Relationship promotion tables.
      *
-     * @return array
+     * @return promotion
      */
     public function promotion()
     {
@@ -30,7 +30,7 @@ class Rating extends Model
     /**
      * Relationship user tables.
      *
-     * @return array
+     * @return user
      */
     public function user()
     {

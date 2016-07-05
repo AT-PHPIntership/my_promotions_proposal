@@ -18,9 +18,9 @@ class Promotion extends Model
     ];
     
     /**
-     * The attributes that are mass assignable.
+     * Relationship business tables.
      *
-     * @return array
+     * @return business
      */
     public function business()
     {
@@ -30,7 +30,7 @@ class Promotion extends Model
     /**
      * Relationship category tables.
      *
-     * @return array
+     * @return category
      */
     public function category()
     {
@@ -40,7 +40,7 @@ class Promotion extends Model
     /**
      * Relationship rating tables.
      *
-     * @return array
+     * @return ratings
      */
     public function ratings()
     {

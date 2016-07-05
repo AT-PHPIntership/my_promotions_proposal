@@ -20,7 +20,7 @@ class County extends Model
     /**
      * Relationship business tables.
      *
-     * @return array
+     * @return businesses
      */
     public function businesses()
     {
@@ -30,7 +30,7 @@ class County extends Model
     /**
      * Relationship city tables.
      *
-     * @return array
+     * @return city
      */
     public function city()
     {

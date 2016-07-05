@@ -20,7 +20,7 @@ class Follow extends Model
     /**
      * Relationship user tables.
      *
-     * @return array
+     * @return user
      */
     public function user()
     {
@@ -30,7 +30,7 @@ class Follow extends Model
     /**
      * Relationship buisness tables.
      *
-     * @return array
+     * @return business
      */
     public function business()
     {

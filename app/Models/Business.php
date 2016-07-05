@@ -20,7 +20,7 @@ class Business extends Model
     /**
      * Relationship promotion tables.
      *
-     * @return array
+     * @return promotions
      */
     public function promotions()
     {
@@ -30,7 +30,7 @@ class Business extends Model
     /**
      * Relationship follow tables.
      *
-     * @return array
+     * @return follows
      */
     public function follows()
     {
@@ -40,7 +40,7 @@ class Business extends Model
     /**
      * Relationship user tables.
      *
-     * @return array
+     * @return user
      */
     public function user()
     {
@@ -50,7 +50,7 @@ class Business extends Model
     /**
      * Relationship city tables.
      *
-     * @return array
+     * @return cities
      */
     public function cities()
     {
@@ -60,7 +60,7 @@ class Business extends Model
     /**
      * Relationship county tables.
      *
-     * @return array
+     * @return counties
      */
     public function counties()
     {

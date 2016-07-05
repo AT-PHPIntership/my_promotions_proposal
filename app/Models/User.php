@@ -27,7 +27,7 @@ class User extends Authenticatable
     /**
      * Relationship rating tables.
      *
-     * @return array
+     * @return ratings
      */
     public function ratings()
     {
@@ -37,7 +37,7 @@ class User extends Authenticatable
     /**
      * Relationship follow tables.
      *
-     * @return array
+     * @return follows
      */
     public function follows()
     {
@@ -47,7 +47,7 @@ class User extends Authenticatable
     /**
      * Relationship business tables.
      *
-     * @return array
+     * @return business
      */
     public function business()
     {
