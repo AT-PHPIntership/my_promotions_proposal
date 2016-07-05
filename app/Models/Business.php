@@ -20,7 +20,7 @@ class Business extends Model
     /**
      * Relationship promotion tables.
      *
-     * @return promotions
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function promotions()
     {
@@ -30,7 +30,7 @@ class Business extends Model
     /**
      * Relationship follow tables.
      *
-     * @return follows
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function follows()
     {
@@ -40,7 +40,7 @@ class Business extends Model
     /**
      * Relationship user tables.
      *
-     * @return user
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
