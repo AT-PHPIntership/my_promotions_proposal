@@ -13,14 +13,13 @@
 
 Route::group(['prefix' => 'admin'], function () {
 
-	// login backend
-	Route::get('login', 'Backend\AuthController@getLogin');
-	Route::post('login', 'Backend\AuthController@postLogin');
-	Route::get('logout', 'Backend\AuthController@getLogout')->middleware('admin');
+    // login backend
+    Route::get('login', 'Backend\AuthController@getLogin');
+    Route::post('login', 'Backend\AuthController@postLogin');
+    Route::get('logout', 'Backend\AuthController@getLogout')->middleware('admin');
 
-	// dashboard
-	Route::get('dashboard', function(){
-		return view('backend.dashboard.index');
-	})->middleware('admin');
+    // dashboard
+    Route::get('dashboard', function () {
+        return view('backend.dashboard.index');
+    })->middleware('admin');
 });
-

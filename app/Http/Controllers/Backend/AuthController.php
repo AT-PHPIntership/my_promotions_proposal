@@ -12,16 +12,16 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
-	use AuthenticatesAndRegistersUsers, ThrottlesLogins;
+    use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-	/**
+    /**
      * Where to redirect users after login / registration.
      *
      * @var string
      */
-	protected $redirectTo = 'admin/dashboard';
+    protected $redirectTo = 'admin/dashboard';
 
-	/**
+    /**
      * Create a new authentication controller instance.
      *
      * @return void
@@ -31,15 +31,21 @@ class AuthController extends Controller
         $this->middleware($this->guestMiddleware(), ['except' => 'logout']);
     }
 
+    /**
+     * Function show view login.
+     *
+     * @return view
+     */
     public function getLogin()
     {
-    	return view('backend.auth.login');
+        return view('backend.auth.login');
     }
 
     /**
      * Handle a login request to the application.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request request
+     *
      * @return \Illuminate\Http\Response
      */
     public function postLogin(Request $request)
@@ -73,7 +79,13 @@ class AuthController extends Controller
         return $this->sendFailedLoginResponse($request);
     }
 
-    public function getLogout() {
+    /**
+     * Function logout.
+     *
+     * @return view
+     */
+    public function getLogout()
+    {
         Auth::guard('admin')->logout();
         return redirect('admin/login');
     }
