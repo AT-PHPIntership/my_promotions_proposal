@@ -13,7 +13,7 @@ class BusinessCitiesTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
         
-        for($i = 0; $i < 20; $i++){
+        for($i = 0; $i < 200; $i++){
             DB::table('business_cities')->insert([
                 'business_id' => rand(1, 20),
                 'city_id'     => rand(1, 20),
