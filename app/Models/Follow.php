@@ -16,24 +16,4 @@ class Follow extends Model
     protected $fillable = [
         'user_id', 'business_id'
     ];
-    
-    /**
-     * Relationship user tables.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo('App\Models\User');
-    }
-    
-    /**
-     * Relationship buisness tables.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function business()
-    {
-        return $this->belongsTo('App\Models\Business');
-    }
 }

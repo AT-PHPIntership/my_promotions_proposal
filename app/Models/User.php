@@ -37,11 +37,11 @@ class User extends Authenticatable
     /**
      * Relationship follow tables.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongToMany
      */
-    public function follows()
+    public function followedBusinesses()
     {
-        return $this->hasMany('App\Models\Follow');
+        return $this->belongToMany('App\Models\Business', 'follows');
     }
     
     /**
