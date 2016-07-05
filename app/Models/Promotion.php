@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Promotion extends Model
 {
-    protected $_table = "promotions";
+    protected $table = "promotions";
     
     /**
     * The attributes that are mass assignable.
@@ -17,15 +17,33 @@ class Promotion extends Model
         'title', 'intro', 'content', 'image', 'expired_day', 'business_id', 'category_id'
     ];
     
-    public function business(){
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @return array
+     */
+    public function business()
+    {
         return $this->belongsTo('App\Models\Business');
     }
     
-    public function category() {
+    /**
+     * Relationship category tables.
+     *
+     * @return array
+     */
+    public function category()
+    {
         return $this->belongsTo('App\Models\Category');
     }
     
-    public function ratings() {
+    /**
+     * Relationship rating tables.
+     *
+     * @return array
+     */
+    public function ratings()
+    {
         return $this->hasMany('App\Models\Rating');
     }
 }

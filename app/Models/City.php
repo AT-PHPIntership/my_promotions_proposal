@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    protected $_table = "cities";
+    protected $table = "cities";
     
     /**
     * The attributes that are mass assignable.
@@ -17,11 +17,23 @@ class City extends Model
         'name'
     ];
     
-    public function businesses(){
+    /**
+     * Relationship business tables.
+     *
+     * @return array
+     */
+    public function businesses()
+    {
         return $this->belongsToMany('App\Models\Business', 'business_cities');
     }
     
-    public function counties(){
+    /**
+     * Relationship county tables.
+     *
+     * @return array
+     */
+    public function counties()
+    {
         return $this->hasMany('App\Models\County');
     }
 }

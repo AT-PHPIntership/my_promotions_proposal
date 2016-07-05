@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class AdminUser extends Model
 {
-    protected $_table = "admin_users";
+    protected $table = "admin_users";
     
     /**
     * The attributes that are mass assignable.

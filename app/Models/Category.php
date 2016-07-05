@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    protected $_table = "categories";
+    protected $table = "categories";
     
     /**
     * The attributes that are mass assignable.
@@ -17,7 +17,13 @@ class Category extends Model
         'name', 'parent_id'
     ];
     
-    public function promotions(){
+    /**
+     * Relationship promotion tables.
+     *
+     * @return array
+     */
+    public function promotions()
+    {
         return $this->hasMany('App\Models\Promotion');
-    } 
+    }
 }

@@ -24,15 +24,33 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
     
-    public function ratings() {
+    /**
+     * Relationship rating tables.
+     *
+     * @return array
+     */
+    public function ratings()
+    {
         return $this->hasMany('App\Models\Rating');
     }
     
-    public function follows() {
+    /**
+     * Relationship follow tables.
+     *
+     * @return array
+     */
+    public function follows()
+    {
         return $this->hasMany('App\Models\Follow');
     }
     
-    public function business(){
+    /**
+     * Relationship business tables.
+     *
+     * @return array
+     */
+    public function business()
+    {
         return $this->hasOne('App\Models\Business');
     }
 }

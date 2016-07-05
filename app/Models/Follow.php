@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Follow extends Model
 {
-    protected $_table = "follows";
+    protected $table = "follows";
     
     /**
     * The attributes that are mass assignable.
@@ -17,11 +17,23 @@ class Follow extends Model
         'user_id', 'business_id'
     ];
     
-    public function user() {
+    /**
+     * Relationship user tables.
+     *
+     * @return array
+     */
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
     
-    public function business() {
+    /**
+     * Relationship buisness tables.
+     *
+     * @return array
+     */
+    public function business()
+    {
         return $this->belongsTo('App\Models\Business');
     }
 }

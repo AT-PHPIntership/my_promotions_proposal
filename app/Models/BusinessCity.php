@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class BusinessCity extends Model
 {
-    protected $_table = "business_cities";
+    protected $table = "business_cities";
     
     /**
     * The attributes that are mass assignable.

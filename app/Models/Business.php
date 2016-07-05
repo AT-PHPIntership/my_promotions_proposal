@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Business extends Model
 {
-    protected $_table = "businesses";
+    protected $table = "businesses";
     
     /**
     * The attributes that are mass assignable.
@@ -17,24 +17,53 @@ class Business extends Model
         'name', 'email', 'phone', 'logo', 'description', 'count_follow', 'user_id'
     ];
     
-    public function promotions(){
+    /**
+     * Relationship promotion tables.
+     *
+     * @return array
+     */
+    public function promotions()
+    {
         return $this->hasMany('App\Models\Promotion');
     }
     
-    public function follows() {
+    /**
+     * Relationship follow tables.
+     *
+     * @return array
+     */
+    public function follows()
+    {
         return $this->hasMany('App\Models\Follow');
     }
     
-    public function user(){
+    /**
+     * Relationship user tables.
+     *
+     * @return array
+     */
+    public function user()
+    {
         return $this->belongsTo('App\Models\User');
     }
     
-    public function cities(){
+    /**
+     * Relationship city tables.
+     *
+     * @return array
+     */
+    public function cities()
+    {
         return $this->belongsToMany('App\Models\City', 'business_cities');
     }
     
-    public function counties(){
+    /**
+     * Relationship county tables.
+     *
+     * @return array
+     */
+    public function counties()
+    {
         return $this->belongsToMany('App\Models\County', 'business_counties');
     }
-    
 }
