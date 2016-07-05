@@ -27,7 +27,7 @@ class User extends Authenticatable
     /**
      * Relationship rating tables.
      *
-     * @return ratings
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function ratings()
     {
@@ -37,7 +37,7 @@ class User extends Authenticatable
     /**
      * Relationship follow tables.
      *
-     * @return follows
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function follows()
     {
@@ -47,7 +47,7 @@ class User extends Authenticatable
     /**
      * Relationship business tables.
      *
-     * @return business
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function business()
     {

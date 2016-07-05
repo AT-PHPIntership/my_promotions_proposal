@@ -20,7 +20,7 @@ class Promotion extends Model
     /**
      * Relationship business tables.
      *
-     * @return business
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function business()
     {
@@ -30,7 +30,7 @@ class Promotion extends Model
     /**
      * Relationship category tables.
      *
-     * @return category
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()
     {
@@ -40,7 +40,7 @@ class Promotion extends Model
     /**
      * Relationship rating tables.
      *
-     * @return ratings
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function ratings()
     {

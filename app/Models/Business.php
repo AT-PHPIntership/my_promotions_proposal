@@ -50,7 +50,7 @@ class Business extends Model
     /**
      * Relationship city tables.
      *
-     * @return cities
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function cities()
     {
@@ -60,7 +60,7 @@ class Business extends Model
     /**
      * Relationship county tables.
      *
-     * @return counties
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function counties()
     {

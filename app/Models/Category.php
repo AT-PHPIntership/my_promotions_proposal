@@ -20,7 +20,7 @@ class Category extends Model
     /**
      * Relationship promotion tables.
      *
-     * @return promotions
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function promotions()
     {

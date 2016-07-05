@@ -20,7 +20,7 @@ class Rating extends Model
     /**
      * Relationship promotion tables.
      *
-     * @return promotion
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function promotion()
     {
@@ -30,7 +30,7 @@ class Rating extends Model
     /**
      * Relationship user tables.
      *
-     * @return user
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {

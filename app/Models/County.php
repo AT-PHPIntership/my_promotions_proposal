@@ -20,7 +20,7 @@ class County extends Model
     /**
      * Relationship business tables.
      *
-     * @return businesses
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function businesses()
     {
@@ -30,7 +30,7 @@ class County extends Model
     /**
      * Relationship city tables.
      *
-     * @return city
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function city()
     {

@@ -20,7 +20,7 @@ class Follow extends Model
     /**
      * Relationship user tables.
      *
-     * @return user
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function user()
     {
@@ -30,7 +30,7 @@ class Follow extends Model
     /**
      * Relationship buisness tables.
      *
-     * @return business
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function business()
     {
