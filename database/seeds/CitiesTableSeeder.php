@@ -12,12 +12,13 @@ class CitiesTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-                for($i = 0; $i < 10; $i++)
-                {
-                    DB::table('cities')->insert([
-                        'name'      => $faker->name,
-                        'created_at' => Carbon\Carbon::now()
-                    ]);
-                }
+        
+        for($i = 0; $i < 20; $i++)
+        {
+            DB::table('cities')->insert([
+                'name'       => $faker->cityName,
+                'created_at' => Carbon\Carbon::now()
+            ]);
+        }
     }
 }

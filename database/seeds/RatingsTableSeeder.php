@@ -12,15 +12,16 @@ class RatingsTableSeeder extends Seeder
     public function run()
     {
        $faker = Faker\Factory::create();
-                for($i = 0; $i < 10; $i++)
-                {
-                    DB::table('ratings')->insert([
-                        'content'    => $faker->realText,
-                        'score'      => rand(1,5),
-                        'user_id'    => 1,
-                        'promotion_id'=> 1,
-                        'created_at' => Carbon\Carbon::now()
-                    ]);
-                }
+       
+        for($i = 0; $i < 20; $i++)
+        {
+            DB::table('ratings')->insert([
+                'content'      => $faker->realText(rand(10,20)),
+                'score'        => rand(1, 5),
+                'user_id'      => rand(1, 20),
+                'promotion_id' => rand(1, 20),
+                'created_at'   => Carbon\Carbon::now()
+            ]);
+        }
     }
 }

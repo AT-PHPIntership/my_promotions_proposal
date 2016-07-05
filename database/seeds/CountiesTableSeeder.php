@@ -12,13 +12,14 @@ class CountiesTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-                for($i = 0; $i < 10; $i++)
-                {
-                    DB::table('counties')->insert([
-                        'name'      => $faker->name,
-                        'city_id'   => 1,
-                        'created_at'=> Carbon\Carbon::now() 
-                    ]);
-                }
+        
+        for($i = 0; $i < 20; $i++)
+        {
+            DB::table('counties')->insert([
+                'name'      => $faker->district,
+                'city_id'   => rand(1, 20),
+                'created_at'=> Carbon\Carbon::now() 
+            ]);
+        }
     }
 }

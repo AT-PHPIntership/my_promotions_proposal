@@ -12,15 +12,15 @@ class BusinessesTableSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        for($i = 0; $i < 10; $i++)
+        for($i = 0; $i < 20; $i++)
         {
             DB::table('businesses')->insert([
-                'name'          => $faker->name,
+                'name'          => $faker->company,
                 'email'         => $faker->email,
                 'phone'         => $faker->phoneNumber,
                 'logo'          => '',
                 'description'   => $faker->realText,
-                'user_id'       => 1,
+                'user_id'       => rand(1, 20),
                 'created_at'    => Carbon\Carbon::now()
             ]);
         }
