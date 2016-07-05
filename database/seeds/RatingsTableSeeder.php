@@ -13,8 +13,7 @@ class RatingsTableSeeder extends Seeder
     {
        $faker = Faker\Factory::create();
        
-        for($i = 0; $i < 20; $i++)
-        {
+        for($i = 0; $i < 20; $i++){
             DB::table('ratings')->insert([
                 'content'      => $faker->realText(rand(10,20)),
                 'score'        => rand(1, 5),

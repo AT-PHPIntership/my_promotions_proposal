@@ -13,8 +13,7 @@ class CountiesTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
         
-        for($i = 0; $i < 20; $i++)
-        {
+        for($i = 0; $i < 20; $i++){
             DB::table('counties')->insert([
                 'name'      => $faker->name,
                 'city_id'   => rand(1, 20),

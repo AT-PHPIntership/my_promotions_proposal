@@ -13,8 +13,7 @@ class CitiesTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
         
-        for($i = 0; $i < 20; $i++)
-        {
+        for($i = 0; $i < 20; $i++){
             DB::table('cities')->insert([
                 'name'       => $faker->name,
                 'created_at' => Carbon\Carbon::now()

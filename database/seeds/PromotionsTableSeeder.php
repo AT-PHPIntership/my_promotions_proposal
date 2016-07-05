@@ -13,8 +13,7 @@ class PromotionsTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
         
-        for($i = 0; $i < 20; $i++)
-        {
+        for($i = 0; $i < 20; $i++){
             DB::table('promotions')->insert([
                 'title'      => $faker->name,
                 'content'    => $faker->realText(rand(10, 20)),
