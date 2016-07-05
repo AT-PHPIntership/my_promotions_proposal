@@ -16,7 +16,7 @@ class CitiesTableSeeder extends Seeder
         for($i = 0; $i < 20; $i++)
         {
             DB::table('cities')->insert([
-                'name'       => $faker->cityName,
+                'name'       => $faker->name,
                 'created_at' => Carbon\Carbon::now()
             ]);
         }
