@@ -14,9 +14,7 @@
 Route::get('/', function () {
     return view('backend.layouts.master');
 });
-Route::get('admin/city', function(){
-    return view('backend.layouts.city.index');
-});
+Route::get('admin/city', 'Backend\CityController@index');
 
 Route::auth();
 

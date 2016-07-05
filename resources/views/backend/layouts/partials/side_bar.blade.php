@@ -17,7 +17,7 @@
         <ul class="nav side-menu">
           <li><a><i class="fa fa-home"></i> {{ trans('labels.label_dasboard') }} </a>               
           </li>
-          <li><a><i class="fa fa-taxi"></i> {{ trans('labels.label_city') }} </a>               
+          <li><a href="{{ url('admin/city') }}"> <i class="fa fa-taxi"></i> {{ trans('labels.label_city') }} </a>               
           </li>
         </ul>
       </div>

@@ -13,8 +13,10 @@
     <link href="{{ asset('backend/css/vendor.css') }}" rel="stylesheet">
     <!-- Font Awesome -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
    <!-- Ionicons -->
    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+   
   </head>
 
   <body class="nav-md footer_fixed">
@@ -26,18 +28,9 @@
 
         {{-- navigation --}}
         @include('backend.layouts.partials.navigation')
-
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /page content -->
+        
+        @yield('content')
+       
 
         {{-- footer --}}
         @include('backend.layouts.partials.footer')
@@ -47,5 +40,11 @@
 
     <!-- Javascript -->
     <script src="{{ asset('backend/js/vendor.js') }}"></script>
+    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $('#myTable').DataTable();
+        });
+    </script>
   </body>
 </html>
