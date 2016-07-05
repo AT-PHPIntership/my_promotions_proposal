@@ -14,6 +14,9 @@
 Route::get('/', function () {
     return view('backend.layouts.master');
 });
+Route::get('admin/user', function(){
+    return view('backend.layouts.user.index');
+});
 
 Route::auth();
 
