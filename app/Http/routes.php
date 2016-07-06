@@ -19,11 +19,11 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('logout', 'Backend\AuthController@getLogout');
 
     Route::group(['middleware' => 'auth:admin'], function () {
-	    
-	    // dashboard
-	    Route::get('dashboard', function () {
-	        return view('backend.dashboard.index');
-	    });
-	    
-	});
+        
+        // dashboard
+        Route::get('dashboard', function () {
+            return view('backend.dashboard.index');
+        });
+        
+    });
 });
