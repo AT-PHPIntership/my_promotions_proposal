@@ -29,6 +29,15 @@ elixir(function(mix) {
     'public/backend/js/vendor.js',
     'vendor/bower_dl/gentelella'
   );
+  
+  mix.scripts([
+
+      'jquery/dist/jquery.js',
+      'bootswatch-dist/js/bootstrap.js'
+    ],
+    'public/assets/frontend/js/bower.js',
+    'vendor/bower_dl'
+);
 
   // Compile css
   mix.styles([
@@ -40,5 +49,12 @@ elixir(function(mix) {
   ], 
     'public/backend/css/vendor.css',
     'vendor/bower_dl/gentelella'
+  );
+  
+  mix.styles([
+      'bootswatch-dist/css/bootstrap.min.css',
+  ], 
+  'public/assets/frontend/css/bower.css', 
+  'vendor/bower_dl'
   );
 });
