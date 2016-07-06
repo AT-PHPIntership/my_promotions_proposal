@@ -7,7 +7,7 @@
     <div class=""> 
         <div class="page-title"> 
             <div class="title_left"> 
-                <h3>{{ trans('labels.label_city') }} <small>{{ trans('labels.label_manager') }}</small></h3> 
+                <h3>{!! trans('labels.city') !!} <small>{!! trans('labels.manager') !!}</small></h3> 
             </div> 
         </div> 
 
@@ -16,7 +16,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12"> 
                 <div class="x_panel"> 
                     <div class="x_title"> 
-                        <h2>{{ trans('labels.label_city') }}<small>{{ trans('labels.label_list') }}</small></h2>
+                        <h2>{!! trans('labels.city') !!}<small>{!! trans('labels.list') !!}</small></h2>
                         <div class="clearfix"></div> 
                         
                     </div> 
@@ -24,16 +24,16 @@
                         <table id="myTable" class="table table-striped table-bordered">
                             <thead> 
                                 <tr> 
-                                    <th>{{ trans('labels.label_id') }}</th> 
-                                    <th>{{ trans('labels.label_name') }}</th> 
-                                    <th>{{ trans('labels.label_action') }}</th> 
+                                    <th>{!! trans('labels.id') !!}</th> 
+                                    <th>{!! trans('labels.name') !!}</th> 
+                                    <th>{!! trans('labels.action') !!}</th> 
                                 </tr> 
                             </thead> 
                             <tbody> 
                                 @foreach ($cities as $citie)
                                 <tr> 
-                                    <td>{{$citie['id']}}</td> 
-                                    <td>{{$citie['name']}}</td>
+                                    <td>{!! $citie['id'] !!}</td> 
+                                    <td>{!! $citie['name'] !!}</td>
                                     <td>
                                         <a class="btn btn-info btn-xs" href="#">Edit</a>
                                         <a class="btn btn-danger btn-xs" href="#">Delete</a>

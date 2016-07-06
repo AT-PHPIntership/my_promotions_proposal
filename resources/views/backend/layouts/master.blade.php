@@ -7,13 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ trans('labels.label_promotion_admin') }}</title>
+    <title>{!! trans('labels.promotion_admin') !!}</title>
 
     <!-- CSS -->
-    <link href="{{ asset('backend/css/vendor.css') }}" rel="stylesheet">
+    <link href="{!! asset('backend/css/vendor.css') !!}" rel="stylesheet">
     <!-- Font Awesome -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css">
+   <link rel="stylesheet" href="{!! asset('backend/css/jquery.dataTables.min.css') !!}">
    <!-- Ionicons -->
    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
    
@@ -39,12 +39,9 @@
     </div>
 
     <!-- Javascript -->
-    <script src="{{ asset('backend/js/vendor.js') }}"></script>
-    <script src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#myTable').DataTable();
-        });
-    </script>
+    <script src="{!! asset('backend/js/vendor.js') !!}"></script>
+    <script src="{!! asset('backend/js/jquery.dataTables.min.js') !!}"></script>
+    <script src="{!! asset('backend/js/backend.js') !!}"></script>
+    
   </body>
 </html>

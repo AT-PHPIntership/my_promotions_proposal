@@ -1,7 +1,7 @@
 <div class="col-md-3 left_col">
   <div class="left_col scroll-view">
     <div class="navbar nav_title" style="border: 0;">
-      <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>{{ trans('labels.label_promotion_admin') }}</span></a>
+      <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>{!! trans('labels.promotion_admin') !!}</span></a>
     </div>
 
     <div class="clearfix"></div>
@@ -15,9 +15,9 @@
     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
       <div class="menu_section">
         <ul class="nav side-menu">
-          <li><a><i class="fa fa-home"></i> {{ trans('labels.label_dasboard') }} </a>               
+          <li><a><i class="fa fa-home"></i> {!! trans('labels.dasboard') !!} </a>               
           </li>
-          <li><a href="{{ url('admin/city') }}"> <i class="fa fa-taxi"></i> {{ trans('labels.label_city') }} </a>               
+          <li><a href="{!! url('admin/city') !!}"> <i class="fa fa-taxi"></i> {!! trans('labels.city') !!} </a>               
           </li>
         </ul>
       </div>

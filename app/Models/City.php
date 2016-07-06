@@ -36,4 +36,14 @@ class City extends Model
     {
         return $this->hasMany('App\Models\County');
     }
+    
+    /**
+     * Get all city.
+     *
+     * @return all object city
+     */
+    public function getAll()
+    {
+        return static::all();
+    }
 }
