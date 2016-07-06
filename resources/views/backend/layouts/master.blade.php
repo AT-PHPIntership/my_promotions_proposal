@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ trans('labels.label_promotion_admin') }}</title>
+    <title>{!! trans('labels.promotion_admin') !!}</title>
 
     <!-- CSS -->
     <link href="{{ asset('backend/css/vendor.css') }}" rel="stylesheet">

@@ -7,7 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
 
-  <title>{{ trans('labels.label_promotion_login') }}</title> 
+  <title>{!! trans('labels.promotion_login') !!}</title> 
 
   <!-- CSS --> 
   <link href="{{ asset('backend/css/vendor.css') }}" rel="stylesheet"> 
@@ -28,13 +28,8 @@
         <form method="POST" role="form" id="form-login" action="{{ url('admin\login') }}">
         {{ csrf_field() }}
 
-        {{-- Error --}}
-            <h1>{{ trans('labels.label_login_form') }}</h1> 
-            <div class="alert alert-danger error errorLogin" style="display: none;"> 
-             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> 
-             <p style="color:red;display: none;" class="error errorLogin"></p> 
-           </div>
-        
+        <h1>{!! trans('labels.login_form') !!}</h1> 
+            
         {{-- Email --}}
           <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
            <div class="form-group"> 
@@ -60,14 +55,14 @@
           </div>
 
            <div> 
-             <button type="submit" id="login" class="btn btn-default submit">{{ trans('labels.label_login_button') }}</button> 
+             <button type="submit" id="login" class="btn btn-default submit">{!! trans('labels.login_button') !!}</button> 
            </div> 
 
            <div class="separator"> 
 
             <div> 
-              <h1><i class="fa fa-paw"></i> {{ trans('labels.label_my_promotion') }}</h1> 
-              <p>{{ trans('labels.label_copy_right') }}</p> 
+              <h1><i class="fa fa-paw"></i> {!! trans('labels.my_promotion') !!}</h1> 
+              <p>{!! trans('labels.copy_right') !!}</p> 
             </div> 
           </div> 
         </form> 

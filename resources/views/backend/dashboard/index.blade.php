@@ -4,7 +4,7 @@
   <div class="">
     <div class="page-title">
       <div class="title_left">
-        {{ trans('labels.label_dasboard') }}
+        {!! trans('labels.dasboard') !!}
       </div>
     </div>
   </div>
