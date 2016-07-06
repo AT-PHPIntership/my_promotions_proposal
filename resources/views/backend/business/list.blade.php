@@ -5,7 +5,7 @@
     <div class=""> 
         <div class="page-title"> 
             <div class="title_left"> 
-                <h3>{{ trans('labels.label_business') }} <small>{{ trans('labels.label_manager') }}</small></h3> 
+                <h3>{!! trans('labels.business') !!} <small>{!! trans('labels.manager') !!}</small></h3> 
             </div> 
         </div> 
         <div class="clearfix"></div> 
@@ -13,17 +13,17 @@
             <div class="col-md-12 col-sm-12 col-xs-12"> 
                 <div class="x_panel"> 
                     <div class="x_title"> 
-                        <h2>{{ trans('labels.label_business') }}<small>{{ trans('labels.label_list') }}</small></h2>
+                        <h2>{!! trans('labels.business') !!}<small>{!! trans('labels.list') !!}</small></h2>
                         <div class="clearfix"></div> 
                     </div> 
                     <div class="x_content"> 
                         <table id="myTable" class="table table-striped table-bordered">
                             <thead> 
                                 <tr> 
-                                    <th>{{ trans('labels.label_username') }}</th> 
-                                    <th>{{ trans('labels.label_businessname') }}</th>
-                                    <th>{{ trans('labels.label_status') }}</th>
-                                    <th>{{ trans('labels.label_action') }}</th> 
+                                    <th>{!! trans('labels.username') !!}</th> 
+                                    <th>{!! trans('labels.businessname') !!}</th>
+                                    <th>{!! trans('labels.status') !!}</th>
+                                    <th>{!! trans('labels.action') !!}</th> 
                                 </tr> 
                             </thead> 
                             <tbody>
