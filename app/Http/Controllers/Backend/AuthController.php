@@ -19,5 +19,4 @@ class AuthController extends auth
     protected $redirectAfterLogout = 'admin/login';
     
     protected $loginView = 'backend.layouts.login';
-
 }
