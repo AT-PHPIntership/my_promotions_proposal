@@ -11,11 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('backend.layouts.master');
+Route::group(['prefix' => 'admin'], function () {
+     Route::resource('city', 'Backend\CityController', ['only' => ['index']]);
 });
-Route::resource('admin/city', 'Backend\CityController', ['only' => ['index']]);
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
