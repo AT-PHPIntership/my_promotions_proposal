@@ -10,11 +10,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-
-Route::get('/', function () {
-    return view('backend.layouts.master');
+Route::group(['prefix' => 'admin'], function () {
+    Route::resource('business', 'Backend\BusinessController');
+    Route::resource('business/show', 'Backend\BusinessController');
 });
-
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
