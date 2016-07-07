@@ -29,8 +29,8 @@
         <!-- navigation -->
         @include('backend.layouts.partials.navigation')
         
+        <!-- content -->
         @yield('content')
-       
 
         <!-- footer -->
         @include('backend.layouts.partials.footer')
