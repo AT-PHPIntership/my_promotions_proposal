@@ -17,25 +17,22 @@
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <link rel="stylesheet" href="{{ asset('backend/css/jquery.dataTables.min.css') }}" >
-        
-    </head>
 
-    <body class="nav-md footer_fixed">
-        <div class="container body">
-            <div class="main_container">
+  <body class="nav-md footer_fixed">
+    <div class="container body">
+      <div class="main_container">
+      	
+      	<!-- header -->
+        @include('backend.layouts.partials.side_bar')
 
-                {{-- header --}}
-                @include('backend.layouts.partials.side_bar')
+        <!-- navigation -->
+        @include('backend.layouts.partials.navigation')
 
-                {{-- navigation --}}
-                @include('backend.layouts.partials.navigation')
+        <!-- content -->
+        @yield('content')
 
-                <!-- page content -->
-                @yield('content')
-                <!-- /page content -->
-
-                {{-- footer --}}
-                @include('backend.layouts.partials.footer')
+        <!-- footer -->
+        @include('backend.layouts.partials.footer')
 
             </div>
         </div>

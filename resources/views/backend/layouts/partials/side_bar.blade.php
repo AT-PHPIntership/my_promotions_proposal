@@ -6,7 +6,6 @@
 
         <div class="clearfix"></div>
 
-
         <!-- /menu profile quick info -->
 
         <br />
@@ -15,7 +14,8 @@
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
                 <ul class="nav side-menu">
-                    <li><a><i class="fa fa-home"></i> {!! trans('labels.dasboard') !!} </a> 
+                    <li><a href="{{ url('admin/dashboard') }}"><i class="fa fa-home"></i> {!! trans('labels.dasboard') !!} </a>
+                    </li>
                     <li><a href="{{ url('admin/business') }}"><i class="fa fa-home"></i> {!! trans('labels.business') !!} </a>                
                     </li>
                 </ul>
