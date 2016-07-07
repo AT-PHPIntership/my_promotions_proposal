@@ -11,12 +11,12 @@
 |
 */
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 
     // login backend
-    Route::get('login', 'Backend\AuthController@getLogin');
-    Route::post('login', 'Backend\AuthController@postLogin');
-    Route::get('logout', 'Backend\AuthController@getLogout');
+    Route::get('login', 'AuthController@getLogin');
+    Route::post('login', 'AuthController@postLogin');
+    Route::get('logout', 'AuthController@getLogout');
 
     Route::group(['middleware' => 'auth:admin'], function () {
         

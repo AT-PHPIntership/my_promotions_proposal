@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Auth\AuthController as auth;
+use App\Http\Controllers\Auth\AuthController as Auth;
 
-class AuthController extends auth
+class AuthController extends Auth
 {
 
     /**
