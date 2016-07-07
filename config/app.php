@@ -120,6 +120,8 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
+    'actived' => 1,
+    'inactive' => 0,
 
     'providers' => [
 

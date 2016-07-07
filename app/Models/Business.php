@@ -66,26 +66,4 @@ class Business extends Model
     {
         return $this->belongsToMany('App\Models\County', 'business_counties');
     }
-    
-    /**
-     * List all Business
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function getAll()
-    {
-        return static::all();
-    }
-    
-    /**
-     * View a business
-     *
-     * @param int $id id
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function showBusiness($id)
-    {
-        return static::findOrFail($id);
-    }
 }

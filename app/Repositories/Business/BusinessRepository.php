@@ -25,18 +25,32 @@ class BusinessRepository implements BusinessInterface
      */
     public function getAll()
     {
-        return $this->business->getAll();
+        return $this->business->all();
     }
 
     /**
-     * Show a business
+     * Find a business
      *
      * @param int $id id
      *
      * @return void
      */
-    public function show($id)
+    public function find($id)
     {
-        return $this->business->showBusiness($id);
+        return $this->business->findOrFail($id);
+    }
+
+    /**
+     * Update status a business
+     *
+     * @param int $id id
+     *
+     * @return void
+     */
+    public function updateStatus($id)
+    {
+        $business = $this->find($id);
+        $business->status = config('app.actived');
+        $business->save();
     }
 }

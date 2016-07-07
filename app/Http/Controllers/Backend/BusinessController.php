@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Business;
 use App\Repositories\Business\BusinessInterface as BusinessInterface;
+use Exception;
 
 class BusinessController extends Controller
 {
@@ -56,13 +57,19 @@ class BusinessController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int $id id
+     * @param \Illuminate\Http\Request $request request update
+     * @param int                      $id      id
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {
-        $data['business'] = $this->business->show($id);
+        try {
+            $data['business'] = $this->business->find($id);
+        } catch (Exception $e) {
+            $request->session()->flash('error', trans('messages.error_not_found'));
+            return back();
+        }
         return view('backend.business.show')->with($data);
     }
 
@@ -73,17 +80,20 @@ class BusinessController extends Controller
      */
     public function edit()
     {
-        //
+
     }
 
     /**
      * Update the specified resource in storage.
      *
+     * @param int $id id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update($id)
     {
-        //
+        $this->business->updateStatus($id);
+        return "OK";
     }
 
     /**

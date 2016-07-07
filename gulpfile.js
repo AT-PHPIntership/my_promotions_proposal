@@ -19,26 +19,28 @@ elixir(function(mix) {
 
   // Combine scripts
   mix.scripts([
-      'vendors/jquery/dist/jquery.min.js',
-      'vendors/bootstrap/dist/js/bootstrap.min.js',
-      'vendors/fastclick/lib/fastclick.js',
-      'vendors/nprogress/nprogress.js',
-      'vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
-      'build/js/custom.min.js'
+      'gentelella/vendors/jquery/dist/jquery.min.js',
+      'gentelella/vendors/bootstrap/dist/js/bootstrap.min.js',
+      'gentelella/vendors/fastclick/lib/fastclick.js',
+      'gentelella/vendors/nprogress/nprogress.js',
+      'gentelella/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
+      'gentelella/build/js/custom.min.js',
+      'sweetalert/dist/sweetalert.min.js'
     ],
     'public/backend/js/vendor.js',
-    'vendor/bower_dl/gentelella'
+    'vendor/bower_dl'
   );
 
   // Compile css
   mix.styles([
-  	  'vendors/bootstrap/dist/css/bootstrap.min.css',
-      'vendors/font-awesome/css/font-awesome.min.css',
-      'vendors/iCheck/skins/flat/green.css',
-      'vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css',
-      'build/css/custom.min.css'
+  	  'gentelella/vendors/bootstrap/dist/css/bootstrap.min.css',
+      'gentelella/vendors/font-awesome/css/font-awesome.min.css',
+      'gentelella/vendors/iCheck/skins/flat/green.css',
+      'gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css',
+      'gentelella/build/css/custom.min.css',
+      'sweetalert/dist/sweetalert.css'
   ], 
     'public/backend/css/vendor.css',
-    'vendor/bower_dl/gentelella'
+    'vendor/bower_dl'
   );
 });

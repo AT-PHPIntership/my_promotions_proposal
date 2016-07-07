@@ -11,11 +11,20 @@ interface BusinessInterface
     public function getAll();
 
     /**
-     * Function show a business
+     * Function find a business
      *
      * @param int $id id
      *
      * @return void
      */
-    public function show($id);
+    public function find($id);
+
+    /**
+     * Function update status a business
+     *
+     * @param int $id id
+     *
+     * @return void
+     */
+    public function updateStatus($id);
 }

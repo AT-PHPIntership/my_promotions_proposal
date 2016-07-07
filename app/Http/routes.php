@@ -10,7 +10,6 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::group(['prefix' => 'admin'], function () {
-    Route::resource('business', 'Backend\BusinessController');
-    Route::resource('business/show', 'Backend\BusinessController');
+Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
+    Route::resource('business', 'BusinessController');
 });

@@ -10,8 +10,11 @@
         </div> 
         <div class="clearfix"></div> 
         <div class="row"> 
-            <div class="col-md-12 col-sm-12 col-xs-12"> 
-                <div class="x_panel"> 
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                @if (Session::has('error'))
+                    <div class="alert error alert-danger"><b>{{ Session::get('error') }}</b></div>
+                @endif
+                <div class="x_panel">
                     <div class="x_title"> 
                         <h2>{!! trans('labels.business') !!}<small>{!! trans('labels.list') !!}</small></h2>
                         <div class="clearfix"></div> 
@@ -32,13 +35,12 @@
                                     <td>{{ $business->user_id }}</td> 
                                     <td>{{ $business->name }}</td>
                                     @if($business->status == 0)
-                                        <td><button type="button" class="btn btn-warning btn-xs">Inactive</button></td> 
+                                        <td><label class="btn btn-warning btn-xs">Inactive</label><a id="{{ url('admin/business/'.$business->id)  }}" class="btn active btn-success btn-xs">Click to Active</a></td>
                                     @else
-                                        <td><button type="button" class="btn btn-success btn-xs">Active</button></td> 
+                                        <td><button type="button" class="btn btn-success btn-xs">Actived</button></td>
                                     @endif
-                                    <td><a href="{{ url('admin/business/show/'.$business->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> View </a>
-                                        <a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a></td>
-                                </tr> 
+                                    <td><a href="{{ url('admin/business/'.$business->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> View </a>
+                                </tr>
                                 @endforeach
                             </tbody> 
                         </table>
