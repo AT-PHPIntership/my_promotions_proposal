@@ -23,16 +23,16 @@
     <div class="container body">
       <div class="main_container">
       	
-      	{{-- header --}}
+      	<!-- header -->
         @include('backend.layouts.partials.side_bar')
 
-        {{-- navigation --}}
+        <!-- navigation -->
         @include('backend.layouts.partials.navigation')
         
         @yield('content')
        
 
-        {{-- footer --}}
+        <!-- footer -->
         @include('backend.layouts.partials.footer')
         
       </div>

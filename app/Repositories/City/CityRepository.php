@@ -29,6 +29,6 @@ class CityRepository implements CityInterface
      */
     public function getAll()
     {
-        return $this->city->getAll();
+        return $this->city->all();
     }
 }
