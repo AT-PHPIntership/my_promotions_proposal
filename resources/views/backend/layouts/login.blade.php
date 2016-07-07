@@ -30,7 +30,7 @@
 
         <h1>{!! trans('labels.login_form') !!}</h1> 
             
-        {{-- Email --}}
+        <!-- Email -->
           <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
            <div class="form-group"> 
              <input type="email" class="form-control" id="email" placeholder="Email" name="email"> 
@@ -42,7 +42,7 @@
            </div>
           </div>
         
-        {{-- Password --}}
+        <!-- Password -->
           <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
            <div class="form-group"> 
              <input type="password" class="form-control" id="password" placeholder="Password" name="password"> 
