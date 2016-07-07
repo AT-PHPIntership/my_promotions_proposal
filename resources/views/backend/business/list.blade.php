@@ -1,9 +1,9 @@
 @extends('backend.layouts.master')
 @section('content')
 <!-- page content --> 
-<div class="right_col" role="main"> 
+<div class="right_col" role="main">
     <div class=""> 
-        <div class="page-title"> 
+        <div class="page-title">
             <div class="title_left"> 
                 <h3>{!! trans('labels.business') !!} <small>{!! trans('labels.manager') !!}</small></h3> 
             </div> 
@@ -32,7 +32,7 @@
                             <tbody>
                                 @foreach($businesses as $business)
                                 <tr> 
-                                    <td>{{ $business->user_id }}</td> 
+                                    <td>{{ $business->user->name }}</td>
                                     <td>{{ $business->name }}</td>
                                     @if($business->status == 0)
                                         <td><label class="btn btn-warning btn-xs">Inactive</label><a id="{{ url('admin/business/'.$business->id)  }}" class="btn active btn-success btn-xs">Click to Active</a></td>

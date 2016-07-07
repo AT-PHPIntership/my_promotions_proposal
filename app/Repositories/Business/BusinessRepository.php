@@ -25,7 +25,9 @@ class BusinessRepository implements BusinessInterface
      */
     public function getAll()
     {
-        return $this->business->all();
+        return $this->business->with(['user' => function ($query) {
+            return $query->select('users.id', 'users.name');
+        }])->get();
     }
 
     /**
