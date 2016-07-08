@@ -15,7 +15,9 @@
     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
       <div class="menu_section">
         <ul class="nav side-menu">
-          <li><a href="{{ url('admin/dashboard') }}"><i class="fa fa-home"></i> {!! trans('labels.dasboard') !!} </a>               
+          <li><a href="{{ url('admin/dashboard') }}"><i class="fa fa-home"></i> {!! trans('labels.dasboard') !!} </a>   
+
+          <li><a href="{{ url('admin/account') }}"><i class="fa fa-user"></i> {!! trans('labels.admin') !!} </a>               
           </li>
         </ul>
       </div>
