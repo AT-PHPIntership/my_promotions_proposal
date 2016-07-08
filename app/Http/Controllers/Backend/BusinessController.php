@@ -6,22 +6,28 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Models\Business;
-use App\Repositories\Business\BusinessInterface as BusinessInterface;
+use App\Repositories\BusinessRepository as Business;
 use Exception;
 
 class BusinessController extends Controller
 {
-    
+    /**
+     * Business
+     *
+     * @var Business
+     */
+    private $business;
+
     /**
      * Construct a BusinessController
      *
      * @param int $business business
      */
-    public function __construct(BusinessInterface $business)
+    public function __construct(Business $business)
     {
         $this->business = $business;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -29,10 +35,9 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        $data['businesses'] = $this->business->getAll();
+        $data['businesses'] = $this->business->withRelationship('user');
         return view('backend.business.list')->with($data);
     }
-    
 
     /**
      * Show the form for creating a new resource.
