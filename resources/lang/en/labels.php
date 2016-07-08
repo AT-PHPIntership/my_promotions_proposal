@@ -1,7 +1,13 @@
 <?php
 
 return [
-    'label_promotion_admin' => 'Promotion Admin',
-    'label_logout'   => 'Log Out',
-    'label_dasboard' => 'Dasboard',
+    'promotion_login' => 'Promotion - Login',
+    'login_form'      => 'Admin Login Form',
+    'login_button'    => 'Log in',
+    'my_promotion'    => 'My Promotion!',
+    'copy_right'      => '©2016 All Rights Reserved.',
+
+    'promotion_admin' => 'Promotion Admin',
+    'logout'   => 'Log Out',
+    'dasboard' => 'Dasboard',
 ];

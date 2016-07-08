@@ -10,15 +10,23 @@
 | and give it the controller to call when that URI is requested.
 |
 */
+//------------------Backend-----------------------------
+Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 
-Route::get('/', function () {
-    return view('backend.layouts.master');
+    // login backend
+    Route::get('login', 'AuthController@getLogin');
+    Route::post('login', 'AuthController@postLogin');
+    Route::get('logout', 'AuthController@getLogout');
+    Route::group(['middleware' => 'auth:admin'], function () {
+        
+        // dashboard
+        Route::get('dashboard', function () {
+            return view('backend.dashboard.index');
+        });
+    });
 });
 
-Route::auth();
-
-Route::get('/home', 'HomeController@index');
-
-Route::get('/index', function () {
+//------------------Frontend-----------------------------
+Route::get('/', function () {
     return view('frontend.dashboard.index');
 });

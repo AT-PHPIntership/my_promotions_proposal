@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ trans('labels.label_promotion_admin') }}</title>
+    <title>{!! trans('labels.promotion_admin') !!}</title>
 
     <!-- CSS -->
     <link href="{{ asset('backend/css/vendor.css') }}" rel="stylesheet">
@@ -21,25 +21,16 @@
     <div class="container body">
       <div class="main_container">
       	
-      	{{-- header --}}
+      	<!-- header -->
         @include('backend.layouts.partials.side_bar')
 
-        {{-- navigation --}}
+        <!-- navigation -->
         @include('backend.layouts.partials.navigation')
 
-        <!-- page content -->
-        <div class="right_col" role="main">
-          <div class="">
-            <div class="page-title">
-              <div class="title_left">
-                
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- /page content -->
+        <!-- content -->
+        @yield('content')
 
-        {{-- footer --}}
+        <!-- footer -->
         @include('backend.layouts.partials.footer')
         
       </div>
