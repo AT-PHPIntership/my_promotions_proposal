@@ -3,12 +3,19 @@
 namespace App\Http\Controllers\Backend;
 
 use Illuminate\Http\Request;
-use App\Repositories\City\CityInterface as CityInterface;
+use App\Repositories\CityRepository as City;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class CityController extends Controller
 {
+    /**
+     * City
+     *
+     * @var Actor
+     */
+    private $city;
+    
     /**
      * Create a new CityInterface instance.
      *
@@ -16,7 +23,7 @@ class CityController extends Controller
      *
      * @return void
      */
-    public function __construct(CityInterface $city)
+    public function __construct(City $city)
     {
         $this->city = $city;
     }
@@ -28,7 +35,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $data['cities'] = $this->city->getAll();
+        $data['cities'] = $this->city->all();
         return view('backend.city.index')->with($data);
     }
 }
