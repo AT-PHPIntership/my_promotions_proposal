@@ -25,5 +25,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
             return view('backend.dashboard.index');
         });
         
+        // City
+        Route::resource('city', 'CityController', ['only' => ['create', 'store']]);
     });
 });
