@@ -155,6 +155,6 @@ abstract class Repository implements RepositoryInterface
             throw new Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
         }
 
-        return $this->model = $model->newQuery();
+        return $this->model = $model;
     }
 }

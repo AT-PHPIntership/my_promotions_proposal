@@ -18,7 +18,12 @@
                     <div class="x_title"> 
                         <a class="btn btn-md btn-primary" href="{{ url('admin/city/create') }}">Add New</a>
                         <div class="clearfix"></div> 
-                        
+                        @if (count($users) > 0)
+                            @if (Session::has('message'))
+                                <div class="alert alert-success">{{ Session::get('message') }}</div>
+                            @elseif (Session::has('message-warning'))
+                                <div class="alert alert-danger">{{ Session::get('message-warning') }}</div>
+                        @endif       
                     </div> 
                     <div class="x_content">  
                         <table id="myTable" class="table table-striped table-bordered">
