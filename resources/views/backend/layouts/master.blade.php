@@ -38,5 +38,6 @@
 
     <!-- Javascript -->
     <script src="{{ asset('backend/js/vendor.js') }}"></script>
+    <script src="{{ asset('backend/js/backend.js') }}"></script>
   </body>
 </html>

@@ -10,4 +10,7 @@ return [
     'promotion_admin' => 'Promotion Admin',
     'logout'   => 'Log Out',
     'dasboard' => 'Dasboard',
+    'admin'    => 'Account',
+    'manager'  => 'Manager',
+    'create'   => 'Create New',
 ];

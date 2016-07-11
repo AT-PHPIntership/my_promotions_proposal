@@ -24,6 +24,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         Route::get('dashboard', function () {
             return view('backend.dashboard.index');
         });
+
+        // Admin
+        Route::resource('account', 'AdminController', ['only' => ['create', 'store']]);
         
     });
 });
