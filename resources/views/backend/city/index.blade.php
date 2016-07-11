@@ -16,7 +16,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12"> 
                 <div class="x_panel"> 
                     <div class="x_title"> 
-                        <h2>{!! trans('labels.city') !!}<small>{!! trans('labels.list') !!}</small></h2>
+                        <a class="btn btn-md btn-primary" href="{{ url('admin/city/create') }}">Add New</a>
                         <div class="clearfix"></div> 
                         
                     </div> 
