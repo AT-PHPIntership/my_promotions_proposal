@@ -50,9 +50,9 @@ class CityController extends Controller
     {
         $result = $this->city->create($request->all());
         if ($result) {
-            $request->session()->flash('message', 'User was create successfully!');
+            $request->session()->flash('message', trans('messages.successfully'));
         } else {
-            $request->session()->flash('message', 'Create failed!');
+            $request->session()->flash('message', trans('messages.failed'));
         }
         return redirect('admin/city');
     }
