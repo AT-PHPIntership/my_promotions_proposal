@@ -149,9 +149,8 @@ abstract class Repository implements RepositoryInterface
         $model = $this->app->make($this->model());
 
         if (!$model instanceof Model) {
-            //return "lam chi co model ma kiem cha noi";
             throw new Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
         }
-        return $this->model = $model->newInstance();
+        return $this->model = $model;
     }
 }
