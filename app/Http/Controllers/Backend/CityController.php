@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Repositories\CityRepository as City;
 use App\Http\Requests\Backend\CityRequest;
+use App\Repositories\CityRepository as City;
 use App\Http\Controllers\Controller;
 
 class CityController extends Controller
