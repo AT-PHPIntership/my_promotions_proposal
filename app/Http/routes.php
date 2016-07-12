@@ -24,6 +24,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         Route::get('dashboard', function () {
             return view('backend.dashboard.index');
         });
-        
+        Route::resource('category', 'CategoryController');
     });
 });
