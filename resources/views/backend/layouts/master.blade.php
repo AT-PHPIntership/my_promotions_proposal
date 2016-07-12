@@ -13,7 +13,6 @@
     <link href="{!! asset('backend/css/vendor.css') !!}" rel="stylesheet">
     <!-- Font Awesome -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-   <link rel="stylesheet" href="{!! asset('backend/css/jquery.dataTables.min.css') !!}">
    <!-- Ionicons -->
    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
    
@@ -40,7 +39,6 @@
 
     <!-- Javascript -->
     <script src="{!! asset('backend/js/vendor.js') !!}"></script>
-    <script src="{!! asset('backend/js/jquery.dataTables.min.js') !!}"></script>
     <script src="{!! asset('backend/js/backend.js') !!}"></script>
     
   </body>

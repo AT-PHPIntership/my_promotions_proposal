@@ -24,9 +24,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         // Dashboard
         Route::get('dashboard', function () {
             return view('backend.dashboard.index');
-        });
+        })->name('dashboard');
 
         // City
-        Route::resource('city', 'CityController', ['only' => ['index']]);
+        Route::resource('city', 'CityController');
     });
 });

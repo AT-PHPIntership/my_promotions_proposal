@@ -17,14 +17,10 @@
                 <div class="x_panel">
                     @if (count($cities) > 0)
                     <div class="x_title"> 
-                        <a class="btn btn-md btn-primary" href="{{ url('admin/city/create') }}">{!! trans('labels.add_new') !!}</a>
+                        <a class="btn btn-md btn-primary" href="{{ route('admin.city.create') }}">{!! trans('labels.add_new') !!}</a>
                         <div class="clearfix"></div> 
-
-                        @if (Session::has('message'))
-                        <div class="alert alert-success">{{ Session::get('message') }}</div>
-                        @elseif (Session::has('message-warning'))
-                        <div class="alert alert-danger">{{ Session::get('message-warning') }}</div>
-                        @endif       
+                        
+                        @include('flash::message')
                     </div> 
                     <div class="x_content">  
                         <table id="myTable" class="table table-striped table-bordered">
@@ -38,11 +34,11 @@
                             <tbody> 
                                 @foreach ($cities as $city)
                                 <tr> 
-                                    <td>{!! $city->id !!}</td> 
-                                    <td>{!! $city->name !!}</td>
+                                    <td>{{ $city->id }}</td> 
+                                    <td>{{ $city->name }}</td>
                                     <td>
-                                        <a class="btn btn-info btn-xs" id="edit" href="{{ url('admin/city/'.$city->id.'/edit') }}">{!! trans('labels.edit') !!}</a>
-                                        <form action="{{ url('admin/city/'. $city->id) }}" method="POST">
+                                        <a class="btn btn-info btn-xs" id="edit" href="{{ route('admin.city.edit', ['id' => $city->id]) }}">{!! trans('labels.edit') !!}</a>
+                                        <form action="{{ route('admin.city.destroy', ['id' => $city->id]) }}" method="POST">
                                             {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-danger btn-xs">{!! trans('labels.delete') !!}</button>
