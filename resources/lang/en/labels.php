@@ -13,4 +13,13 @@ return [
     'admin'    => 'Account',
     'manager'  => 'Manager',
     'create'   => 'Create New',
+    'user_name'=> 'User Name',
+    'email'    => 'Email',
+    'password' => 'Password',
+    'phone'    => 'Phone',
+    'address'  => 'Address',
+    'image'    => 'Image',
+    'cancel'   => 'Cancel',
+    'submit'   => 'Submit',
+    'start'    => '*',
 ];

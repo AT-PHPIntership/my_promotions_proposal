@@ -31,7 +31,7 @@
 						<form class="form-horizontal form-label-left" method="POST" action="{{ url('admin/account') }}" enctype="multipart/form-data">
 							{!! csrf_field() !!}
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">User Name <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">{!! trans('labels.user_name') !!} <span class="required">{!! trans('labels.start') !!}</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 								<input type="text" id="name" name="name" required="required" class="form-control col-md-7 col-xs-12">
@@ -39,7 +39,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">Email <span class="required">*</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">{!! trans('labels.email') !!} <span class="required">{!! trans('labels.start') !!}</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
@@ -47,7 +47,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="password" class="control-label col-md-3 col-sm-3 col-xs-12">Password <span class="required">*</span>
+								<label for="password" class="control-label col-md-3 col-sm-3 col-xs-12">{!! trans('labels.password') !!} <span class="required">{!! trans('labels.start') !!}</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input id="password" class="form-control col-md-7 col-xs-12" type="password" name="password">
@@ -55,7 +55,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="phone" class="control-label col-md-3 col-sm-3 col-xs-12">Phone
+								<label for="phone" class="control-label col-md-3 col-sm-3 col-xs-12">{!! trans('labels.phone') !!}
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input id="phone" class="form-control col-md-7 col-xs-12" type="number" name="phone">
@@ -63,7 +63,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="address" class="control-label col-md-3 col-sm-3 col-xs-12">Address
+								<label for="address" class="control-label col-md-3 col-sm-3 col-xs-12">{!! trans('labels.address') !!}
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input id="address" name="address" class="form-control col-md-7 col-xs-12" type="text">
@@ -71,7 +71,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="image" class="control-label col-md-3 col-sm-3 col-xs-12">Image <span class="required">*</span>
+								<label for="image" class="control-label col-md-3 col-sm-3 col-xs-12">{!! trans('labels.image') !!} <span class="required">{!! trans('labels.start') !!}</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input id="image" class="form-control col-md-7 col-xs-12" type="file" name="image">
@@ -81,8 +81,8 @@
 							<div class="ln_solid"></div>
 							<div class="form-group">
 								<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-									<a href="{{ url('admin/account') }}" class="btn btn-primary">Cancel</a>
-									<button type="submit" class="btn btn-success">Submit</button>
+									<a href="{{ url('admin/account') }}" class="btn btn-primary">{!! trans('labels.cancel') !!}</a>
+									<button type="submit" class="btn btn-success">{!! trans('labels.submit') !!}</button>
 								</div>
 							</div>
 
