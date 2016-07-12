@@ -31,7 +31,7 @@
 						<form class="form-horizontal form-label-left" method="POST" action="{{ route('admin.account.store') }}" enctype="multipart/form-data">
 							{!! csrf_field() !!}
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">{!! trans('labels.user_name') !!} <span class="required">{!! trans('labels.start') !!}</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">{!! trans('labels.user_name') !!} <span class="required">{!! trans('labels.star') !!}</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 								<input type="text" id="name" name="name" required="required" class="form-control col-md-7 col-xs-12">
@@ -39,7 +39,7 @@
 							</div>
 
 							<div class="form-group">
-								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">{!! trans('labels.email') !!} <span class="required">{!! trans('labels.start') !!}</span>
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">{!! trans('labels.email') !!} <span class="required">{!! trans('labels.star') !!}</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input type="email" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
@@ -47,7 +47,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="password" class="control-label col-md-3 col-sm-3 col-xs-12">{!! trans('labels.password') !!} <span class="required">{!! trans('labels.start') !!}</span>
+								<label for="password" class="control-label col-md-3 col-sm-3 col-xs-12">{!! trans('labels.password') !!} <span class="required">{!! trans('labels.star') !!}</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input id="password" class="form-control col-md-7 col-xs-12" type="password" name="password">
@@ -71,7 +71,7 @@
 							</div>
 
 							<div class="form-group">
-								<label for="image" class="control-label col-md-3 col-sm-3 col-xs-12">{!! trans('labels.image') !!} <span class="required">{!! trans('labels.start') !!}</span>
+								<label for="image" class="control-label col-md-3 col-sm-3 col-xs-12">{!! trans('labels.image') !!} <span class="required">{!! trans('labels.star') !!}</span>
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input id="image" class="form-control col-md-7 col-xs-12" type="file" name="image">

@@ -21,5 +21,5 @@ return [
     'image'    => 'Image',
     'cancel'   => 'Cancel',
     'submit'   => 'Submit',
-    'start'    => '*',
+    'star'    => '*',
 ];
