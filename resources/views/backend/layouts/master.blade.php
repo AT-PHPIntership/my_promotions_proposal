@@ -27,6 +27,9 @@
         <!-- navigation -->
         @include('backend.layouts.partials.navigation')
 
+        <!-- show message -->
+        @include('flash::message')
+
         <!-- content -->
         @yield('content')
 
