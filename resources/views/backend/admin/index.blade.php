@@ -38,8 +38,12 @@
 									<td>{{ $admin->phone }}</td>
 									<td>{{ $admin->address }}</td>
 									<td>
-										<a class="btn btn-info btn-xs" href="#">Edit</a>
-										<a class="btn btn-danger btn-xs" href="#">Delete</a>
+										<a class="btn btn-info btn-xs" href="{{ url('admin/account/'. $admin->id .'/edit') }}">Edit</a>
+										<form action="{{ url('admin/account/'. $admin->id) }}" method="POST">
+							              {{ csrf_field() }}
+							              {{ method_field('DELETE') }}
+							              <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+							            </form>
 									</td> 
 								</tr> 
 								@endforeach
