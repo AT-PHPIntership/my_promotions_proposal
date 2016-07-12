@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     $('a.delete').click(function () {
         var name = $(this).attr("name");
-        var url = $(this).attr("url");
+        var url  = $(this).attr("url");
         swal({
             title:"Are you sure?",
             text: "You want delete this " + name + "!",
@@ -25,11 +25,7 @@ $(document).ready(function () {
                 type: 'DELETE',
                 dataType: 'text',
                 success: function (result) {
-                    swal(
-                            "Deleted!",
-                            name + " has been deleted.",
-                            "success"
-                            );
+                    console.log(result)
                 }
             });
 

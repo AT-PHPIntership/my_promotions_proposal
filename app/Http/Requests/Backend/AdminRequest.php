@@ -40,7 +40,7 @@ class AdminRequest extends Request
             'email'    => 'required|email|unique:admin_users,email',
             'password' => 'required|min:6',
             'phone'    => 'numeric|min:9',
-            'image'    => 'image',
+            'image'    => 'required|image',
         ];
     }
 }

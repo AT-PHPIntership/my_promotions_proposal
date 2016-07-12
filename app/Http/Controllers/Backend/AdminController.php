@@ -13,7 +13,7 @@ class AdminController extends Controller
     /**
      * Admin
      *
-     * @var Admin
+     * @var admin
      */
     private $admin;
     
@@ -36,7 +36,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('backend.admin.add');
+        return view('backend.admin.create');
     }
 
     /**
@@ -62,9 +62,9 @@ class AdminController extends Controller
         if (!$result) {
             flash(trans('messages.error_create_admin'), 'danger');
         } else {
-            flash(trans('messages.create_admin'), 'success');
+            flash(trans('messages.create_admin_successfull'), 'success');
         }
 
-        return redirect()->route('admin.account.index');
+        return redirect()->route('admin.admins.index');
     }
 }
