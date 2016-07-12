@@ -1,6 +1,6 @@
 @extends('backend.layouts.master')
+@section('title', trans('labels.business'))
 @section('content')
-<div class="right_col" role="main"> 
     <div class="col-md-12 col-sm-12 col-xs-12 profile_left">
 
         <div class="profile_img">
@@ -37,5 +37,4 @@
         </div>
 
     </div>
-</div>
 @endsection

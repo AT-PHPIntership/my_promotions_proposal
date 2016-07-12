@@ -11,6 +11,16 @@ interface RepositoryInterface
      * @return mixed
      */
     public function all($columns = array('*'));
+    
+    /**
+     * Function get data with paginate
+     *
+     * @param int   $perPage perPage
+     * @param array $columns columns
+     *
+     * @return mixed
+     */
+    public function paginate($perPage = 15, $columns = array('*'));
  
     /**
      * Function create
@@ -59,4 +69,15 @@ interface RepositoryInterface
      * @return mixed
      */
     public function withRelationship($relation, $columns = '*');
+ 
+    /**
+     * Funciton findBy key
+     *
+     * @param string $field   field
+     * @param string $value   value
+     * @param array  $columns columns
+     *
+     * @return mixed
+     */
+    public function findBy($field, $value, $columns = array('*'));
 }

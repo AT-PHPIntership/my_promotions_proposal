@@ -35,7 +35,7 @@ abstract class Repository implements RepositoryInterface
      *
      * @param App $app app
      *
-     * @throws \App\Repositories\Exceptions
+     * @throws \App\Repositories\Exceptions\RepositoryException
      */
     public function __construct(App $app)
     {
@@ -60,6 +60,19 @@ abstract class Repository implements RepositoryInterface
     public function all($columns = array('*'))
     {
         return $this->model->get($columns);
+    }
+ 
+    /**
+     * Function get data with paginate
+     *
+     * @param int   $perPage perPage
+     * @param array $columns columns
+     *
+     * @return mixed
+     */
+    public function paginate($perPage = 15, $columns = array('*'))
+    {
+        return $this->model->paginate($perPage, $columns);
     }
  
     /**
@@ -125,18 +138,32 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->model->with($relation)->get();
     }
+    /**
+     * Funciton findBy key
+     *
+     * @param string $attribute attribute
+     * @param string $value     value
+     * @param array  $columns   columns
+     *
+     * @return mixed
+     */
+    public function findBy($attribute, $value, $columns = array('*'))
+    {
+        return $this->model->where($attribute, '=', $value)->first($columns);
+    }
     
     /**
      * Function makeModel
      *
      * @return \Illuminate\Database\Eloquent\Builder
-     * @throws Exception
+     * @throws RepositoryException
      */
     public function makeModel()
     {
         $model = $this->app->make($this->model());
 
         if (!$model instanceof Model) {
+            //return Exception
             throw new Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
         }
 
