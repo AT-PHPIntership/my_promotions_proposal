@@ -61,16 +61,14 @@ class BusinessController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \Illuminate\Http\Request $request request update
-     * @param int                      $id      id
+     * @param int $id id
      *
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request, $id)
+    public function show($id)
     {
         $data['business'] = $this->business->find($id);
         if (empty($data['business'])) {
-            //$request->session()->flash('error', trans('messages.error_not_found'));
             flash(trans('messages.error_not_found'), 'danger');
             return back();
         }
