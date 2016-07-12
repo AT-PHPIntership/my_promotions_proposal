@@ -28,7 +28,7 @@
 					</div>
 					<div class="x_content">
 						<br />
-						<form class="form-horizontal form-label-left" method="POST" action="{{ url('admin/account') }}" enctype="multipart/form-data">
+						<form class="form-horizontal form-label-left" method="POST" action="{{ route('admin.account.store') }}" enctype="multipart/form-data">
 							{!! csrf_field() !!}
 							<div class="form-group">
 								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="username">{!! trans('labels.user_name') !!} <span class="required">{!! trans('labels.start') !!}</span>
@@ -81,7 +81,7 @@
 							<div class="ln_solid"></div>
 							<div class="form-group">
 								<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-									<a href="{{ url('admin/account') }}" class="btn btn-primary">{!! trans('labels.cancel') !!}</a>
+									<a href="{{ route('admin.account.index') }}" class="btn btn-primary">{!! trans('labels.cancel') !!}</a>
 									<button type="submit" class="btn btn-success">{!! trans('labels.submit') !!}</button>
 								</div>
 							</div>

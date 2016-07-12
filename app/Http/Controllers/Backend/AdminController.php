@@ -18,7 +18,7 @@ class AdminController extends Controller
     private $admin;
     
     /**
-     * Create a new AdminRepository instance.
+     * Function construct of AdminController
      *
      * @param AdminRepository $admin admin
      *
@@ -59,10 +59,10 @@ class AdminController extends Controller
 
         $result = $this->admin->create($data);
 
-        if ($result) {
-            $request->session()->flash('message', trans('messages.error_create_admin'));
+        if (!$result) {
+            flash(trans('messages.error_create_admin'), 'danger');
         } else {
-            $request->session()->flash('message', trans('messages.create_admin'));
+            flash(trans('messages.create_admin'), 'success');
         }
 
         return redirect()->route('admin.account.index');
