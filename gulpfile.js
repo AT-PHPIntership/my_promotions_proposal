@@ -25,6 +25,7 @@ elixir(function(mix) {
       'gentelella/vendors/nprogress/nprogress.js',
       'gentelella/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
       'gentelella/build/js/custom.min.js',
+      'sweetalert/dist/sweetalert.min.js',
       'datatables.net/js/jquery.dataTables.min.js'
     ],
     'public/backend/js/vendor.js',
@@ -38,6 +39,7 @@ elixir(function(mix) {
       'gentelella/vendors/iCheck/skins/flat/green.css',
       'gentelella/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css',
       'gentelella/build/css/custom.min.css',
+      'sweetalert/dist/sweetalert.css',
       'datatables.net-dt/css/jquery.dataTables.min.css'
   ], 
     'public/backend/css/vendor.css',
