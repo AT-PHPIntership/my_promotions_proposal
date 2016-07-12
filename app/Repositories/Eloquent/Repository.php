@@ -1,10 +1,10 @@
 <?php
 namespace App\Repositories\Eloquent;
 
-use App\Repositories\Contracts\RepositoryInterface;
-use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
+use App\Repositories\Contracts\RepositoryInterface;
+use Exception;
 
 /**
  * Class Repository
@@ -27,7 +27,7 @@ abstract class Repository implements RepositoryInterface
      * @var Model
      */
     protected $model;
-    
+
     /**
      * Construct
      *
