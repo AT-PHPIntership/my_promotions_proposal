@@ -11,7 +11,6 @@
 
     <!-- CSS -->
     <link href="{{ asset('backend/css/vendor.css') }}" rel="stylesheet">
-    <link href="{{ asset('backend/css/jquery.dataTables.min.css') }}" rel="stylesheet">
     
     <!-- Font Awesome -->
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -40,7 +39,6 @@
 
     <!-- Javascript -->
     <script src="{{ asset('backend/js/vendor.js') }}"></script>
-    <script src="{{ asset('backend/js/jquery.dataTables.min.js') }}"></script>
     <script src="{{ asset('backend/js/backend.js') }}"></script>
   </body>
 </html>

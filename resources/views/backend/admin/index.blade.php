@@ -14,13 +14,11 @@
 			<div class="col-md-12 col-sm-12 col-xs-12"> 
 				<div class="x_panel"> 
 					<div class="x_title"> 
-					<a class="btn btn-md btn-primary" href="{{ url('admin/account/create') }}">{!! trans('labels.add_new') !!}</a>
+					<a class="btn btn-md btn-primary" href="{{ route('admin.account.create') }}">{!! trans('labels.add_new') !!}</a>
 						<div class="clearfix"></div> 
 					</div>
 				@if (count($admins))
-                    @if (Session::has('message'))
-                        <div class="alert alert-success">{{ Session::get('message') }}</div>
-                    @endif
+                    @include('flash::message')
 					<div class="x_content">
 						<table id="myTable" class="table table-striped table-bordered">
 							<thead> 
@@ -42,8 +40,8 @@
 									<td>{{ $admin->phone }}</td>
 									<td>{{ $admin->address }}</td>
 									<td>
-										<a class="btn btn-info btn-xs" href="{{ url('admin/account/'. $admin->id .'/edit') }}">{!! trans('labels.edit') !!}</a>
-										<form action="{{ url('admin/account/'. $admin->id) }}" method="POST">
+										<a class="btn btn-info btn-xs" href="{{ route('admin.account.edit', ['id' => $admin->id]) }}">{!! trans('labels.edit') !!}</a>
+										<form action="{{ route('admin.account.destroy', ['id' => $admin->id]) }}" method="POST">
 							              {{ csrf_field() }}
 							              {{ method_field('DELETE') }}
 							              <button type="submit" class="btn btn-danger btn-xs">{!! trans('labels.delete') !!}</button>

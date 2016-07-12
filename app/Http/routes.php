@@ -23,10 +23,10 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         // Dashboard
         Route::get('dashboard', function () {
             return view('backend.dashboard.index');
-        });
+        })->name('dashboard');
 
         // Admin
-        Route::resource('account', 'AdminController', ['only' => ['index']]);
+        Route::resource('account', 'AdminController');
         
     });
 });

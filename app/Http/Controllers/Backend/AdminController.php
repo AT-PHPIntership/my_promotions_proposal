@@ -18,9 +18,9 @@ class AdminController extends Controller
     private $admin;
 
      /**
-      * Create a new AdminRepository instance.
+      * Function construct of AdminController
       *
-      * @param CityInterface $admin admin
+      * @param AdminRepository $admin admin
       *
       * @return void
       */
