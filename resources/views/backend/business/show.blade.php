@@ -10,7 +10,7 @@
                 <!-- Current avatar -->
                 <img class="img-responsive avatar-view" src="http://placehold.it/200x200" alt="Avatar" title="Change the avatar">
 
-                
+
             </div>
             <!-- end of image cropping -->
             <div class="col-md-10">

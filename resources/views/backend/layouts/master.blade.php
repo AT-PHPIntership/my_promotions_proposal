@@ -16,7 +16,6 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-        <link rel="stylesheet" href="{{ asset('backend/css/jquery.dataTables.min.css') }}" >
 
   <body class="nav-md footer_fixed">
     <div class="container body">
@@ -39,7 +38,6 @@
 
         <!-- Javascript -->
         <script src="{{ asset('backend/js/vendor.js') }}"></script>
-        <script src="{{ asset('backend/js/jquery.dataTables.min.js') }}"></script>
         <script src="{{ asset('backend/js/backend.js') }}"></script>
     </body>
 </html>

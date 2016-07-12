@@ -11,9 +11,7 @@
         <div class="clearfix"></div> 
         <div class="row"> 
             <div class="col-md-12 col-sm-12 col-xs-12">
-                @if (Session::has('error'))
-                    <div class="alert error alert-danger"><b>{{ Session::get('error') }}</b></div>
-                @endif
+                @include('flash::message')
                 <div class="x_panel">
                     <div class="x_title"> 
                         <h2>{!! trans('labels.business') !!}<small>{!! trans('labels.list') !!}</small></h2>
@@ -35,11 +33,13 @@
                                     <td>{{ $business->user->name }}</td>
                                     <td>{{ $business->name }}</td>
                                     @if($business->status == 0)
-                                        <td><label class="btn btn-warning btn-xs">Inactive</label><a id="{{ url('admin/business/'.$business->id)  }}" class="btn active btn-success btn-xs">Click to Active</a></td>
+                                        <td><label class="btn btn-warning btn-xs" disabled="disabled">Inactive</label>
+                                            <a id="{{ route('admin.business.update',['id' => $business->id])  }}" class="btn active btn-success btn-xs">Click to Active</a>
+                                        </td>
                                     @else
                                         <td><button type="button" class="btn btn-success btn-xs">Actived</button></td>
                                     @endif
-                                    <td><a href="{{ url('admin/business/'.$business->id) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> View </a>
+                                    <td><a href="{{ route('admin.business.show',['id' => $business->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> View </a>
                                 </tr>
                                 @endforeach
                             </tbody> 

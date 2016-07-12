@@ -2,7 +2,7 @@ $(document).ready(function () {
     $('#myTable').DataTable();
 });
 
-$('div.alert.error').delay(2000).slideUp();
+$('div.alert').delay(2000).slideUp();
 function delconfirm(msg) {
     if (window.confirm(msg)) {
         return  true;

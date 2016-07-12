@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\BusinessRepository as Business;
-use Exception;
 
 class BusinessController extends Controller
 {
@@ -69,10 +68,10 @@ class BusinessController extends Controller
      */
     public function show(Request $request, $id)
     {
-        try {
-            $data['business'] = $this->business->find($id);
-        } catch (Exception $e) {
-            $request->session()->flash('error', trans('messages.error_not_found'));
+        $data['business'] = $this->business->find($id);
+        if (empty($data['business'])) {
+            //$request->session()->flash('error', trans('messages.error_not_found'));
+            flash(trans('messages.error_not_found'), 'danger');
             return back();
         }
         return view('backend.business.show')->with($data);
@@ -97,7 +96,7 @@ class BusinessController extends Controller
      */
     public function update($id)
     {
-        $this->business->updateStatus($id);
+        $this->business->update(['status' => config('app.actived')], $id);
         return "OK";
     }
 
