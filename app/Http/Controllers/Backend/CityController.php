@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Repositories\CityRepository as City;
-
 use App\Http\Requests\Backend\CityRequest;
-
 use App\Http\Controllers\Controller;
 
 class CityController extends Controller
 {
-     /**
+    /**
      * City
      *
-     * @var city
+     * @var City
      */
     private $city;
     
@@ -27,6 +25,17 @@ class CityController extends Controller
     public function __construct(City $city)
     {
         $this->city = $city;
+    }
+    
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $data['cities'] = $this->city->all();
+        return view('backend.city.index')->with($data);
     }
     
     /**
@@ -50,9 +59,9 @@ class CityController extends Controller
     {
         $result = $this->city->create($request->all());
         if ($result) {
-            $request->session()->flash('message', trans('messages.successfully'));
+            flash(trans('messages.successfully'), 'success');
         } else {
-            $request->session()->flash('message', trans('messages.failed'));
+            flash(trans('messages.failed'), 'danger');
         }
         return redirect('admin/city');
     }

@@ -3,6 +3,7 @@ namespace App\Repositories\Eloquent;
 
 use App\Repositories\Contracts\RepositoryInterface;
 use Exception;
+
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
 
@@ -14,6 +15,7 @@ use Illuminate\Container\Container as App;
 
 abstract class Repository implements RepositoryInterface
 {
+
     /**
      * App
      *
@@ -27,7 +29,7 @@ abstract class Repository implements RepositoryInterface
      * @var Model
      */
     protected $model;
-    
+
     /**
      * Construct
      *
@@ -149,8 +151,10 @@ abstract class Repository implements RepositoryInterface
         $model = $this->app->make($this->model());
 
         if (!$model instanceof Model) {
+            //return Exception
             throw new Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
         }
+
         return $this->model = $model;
     }
 }
