@@ -5,7 +5,7 @@
 <div class="col-md-12 col-sm-12 col-xs-12"> 
 	<div class="x_panel"> 
 		<div class="x_title"> 
-			<a class="btn btn-md btn-primary" href="{{ route('admin.account.create') }}">{!! trans('labels.add_new') !!}</a>
+			<a class="btn btn-md btn-primary" href="{{ route('admin.admins.create') }}">{!! trans('labels.add_new') !!}</a>
 			<div class="clearfix"></div> 
 		</div>
 		@if (count($admins))
@@ -30,9 +30,9 @@
 						<td>{{ $admin->phone }}</td>
 						<td>{{ $admin->address }}</td>
 						<td>
-							<a class="btn btn-info btn-xs" href="{{ route('admin.account.edit', ['id' => $admin->id]) }}">{!! trans('labels.edit') !!}</a>
+							<a class="btn btn-info btn-xs" href="{{ route('admin.admins.edit', ['id' => $admin->id]) }}">{!! trans('labels.edit') !!}</a>
 
-							<a class="btn btn-danger btn-xs delete" name="{!! trans('labels.admin') !!}" url="{{ route('admin.account.destroy', ['id' => $admin->id]) }}">{!! trans('labels.delete') !!}</a>
+							<a class="btn btn-danger btn-xs delete" name="{!! trans('labels.admin') !!}" url="{{ route('admin.admins.destroy', ['id' => $admin->id]) }}">{!! trans('labels.delete') !!}</a>
 						</td> 
 					</tr> 
 					@endforeach

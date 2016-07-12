@@ -13,7 +13,7 @@ class AdminController extends Controller
     /**
       * Admin
       *
-      * @var Admin
+      * @var admin
       */
     private $admin;
 

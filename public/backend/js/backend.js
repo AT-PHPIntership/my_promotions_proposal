@@ -25,11 +25,9 @@ $(document).ready(function(){
     			type: 'DELETE',
     			dataType: 'text',
     			success: function(result) {
-					swal(
-		    			"Deleted!", 
-		    			name + " has been deleted.", 
-		    			"success"
-		    		); 
+    				swal(
+                        result
+                    ); 
     			}
     		});
     		
