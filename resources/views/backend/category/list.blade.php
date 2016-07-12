@@ -16,7 +16,7 @@
                                         @endif
                                     <div class="x_panel">
                                             <div class="x_title">
-                                                    <a href="{{ url('admin/category/create') }}" class="btn btn-primary"><i class="fa fa-pencil"></i> Add a new category </a>
+                                                    <a href="{{ url('admin/category/create') }}" class="btn btn-primary"><i class="fa fa-pencil"></i> {!! trans('labels.addcategory') !!} </a>
                                                     <div class="clearfix"></div>
                                                 </div>
                                             <div class="x_content">
@@ -31,8 +31,8 @@
                                                                 @foreach($categories as $category)
                                                                 <tr>
                                                                     <td>{{ $category->name }}</td>
-                                                                    <td><a href="{{ url('admin/category/'.$category->id.'/edit') }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                                                                        <a href="{{ url('admin/category/'.$category->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a></td>
+                                                                    <td><a href="{{ url('admin/category/'.$category->id.'/edit') }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> {!! trans('labels.edit') !!} </a>
+                                                                        <a href="{{ url('admin/category/'.$category->id) }}" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> {!! trans('labels.delete') !!} </a></td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>

@@ -4,10 +4,10 @@ namespace App\Repositories;
 
 use App\Repositories\Eloquent\Repository;
 
- class CategoryRepository extends Repository
- {
+class CategoryRepository extends Repository
+{
 
-        /**
+      /**
          * Specify Model class name
          *
          * @return mixed
@@ -16,4 +16,4 @@ use App\Repositories\Eloquent\Repository;
     {
         return 'App\Models\Category';
     }
- }
+}

@@ -15,4 +15,7 @@ return [
     'manager' => 'Manager',
     'list' => 'List',
     'action' => 'Action',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'addcategory' => 'Add a new category'
 ];

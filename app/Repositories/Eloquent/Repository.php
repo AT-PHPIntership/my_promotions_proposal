@@ -13,68 +13,68 @@ use Illuminate\Container\Container as App;
  * @package Bosnadev\Repositories\Eloquent
  */
 
- abstract class Repository implements RepositoryInterface
- {
+abstract class Repository implements RepositoryInterface
+{
 
-        /**
+      /**
          * App
          *
          * @var App
          */
-        private $app;
+    private $app;
 
-     /**
+    /**
       * Model
       *
       * @var Model
       */
-     protected $model;
+    protected $model;
 
-     /**
+    /**
       * Construct
       *
       * @param App $app app
       *
       * @throws \App\Repositories\Exceptions
       */
-     public function __construct(App $app)
-     {
-                $this->app = $app;
-                $this->makeModel();
-     }
+    public function __construct(App $app)
+    {
+               $this->app = $app;
+               $this->makeModel();
+    }
 
-     /**
+    /**
       * Specify Model class name
       *
       * @return mixed
       */
-     abstract public function model();
+    abstract public function model();
 
-     /**
+    /**
       * Function get all
       *
       * @param array $columns columns
       *
       * @return mixed
       */
-     public function all($columns = array('*'))
-     {
-                return $this->model->get($columns);
-     }
+    public function all($columns = array('*'))
+    {
+               return $this->model->get($columns);
+    }
 
-     /**
+    /**
       * Function create
       *
       * @param array $data data
       *
       * @return mixed
       */
-     public function create(array $data)
-     {
-                return $this->model->create($data);
-     }
+    public function create(array $data)
+    {
+               return $this->model->create($data);
+    }
 
-     /**
+    /**
       * Function update
       *
       * @param array  $data      data
@@ -83,24 +83,24 @@ use Illuminate\Container\Container as App;
       *
       * @return mixed
       */
-     public function update(array $data, $id, $attribute = "id")
-     {
-                return $this->model->where($attribute, '=', $id)->update($data);
-     }
+    public function update(array $data, $id, $attribute = "id")
+    {
+               return $this->model->where($attribute, '=', $id)->update($data);
+    }
 
-     /**
+    /**
       * Function delete
       *
       * @param int $id id
       *
       * @return mixed
       */
-     public function delete($id)
-     {
-                return $this->model->destroy($id);
-     }
+    public function delete($id)
+    {
+               return $this->model->destroy($id);
+    }
 
-     /**
+    /**
       * Function find
       *
       * @param int   $id      id
@@ -108,12 +108,12 @@ use Illuminate\Container\Container as App;
       *
       * @return mixed
       */
-     public function find($id, $columns = array('*'))
-     {
-                return $this->model->find($id, $columns);
-     }
+    public function find($id, $columns = array('*'))
+    {
+               return $this->model->find($id, $columns);
+    }
 
-     /**
+    /**
       * Funciton relationship
       *
       * @param string $relation relation
@@ -121,26 +121,25 @@ use Illuminate\Container\Container as App;
       *
       * @return mixed
       */
-     public function withRelationship($relation, $columns = '*')
-     {
-                return $this->model->with($relation)->get();
-     }
+    public function withRelationship($relation, $columns = '*')
+    {
+               return $this->model->with($relation)->get();
+    }
 
-     /**
+    /**
       * Function makeModel
       *
       * @return \Illuminate\Database\Eloquent\Builder
       * @throws Exception
       */
-     public function makeModel()
-     {
-                $model = $this->app->make($this->model());
+    public function makeModel()
+    {
+               $model = $this->app->make($this->model());
 
-                if (!$model instanceof Model) {
-                        throw new Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
-     }
+        if (!$model instanceof Model) {
+            throw new Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
+        }
 
-         return $this->model = $model;
-     }
-
- }
+        return $this->model = $model;
+    }
+}

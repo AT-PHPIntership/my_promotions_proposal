@@ -2,7 +2,7 @@
 namespace App\Repositories\Contracts;
 
 interface RepositoryInterface
- {
+{
         /**
          * Function get all
          *
@@ -10,7 +10,7 @@ interface RepositoryInterface
          *
          * @return mixed
          */
-        public function all($columns = array('*'));
+    public function all($columns = array('*'));
 
      /**
       * Function create
@@ -19,7 +19,7 @@ interface RepositoryInterface
       *
       * @return mixed
       */
-     public function create(array $data);
+    public function create(array $data);
 
      /**
       * Function update
@@ -29,7 +29,7 @@ interface RepositoryInterface
       *
       * @return mixed
       */
-     public function update(array $data, $id);
+    public function update(array $data, $id);
 
      /**
       * Function delete
@@ -38,7 +38,7 @@ interface RepositoryInterface
       *
       * @return mixed
       */
-     public function delete($id);
+    public function delete($id);
 
      /**
       * Function find
@@ -48,7 +48,7 @@ interface RepositoryInterface
       *
       * @return mixed
       */
-     public function find($id, $columns = array('*'));
+    public function find($id, $columns = array('*'));
 
      /**
       * Funciton replaytionship
@@ -58,5 +58,5 @@ interface RepositoryInterface
       *
       * @return mixed
       */
-     public function withRelationship($relation, $columns = '*');
- }
+    public function withRelationship($relation, $columns = '*');
+}
