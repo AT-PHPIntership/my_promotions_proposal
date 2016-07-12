@@ -25,7 +25,9 @@ $(document).ready(function () {
                 type: 'DELETE',
                 dataType: 'text',
                 success: function (result) {
-                    console.log(result)
+                    swal(
+                        result
+                    )
                 }
             });
 
