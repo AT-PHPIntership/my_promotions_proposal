@@ -59,16 +59,6 @@ interface RepositoryInterface
      * @return mixed
      */
     public function find($id, $columns = array('*'));
-
-    /**
-     * Funciton replaytionship
-     *
-     * @param string $relation columns
-     * @param array  $columns  columns
-     *
-     * @return mixed
-     */
-    public function withRelationship($relation, $columns = '*');
  
     /**
      * Funciton findBy key

@@ -59,7 +59,8 @@ abstract class Repository implements RepositoryInterface
      */
     public function all($columns = array('*'))
     {
-        return $this->model->get($columns);
+
+            return $this->model->get($columns);
     }
  
     /**
@@ -126,18 +127,6 @@ abstract class Repository implements RepositoryInterface
         return $this->model->find($id, $columns);
     }
 
-    /**
-     * Funciton relationship
-     *
-     * @param string $relation relation
-     * @param array  $columns  columns
-     *
-     * @return mixed
-     */
-    public function withRelationship($relation, $columns = '*')
-    {
-        return $this->model->with($relation)->get();
-    }
     /**
      * Funciton findBy key
      *

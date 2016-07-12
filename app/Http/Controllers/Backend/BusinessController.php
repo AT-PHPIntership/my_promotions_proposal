@@ -34,7 +34,7 @@ class BusinessController extends Controller
      */
     public function index()
     {
-        $data['businesses'] = $this->business->withRelationship('user');
+        $data['businesses'] = $this->business->all();
         return view('backend.business.list')->with($data);
     }
 
