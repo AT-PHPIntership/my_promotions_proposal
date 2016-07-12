@@ -18,7 +18,7 @@
                 $(element).closest('.form-group').addClass('has-error'); // add the Bootstrap error class to the control group
             },
 
-            <?php if (isset($validator['ignore']) && is_string($validator['ignore'])): ?>
+            <?php if (isset($validator['ignore']) && is_string($validator['ignore'])) : ?>
 
             ignore: "<?php echo $validator['ignore']; ?>",
             <?php endif; ?>
@@ -34,7 +34,7 @@
             },
 
             focusInvalid: false, // do not focus the last invalid input
-            <?php if (Config::get('jsvalidation.focus_on_error')): ?>
+            <?php if (Config::get('jsvalidation.focus_on_error')) : ?>
             invalidHandler: function(form, validator) {
 
                 if (!validator.numberOfInvalids())
