@@ -19,4 +19,8 @@ return [
     'phone'   => 'Phone',
     'address' => 'Address',
     'action'  => 'Action',
+    'add_new' => 'Add New',
+    'edit'    => 'Edit',
+    'delete'  => 'Delete',
+    'no_data' => 'No Data',
 ];

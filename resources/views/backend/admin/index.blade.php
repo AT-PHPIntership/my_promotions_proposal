@@ -14,10 +14,14 @@
 			<div class="col-md-12 col-sm-12 col-xs-12"> 
 				<div class="x_panel"> 
 					<div class="x_title"> 
-					<a class="btn btn-md btn-primary" href="{{ url('admin/account/create') }}">Add New</a>
+					<a class="btn btn-md btn-primary" href="{{ url('admin/account/create') }}">{!! trans('labels.add_new') !!}</a>
 						<div class="clearfix"></div> 
-					</div> 
-					<div class="x_content">  
+					</div>
+				@if (count($admins))
+                    @if (Session::has('message'))
+                        <div class="alert alert-success">{{ Session::get('message') }}</div>
+                    @endif
+					<div class="x_content">
 						<table id="myTable" class="table table-striped table-bordered">
 							<thead> 
 								<tr> 
@@ -38,18 +42,24 @@
 									<td>{{ $admin->phone }}</td>
 									<td>{{ $admin->address }}</td>
 									<td>
-										<a class="btn btn-info btn-xs" href="{{ url('admin/account/'. $admin->id .'/edit') }}">Edit</a>
+										<a class="btn btn-info btn-xs" href="{{ url('admin/account/'. $admin->id .'/edit') }}">{!! trans('labels.edit') !!}</a>
 										<form action="{{ url('admin/account/'. $admin->id) }}" method="POST">
 							              {{ csrf_field() }}
 							              {{ method_field('DELETE') }}
-							              <button type="submit" class="btn btn-danger btn-xs">Delete</button>
+							              <button type="submit" class="btn btn-danger btn-xs">{!! trans('labels.delete') !!}</button>
 							            </form>
 									</td> 
 								</tr> 
 								@endforeach
 							</tbody> 
 						</table> 
-					</div> 
+					</div>
+				@else
+	                <br>
+                    <div class="alert alert-info">
+                    	{!! trans('labels.no_data') !!}
+                    </div>
+				@endif
 				</div> 
 			</div> 
 		</div> 
