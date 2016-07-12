@@ -1,4 +1,5 @@
 @extends('backend.layouts.master')
+@section('title', trans('labels.admin'))
 @section('content')
 <!-- page content -->
 <div class="col-md-12 col-sm-12 col-xs-12"> 
