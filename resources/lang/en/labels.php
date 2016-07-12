@@ -13,4 +13,9 @@ return [
     'city'            => 'City',
     'manager'         => 'Manager',
     'create'          => 'Create',
+    'city_name'       => 'City Name',
+    'star'            => '*',
+    'cancel'          => 'Cancel',
+    'submit'          => 'Submit',
+    
 ];

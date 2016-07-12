@@ -13,14 +13,14 @@ class CityController extends Controller
      /**
      * City
      *
-     * @var Actor
+     * @var city
      */
     private $city;
     
     /**
-     * Create a new CityInterface instance.
+     * Create a new CityRepository instance.
      *
-     * @param CityInterface $city city
+     * @param CityRepository $city city
      *
      * @return void
      */

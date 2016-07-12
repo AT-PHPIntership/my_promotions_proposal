@@ -30,10 +30,10 @@
                     </div>
                     <div class="x_content">
                         <br />
-                        <form class="form-horizontal form-label-left" method="POST" action="{{ url('admin/city') }}">
+                        <form class="form-horizontal form-label-left" method="POST" action="{{ route('admin.city.index') }}">
                             {!! csrf_field() !!}
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">City Name <span class="required">*</span>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">{!! trans('labels.city_name') !!} <span class="required">{!! trans('labels.star') !!}</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" id="name" name="name" required="required" class="form-control col-md-7 col-xs-12">
@@ -42,8 +42,8 @@
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <a href="{{ url('admin/city') }}" class="btn btn-primary">Cancel</a>
-                                    <button type="submit" class="btn btn-success">Submit</button>
+                                    <a href="{{ route('admin.city.index') }}" class="btn btn-primary">{!! trans('labels.cancel') !!}</a>
+                                    <button type="submit" class="btn btn-success">{!! trans('labels.submit') !!}</button>
                                 </div>
                             </div>
                         </form>
