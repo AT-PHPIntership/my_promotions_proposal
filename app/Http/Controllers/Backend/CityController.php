@@ -35,7 +35,7 @@ class CityController extends Controller
     public function index()
     {
         $data['cities'] = $this->city->all();
-        return view('backend.city.index')->with($data);
+        return view('city::index')->with($data);
     }
     
     /**
@@ -45,7 +45,8 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('backend.city.add');
+        return view('city::create');
+        
     }
 
     /**
@@ -59,10 +60,10 @@ class CityController extends Controller
     {
         $result = $this->city->create($request->all());
         if ($result) {
-            flash(trans('messages.successfully'), 'success');
+            flash(trans('messages.create_city_successfully'), 'success');
         } else {
-            flash(trans('messages.failed'), 'danger');
+            flash(trans('messages.error_create_city'), 'danger');
         }
-        return redirect('admin/city');
+        return redirect()->route('admin.city.index');
     }
 }
