@@ -51,8 +51,9 @@ class AdminController extends Controller
         $data = $request->all();
 
         if ($request->hasFile('image')) {
-            $data['image'] = $request->file('image')->getClientOriginalName();
-            $request->file('image')->move(public_path(config('app.upload')), $data['image']);
+            $img = $request->file('image');
+            $data['image'] = time() . '_' . $img->getClientOriginalName();
+            $img->move(public_path(config('app.upload')), $data['image']);
         }
 
         $data['password'] = bcrypt($data['password']);
