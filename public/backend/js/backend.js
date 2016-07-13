@@ -60,9 +60,7 @@ $('a.delete').click(function () {
             dataType: 'text',
             success: function (result) {
                 swal(
-                    "Deleted!",
-                    name + " has been deleted.",
-                    "success"
+                    result
                 );
             }
         });

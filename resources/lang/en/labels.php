@@ -11,6 +11,7 @@ return [
     'list' => 'List',
     'status' => 'Status',
     'action' => 'Action',
+    'view'   => 'View',
     
     'city'            => 'City',
     'manager'         => 'Manager',
@@ -28,4 +29,8 @@ return [
     'edit'            => 'Edit',
     'delete'          => 'Delete',
     'no_data'         => 'No Data',
+
+    'actived'         => 'Actived',
+    'inactive'        => 'Inactive',
+    'clickactive'     => 'Click to Active',
 ];

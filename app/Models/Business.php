@@ -66,4 +66,14 @@ class Business extends Model
     {
         return $this->belongsToMany('App\Models\County', 'business_counties');
     }
+
+    /**
+     * Get the UserName.
+     *
+     * @return string
+     */
+    public function getUserNameAttribute()
+    {
+        return $this->user->name;
+    }
 }
