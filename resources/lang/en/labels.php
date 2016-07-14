@@ -20,5 +20,7 @@ return [
     'edit'            => 'Edit',
     'delete'          => 'Delete',
     'no_data'         => 'No Data',
-    
+    'category'        => 'Category',
+    'categoryparent'  => 'Category Parent',
+    'categoryname'    => 'Category Name',
 ];
