@@ -37,6 +37,6 @@ class AdminController extends Controller
     public function index()
     {
         $data['admins'] = $this->admin->all(['id', 'name', 'email', 'phone', 'address']);
-        return view('admin::index')->with($data);
+        return view('backend.admin.index')->with($data);
     }
 }
