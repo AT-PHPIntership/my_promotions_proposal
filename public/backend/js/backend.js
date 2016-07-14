@@ -1,3 +1,5 @@
+$('div.alert').delay(time).slideUp();
+
 $(document).ready(function () {
     $('#myTable').DataTable();
 
@@ -27,7 +29,8 @@ $(document).ready(function () {
                          result
                     )
                 }
-            });         
-        });
+
+            });    		
+    	});
     });
 });
