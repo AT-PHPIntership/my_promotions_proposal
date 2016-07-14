@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-use App\Repositories\AdminRepository as Admin;
 use App\Http\Requests\Backend\AdminRequest;
 use App\Http\Controllers\Controller;
+use App\Repositories\AdminRepository as Admin;
 use File;
 
 class AdminController extends Controller
@@ -24,9 +23,21 @@ class AdminController extends Controller
      *
      * @return void
      */
+
     public function __construct(Admin $admin)
     {
         $this->admin = $admin;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $data['admins'] = $this->admin->all(['id', 'name', 'email', 'phone', 'address']);
+        return view('backend.admin.index')->with($data);
     }
 
     /**
