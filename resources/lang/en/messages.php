@@ -3,6 +3,7 @@
 return [
     "error_not_found" => "Not Found",
     "create_city_successfully"      => "City was create successfully!",
+    "error_create_admin"       => "Wrong count\'t created admin user, please try againt!",
     "error_create_city"             => "Wrong count\'t created admin user, please try againt!",
     "business_active" => "Business Active",
     "question_active" => "You want to active this business?",

@@ -12,8 +12,8 @@
                         <table id="myTable" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
-                                    <th>{!! trans('labels.username') !!}</th>
-                                    <th>{!! trans('labels.businessname') !!}</th>
+                                    <th>{!! trans('labels.user_name') !!}</th>
+                                    <th>{!! trans('labels.business_name') !!}</th>
                                     <th>{!! trans('labels.status') !!}</th>
                                     <th>{!! trans('labels.action') !!}</th>
                                 </tr>

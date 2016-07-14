@@ -1,14 +1,37 @@
+$('div.alert').delay(time).slideUp();
 $(document).ready(function(){
     $('#myTable').DataTable();
+
+    $('a.delete').click(function () {
+        var name = $(this).attr("name");
+        var url = $(this).attr("url");
+        swal({
+            title: messages.confirm_delete_title,
+            text: messages.confirm_delete_text + name ,
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: messages.delete,
+            closeOnConfirm: false
+        }, function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            })
+            $.ajax({
+                type: 'DELETE',
+                dataType: 'text',
+                success: function (result) {
+                    swal(
+                        result
+                    );
+                }
+            });
+        });
+    });
 });
 
-$('div.alert').delay(time).slideUp();
-function delconfirm(msg) {
-    if (window.confirm(msg)) {
-        return  true;
-    }
-    return false;
-}
 $('a.active').click(function(){
     var url = this.id;
     swal({title: messages.business_active,
@@ -35,35 +58,5 @@ $('a.active').click(function(){
                 }
             });
 
-        })
-})
-
-$('a.delete').click(function () {
-    var name = $(this).attr("name");
-    var url = $(this).attr("url");
-    swal({
-        title: messages.confirm_delete_title,
-        text: messages.confirm_delete_text + name ,
-        type: "warning",
-        showCancelButton: true,
-        confirmButtonColor: "#DD6B55",
-        confirmButtonText: messages.delete,
-        closeOnConfirm: false
-    }, function () {
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            }
-        })
-        $.ajax({
-            type: 'DELETE',
-            dataType: 'text',
-            success: function (result) {
-                swal(
-                    result
-                );
-            }
         });
-        
-    });
 });
