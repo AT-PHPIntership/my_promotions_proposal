@@ -46,7 +46,6 @@ class CityController extends Controller
     public function create()
     {
         return view('backend.city.create');
-        
     }
 
     /**

@@ -82,7 +82,6 @@ class BusinessController extends Controller
      */
     public function edit()
     {
-
     }
 
     /**
@@ -95,7 +94,7 @@ class BusinessController extends Controller
     public function update($id)
     {
         $this->business->update(['status' => config('app.actived')], $id);
-        return "OK";
+        return trans('messages.updated');
     }
 
     /**

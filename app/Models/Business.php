@@ -76,4 +76,18 @@ class Business extends Model
     {
         return $this->user->name;
     }
+
+    /**
+     * Get the Status Label.
+     *
+     * @return string
+     */
+    public function getStatusLabelAttribute()
+    {
+        if ($this->status == config('app.inactive')) {
+            return trans('labels.inactive');
+        } else {
+            return trans('labels.actived');
+        }
+    }
 }

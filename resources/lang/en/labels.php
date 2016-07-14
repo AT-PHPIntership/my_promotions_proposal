@@ -14,11 +14,17 @@ return [
     'view'   => 'View',
     
     'city'            => 'City',
+    'admin'           => 'Account',
     'manager'         => 'Manager',
     'list'            => 'List',
     'id'              => 'ID',
     'name'            => 'Name',
-    
+
+    'email'           => 'Email',
+    'phone'           => 'Phone',
+    'address'         => 'Address',
+    'action'          => 'Action',
+
     'promotion_login' => 'Promotion - Login',
     'login_form'      => 'Admin Login Form',
     'login_button'    => 'Log in',
@@ -36,7 +42,9 @@ return [
     'delete'          => 'Delete',
     'no_data'         => 'No Data',
 
+
     'actived'         => 'Actived',
     'inactive'        => 'Inactive',
     'clickactive'     => 'Click to Active',
+
 ];

@@ -1,8 +1,8 @@
-$(document).ready(function () {
+$(document).ready(function(){
     $('#myTable').DataTable();
 });
 
-$('div.alert').delay(2000).slideUp();
+$('div.alert').delay(time).slideUp();
 function delconfirm(msg) {
     if (window.confirm(msg)) {
         return  true;
@@ -11,8 +11,8 @@ function delconfirm(msg) {
 }
 $('a.active').click(function(){
     var url = this.id;
-    swal({title: "Business Active",
-            text: "You want to active this business",
+    swal({title: messages.business_active,
+            text: messages.question_active,
             type: "info",
             showCancelButton: true,
             closeOnConfirm: true,
@@ -29,7 +29,7 @@ $('a.active').click(function(){
                 type: "PUT",
                 dataType: 'text',
                 success: function(result){
-                    if (result == "OK"){
+                    if (result == messages.updated){
                         location.reload();
                     }
                 }
@@ -42,12 +42,12 @@ $('a.delete').click(function () {
     var name = $(this).attr("name");
     var url = $(this).attr("url");
     swal({
-        title: "Are you sure?",
-        text: "You want delete this " + name + "!",
+        title: messages.confirm_delete_title,
+        text: messages.confirm_delete_text + name ,
         type: "warning",
         showCancelButton: true,
         confirmButtonColor: "#DD6B55",
-        confirmButtonText: "Yes, delete it!",
+        confirmButtonText: messages.delete,
         closeOnConfirm: false
     }, function () {
         $.ajaxSetup({
@@ -64,6 +64,6 @@ $('a.delete').click(function () {
                 );
             }
         });
-
+        
     });
 });

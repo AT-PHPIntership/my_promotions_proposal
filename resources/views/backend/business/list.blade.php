@@ -23,13 +23,12 @@
                                 <tr>
                                     <td>{{ $business->user_name }}</td>
                                     <td>{{ $business->name }}</td>
-                                    @if($business->status == config('app.inactive'))
-                                        <td><label class="btn btn-warning btn-xs" disabled="disabled">{!! trans('labels.inactive') !!}</label>
-                                            <a id="{{ route('admin.business.update',['id' => $business->id])  }}" class="btn active btn-success btn-xs">{!! trans('labels.clickactive') !!}</a>
-                                        </td>
-                                    @else
-                                        <td><button type="button" class="btn btn-success btn-xs">{!! trans('labels.actived') !!}</button></td>
-                                    @endif
+                                    <td>
+                                        <button type="button" class="btn btn-success btn-xs">{{ $business->status_label }}</button>
+                                        @if($business->status == config('app.inactive'))
+                                            <a id="{{ route('admin.business.update',['id' => $business->id])  }}" class="btn active btn-warning btn-xs">{!! trans('labels.clickactive') !!}</a>
+                                        @endif
+                                    </td>
                                     <td><a href="{{ route('admin.business.show',['id' => $business->id]) }}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> {!! trans('labels.view') !!} </a>
                                 </tr>
                                 @endforeach
