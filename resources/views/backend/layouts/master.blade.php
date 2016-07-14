@@ -57,9 +57,16 @@
 
 <!-- Javascript -->
 <script src="{{ asset('backend/js/vendor.js') }}"></script>
+
 <!-- Laravel Javascript Validation -->
 <script src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 @yield('script')
+
+<script>
+  var messages={!! json_encode( trans('messages') ) !!};
+  var time={!! json_encode( config('app.delay') ) !!};
+</script>
 <script src="{{ asset('backend/js/backend.js') }}"></script>
+
 </body>
 </html>
