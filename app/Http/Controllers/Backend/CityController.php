@@ -35,7 +35,7 @@ class CityController extends Controller
     public function index()
     {
         $data['cities'] = $this->city->all();
-        return view('city::index')->with($data);
+        return view('backend.city.index')->with($data);
     }
     
     /**
@@ -45,7 +45,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        return view('city::create');
+        return view('backend.city.create');
         
     }
 
