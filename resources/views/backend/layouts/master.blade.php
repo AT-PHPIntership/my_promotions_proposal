@@ -57,6 +57,9 @@
 
 <!-- Javascript -->
 <script src="{{ asset('backend/js/vendor.js') }}"></script>
+<!-- Laravel Javascript Validation -->
+<script src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+@yield('script')
 <script src="{{ asset('backend/js/backend.js') }}"></script>
 </body>
 </html>

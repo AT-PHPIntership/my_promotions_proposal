@@ -35,7 +35,7 @@
             </table> 
         </div> 
         @else
-        {!! trans('labels.no_data') !!}
+            {!! trans('labels.no_data') !!}
         @endif
     </div> 
 </div> 
