@@ -36,7 +36,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('admin::create');
+        return view('backend.admin.create');
     }
 
     /**
@@ -53,7 +53,7 @@ class AdminController extends Controller
         if ($request->hasFile('image')) {
             $img = $request->file('image');
             $data['image'] = time() . '_' . $img->getClientOriginalName();
-            $img->move(public_path(config('app.upload')), $data['image']);
+            $img->move(public_path(config('upload.path')), $data['image']);
         }
 
         $data['password'] = bcrypt($data['password']);

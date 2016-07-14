@@ -11,7 +11,7 @@
 		</div>
 		<div class="x_content">
 			<br />
-			{!! Form::open(['route' => 'admin.admins.store', 'method' => 'POST', 'files' => true, 'class' => 'form-horizontal form-label-left', 'id' => 'my-form']) !!}
+			{!! Form::open(['route' => 'admin.admins.store', 'method' => 'POST', 'files' => true, 'class' => 'form-horizontal form-label-left', 'id' => 'frmCreateAdmin']) !!}
 				<div class="form-group">
 					{{ Form::label('username', trans('labels.user_name'), ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) }}
 					 <span >{!! trans('labels.star') !!}</span>
@@ -78,5 +78,5 @@
 <!-- /page content -->
 @endsection
 @section('script')
-{!! JsValidator::formRequest('App\Http\Requests\Backend\AdminRequest', '#my-form'); !!}
+{!! JsValidator::formRequest('App\Http\Requests\Backend\AdminRequest', '#frmCreateAdmin'); !!}
 @endsection
