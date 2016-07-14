@@ -25,6 +25,12 @@ return [
     'my_promotion'    => 'My Promotion!',
     'copy_right'      => '©2016 All Rights Reserved.',
 
+    'create'          => 'Create',
+    'city_name'       => 'City Name',
+    'star'            => '*',
+    'cancel'          => 'Cancel',
+    'submit'          => 'Submit',
+
     'add_new'         => 'Add New',
     'edit'            => 'Edit',
     'delete'          => 'Delete',

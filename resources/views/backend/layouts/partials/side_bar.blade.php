@@ -3,13 +3,10 @@
         <div class="navbar nav_title" style="border: 0;">
             <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>{!! trans('labels.promotion_admin') !!}</span></a>
         </div>
-
         <div class="clearfix"></div>
 
         <!-- /menu profile quick info -->
-
         <br />
-
         <!-- sidebar menu -->
         <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
             <div class="menu_section">
@@ -19,7 +16,6 @@
                     <li><a href="{{ route('admin.business.index') }}"><i class="fa fa-group"></i> {!! trans('labels.business') !!} </a></li>
                 </ul>
             </div>
-
         </div>
         <!-- /sidebar menu -->
     </div>
