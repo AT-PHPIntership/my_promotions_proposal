@@ -29,4 +29,7 @@ return [
     'edit'            => 'Edit',
     'delete'          => 'Delete',
     'no_data'         => 'No Data',
+    'user_name'       => 'User Name',
+    'password'        => 'Password',
+    'image'           => 'Image',
 ];
