@@ -7,12 +7,12 @@ $(document).ready(function () {
         var name = $(this).attr("name");
         var url  = $(this).attr("url");
         swal({
-            title:"Are you sure?",
-            text: "You want delete this " + name + "!",
+            title: messages.confirm_delete_title,
+            text: messages.confirm_delete_text + name,
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
+            confirmButtonText: messages.delete,
             closeOnConfirm: false
         }, function () {
             $.ajaxSetup({
