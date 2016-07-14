@@ -1,4 +1,4 @@
-$('div.alert').delay(2500).slideUp();
+$('div.alert').delay(time).slideUp();
 
 $(document).ready(function () {
     $('#myTable').DataTable();
