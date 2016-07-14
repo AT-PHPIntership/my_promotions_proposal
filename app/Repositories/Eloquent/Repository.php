@@ -7,7 +7,6 @@ use Exception;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
 
-
 /**
  * Class Repository
  *
