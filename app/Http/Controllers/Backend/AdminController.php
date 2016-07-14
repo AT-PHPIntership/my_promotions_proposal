@@ -23,7 +23,6 @@ class AdminController extends Controller
      *
      * @return void
      */
-
     public function __construct(Admin $admin)
     {
         $this->admin = $admin;
