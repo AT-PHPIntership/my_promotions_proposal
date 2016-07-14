@@ -60,12 +60,7 @@
 
 					<div class="col-md-6 col-sm-6 col-xs-12">
 					{{ Form::file('image', ['class'=>'form-control col-md-7 col-xs-12']) }}
-					</div>
-				</div>
-				
-				<div class="form-group">
-					<div class="col-md-6 col-sm-6 col-xs-12">
-					<img src="{{ asset(config('upload.path').$admin->image) }}" alt="">
+					<img src="{{ asset(config('upload.path').$admin->image) }}" width="100px" height="100px">
 					</div>
 				</div>
 
