@@ -12,7 +12,7 @@
 
         </div> 
         <div class="x_content">  
-            <table id="list_city" class="table table-striped table-bordered">
+            <table id="list_cities" class="table table-striped table-bordered">
                 <thead> 
                     <tr> 
                         <th>{!! trans('labels.id') !!}</th> 

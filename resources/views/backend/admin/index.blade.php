@@ -10,7 +10,7 @@
 		</div>
 		@if (count($admins))
 		<div class="x_content">
-			<table id="list_admin" class="table table-striped table-bordered">
+			<table id="list_admins" class="table table-striped table-bordered">
 				<thead> 
 					<tr> 
 						<th>{!! trans('labels.id') !!}</th> 
