@@ -6,7 +6,8 @@ use App\Http\Requests\Backend\CityRequest;
 use App\Repositories\CityRepository as City;
 use App\Http\Controllers\Controller;
 
-class CityController extends Controller {
+class CityController extends Controller
+{
 
     /**
      * City
@@ -22,7 +23,8 @@ class CityController extends Controller {
      *
      * @return void
      */
-    public function __construct(City $city) {
+    public function __construct(City $city)
+    {
         $this->city = $city;
     }
 
@@ -31,7 +33,8 @@ class CityController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function index() {
+    public function index()
+    {
         $data['cities'] = $this->city->all();
         return view('backend.city.index')->with($data);
     }
@@ -41,7 +44,8 @@ class CityController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
+    public function create()
+    {
         return view('backend.city.create');
     }
 
@@ -52,7 +56,8 @@ class CityController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(CityRequest $request) {
+    public function store(CityRequest $request)
+    {
         $result = $this->city->create($request->all());
         if ($result) {
             flash(trans('messages.create_city_successfully'), 'success');
@@ -69,12 +74,12 @@ class CityController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
+    public function destroy($id)
+    {
         $result = $this->city->delete($id);
         if ($result) {
             return trans('messages.delete_city_successfully');
         }
         return trans('messages.error_delete_city');
     }
-
 }
