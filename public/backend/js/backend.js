@@ -23,10 +23,10 @@ $(document).ready(function(){
                 }
             })
             $.ajax({
+                url: url,
                 type: 'DELETE',
                 dataType: 'text',
                 success: function (result) {
-
                     swal({
                         title: result,
                         confirmButtonColor: "#DD6B55",
