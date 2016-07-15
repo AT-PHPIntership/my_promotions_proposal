@@ -1,11 +1,10 @@
 <?php
 namespace App\Repositories\Eloquent;
 
-use App\Repositories\Contracts\RepositoryInterface;
-use Exception;
-
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
+use App\Repositories\Contracts\RepositoryInterface;
+use Exception;
 
 /**
  * Class Repository
@@ -153,7 +152,6 @@ abstract class Repository implements RepositoryInterface
             //return Exception
             throw new Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
         }
-
         return $this->model = $model;
     }
 }
