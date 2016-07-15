@@ -82,8 +82,7 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param int                      $id      id user
-     * @param \Illuminate\Http\Request $request request for delete
+     * @param int $id id user
      *
      * @return \Illuminate\Http\Response
      */
