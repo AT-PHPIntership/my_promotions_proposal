@@ -78,4 +78,29 @@ class AdminController extends Controller
 
         return redirect()->route('admin.admins.index');
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int                      $id      id user
+     * @param \Illuminate\Http\Request $request request for delete
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $account = $this->admin->find($id, ['image']);
+        
+        if (!empty($account->image)) {
+            File::delete(config('upload.path') . $account->image);
+        }
+
+        $result = $this->admin->delete($id);
+
+        if (!$result) {
+            return trans('messages.error_delete_admin');
+        }
+        
+        return trans('messages.delete_admin_successfull');
+    }
 }
