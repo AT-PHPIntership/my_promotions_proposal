@@ -52,12 +52,14 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
+     * @param \Illuminate\Http\Request $request request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CategoryRequest $request)
     {
         $result = $this->category->create($request->all());
-        if($result){
+        if ($result) {
             flash(trans('messages.create_category_successfully'), 'success');
         } else {
             flash(trans('messages.error_create_category'), 'danger');
