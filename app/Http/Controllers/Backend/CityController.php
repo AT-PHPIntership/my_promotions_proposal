@@ -48,6 +48,43 @@ class CityController extends Controller
         return view('backend.city.create');
         
     }
+    
+    /**
+     * Show the form for edit and edit name city.
+     *
+     * @param \Illuminate\Http\Request $id id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data['city'] = $this->city->find($id);
+        if (empty($data['city'])) {
+             flash(trans('messages.error_not_found'), 'danger');
+             return back();
+        }
+        return view('backend.city.edit')->with($data);
+    }
+    
+    /**
+     * Update the form when click edit button.
+     *
+     * @param \Illuminate\Http\Request $request request
+     * @param \Illuminate\Http\Request $id      id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(CityRequest $request, $id)
+    {
+        $data = $request->except('_method', '_token');
+        $result = $this->city->update($data, $id);
+        if ($result) {
+            flash(trans('messages.create_city_successfully'), 'success');
+        } else {
+            flash(trans('messages.error_create_city'), 'danger');
+        }
+        return redirect()->route('admin.city.index');
+    }
 
     /**
      * Store a newly created resource in storage.
