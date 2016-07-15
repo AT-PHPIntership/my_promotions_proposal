@@ -1,8 +1,8 @@
 $('div.alert').delay(time).slideUp();
 
 $(document).ready(function () {
-    var frmId = $('table').attr('id');
-    $('#' + frmId).DataTable();
+    $('#list_cities').DataTable();
+    $('#list_admins').DataTable();
 
     $('a.delete').click(function () {
         var name = $(this).attr("name");
