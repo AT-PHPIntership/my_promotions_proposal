@@ -23,6 +23,7 @@ $(document).ready(function(){
                 }
             })
             $.ajax({
+                url: url,
                 type: 'DELETE',
                 dataType: 'text',
                 success: function (result) {
