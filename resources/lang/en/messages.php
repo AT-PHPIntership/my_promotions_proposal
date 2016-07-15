@@ -1,6 +1,8 @@
 <?php
 
 return [
+    "edit_admin_successfull"   => "Admin was edit successfully!",
+    "error_edit_admin"         => "Wrong! couldn't edit admin user, please try again.",
     "create_city_successfully"      => "City was create successfully!",
     "error_create_city"             => "Wrong! couldn't create city, please try again.",
     "error_not_found"               => "Not Found",

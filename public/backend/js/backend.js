@@ -1,4 +1,5 @@
 $('div.alert').delay(time).slideUp();
+
 $(document).ready(function(){
     $('#list_admins').DataTable();
     $('#list_cities').DataTable();
@@ -22,21 +23,22 @@ $(document).ready(function(){
                 }
             })
             $.ajax({
+                url: url,
                 type: 'DELETE',
                 dataType: 'text',
                 success: function (result) {
                     swal(
                         result
-                    );
+                        );
                 }
+
             });
         });
     });
-});
 
-$('a.active').click(function(){
-    var url = this.id;
-    swal({title: messages.business_active,
+    $('a.active').click(function(){
+        var url = this.id;
+        swal({title: messages.business_active,
             text: messages.question_active,
             type: "info",
             showCancelButton: true,
@@ -61,4 +63,5 @@ $('a.active').click(function(){
             });
 
         });
+    });
 });
