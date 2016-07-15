@@ -19,7 +19,7 @@ class BusinessesTableSeeder extends Seeder
                 'phone'         => $faker->phoneNumber,
                 'logo'          => '',
                 'description'   => $faker->realText,
-                'user_id'       => $i,
+                'user_id'       => $i+1,
                 'created_at'    => Carbon\Carbon::now()
             ]);
         }

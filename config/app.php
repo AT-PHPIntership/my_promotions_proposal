@@ -112,6 +112,15 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Time delay of alert
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'delay' => 2500,
+
+    /*
+    |--------------------------------------------------------------------------
     | Autoloaded Service Providers
     |--------------------------------------------------------------------------
     |
@@ -211,6 +220,6 @@ return [
         'JsValidator' => Proengsoft\JsValidation\Facades\JsValidatorFacade::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-    ],
 
+    ],
 ];
