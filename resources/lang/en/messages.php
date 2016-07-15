@@ -11,4 +11,5 @@ return [
     "confirm_delete_text"      => "You want delete this ",
     "delete"                   => "Yes, delete it!",
     "ok"                       => "Ok",
+    "error_not_found"          => "Not Found",
 ];
