@@ -47,8 +47,6 @@
           
         </div>
       </div>
-    </div>
-
     <!-- footer -->
     @include('backend.layouts.partials.footer')
 
