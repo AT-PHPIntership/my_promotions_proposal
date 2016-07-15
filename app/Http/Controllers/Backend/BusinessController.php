@@ -96,7 +96,6 @@ class BusinessController extends Controller
         $data['status'] = $this->business->update(['status' => config('app.actived')], $id);
         if (empty($data['status'])) {
             flash(trans('messages.error_not_found'), 'danger');
-            return trans('messages.updated');
         }
         return trans('messages.updated');
     }
