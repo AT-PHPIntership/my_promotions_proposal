@@ -1,7 +1,8 @@
 $('div.alert').delay(time).slideUp();
 
 $(document).ready(function () {
-    $('#myTable').DataTable();
+    var frmId = $('table').attr('id');
+    $('#' + frmId).DataTable();
 
     $('a.delete').click(function () {
         var name = $(this).attr("name");
@@ -25,9 +26,13 @@ $(document).ready(function () {
                 type: 'DELETE',
                 dataType: 'text',
                 success: function (result) {
-                    swal(
-                         result
-                    )
+                    swal({
+                        title: result,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: messages.ok,
+                    }, function(){
+                        location.reload();
+                    });
                 }
             });    		
     	});

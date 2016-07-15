@@ -1,11 +1,14 @@
 <?php
 
 return [
-    "error_create_admin"       => "Wrong count\'t created admin user, please try againt!",
-    "error_create_city"        => "Wrong count\'t created city, please try againt!",
+    "error_create_admin"       => "Wrong! couldn't create admin user, please try again.",
+    "error_create_city"        => "Wrong! couldn't create city, please try again.",
+    "error_delete_city"        => "Wrong! couldn't delete city, please try again.",
     "create_admin_successfull" => "Admin user was created successfully!",
     "create_city_successfully" => "City was create successfully!",
-    "confirm_delete_title" => "Are you sure?",
-    "confirm_delete_text" => "You want delete this ",
-    "delete" => "Yes, delete it!",
+    "delete_city_successfully" => "City was delete successfully!",
+    "confirm_delete_title"     => "Are you sure?",
+    "confirm_delete_text"      => "You want delete this ",
+    "delete"                   => "Yes, delete it!",
+    "ok"                       => "Ok",
 ];
