@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Http\Requests\Backend\CategoryRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Request;
 use App\Repositories\CategoryRepository as Category;
 
 class CategoryController extends Controller
@@ -55,8 +54,15 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(CategoryRequest $request)
     {
+        $result = $this->category->create($request->all());
+        if($result){
+            flash(trans('messages.create_category_successfully'), 'success');
+        } else {
+            flash(trans('messages.error_create_category'), 'danger');
+        }
+        return redirect()->route('admin.category.index');
     }
 
     /**
