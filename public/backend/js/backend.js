@@ -1,12 +1,13 @@
 $('div.alert').delay(time).slideUp();
 
 $(document).ready(function () {
-    $('list_cities').DataTable();
-    $('list_admins').DataTable();
+    $('#list_admins').DataTable();
+    $('#list_cities').DataTable();
+    $('#list_business').DataTable();
 
     $('a.delete').click(function () {
         var name = $(this).attr("name");
-        var url  = $(this).attr("url");
+        var url = $(this).attr("url");
         swal({
             title: messages.confirm_delete_title,
             text: messages.confirm_delete_text + name,
@@ -22,7 +23,6 @@ $(document).ready(function () {
                 }
             })
             $.ajax({
-                url: url,
                 type: 'DELETE',
                 dataType: 'text',
                 success: function (result) {
@@ -30,11 +30,44 @@ $(document).ready(function () {
                         title: result,
                         confirmButtonColor: "#DD6B55",
                         confirmButtonText: messages.ok,
-                    }, function(){
+                    }, function () {
                         location.reload();
                     });
+                    swal(
+                            result
+                            );
                 }
-            });    		
-    	});
+            });
+        });
+    });
+
+
+    $('a.active').click(function () {
+        var url = this.id;
+        swal({title: messages.business_active,
+            text: messages.question_active,
+            type: "info",
+            showCancelButton: true,
+            closeOnConfirm: true,
+            showLoaderOnConfirm: true,
+        },
+                function () {
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                        }
+                    })
+                    $.ajax({
+                        url: url,
+                        type: "PUT",
+                        dataType: 'text',
+                        success: function (result) {
+                            if (result == messages.updated) {
+                                location.reload();
+                            }
+                        }
+                    });
+
+                });
     });
 });

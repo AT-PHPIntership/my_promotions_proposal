@@ -12,4 +12,8 @@ return [
     "delete"                   => "Yes, delete it!",
     "ok"                       => "Ok",
     "error_not_found"          => "Not Found",
+    "business_active"          => "Business Active",
+    "question_active"          => "You want to active this business?",
+    "delete"                   => "Yes, delete it!",
+    "updated"                  => "Updated",
 ];
