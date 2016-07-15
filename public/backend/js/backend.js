@@ -1,7 +1,7 @@
 $('div.alert').delay(time).slideUp();
 
 $(document).ready(function () {
-    $('#myTable').DataTable();
+    $('#datatable').DataTable();
 
     $('a.delete').click(function () {
         var name = $(this).attr("name");
