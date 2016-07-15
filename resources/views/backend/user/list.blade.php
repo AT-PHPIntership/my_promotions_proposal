@@ -1,15 +1,7 @@
 @extends('backend.layouts.master')
+@section('title', trans('labels.user'))
 @section('content')
 <!-- page content -->
-<div class="right_col" role="main">
-        <div class="">
-                <div class="page-title">
-                        <div class="title_left">
-                                <h3>{!! trans('labels.user') !!} <small>{!! trans('labels.manager') !!}</small></h3>
-                            </div>
-                    </div>
-
-                <div class="clearfix"></div>
                 <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                                 @if (Session::has('error'))
@@ -24,34 +16,33 @@
                                                 <table id="myTable" class="table table-striped table-bordered">
                                                         <thead>
                                                             <tr>
-                                                                    <th>{!! trans('labels.username') !!}</th>
-                                                                    <th>{!! trans('labels.email') !!}</th>
-                                                                    <th>{!! trans('labels.image') !!}</th>
-                                                                    <th>{!! trans('labels.address') !!}</th>
-                                                                    <th>{!! trans('labels.phone') !!}</th>
-                                                                    <th>{!! trans('labels.business') !!}</th>
-                                                                    <th>{!! trans('labels.action') !!}</th>
+                                                                <th>{!! trans('labels.username') !!}</th>
+                                                                <th>{!! trans('labels.email') !!}</th>
+                                                                <th>{!! trans('labels.image') !!}</th>
+                                                                <th>{!! trans('labels.address') !!}</th>
+                                                                <th>{!! trans('labels.phone') !!}</th>
+                                                                <th>{!! trans('labels.business') !!}</th>
+                                                                <th>{!! trans('labels.action') !!}</th>
                                                             </tr>
                                                         </thead>
                                                         <tbody>
                                                             @foreach($users as $user)
-                                                                {{--{{ dd($user->business->all()) }}--}}
                                                             <tr>
                                                                 <td>{{ $user->name }}</td>
                                                                 <td>{{ $user->email }}</td>
-                                                                @if($user->image != "")
+                                                                @if($user->image)
                                                                     <td><img src="{{ $user->image }}" width="50" /></td>
                                                                 @else
                                                                     <td>Not Image</td>
                                                                 @endif
                                                                 <td>{{ $user->address }}</td>
                                                                 <td>{{ $user->phone }}</td>
-                                                                @if($user->business['id'])
-                                                                    <td><a href="{{ url('admin/user/'.$user->business->id) }}" class="btn btn-success btn-xs"><i class="fa fa-eye"></i> Enable </a></td>
+                                                                @if(!empty($user->business->id))
+                                                                    <td><a href="{{ route('admin.user.show',['id' => $user->business->id]) }}" class="btn btn-success btn-xs"><i class="fa fa-eye"></i>{!! trans('labels.enable') !!}</a></td>
                                                                 @else
-                                                                    <td><label class="btn btn-warning btn-xs" disabled="disabled"><i class="fa fa-eye-slash"></i> Disable </label></td>
+                                                                    <td><label class="btn btn-warning btn-xs" disabled="disabled"><i class="fa fa-eye-slash"></i> {!! trans('labels.disable') !!} </label></td>
                                                                 @endif
-                                                                <td><a href="{{ url('admin/user/'.$user->id.'/edit') }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a></td>
+                                                                <td><a href="{{ route('admin.user.edit',['id' => $user->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> {!! trans('labels.edit') !!} </a></td>
                                                             </tr>
                                                             @endforeach
                                                         </tbody>
@@ -60,7 +51,5 @@
                                     </div>
                             </div>
                     </div>
-            </div>
-    </div>
 <!-- /page content -->
 @endsection

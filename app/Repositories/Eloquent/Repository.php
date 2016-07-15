@@ -57,7 +57,8 @@ abstract class Repository implements RepositoryInterface
      */
     public function all($columns = array('*'))
     {
-        return $this->model->get($columns);
+
+            return $this->model->get($columns);
     }
 
     /**

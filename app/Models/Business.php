@@ -66,4 +66,28 @@ class Business extends Model
     {
         return $this->belongsToMany('App\Models\County', 'business_counties');
     }
+
+    /**
+     * Get the UserName.
+     *
+     * @return string
+     */
+    public function getUserNameAttribute()
+    {
+        return $this->user->name;
+    }
+
+    /**
+     * Get the Status Label.
+     *
+     * @return string
+     */
+    public function getStatusLabelAttribute()
+    {
+        if ($this->status == config('app.inactive')) {
+            return trans('labels.inactive');
+        } else {
+            return trans('labels.actived');
+        }
+    }
 }

@@ -6,25 +6,25 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use App\Repositories\UserRepository as User;
+use App\Repositories\BusinessRepository as Business;
 
-class UserController extends Controller
+class BusinessController extends Controller
 {
     /**
-    * Business
-    *
-    * @var Business
-    */
-    private $user;
+     * Business
+     *
+     * @var Business
+     */
+    private $business;
 
     /**
-    * Construct a UserController
-    *
-    * @param int $user user
-    */
-    public function __construct(User $user)
+     * Construct a BusinessController
+     *
+     * @param int $business business
+     */
+    public function __construct(Business $business)
     {
-        $this->user = $user;
+        $this->business = $business;
     }
 
     /**
@@ -34,8 +34,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $data['users'] = $this->user->all();
-        return view('backend.user.list')->with($data);
+        $data['businesses'] = $this->business->all();
+        return view('backend.business.list')->with($data);
     }
 
     /**
@@ -67,12 +67,12 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $data['user'] = $this->user->find($id);
-        if (is_null($data['user'])) {
+        $data['business'] = $this->business->find($id);
+        if (empty($data['business'])) {
             flash(trans('messages.error_not_found'), 'danger');
             return back();
         }
-        return view('backend.user.show')->with($data);
+        return view('backend.business.show')->with($data);
     }
 
     /**
@@ -82,17 +82,22 @@ class UserController extends Controller
      */
     public function edit()
     {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      *
+     * @param int $id id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update($id)
     {
-        //
+        $data['status'] = $this->business->update(['status' => config('app.actived')], $id);
+        if (empty($data['status'])) {
+            flash(trans('messages.error_not_found'), 'danger');
+        }
+        return trans('messages.updated');
     }
 
     /**

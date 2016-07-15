@@ -1,4 +1,5 @@
 @extends('backend.layouts.master')
+@section('title', trans('labels.business'))
 @section('content')
     <div class="col-md-12 col-sm-12 col-xs-12 profile_left">
 
@@ -7,32 +8,31 @@
             <!-- end of image cropping -->
             <div id="crop-avatar" class="col-md-2">
                 <!-- Current avatar -->
-                <img class="img-responsive avatar-view" src="http://placehold.it/200x200" alt="Avatar"
-                     title="Change the avatar">
+                <img class="img-responsive avatar-view" src="{!! config('define.image_default') !!}" alt="Avatar" title="Change the avatar">
 
 
             </div>
             <!-- end of image cropping -->
             <div class="col-md-10">
-                <h3>{{ $user->business->name }}</h3>
+            <h3>{{ $business->name }}</h3>
 
                 <ul class="list-unstyled user_data">
-                    <li><i class="fa fa-envelope"></i> {{ $user->business->email }}
+                    <li><i class="fa fa-envelope"></i> {{ $business->email }}
                     </li>
 
                     <li>
-                        <i class="fa fa-phone"></i> {{ $user->business->phone }}
+                        <i class="fa fa-phone"></i> {{ $business->phone }}
                     </li>
 
                     <li>
-                        <p>{{ $user->business->description }} </p>
+                        <p>{{ $business->description }} </p>
                     </li>
 
                     <li>
-                        <i class="fa fa-calendar"></i> {{ $user->business->created_at }}
+                        <i class="fa fa-calendar"></i> {{ $business->created_at }}
                     </li>
 
-                </ul>
+                </ul> 
             </div>
         </div>
 
