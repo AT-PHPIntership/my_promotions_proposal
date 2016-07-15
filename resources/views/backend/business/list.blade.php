@@ -9,7 +9,7 @@
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <table id="myTable" class="table table-striped table-bordered">
+                        <table id="list_business" class="table table-striped table-bordered">
                             <thead>
                                 <tr>
                                     <th>{!! trans('labels.user_name') !!}</th>
