@@ -23,6 +23,7 @@ $(document).ready(function () {
                 }
             })
             $.ajax({
+                url: url,
                 type: 'DELETE',
                 dataType: 'text',
                 success: function (result) {
@@ -33,9 +34,6 @@ $(document).ready(function () {
                     }, function () {
                         location.reload();
                     });
-                    swal(
-                            result
-                            );
                 }
             });
         });
@@ -51,23 +49,23 @@ $(document).ready(function () {
             closeOnConfirm: true,
             showLoaderOnConfirm: true,
         },
-                function () {
-                    $.ajaxSetup({
-                        headers: {
-                            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                        }
-                    })
-                    $.ajax({
-                        url: url,
-                        type: "PUT",
-                        dataType: 'text',
-                        success: function (result) {
-                            if (result == messages.updated) {
-                                location.reload();
-                            }
-                        }
-                    });
+        function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            })
+            $.ajax({
+                url: url,
+                type: "PUT",
+                dataType: 'text',
+                success: function (result) {
+                    if (result == messages.updated) {
+                            location.reload();
+                    }
+                }
+            });
 
-                });
+        });
     });
 });
