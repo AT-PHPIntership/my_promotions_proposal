@@ -35,14 +35,15 @@ $(document).ready(function () {
                         location.reload();
                     });
                 }
+
             });
         });
     });
 
-
     $('a.active').click(function () {
         var url = this.id;
-        swal({title: messages.business_active,
+        swal({
+            title: messages.business_active,
             text: messages.question_active,
             type: "info",
             showCancelButton: true,
