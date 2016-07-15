@@ -118,12 +118,20 @@ class AdminController extends Controller
             $img->move(public_path(config('upload.path')), $data['image']);
         }
 
-        !empty($data['password']) ? $data['password'] = bcrypt($data['password']) : $data = array_except($data, ['password']);
+        if (!empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            $data = array_except($data, ['password']);
+        }
       
         $result = $this->admin->update($data, $id);
 
-        (!$result) ? flash(trans('messages.error_edit_admin'), 'danger') : flash(trans('messages.edit_admin_successfull'), 'success');
-
+        if (!$result) {
+            flash(trans('messages.error_edit_admin'), 'danger');
+        } else {
+            flash(trans('messages.edit_admin_successfull'), 'success');
+        }
+        
         return redirect()->route('admin.admins.index');
     }
 }
