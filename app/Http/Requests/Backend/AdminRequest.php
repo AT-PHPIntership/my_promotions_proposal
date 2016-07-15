@@ -24,13 +24,13 @@ class AdminRequest extends Request
     public function rules()
     {
         //Update
-        if ($this->account) {
+        if ($this->admins) {
             return [
                 'name'     => 'required|min:3',
-                'email'    => 'required|email|unique:admin_users,email,' . $this->account,
-                'password' => 'required|min:6',
-                'phone'    => 'numeric|min:9|max:12',
-                'image'    => 'required|image',
+                'email'    => 'required|email|unique:admin_users,email,' . $this->admins,
+                'password' => 'min:6',
+                'phone'    => 'numeric|min:9',
+                'image'    => 'image',
             ];
         }
 
