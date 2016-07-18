@@ -11,7 +11,6 @@ use Exception;
  *
  * @package Bosnadev\Repositories\Eloquent
  */
-
 abstract class Repository implements RepositoryInterface
 {
     /**
@@ -20,14 +19,12 @@ abstract class Repository implements RepositoryInterface
      * @var App
      */
     private $app;
-
     /**
      * Model
      *
      * @var Model
      */
     protected $model;
-
     /**
      * Construct
      *
@@ -40,7 +37,6 @@ abstract class Repository implements RepositoryInterface
         $this->app = $app;
         $this->makeModel();
     }
-
     /**
      * Specify Model class name
      *
@@ -57,8 +53,7 @@ abstract class Repository implements RepositoryInterface
      */
     public function all($columns = array('*'))
     {
-
-            return $this->model->get($columns);
+        return $this->model->get($columns);
     }
 
     /**
@@ -124,7 +119,6 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->model->find($id, $columns);
     }
-
     /**
      * Funciton findBy key
      *
@@ -148,7 +142,6 @@ abstract class Repository implements RepositoryInterface
     public function makeModel()
     {
         $model = $this->app->make($this->model());
-
         if (!$model instanceof Model) {
             //return Exception
             throw new Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");

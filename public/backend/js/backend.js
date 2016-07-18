@@ -4,6 +4,8 @@ $(document).ready(function () {
     $('#list_admins').DataTable();
     $('#list_cities').DataTable();
     $('#list_business').DataTable();
+    $('#list_users').DataTable();
+    $('#list_categories').DataTable();
     $('#list_counties').DataTable();
 
     $('a.delete').click(function () {

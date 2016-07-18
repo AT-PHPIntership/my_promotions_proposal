@@ -4,16 +4,13 @@
 <!-- page content -->
                 <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
-                                @if (Session::has('error'))
-                                    <div class="alert error alert-danger"><b>{{ Session::get('error') }}</b></div>
-                                @endif
                                 <div class="x_panel">
                                         <div class="x_title">
                                                 <h2>{!! trans('labels.user') !!}<small>{!! trans('labels.list') !!}</small></h2>
                                                 <div class="clearfix"></div>
                                             </div>
                                         <div class="x_content">
-                                                <table id="myTable" class="table table-striped table-bordered">
+                                                <table id="list_users" class="table table-striped table-bordered">
                                                         <thead>
                                                             <tr>
                                                                 <th>{!! trans('labels.username') !!}</th>

@@ -34,13 +34,17 @@ return [
     'login_button'    => 'Log in',
     'my_promotion'    => 'My Promotion!',
     'copy_right'      => '©2016 All Rights Reserved.',
+
+    'category' => 'Category',
+    'category_name' => 'Category Name',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'addcategory' => 'Add a new category',
+
     'user'            => 'User',
     'username'        => 'User Name',
     'city_name'       => 'City Name',
-
     'add_new'         => 'Add New',
-    'edit'            => 'Edit',
-    'delete'          => 'Delete',
     'no_data'         => 'No Data',
 
     'enable'          => 'Enable',
