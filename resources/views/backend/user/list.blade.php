@@ -33,7 +33,7 @@
                                                                 @if($user->image)
                                                                     <td><img src="{{ $user->image }}" width="50" /></td>
                                                                 @else
-                                                                    <td>Not Image</td>
+                                                                    <td>{!! trans('labels.not_image') !!}</td>
                                                                 @endif
                                                                 <td>{{ $user->address }}</td>
                                                                 <td>{{ $user->phone }}</td>

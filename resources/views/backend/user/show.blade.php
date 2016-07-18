@@ -7,8 +7,7 @@
             <!-- end of image cropping -->
             <div id="crop-avatar" class="col-md-2">
                 <!-- Current avatar -->
-                <img class="img-responsive avatar-view" src="http://placehold.it/200x200" alt="Avatar"
-                     title="Change the avatar">
+                <img class="img-responsive avatar-view" src="{!! config('define.image_default') !!}" alt="Avatar" title="Change the avatar">
 
 
             </div>

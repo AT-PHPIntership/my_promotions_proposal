@@ -8,13 +8,14 @@ use App\Http\Controllers\Controller;
 
 class CityController extends Controller
 {
+
     /**
      * City
      *
      * @var City
      */
     private $city;
-    
+
     /**
      * Create a new CityRepository instance.
      *
@@ -26,7 +27,7 @@ class CityController extends Controller
     {
         $this->city = $city;
     }
-    
+
     /**
      * Display a listing of the resource.
      *
@@ -37,7 +38,7 @@ class CityController extends Controller
         $data['cities'] = $this->city->all();
         return view('backend.city.index')->with($data);
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -101,5 +102,21 @@ class CityController extends Controller
             flash(trans('messages.error_create_city'), 'danger');
         }
         return redirect()->route('admin.city.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id id city
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $result = $this->city->delete($id);
+        if ($result) {
+            return trans('messages.delete_city_successfully');
+        }
+        return trans('messages.error_delete_city');
     }
 }

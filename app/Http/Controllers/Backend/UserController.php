@@ -11,9 +11,9 @@ use App\Repositories\UserRepository as User;
 class UserController extends Controller
 {
     /**
-    * Business
+    * User
     *
-    * @var Business
+    * @var User
     */
     private $user;
 
@@ -68,7 +68,7 @@ class UserController extends Controller
     public function show($id)
     {
         $data['user'] = $this->user->find($id);
-        if (is_null($data['user'])) {
+        if (empty($data['user'])) {
             flash(trans('messages.error_not_found'), 'danger');
             return back();
         }
