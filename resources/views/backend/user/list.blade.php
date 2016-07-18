@@ -42,7 +42,7 @@
                                                                 @else
                                                                     <td><label class="btn btn-warning btn-xs" disabled="disabled"><i class="fa fa-eye-slash"></i> {!! trans('labels.disable') !!} </label></td>
                                                                 @endif
-                                                                <td><a href="{{ route('admin.user.edit',['id' => $user->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> {!! trans('labels.edit') !!} </a></td>
+                                                                <td><a href="#" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> {!! trans('labels.edit') !!} </a></td>
                                                             </tr>
                                                             @endforeach
                                                         </tbody>
