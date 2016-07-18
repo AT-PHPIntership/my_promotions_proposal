@@ -1,9 +1,9 @@
 <?php
 
 return [
-    "error_create_admin"       => "Wrong ! Could\'t created admin user, please try againt!",
-    "error_create_city"        => "Wrong ! Could\'t created city, please try againt!",
-    "error_create_category"    => "Wrong ! Could\'t created category, please try againt!",
+    "error_create_admin"       => "Wrong ! Could't created admin user, please try again.",
+    "error_create_city"        => "Wrong ! Could't created city, please try again.",
+    "error_create_category"    => "Wrong ! Could't created category, please try again.",
     "create_admin_successfull" => "Admin ! user was created successfully!",
     "error_delete_admin" => "Wrong! couldn't delete admin user, please try again.",
     "error_delete_admin_login" => "Wrong! You couldn't delete yourself.",
