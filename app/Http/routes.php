@@ -30,6 +30,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         // Business
         Route::resource('business', 'BusinessController');
 
+        // User
+        Route::resource('user', 'UserController');
+
         // Admin
         Route::resource('admins', 'AdminController');
         

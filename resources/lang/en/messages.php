@@ -14,7 +14,6 @@ return [
     "error_not_found"          => "Not Found",
     "business_active"          => "Business Active",
     "question_active"          => "You want to active this business?",
-    "delete"                   => "Yes, delete it!",
     "updated"                  => "Updated",
     "edit_admin_successfull"   => "Admin was edit successfully!",
     "error_edit_admin"         => "Wrong! couldn't edit admin user, please try again.",

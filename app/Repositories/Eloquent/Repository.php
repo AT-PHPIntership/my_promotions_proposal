@@ -47,7 +47,7 @@ abstract class Repository implements RepositoryInterface
      * @return mixed
      */
     abstract public function model();
-    
+
     /**
      * Function get all
      *
@@ -60,7 +60,7 @@ abstract class Repository implements RepositoryInterface
 
             return $this->model->get($columns);
     }
- 
+
     /**
      * Function get data with paginate
      *
@@ -73,7 +73,7 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->model->paginate($perPage, $columns);
     }
- 
+
     /**
      * Function create
      *
@@ -85,7 +85,7 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->model->create($data);
     }
- 
+
     /**
      * Function update
      *
@@ -99,7 +99,7 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->model->where($attribute, '=', $id)->update($data);
     }
- 
+
     /**
      * Function delete
      *
@@ -111,7 +111,7 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->model->destroy($id);
     }
- 
+
     /**
      * Function find
      *
@@ -138,7 +138,7 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->model->where($attribute, '=', $value)->first($columns);
     }
-    
+
     /**
      * Function makeModel
      *
