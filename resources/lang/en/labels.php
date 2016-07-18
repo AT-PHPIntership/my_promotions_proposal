@@ -34,19 +34,22 @@ return [
     'login_button'    => 'Log in',
     'my_promotion'    => 'My Promotion!',
     'copy_right'      => '©2016 All Rights Reserved.',
+
+    'category' => 'Category',
+    'category_parent'  => 'Category Parent',
+    'category_name' => 'Category Name',
+    'edit' => 'Edit',
+    'delete' => 'Delete',
+    'addcategory' => 'Add a new category',
+    'root'            => 'Root',
+
     'user'            => 'User',
     'username'        => 'User Name',
     'city_name'       => 'City Name',
+    'county_name'     => 'County Name',
 
     'add_new'         => 'Add New',
-    'edit'            => 'Edit',
-    'delete'          => 'Delete',
     'no_data'         => 'No Data',
-    
-    'category'        => 'Category',
-    'categoryparent'  => 'Category Parent',
-    'categoryname'    => 'Category Name',
-    'root'            => 'Root',
 
     'enable'          => 'Enable',
     'disable'         => 'Disable',

@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\CategoryRequest;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Request;
 use App\Repositories\CategoryRepository as Category;
 
 class CategoryController extends Controller
@@ -17,15 +16,13 @@ class CategoryController extends Controller
     private $category;
 
     /**
-     * Create a new CategoryRepository instance.
+     * Construct a CategoryController
      *
-     * @param CategoryRepository $category category
-     *
-     * @return void
+     * @param int $category category
      */
     public function __construct(Category $category)
     {
-        $this->category = $category;
+         $this->category = $category;
     }
 
     /**
@@ -35,7 +32,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $data['categories'] = $this->category->all();
+        return view('backend.category.list')->with($data);
     }
 
     /**

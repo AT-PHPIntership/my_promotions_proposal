@@ -11,13 +11,13 @@
                 <br />
                 {!! Form::open(['route' => 'admin.category.store', 'id' => 'frmCreateCategory', 'class' => 'form-horizontal form-label-left']) !!}
                     <div class="form-group">
-                        {!! Form::label('name', trans('labels.categoryparent'), ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!} <span class="required">*</span>
+                        {!! Form::label('name', trans('labels.category_parent'), ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!} <span class="required">*</span>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             {!! Form::select('parent_id', $categories, null, ['placeholder' => trans('labels.root'),'class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="form-group">
-                            {!! Form::label('name', trans('labels.categoryname'), ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!} <span class="required">*</span>
+                            {!! Form::label('name', trans('labels.category_name'), ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!} <span class="required">*</span>
                         <div class="col-md-6 col-sm-6 col-xs-12">
                             {!! Form::text('name', null, ['class' => 'form-control col-md-7 col-xs-12']) !!}
                         </div>
