@@ -14,9 +14,11 @@
                 <ul class="nav side-menu">
                     <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> {!! trans('labels.dasboard') !!} </a></li>
                     <li><a href="{{ route('admin.admins.index') }}"><i class="fa fa-user"></i> {!! trans('labels.admin') !!} </a></li>
-                    <li><a href="{{ route('admin.city.index') }}"> <i class="fa fa-taxi"></i> {!! trans('labels.city') !!} </a></li>
+                    <li><a href="{{ route('admin.city.index') }}"> <i class="fa fa-globe"></i> {!! trans('labels.city') !!} </a></li>
+                    <li><a href="{{ route('admin.county.index') }}"><i class="fa fa-bank"></i> {!! trans('labels.county') !!} </a></li>
                     <li><a href="{{ route('admin.business.index') }}"><i class="fa fa-group"></i> {!! trans('labels.business') !!} </a></li>
-                    <li><a href="{{ route('admin.category.index') }}"><i class="fa fa-space-shuttle"></i> {!! trans('labels.category') !!} </a>
+                    <li><a href="{{ route('admin.user.index') }}"><i class="fa fa-user-md"></i> {!! trans('labels.user') !!} </a></li>
+                    <li><a href="{{ route('admin.category.index') }}"><i class="fa fa-sitemap"></i> {!! trans('labels.category') !!} </a></li>
                 </ul>
             </div>
         </div>
