@@ -35,5 +35,8 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         
         // City
         Route::resource('city', 'CityController');
+
+        // County
+        Route::resource('county', 'CountyController');
     });
 });

@@ -13,6 +13,7 @@ return [
     
     'city'            => 'City',
     'admin'           => 'Account',
+    'county'          => 'County',
     'list'            => 'List',
     'id'              => 'ID',
     'name'            => 'Name',
