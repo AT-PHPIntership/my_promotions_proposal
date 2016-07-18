@@ -1,6 +1,9 @@
 <?php
 
 return [
+    "error_delete_admin" => "Wrong! couldn't delete admin user, please try again.",
+    "error_delete_admin_login" => "Wrong! You couldn't delete yourself.",
+    "delete_admin_successfull" => "Admin user was Deleted successfully!",
     "error_create_admin"       => "Wrong! couldn't create admin user, please try again.",
     "error_create_city"        => "Wrong! couldn't create city, please try again.",
     "error_create_county"      => "Wrong! couldn't create county, please try again.",
@@ -11,7 +14,6 @@ return [
     "delete_city_successfully" => "City was delete successfully!",
     "confirm_delete_title"     => "Are you sure?",
     "confirm_delete_text"      => "You want delete this ",
-    "delete"                   => "Yes, delete it!",
     "ok"                       => "Ok",
     "error_not_found"          => "Not Found",
     "business_active"          => "Business Active",
