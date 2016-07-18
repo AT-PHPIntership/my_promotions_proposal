@@ -49,4 +49,5 @@ return [
     'clickactive'     => 'Click to Active',
 
     'not_image'       => 'Not Image',
+    'business_avatar' => 'Business Avatar'
 ];
