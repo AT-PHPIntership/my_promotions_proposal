@@ -5,6 +5,9 @@ return [
     "error_create_city"        => "Wrong ! Could\'t created city, please try againt!",
     "error_create_category"    => "Wrong ! Could\'t created category, please try againt!",
     "create_admin_successfull" => "Admin ! user was created successfully!",
+    "error_delete_admin" => "Wrong! couldn't delete admin user, please try again.",
+    "error_delete_admin_login" => "Wrong! You couldn't delete yourself.",
+    "delete_admin_successfull" => "Admin user was Deleted successfully!",
     "error_create_county"      => "Wrong! couldn't create county, please try again.",
     "error_delete_city"        => "Wrong! couldn't delete city, please try again.",
     "create_county_successfull"=> "County was created successfully!",
@@ -20,5 +23,7 @@ return [
     "question_active"          => "You want to active this business?",
     "updated"                  => "Updated",
     "edit_admin_successfull"   => "Admin was edit successfully!",
+    "edit_county_successfull"  => "County was edit successfully!",
     "error_edit_admin"         => "Wrong! couldn't edit admin user, please try again.",
+    "error_edit_county"        => "Wrong! couldn't edit county, please try again.",
 ];

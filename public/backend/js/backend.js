@@ -34,12 +34,11 @@ $(document).ready(function () {
                         title: result,
                         confirmButtonColor: "#DD6B55",
                         confirmButtonText: messages.ok,
-                    }, function () {
+                    }, function(){
                         location.reload();
                     });
                 }
-
-            });
+            });    
         });
     });
 
