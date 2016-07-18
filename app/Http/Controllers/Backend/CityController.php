@@ -35,7 +35,7 @@ class CityController extends Controller
      */
     public function index()
     {
-        $data['cities'] = $this->city->all(['id', 'name', 'city_id']);
+        $data['cities'] = $this->city->all();
         return view('backend.city.index')->with($data);
     }
 

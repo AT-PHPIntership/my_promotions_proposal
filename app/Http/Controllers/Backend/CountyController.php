@@ -36,7 +36,7 @@ class CountyController extends Controller
      */
     public function index()
     {
-        $data['counties'] = $this->county->all();
+        $data['counties'] = $this->county->all(['id', 'name', 'city_id']);
         return view('backend.county.index')->with($data);
     }
 }
