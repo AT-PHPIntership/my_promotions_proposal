@@ -36,10 +36,12 @@ return [
     'copy_right'      => '©2016 All Rights Reserved.',
 
     'category' => 'Category',
+    'category_parent'  => 'Category Parent',
     'category_name' => 'Category Name',
     'edit' => 'Edit',
     'delete' => 'Delete',
     'addcategory' => 'Add a new category',
+    'root'            => 'Root',
 
     'user'            => 'User',
     'username'        => 'User Name',

@@ -13,6 +13,7 @@
                 <table id="list_categories" class="table table-striped table-bordered">
                     <thead>
                     <tr>
+                        <th>{!! trans('labels.category_parent') !!}</th>
                         <th>{!! trans('labels.category_name') !!}</th>
                         <th>{!! trans('labels.action') !!}</th>
                     </tr>
@@ -20,6 +21,7 @@
                     <tbody>
                     @foreach($categories as $category)
                         <tr>
+                            <td>{{ $category->category_parent }}</td>
                             <td>{{ $category->name }}</td>
                             <td><a href="{{ route('admin.category.edit',['id' => $category->id]) }}" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> {!! trans('labels.edit') !!} </a>
                                 <a url="{{ route('admin.category.destroy', ['id' => $category->id]) }}" name="{!! trans('labels.category') !!}" class="btn btn-danger btn-xs delete"><i class="fa fa-trash-o"></i> {!! trans('labels.delete') !!} </a></td>

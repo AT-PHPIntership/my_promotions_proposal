@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
+use App\Http\Requests\Backend\CategoryRequest;
 use App\Http\Controllers\Controller;
 use App\Repositories\CategoryRepository as Category;
 
 class CategoryController extends Controller
 {
     /**
-         * Category
-         *
-         * @var $Category
-         */
+     * Category
+     *
+     * @var Category
+     */
     private $category;
 
     /**
@@ -45,17 +43,26 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        $data['categories'] = $this->category->all(['id','name'])->lists('name', 'id');
+        return view('backend.category.create')->with($data);
     }
 
     /**
      * Store a newly created resource in storage.
      *
+     * @param \Illuminate\Http\Request $request request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function store()
+    public function store(CategoryRequest $request)
     {
-        //
+        $result = $this->category->create($request->all());
+        if ($result) {
+            flash(trans('messages.create_category_successfully'), 'success');
+        } else {
+            flash(trans('messages.error_create_category'), 'danger');
+        }
+        return redirect()->route('admin.category.index');
     }
 
     /**

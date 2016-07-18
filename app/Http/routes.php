@@ -41,7 +41,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 
         // Category
         Route::resource('category', 'CategoryController');
-        
+
         // County
         Route::resource('county', 'CountyController');
     });

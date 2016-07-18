@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Requests\Backend\CityRequest;
@@ -8,14 +7,12 @@ use App\Http\Controllers\Controller;
 
 class CityController extends Controller
 {
-
     /**
      * City
      *
      * @var City
      */
     private $city;
-
     /**
      * Create a new CityRepository instance.
      *
@@ -27,7 +24,6 @@ class CityController extends Controller
     {
         $this->city = $city;
     }
-
     /**
      * Display a listing of the resource.
      *
@@ -38,7 +34,6 @@ class CityController extends Controller
         $data['cities'] = $this->city->all();
         return view('backend.city.index')->with($data);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -48,7 +43,7 @@ class CityController extends Controller
     {
         return view('backend.city.create');
     }
-    
+
     /**
      * Show the form for edit and edit name city.
      *
@@ -60,12 +55,12 @@ class CityController extends Controller
     {
         $data['city'] = $this->city->find($id);
         if (empty($data['city'])) {
-             flash(trans('messages.error_not_found'), 'danger');
-             return back();
+            flash(trans('messages.error_not_found'), 'danger');
+            return back();
         }
         return view('backend.city.edit')->with($data);
     }
-    
+
     /**
      * Update the form when click edit button.
      *
@@ -85,7 +80,6 @@ class CityController extends Controller
         }
         return redirect()->route('admin.city.index');
     }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -103,7 +97,6 @@ class CityController extends Controller
         }
         return redirect()->route('admin.city.index');
     }
-
     /**
      * Remove the specified resource from storage.
      *
