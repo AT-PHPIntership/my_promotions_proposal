@@ -35,15 +35,13 @@ return [
     'copy_right'      => '©2016 All Rights Reserved.',
 
     'category' => 'Category',
-    'categoryname' => 'categoryname',
+    'category_name' => 'Category Name',
     'edit' => 'Edit',
     'delete' => 'Delete',
     'addcategory' => 'Add a new category',
     'city_name'       => 'City Name',
     'add_new'         => 'Add New',
     'no_data'         => 'No Data',
-
-
     'actived'         => 'Actived',
     'inactive'        => 'Inactive',
     'clickactive'     => 'Click to Active',

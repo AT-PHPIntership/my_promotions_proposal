@@ -1,5 +1,6 @@
 $('div.alert').delay(time).slideUp();
-$(document).ready(function(){
+
+$(document).ready(function () {
     $('#list_admins').DataTable();
     $('#list_cities').DataTable();
     $('#list_business').DataTable();
@@ -10,7 +11,7 @@ $(document).ready(function(){
         var url = $(this).attr("url");
         swal({
             title: messages.confirm_delete_title,
-            text: messages.confirm_delete_text + name ,
+            text: messages.confirm_delete_text + name,
             type: "warning",
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
@@ -23,21 +24,27 @@ $(document).ready(function(){
                 }
             })
             $.ajax({
+                url: url,
                 type: 'DELETE',
                 dataType: 'text',
                 success: function (result) {
-                    swal(
-                        result
-                    );
+                    swal({
+                        title: result,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: messages.ok,
+                    }, function () {
+                        location.reload();
+                    });
                 }
+
             });
         });
     });
-});
 
-$('a.active').click(function(){
-    var url = this.id;
-    swal({title: messages.business_active,
+    $('a.active').click(function () {
+        var url = this.id;
+        swal({
+            title: messages.business_active,
             text: messages.question_active,
             type: "info",
             showCancelButton: true,
@@ -54,12 +61,13 @@ $('a.active').click(function(){
                 url: url,
                 type: "PUT",
                 dataType: 'text',
-                success: function(result){
-                    if (result == messages.updated){
-                        location.reload();
+                success: function (result) {
+                    if (result == messages.updated) {
+                            location.reload();
                     }
                 }
             });
 
         });
+    });
 });

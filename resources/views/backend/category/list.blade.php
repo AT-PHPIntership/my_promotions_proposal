@@ -3,20 +3,17 @@
 @section('content')
     <!-- page content -->
     <div class="col-md-12 col-sm-12 col-xs-12">
-        @if (Session::has('error'))
-            <div class="alert error alert-danger"><b>{{ Session::get('error') }}</b></div>
-        @endif
         <div class="x_panel">
+            @if (count($categories) > 0)
             <div class="x_title">
-                <a href="{{ url('admin.category.create') }}" class="btn btn-primary"><i
-                            class="fa fa-pencil"></i> {!! trans('labels.addcategory') !!} </a>
+                <a href="{{ route('admin.category.create') }}" class="btn btn-primary"><i class="fa fa-pencil"></i> {!! trans('labels.addcategory') !!} </a>
                 <div class="clearfix"></div>
             </div>
             <div class="x_content">
                 <table id="list_categories" class="table table-striped table-bordered">
                     <thead>
                     <tr>
-                        <th>{!! trans('labels.categoryname') !!}</th>
+                        <th>{!! trans('labels.category_name') !!}</th>
                         <th>{!! trans('labels.action') !!}</th>
                     </tr>
                     </thead>
@@ -31,6 +28,9 @@
                     </tbody>
                 </table>
             </div>
+            @else
+                {!! trans('labels.no_data') !!}
+            @endif
         </div>
     </div>
     <!-- /page content -->
