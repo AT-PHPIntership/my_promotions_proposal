@@ -71,4 +71,38 @@ class CountyController extends Controller
         }
         return redirect()->route('admin.county.index');
     }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data['cities'] = $this->city->all(['id', 'name'])->lists('name', 'id');
+        $data['county'] = $this->county->find($id, ['id', 'name', 'city_id']);
+        return view('backend.county.edit')->with($data);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request request
+     * @param int                      $id      id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(CountyRequest $request, $id)
+    {
+        $data = $request->except('_method', '_token');
+        $result = $this->county->update($data, $id);
+        if ($result) {
+            flash(trans('messages.edit_county_successfull'), 'success');
+        } else {
+            flash(trans('messages.error_edit_county'), 'danger');
+        }
+        return redirect()->route('admin.county.index');
+    }
 }
