@@ -18,5 +18,7 @@ return [
     "question_active"          => "You want to active this business?",
     "updated"                  => "Updated",
     "edit_admin_successfull"   => "Admin was edit successfully!",
+    "edit_county_successfull"  => "County was edit successfully!",
     "error_edit_admin"         => "Wrong! couldn't edit admin user, please try again.",
+    "error_edit_county"        => "Wrong! couldn't edit county, please try again.",
 ];
