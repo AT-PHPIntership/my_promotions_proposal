@@ -2,30 +2,29 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Requests\Backend\CategoryRequest;
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Request;
-use App\Repositories\CategoryRepository as Category;
+use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+use App\Repositories\UserRepository as User;
+
+class UserController extends Controller
 {
     /**
-     * Category
-     *
-     * @var Category
-     */
-    private $category;
+    * User
+    *
+    * @var User
+    */
+    private $user;
 
     /**
-     * Create a new CategoryRepository instance.
-     *
-     * @param CategoryRepository $category category
-     *
-     * @return void
-     */
-    public function __construct(Category $category)
+    * Construct a UserController
+    *
+    * @param int $user user
+    */
+    public function __construct(User $user)
     {
-        $this->category = $category;
+        $this->user = $user;
     }
 
     /**
@@ -35,7 +34,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        $data['users'] = $this->user->all();
+        return view('backend.user.list')->with($data);
     }
 
     /**
@@ -45,36 +45,34 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $data['categories'] = $this->category->all(['id','name'])->lists('name','id');
-        return view('backend.category.create')->with($data);
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request request
-     *
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request)
+    public function store()
     {
-        $result = $this->category->create($request->all());
-        if ($result) {
-            flash(trans('messages.create_category_successfully'), 'success');
-        } else {
-            flash(trans('messages.error_create_category'), 'danger');
-        }
-        return redirect()->route('admin.category.index');
+        //
     }
 
     /**
      * Display the specified resource.
      *
+     * @param int $id id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        //
+        $data['user'] = $this->user->find($id);
+        if (empty($data['user'])) {
+            flash(trans('messages.error_not_found'), 'danger');
+            return back();
+        }
+        return view('backend.user.show')->with($data);
     }
 
     /**

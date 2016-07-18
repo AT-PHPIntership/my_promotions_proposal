@@ -1,5 +1,4 @@
 @extends('backend.layouts.master')
-@section('title', trans('labels.business'))
 @section('content')
     <div class="col-md-12 col-sm-12 col-xs-12 profile_left">
 
@@ -14,25 +13,25 @@
             </div>
             <!-- end of image cropping -->
             <div class="col-md-10">
-            <h3>{{ $business->name }}</h3>
+                <h3>{{ $user->business->name }}</h3>
 
                 <ul class="list-unstyled user_data">
-                    <li><i class="fa fa-envelope"></i> {{ $business->email }}
+                    <li><i class="fa fa-envelope"></i> {{ $user->business->email }}
                     </li>
 
                     <li>
-                        <i class="fa fa-phone"></i> {{ $business->phone }}
+                        <i class="fa fa-phone"></i> {{ $user->business->phone }}
                     </li>
 
                     <li>
-                        <p>{{ $business->description }} </p>
+                        <p>{{ $user->business->description }} </p>
                     </li>
 
                     <li>
-                        <i class="fa fa-calendar"></i> {{ $business->created_at }}
+                        <i class="fa fa-calendar"></i> {{ $user->business->created_at }}
                     </li>
 
-                </ul> 
+                </ul>
             </div>
         </div>
 

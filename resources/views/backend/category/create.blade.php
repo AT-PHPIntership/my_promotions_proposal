@@ -13,12 +13,7 @@
                     <div class="form-group">
                         {!! Form::label('name', trans('labels.categoryparent'), ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!} <span class="required">*</span>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <select name="parent_id" class="form-control">
-                                <option value="">----------Root-----------</option>
-                                @foreach($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                @endforeach
-                            </select>
+                            {!! Form::select('parent_id', $categories, null, ['placeholder' => trans('labels.root'),'class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="form-group">

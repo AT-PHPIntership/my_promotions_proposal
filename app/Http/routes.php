@@ -30,13 +30,20 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         // Business
         Route::resource('business', 'BusinessController');
 
+        // User
+        Route::resource('user', 'UserController');
+
         // Admin
         Route::resource('admins', 'AdminController');
         
         // City
         Route::resource('city', 'CityController');
 
+
         // Category
         Route::resource('category', 'CategoryController');
+
+        // County
+        Route::resource('county', 'CountyController');
     });
 });
