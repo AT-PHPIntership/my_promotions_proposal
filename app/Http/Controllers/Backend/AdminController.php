@@ -65,7 +65,6 @@ class AdminController extends Controller
             $data['image'] = time() . '_' . $img->getClientOriginalName();
             $img->move(public_path(config('upload.path')), $data['image']);
         }
-
         $data['password'] = bcrypt($data['password']);
 
         $result = $this->admin->create($data);
@@ -75,7 +74,64 @@ class AdminController extends Controller
         } else {
             flash(trans('messages.create_admin_successfull'), 'success');
         }
+        return redirect()->route('admin.admins.index');
+    }
 
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param int $id request update
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $data['admin'] = $this->admin->find($id, ['id', 'name', 'email', 'phone', 'address', 'image']);
+
+        if (empty($data['admin'])) {
+            flash(trans('messages.error_not_found'), 'danger');
+            return back();
+        }
+      
+        return view('backend.admin.edit')->with($data);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request request update
+     * @param int                      $id      id admin users
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(AdminRequest $request, $id)
+    {
+        $data = $request->except('_method', '_token');
+        $account = $this->admin->find($id, ['image']);
+
+        if ($request->hasFile('image')) {
+            if ($account->image) {
+                file::delete(config('upload.path') . $account->image);
+            }
+            $img = $request->file('image');
+            $data['image'] = time() . '_' . $img->getClientOriginalName();
+            $img->move(public_path(config('upload.path')), $data['image']);
+        }
+
+        if (!empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            $data = array_except($data, ['password']);
+        }
+      
+        $result = $this->admin->update($data, $id);
+
+        if (!$result) {
+            flash(trans('messages.error_edit_admin'), 'danger');
+        } else {
+            flash(trans('messages.edit_admin_successfull'), 'success');
+        }
+        
         return redirect()->route('admin.admins.index');
     }
 }

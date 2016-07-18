@@ -12,6 +12,7 @@
  */
 
 
+
 Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 
     // Login backend
@@ -25,6 +26,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         Route::get('dashboard', function () {
             return view('backend.dashboard.index');
         })->name('dashboard');
+        
+        // Business
+        Route::resource('business', 'BusinessController');
 
         // Admin
         Route::resource('admins', 'AdminController');

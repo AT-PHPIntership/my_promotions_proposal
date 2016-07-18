@@ -2,14 +2,21 @@
 
 return [
     'promotion_admin' => 'Promotion Admin',
-    'logout'          => 'Log Out',
-    'dasboard'        => 'Dasboard',
+    'logout'   => 'Log Out',
+    'dasboard' => 'Dasboard',
+    'business' => 'Business',
+    'business_name' => 'Business Name',
+    'manager' => 'Manager',
+    'status' => 'Status',
+    'action' => 'Action',
+    'view'   => 'View',
+    
     'city'            => 'City',
     'admin'           => 'Account',
-    'manager'         => 'Manager',
     'list'            => 'List',
     'id'              => 'ID',
     'name'            => 'Name',
+
     'create'          => 'Create New',
     'user_name'       => 'User Name',
     'email'           => 'Email',
@@ -20,17 +27,15 @@ return [
     'cancel'          => 'Cancel',
     'submit'          => 'Submit',
     'star'            => '*',
-    'action'          => 'Action',
+
     'promotion_login' => 'Promotion - Login',
     'login_form'      => 'Admin Login Form',
     'login_button'    => 'Log in',
     'my_promotion'    => 'My Promotion!',
     'copy_right'      => '©2016 All Rights Reserved.',
-    'create'          => 'Create',
+
     'city_name'       => 'City Name',
-    'star'            => '*',
-    'cancel'          => 'Cancel',
-    'submit'          => 'Submit',
+
     'add_new'         => 'Add New',
     'edit'            => 'Edit',
     'delete'          => 'Delete',
@@ -39,4 +44,8 @@ return [
     'category'        => 'Category',
     'categoryparent'  => 'Category Parent',
     'categoryname'    => 'Category Name',
+    
+    'actived'         => 'Actived',
+    'inactive'        => 'Inactive',
+    'clickactive'     => 'Click to Active',
 ];

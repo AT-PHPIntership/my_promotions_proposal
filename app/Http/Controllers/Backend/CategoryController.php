@@ -45,7 +45,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        $data['categories'] = $this->category->all(['id', 'name']);
+        $data['categories'] = $this->category->all(['name', 'id']);
         return view('backend.category.create')->with($data);
     }
 

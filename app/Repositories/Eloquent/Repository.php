@@ -57,7 +57,8 @@ abstract class Repository implements RepositoryInterface
      */
     public function all($columns = array('*'))
     {
-        return $this->model->get($columns);
+
+            return $this->model->get($columns);
     }
  
     /**
@@ -123,7 +124,7 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->model->find($id, $columns);
     }
- 
+
     /**
      * Funciton findBy key
      *
