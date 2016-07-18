@@ -22,7 +22,7 @@ class CountyController extends Controller
      * Create a new CountyRepository instance.
      *
      * @param CountyRepository $county county
-     * @param CountyRepository $city   city
+     * @param CityRepository $city   city
      *
      * @return void
      */
