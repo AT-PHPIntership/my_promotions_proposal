@@ -44,6 +44,8 @@ return [
     'user'            => 'User',
     'username'        => 'User Name',
     'city_name'       => 'City Name',
+    'county_name'     => 'County Name',
+
     'add_new'         => 'Add New',
     'no_data'         => 'No Data',
 
