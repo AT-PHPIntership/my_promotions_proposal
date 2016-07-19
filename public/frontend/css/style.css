@@ -1,0 +1,245 @@
+h1, h2, h3, h4, h5, h6,
+h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+	font-family: 'LeagueSpartan', Arial, Helvetica, sans-serif;
+	color: #242a33;
+	letter-spacing:0.16em;
+	text-transform: uppercase;
+	position: relative;
+	line-height: 1.7;
+	font-weight:bold;
+}
+h1, h2, h3 {margin: 1.0rem 0 .6rem;}
+h4, h5, h6 {margin: 3.8rem 0 .6rem;}
+
+.page-header h1 {
+    font-size: 2em;
+}
+
+a {
+	color:#c22828;
+	-webkit-transition: all .1s linear;
+	-o-transition: all .1s linear;
+	transition: all .1s linear;
+}
+
+a:hover, a:focus {
+	color: #6b6c6e;
+	text-decoration: none;
+}
+
+.post-card {
+	padding-bottom: 5.9rem;
+}
+
+.entry-thumb-link {
+	display: block;
+	position: relative;
+}
+
+@media (max-width: 768px) {
+	.post-card.small .entry-thumb-link {
+		max-width: 364px;
+		margin: 0 auto;
+	}
+}
+
+.entry-thumb {
+	position: relative;
+	z-index: 100;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: cover;
+}
+
+.entry-thumb-overlay {
+	position: absolute;
+	z-index: 101;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+}
+
+.post-card .entry-thumb-overlay {
+	background-color: #fff;
+	opacity: 0;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	-moz-opacity: 0;
+	-khtml-opacity: 0;
+
+	-webkit-transition: opacity .4s ease;
+	-o-transition: opacity .4s ease;
+	transition: opacity .4s ease;
+}
+
+.post-card .entry-thumb-overlay:hover {
+	opacity: 0.18;
+	-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=18)";
+	-moz-opacity: 0.18;
+	-khtml-opacity: 0.18;
+}
+
+.post-card .entry-title {
+	font-size: 1.8rem;
+	margin: 1.8rem 0 .8rem;
+}
+
+.post-card.small .entry-title {
+	font-size: 1.7rem;
+}
+
+.entry-meta {
+	font-family: 'HKGrotesk', Arial, Helvetica, sans-serif;
+	letter-spacing: 0.05em;
+}
+
+.post-card .entry-meta {
+	padding: 0.7rem 0 0 0;
+	font-size: 1.3rem;
+}
+
+.post-card.big .entry-meta {
+	padding-top: 1.9rem;
+}
+
+.post-card.big .entry-meta {
+	padding-top: 1.9rem;
+}
+
+@media (max-width: 767px) {
+	.post-card .entry-meta, .post-card.big .entry-meta {
+		padding-top: 0.8rem;
+	}
+}
+
+.post-card .entry-cats a {
+	color: #242a33;
+}
+
+.post-card .entry-cats:before {
+	display: inline-block;
+	content: "";
+	width: 1px;
+	height: .9rem;
+	background-color: #d3d3d3;
+	margin: 0 .8rem 0 .7rem;
+}
+
+.post-card .entry-excerpt {
+	font-size: 1.8rem;
+	color: #6b6c6e;
+	line-height: 1.4;
+}
+
+.post-card .entry-excerpt p:last-of-type {
+	margin-bottom: 0;
+}
+
+.post-card.big .more-link {
+	display: inline-block;
+	position: relative;
+	left: .2em;
+}
+
+.post-card .more-link-holder i.fa {
+	display: inline-block;
+	position: relative;
+	top: .1rem;
+	left:0;
+	padding-left: .3rem;
+	font-size: 1.5rem;
+	-webkit-transition: left .1s linear;
+	-o-transition: left .1s linear;
+	transition: left .1s linear;
+}
+
+.post-card .more-link:hover i.fa {
+	left:2px;
+}
+
+.post-card .more-link-holder:before {
+	content:"";
+	display: block;
+	height:1px;
+	width: 4.2rem;
+	background-color: #d3d3d3;
+	margin:1.4rem 0 1.0rem;
+}
+
+.post-card.big .more-link-holder:before {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.entry-full .row-made-a-table {
+	position: relative;
+	z-index: 102;
+}
+
+.entry-full .entry-title {
+	margin-top: 2rem;
+	color: #fff;
+	font-size: 4.8rem;
+	line-height: 1.5em;
+	letter-spacing: .2em
+}
+
+.single-post .entry-full .entry-title {
+	margin-top: 3.2rem;
+}
+
+@media (min-width: 500px) and (max-width: 991px) {
+	.entry-full .entry-title {
+		font-size: 3.6rem;
+	}
+}
+
+@media (max-width: 499px) {
+	.entry-full .entry-title {
+		font-size: 2.3rem;
+	}
+}
+
+.entry-full .entry-meta {
+	font-size: 1.6rem;
+	color: #d3d3d3;
+}
+
+@media (max-width: 499px) {
+	.entry-full .entry-meta {
+		font-size: 1.5rem;
+	}
+}
+
+.entry-full .entry-meta a {
+	color: #d9d9d9;
+}
+
+.entry-full .entry-cats:before {
+	display: inline-block;
+	content: "";
+	width: 1px;
+	height: 1.1rem;
+	background-color: #d9d9d9;
+	margin: 0 1.0rem;
+}
+
+@media (max-width: 767px) {
+	.entry-full .entry-cats:before {
+		display: block;
+		height: 1px;
+		background-color: transparent;
+	}
+}
+
+.footer-copy {
+    background: #3e3f3a;
+    border-color: #3e3f3a;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 1px;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0;
+}

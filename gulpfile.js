@@ -31,6 +31,15 @@ elixir(function(mix) {
     'public/backend/js/vendor.js',
     'vendor/bower_dl'
   );
+  
+  mix.scripts([
+
+      'jquery/dist/jquery.js',
+      'bootswatch-dist/js/bootstrap.js'
+    ],
+    'public/frontend/js/bower.js',
+    'vendor/bower_dl'
+);
 
   // Compile css
   mix.styles([
@@ -44,5 +53,12 @@ elixir(function(mix) {
   ], 
     'public/backend/css/vendor.css',
     'vendor/bower_dl'
+  );
+  
+  mix.styles([
+      'bootswatch-dist/css/bootstrap.min.css',
+  ], 
+  'public/frontend/css/bower.css',
+  'vendor/bower_dl'
   );
 });
