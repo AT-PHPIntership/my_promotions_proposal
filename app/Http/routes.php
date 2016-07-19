@@ -51,7 +51,7 @@ Route::get('/', function () {
 });
 
 Route::group(['namespace' => 'Frontend'], function () {
-    Route::get('user/register', ['as' => 'user.get.register', 'uses' => 'UserController@getRegister']);
+    Route::get('user/register', ['as' => 'user.get.register', 'uses' => 'AuthController@getRegister']);
 
-    Route::post('user/register', ['as' => 'user.post.register', 'uses' => 'UserController@postRegister']);
+    Route::post('user/register', ['as' => 'user.post.register', 'uses' => 'AuthController@postRegister']);
 });
