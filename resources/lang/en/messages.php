@@ -26,4 +26,7 @@ return [
     "edit_county_successfull"  => "County was edit successfully!",
     "error_edit_admin"         => "Wrong! couldn't edit admin user, please try again.",
     "error_edit_county"        => "Wrong! couldn't edit county, please try again.",
+    "not_allow_delete_county"  => "Wrong! You are not allowed to delete this county.",
+    "delete_county_successfull"=> "County was delete successfully!",
+    "error_delete_county"      => "Wrong! couldn't delete county, please try again.",
 ];
