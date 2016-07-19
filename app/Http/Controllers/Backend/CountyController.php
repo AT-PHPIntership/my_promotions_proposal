@@ -10,7 +10,7 @@ use App\Repositories\CityRepository as City;
 class CountyController extends Controller
 {
     /**
-     * County, City, Business
+     * County, City
      *
      * @var county
      * @var city
