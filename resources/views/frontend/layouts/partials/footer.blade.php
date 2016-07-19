@@ -17,3 +17,5 @@
     </div>
 </footer>
 <script src="{{ asset('assets/frontend/js/bower.js') }}"></script>
+</body>
+</html>
