@@ -28,7 +28,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="#">{!! trans('labels.sign_in') !!}</a></li>
-                <li><a href="#">{!! trans('labels.sign_up') !!}</a></li>
+                <li><a href="{!! route('user.get.register') !!}">{!! trans('labels.sign_up') !!}</a></li>
             </ul>
 
         </div>
