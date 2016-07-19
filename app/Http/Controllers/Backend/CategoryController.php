@@ -103,8 +103,10 @@ class CategoryController extends Controller
      */
     public function update(CategoryRequest $request, $id)
     {
-        //
         $data = $request->except('_method', '_token');
+        if ($data['parent_id'] == $id) {
+            $data['parent_id'] = config('app.parent');
+        }
         $result = $this->category->update($data, $id);
         if ($result) {
             flash(trans('messages.create_category_successfully'), 'success');
@@ -117,10 +119,23 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
+     * @param \Illuminate\Http\Request $id id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy()
+    public function destroy($id)
     {
-        //
+        $promotions = $this->category->find($id)->promotions;
+        $children = $this->category->find($id)->children;
+        if (count($promotions) > 0 || count($children) > 0) {
+            return trans('messages.not_allow_delete_category');
+        }
+        
+        $result = $this->category->delete($id);
+        if ($result) {
+            return trans('messages.delete_category_successfull');
+        } else {
+            return trans('messages.error_delete_category');
+        }
     }
 }

@@ -106,6 +106,11 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
+        $business = $this->county->find($id)->businesses;
+        if (count($business) > 0) {
+            return trans('messages.not_allow_delete_city');
+        }
+        
         $result = $this->city->delete($id);
         if ($result) {
             return trans('messages.delete_city_successfully');

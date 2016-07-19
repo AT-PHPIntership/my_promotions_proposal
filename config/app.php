@@ -130,7 +130,7 @@ return [
     |
     */
     'actived'  => 1,
-    'inactive' => 0,
+    'inactive', 'parent' => 0,
     'delay'    => 2500,
 
     'providers' => [
