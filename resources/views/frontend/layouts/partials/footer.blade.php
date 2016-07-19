@@ -3,15 +3,11 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-4">
-         &copy; 2016. All rights reserved.
+         {!! trans('labels.copy_right') !!}
         </div><!-- /.col-sm-4 -->
 
         <div class="col-sm-8 text-right">
-          <a href="#">License</a>
-          <span class="middot">·</span>
-          <a href="#">Terms</a>
-          <span class="middot">·</span>
-          <a href="#">Privacy Policy</a>
+          <a href="#">{!! trans('labels.promotions') !!}</a>
         </div><!-- /.col-sm-8 -->
       </div><!-- /.row -->
     </div>

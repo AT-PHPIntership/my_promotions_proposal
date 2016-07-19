@@ -1,4 +1,5 @@
 @extends('frontend.layouts.master')
+@section('title', trans('labels.promotions'))
 @section('content')
     <div class="container">
         <div class="page-header" id="banner">
@@ -21,7 +22,7 @@
                                 <h1 class="entry-title"><a href="#">How to Make a Long Layover Enjoyable</a></h1>
                                 <div class="entry-excerpt">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis amet porro velit rem necessitatibus eaque numquam, enim accusamus expedita modi ab nisi
-                                    </p><div class="more-link-holder"> <a href="#" class="more-link">read more <i class="fa fa-angle-double-right"></i></a></div>
+                                    </p><div class="more-link-holder"> <a href="#" class="more-link">{!! trans('labels.read_more') !!} <i class="fa fa-angle-double-right"></i></a></div>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +44,7 @@
                                 <h1 class="entry-title"><a href="#">How to Make a Long Layover Enjoyable</a></h1>
                                 <div class="entry-excerpt">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis amet porro velit rem necessitatibus eaque numquam, enim accusamus expedita modi ab nisi
-                                    </p><div class="more-link-holder"> <a href="#" class="more-link">read more <i class="fa fa-angle-double-right"></i></a></div>
+                                    </p><div class="more-link-holder"> <a href="#" class="more-link">{!! trans('labels.read_more') !!} <i class="fa fa-angle-double-right"></i></a></div>
                                 </div>
                             </div>
                         </div>
@@ -65,7 +66,7 @@
                                 <h1 class="entry-title"><a href="#">How to Make a Long Layover Enjoyable</a></h1>
                                 <div class="entry-excerpt">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis amet porro velit rem necessitatibus eaque numquam, enim accusamus expedita modi ab nisi
-                                    </p><div class="more-link-holder"> <a href="#" class="more-link">read more <i class="fa fa-angle-double-right"></i></a></div>
+                                    </p><div class="more-link-holder"> <a href="#" class="more-link">{!! trans('labels.read_more') !!} <i class="fa fa-angle-double-right"></i></a></div>
                                 </div>
                             </div>
                         </div>

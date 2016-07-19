@@ -60,7 +60,15 @@ return [
     'not_image'       => 'Not Image',
     'business_avatar' => 'Business Avatar',
 
+    'promotions'            =>  'Promotions',
     'promotion_featured'    =>  'Promotion Featured >>',
     'promotion_new'         =>  'Promotion New >>',
-    'promotion_follow'      =>  'Promotion Follow >>'
+    'promotion_follow'      =>  'Promotion Follow >>',
+    'sport'                 =>  'Sport',
+    'home'                  =>  'Home',
+    'sale'                  =>  'Sale',
+    'contact'               =>  'Contact',
+    'sign_in'               =>  'Sign In',
+    'sign_up'               =>  'Sign Up',
+    'read_more'             =>  'read more',
 ];
