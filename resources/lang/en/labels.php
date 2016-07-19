@@ -27,6 +27,7 @@ return [
     'image'           => 'Image',
     'cancel'          => 'Cancel',
     'submit'          => 'Submit',
+    'reset'           => 'Reset',
     'star'            => '*',
 
     'promotion_login' => 'Promotion - Login',

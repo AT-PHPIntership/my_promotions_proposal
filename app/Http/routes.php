@@ -49,3 +49,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 Route::get('/', function () {
     return view('frontend.dashboard.index');
 });
+
+Route::group(['namespace' => 'Frontend'], function () {
+    Route::get('user/register', ['as' => 'user.get.register', 'uses' => 'UserController@getRegister']);
+
+    Route::post('user/register', ['as' => 'user.post.register', 'uses' => 'UserController@postRegister']);
+});

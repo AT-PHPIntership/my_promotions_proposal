@@ -2,9 +2,11 @@
 
 return [
     "error_create_admin"       => "Wrong ! Could't created admin user, please try again.",
+    "error_create_user"        => "Wrong ! Could't created user, please try again.",
     "error_create_city"        => "Wrong ! Could't created city, please try again.",
     "error_create_category"    => "Wrong ! Could't created category, please try again.",
-    "create_admin_successfull" => "Admin ! user was created successfully!",
+    "create_admin_successfull" => "Admin user was created successfully!",
+    "create_user_successfull"  => "User was created successfully!",
     "error_delete_admin" => "Wrong! couldn't delete admin user, please try again.",
     "error_delete_admin_login" => "Wrong! You couldn't delete yourself.",
     "delete_admin_successfull" => "Admin user was Deleted successfully!",
