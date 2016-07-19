@@ -14,7 +14,7 @@
 		<div class="x_content">
 			<br />
                         
-                                {!! Form::open(array('route' => 'admin.city.index', 'id' => 'frmCreateCity', 'class' => 'form-horizontal form-label-left') ) !!}
+                                {!! Form::open(array('route' => 'admin.city.store', 'id' => 'frmCreateCity', 'class' => 'form-horizontal form-label-left') ) !!}
                                 
 				<div class="form-group">
                                         {!! Form::label('name', trans('labels.city_name') , array('class' => 'control-label col-md-3 col-sm-3 col-xs-12')) !!}<span class="required">{!! trans('labels.star') !!}</span>
