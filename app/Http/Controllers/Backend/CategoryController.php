@@ -78,21 +78,40 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
+     * @param \Illuminate\Http\Request $id id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-        //
+        $data['categories'] = $this->category->all(['name', 'id'])->lists('name', 'id');
+        $data['category'] = $this->category->find($id, ['name','parent_id', 'id']);
+        if (empty($data['categories'])) {
+            flash(trans('messages.error_not_found'), 'danger');
+            return back();
+        }
+        return view('backend.category.edit')->with($data);
     }
 
     /**
      * Update the specified resource in storage.
      *
+     * @param \Illuminate\Http\Request $request request
+     * @param \Illuminate\Http\Request $id      id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update(CategoryRequest $request, $id)
     {
         //
+        $data = $request->except('_method', '_token');
+        $result = $this->category->update($data, $id);
+        if ($result) {
+            flash(trans('messages.create_category_successfully'), 'success');
+        } else {
+            flash(trans('messages.error_create_category'), 'danger');
+        }
+        return redirect()->route('admin.category.index');
     }
 
     /**
