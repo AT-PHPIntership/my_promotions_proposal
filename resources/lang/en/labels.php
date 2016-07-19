@@ -22,6 +22,7 @@ return [
     'user_name'       => 'User Name',
     'email'           => 'Email',
     'password'        => 'Password',
+    'repassword'      => 'Re-Password',
     'phone'           => 'Phone',
     'address'         => 'Address',
     'image'           => 'Image',
