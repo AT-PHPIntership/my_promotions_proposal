@@ -34,7 +34,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         Route::resource('user', 'UserController');
 
         // Admin
-        Route::resource('admins', 'AdminController');
+        Route::resource('admins', 'AdminController', ['except' => ['show']]);
         
         // City
         Route::resource('city', 'CityController');
@@ -43,6 +43,6 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
         Route::resource('category', 'CategoryController');
 
         // County
-        Route::resource('county', 'CountyController');
+        Route::resource('county', 'CountyController', ['except' => ['show']]);
     });
 });
