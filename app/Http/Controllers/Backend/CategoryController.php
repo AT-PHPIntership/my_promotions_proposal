@@ -125,6 +125,11 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        $cate = $this->category->find($id);
+        if (empty($cate)) {
+            return trans('messages.error_not_found');
+        }
+        
         $promotions = $this->category->find($id)->promotions;
         $children = $this->category->find($id)->children;
         if (count($promotions) > 0 || count($children) > 0) {
