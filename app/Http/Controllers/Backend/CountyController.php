@@ -10,7 +10,7 @@ use App\Repositories\CityRepository as City;
 class CountyController extends Controller
 {
     /**
-     * County, City
+     * County, City, Business
      *
      * @var county
      * @var city
@@ -104,5 +104,27 @@ class CountyController extends Controller
             flash(trans('messages.error_edit_county'), 'danger');
         }
         return redirect()->route('admin.county.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param int $id id city
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $business = $this->county->find($id)->businesses;
+        if (count($business) > 0) {
+            return trans('messages.not_allow_delete_county');
+        }
+
+        $result = $this->county->delete($id);
+        if ($result) {
+            return trans('messages.delete_county_successfull');
+        } else {
+            return trans('messages.error_delete_county');
+        }
     }
 }
