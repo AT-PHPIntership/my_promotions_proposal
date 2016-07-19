@@ -6,7 +6,7 @@
 		<div class="row">
 			<legend>{!! trans('labels.sign_up') !!}</legend>
 
-			{!! Form::open(['route' => 'user.post.register', 'class' => 'form-horizontal', 'files' => true] ) !!}
+			{!! Form::open(['route' => 'user.post.register', 'class' => 'form-horizontal'] ) !!}
 
 			<div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
 				{!! Form::label('name', trans('labels.username'), ['class' => 'col-lg-2 control-label']) !!}
