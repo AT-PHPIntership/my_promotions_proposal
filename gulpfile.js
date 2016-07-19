@@ -37,7 +37,7 @@ elixir(function(mix) {
       'jquery/dist/jquery.js',
       'bootswatch-dist/js/bootstrap.js'
     ],
-    'public/assets/frontend/js/bower.js',
+    'public/frontend/js/bower.js',
     'vendor/bower_dl'
 );
 
@@ -58,7 +58,7 @@ elixir(function(mix) {
   mix.styles([
       'bootswatch-dist/css/bootstrap.min.css',
   ], 
-  'public/assets/frontend/css/bower.css', 
+  'public/frontend/css/bower.css',
   'vendor/bower_dl'
   );
 });

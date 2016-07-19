@@ -7,15 +7,15 @@
         </div><!-- /.col-sm-4 -->
 
         <div class="col-sm-8 text-right">
-          <a href="./license.html">License</a>
+          <a href="#">License</a>
           <span class="middot">·</span>
-          <a href="./terms.html">Terms</a>
+          <a href="#">Terms</a>
           <span class="middot">·</span>
-          <a href="./privacy.html">Privacy Policy</a>
+          <a href="#">Privacy Policy</a>
         </div><!-- /.col-sm-8 -->
       </div><!-- /.row -->
     </div>
 </footer>
-<script src="{{ asset('assets/frontend/js/bower.js') }}"></script>
+<script src="{{ asset('frontend/js/bower.js') }}"></script>
 </body>
 </html>
