@@ -49,3 +49,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 Route::get('/', function () {
     return view('frontend.dashboard.index');
 });
+
+Route::group(['namespace' => 'Frontend'], function () {
+
+    // Login user
+    Route::get('login', ['as' => 'getlogin', 'uses' => 'AuthController@getLogin']);
+    Route::post('login', ['as' => 'postlogin', 'uses' => 'AuthController@postLogin']);
+    Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@getLogout']);
+});
