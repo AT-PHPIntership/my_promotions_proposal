@@ -60,6 +60,15 @@ Route::group(['namespace' => 'Frontend'], function () {
     // Register user
     Route::get('user/register', ['as' => 'user.get.register', 'uses' => 'AuthController@getRegister']);
     Route::post('user/register', ['as' => 'user.post.register', 'uses' => 'AuthController@postRegister']);
+    
+    // Forget password
+    // Password reset link request routes...
+    Route::get('password/email', ['as' => 'getemail', 'uses' => 'PasswordController@getEmail']);
+    Route::post('password/email', ['as' => 'postemail', 'uses' => 'PasswordController@postEmail']);
+
+    // Password reset routes...
+    Route::get('password/reset/{token}', ['as' => 'getreset', 'uses' => 'PasswordController@getReset']);
+    Route::post('password/reset', ['as' => 'postreset', 'uses' => 'PasswordController@postReset']);
 
     Route::group(['middleware' => ['auth']], function () {
 

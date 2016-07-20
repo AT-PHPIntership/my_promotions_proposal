@@ -1,7 +1,6 @@
 @extends('frontend.layouts.master')
 @section('title', trans('labels.promotions'))
 @section('content')
-
 	<legend>{!! trans('labels.sign_up') !!}</legend>
 
 	{!! Form::open(['route' => 'user.post.register', 'class' => 'form-horizontal'] ) !!}
@@ -10,11 +9,11 @@
 		{!! Form::label('name', trans('labels.username'), ['class' => 'col-lg-2 control-label']) !!}
 		<div class="col-lg-10">
 			{!! Form::text('name', old('name'), ['class' => 'form-control']) !!}
-			
+
 			@if ($errors->has('name'))
-			<span class="help-block">
-				<strong>{{ $errors->first('name') }}</strong>
-			</span>
+				<span class="help-block">
+					<strong>{{ $errors->first('name') }}</strong>
+				</span>
 			@endif
 		</div>
 	</div>
@@ -23,11 +22,11 @@
 		{!! Form::label('email', trans('labels.email'), ['class' => 'col-lg-2 control-label']) !!}
 		<div class="col-lg-10">
 			{!! Form::text('email', old('email'), ['class' => 'form-control']) !!}
-			
+
 			@if ($errors->has('email'))
-			<span class="help-block">
-				<strong>{{ $errors->first('email') }}</strong>
-			</span>
+				<span class="help-block">
+					<strong>{{ $errors->first('email') }}</strong>
+				</span>
 			@endif
 		</div>
 	</div>
@@ -36,11 +35,11 @@
 		{!! Form::label('password', trans('labels.password'), ['class' => 'col-lg-2 control-label']) !!}
 		<div class="col-lg-10">
 			{!! Form::password('password', ['class' => 'form-control']) !!}
-			
+
 			@if ($errors->has('password'))
-			<span class="help-block">
-				<strong>{{ $errors->first('password') }}</strong>
-			</span>
+				<span class="help-block">
+					<strong>{{ $errors->first('password') }}</strong>
+				</span>
 			@endif
 		</div>
 	</div>
@@ -49,11 +48,11 @@
 		{!! Form::label('password-confirm', trans('labels.repassword'), ['class' => 'col-lg-2 control-label']) !!}
 		<div class="col-lg-10">
 			{!! Form::password('password_confirmation', ['class' => 'form-control', 'id' => 'password-confirm']) !!}
-			
+
 			@if ($errors->has('password_confirmation'))
-			<span class="help-block">
-				<strong>{{ $errors->first('password_confirmation') }}</strong>
-			</span>
+				<span class="help-block">
+					<strong>{{ $errors->first('password_confirmation') }}</strong>
+				</span>
 			@endif
 		</div>
 	</div>

@@ -1,5 +1,4 @@
 @include('frontend.layouts.partials.header')
-
 @include('frontend.layouts.partials.navigation')
 
 <div class="container">
