@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Auth\PasswordController as Password;
 
-class PasswordController extends Password {
+class PasswordController extends Password
+{
 
     /**
      * Where to redirect login.
@@ -26,6 +27,4 @@ class PasswordController extends Password {
      * @var string
      */
     protected $resetView = 'frontend.layouts.reset';
-    
-    
 }
