@@ -7,30 +7,26 @@
                     <fieldset>
                         <legend>{!! trans('labels.sign_in') !!}</legend>
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <div class="form-group">
-                                {!! Form::label('name', trans('labels.email'), ['class' => 'col-lg-2 control-label']) !!}
-                                <div class="col-lg-10">
-                                    {!! Form::text('email', old('email'), ['placeholder' => 'Email','class' => 'form-control']) !!}
-                                    @if ($errors->has('email'))
-                                        <span class="help-block">
-                                          <strong>{{ $errors->first('email') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
+                            {!! Form::label('name', trans('labels.email'), ['class' => 'col-lg-2 control-label']) !!}
+                            <div class="col-lg-10">
+                                {!! Form::text('email', old('email'), ['placeholder' => 'Email','class' => 'form-control']) !!}
+                                @if ($errors->has('email'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('email') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <div class="form-group">
-                                {!! Form::label('name', trans('labels.password'), ['class' => 'col-lg-2 control-label']) !!}
-                                <div class="col-lg-10">
-                                    {!! Form::password('password', ['placeholder' => 'Password','class' => 'form-control']) !!}
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                          <strong>{{ $errors->first('password') }}</strong>
-                                        </span>
-                                    @endif
-                                </div>
+                            {!! Form::label('name', trans('labels.password'), ['class' => 'col-lg-2 control-label']) !!}
+                            <div class="col-lg-10">
+                                {!! Form::password('password', ['placeholder' => 'Password','class' => 'form-control']) !!}
+                                @if ($errors->has('password'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('password') }}</strong>
+                                    </span>
+                                @endif
                             </div>
                         </div>
 
