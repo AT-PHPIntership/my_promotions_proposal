@@ -48,7 +48,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Backend'], function () {
 //------------------Frontend-----------------------------
 Route::get('/', function () {
     return view('frontend.dashboard.index');
-});
+})->name('dashboard');
+
+View::share('frontend.layouts.partials.side_bar', ['sidebar']);
 
 Route::group(['namespace' => 'Frontend'], function () {
 
@@ -58,4 +60,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@getLogout']);
     Route::get('user/register', ['as' => 'user.get.register', 'uses' => 'AuthController@getRegister']);
     Route::post('user/register', ['as' => 'user.post.register', 'uses' => 'AuthController@postRegister']);
+    
+    // Category
+    Route::resource('/', 'CategoryController');
 });
