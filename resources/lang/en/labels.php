@@ -76,4 +76,5 @@ return [
     'reset_password'        =>  'Reset Password',
     'forget_password'       =>  'Forget Password',
     'profile'               =>  'Profile',
+    'update_profile'        =>  'Update Profile',
 ];

@@ -33,4 +33,6 @@ return [
     "delete_category_successfull"=> "Category was delete successfully!",
     "error_delete_county"      => "Wrong! couldn't delete county, please try again.",
     "error_delete_category"      => "Wrong! couldn't delete category, please try again.",
+    "error_update_profile"      => "Wrong! couldn't update profile, please try again.",
+    "update_profile_successfull"  => "Your profile was updated successfully!",
 ];
