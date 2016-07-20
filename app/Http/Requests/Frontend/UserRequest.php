@@ -29,6 +29,5 @@ class UserRequest extends Request
             'phone'    => 'numeric|min:9',
             'image'    => 'required|image',
         ];
-        
     }
 }

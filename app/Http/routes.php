@@ -66,6 +66,5 @@ Route::group(['namespace' => 'Frontend'], function () {
         // Update profile user
         Route::get('user/profile/{profile}', ['as' => 'user.get.profile', 'uses' => 'UserController@getProfile']);
         Route::post('user/profile/{profile}', ['as' => 'user.post.profile', 'uses' => 'UserController@postProfile']);
-
     });
 });
