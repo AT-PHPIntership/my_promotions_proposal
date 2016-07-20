@@ -73,5 +73,6 @@ return [
     'sign_in'               =>  'Sign In',
     'sign_up'               =>  'Sign Up',
     'profile'               =>  'Profile',
+    'update_profile'        =>  'Update profile',
     'logout'                =>  'Logout',
 ];
