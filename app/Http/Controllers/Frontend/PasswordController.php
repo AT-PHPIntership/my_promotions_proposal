@@ -28,4 +28,3 @@ class PasswordController extends Password
      */
     protected $resetView = 'frontend.auth.passwords.reset';
 }
-
