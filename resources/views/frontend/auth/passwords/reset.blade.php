@@ -1,5 +1,6 @@
 @extends('frontend.layouts.master')
 @section('content')
+    <legend>{!! trans('labels.reset_password') !!}</legend>
     {!! Form::open(['route' => 'postreset', 'class' => 'form-horizontal'] ) !!}
     {!! Form::hidden('token', $token) !!}
     <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
@@ -8,19 +9,19 @@
             {!! Form::text('email', $email, ['class' => 'form-control']) !!}
             @if ($errors->has('email'))
                 <span class="help-block">
-                                <strong>{{ $errors->first('email') }}</strong>
-                            </span>
+                    <strong>{{ $errors->first('email') }}</strong>
+                </span>
             @endif
         </div>
     </div>
-    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+    <div class="form-group{{ $errors->has('passwords') ? ' has-error' : '' }}">
         {!! Form::label('password', trans('labels.password'), ['class' => 'col-lg-2 control-label']) !!}
         <div class="col-lg-10">
             {!! Form::password('password',['class' => 'form-control']) !!}
             @if ($errors->has('password'))
                 <span class="help-block">
-                                <strong>{{ $errors->first('password') }}</strong>
-                            </span>
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
             @endif
         </div>
     </div>
@@ -30,8 +31,8 @@
             {!! Form::password('password_confirmation', ['class' => 'form-control']) !!}
             @if ($errors->has('password_confirmation'))
                 <span class="help-block">
-                                <strong>{{ $errors->first('password_confirmation') }}</strong>
-                            </span>
+                    <strong>{{ $errors->first('password_confirmation') }}</strong>
+                </span>
             @endif
         </div>
     </div>

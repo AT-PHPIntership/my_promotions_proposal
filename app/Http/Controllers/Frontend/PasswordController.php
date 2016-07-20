@@ -19,12 +19,13 @@ class PasswordController extends Password
      *
      * @var string
      */
-    protected $linkRequestView = 'frontend.layouts.email';
+    protected $linkRequestView = 'frontend.auth.passwords.email';
 
     /**
      * Where to store view reset password.
      *
      * @var string
      */
-    protected $resetView = 'frontend.layouts.reset';
+    protected $resetView = 'frontend.auth.passwords.reset';
 }
+

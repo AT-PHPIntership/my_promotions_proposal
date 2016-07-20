@@ -75,4 +75,5 @@ return [
     'read_more'             =>  'read more',
     'reset_password'        =>  'Reset Password',
     'forget_password'       =>  'Forget Password',
+    'profile'               =>  'Profile',
 ];

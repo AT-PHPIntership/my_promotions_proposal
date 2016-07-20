@@ -14,7 +14,7 @@
                 <div class="form-group">
                         {!! Form::label('name', trans('labels.category_parent'), ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) !!} <span class="required">*</span>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            {!! Form::select('parent_id', $categories, $category->parent_id, ['class' => 'form-control']) !!}
+                            {!! Form::select('parent_id', $categories, $category->parent_id, ['placeholder' => 'Root','class' => 'form-control']) !!}
                         </div>
                     </div>
                     <div class="form-group">
