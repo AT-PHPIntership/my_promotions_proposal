@@ -32,6 +32,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
+//        $promotions = $this->category->find(14)->promotions;
+//        dd($promotions);
         $data['categories'] = $this->category->all();
         return view('backend.category.list')->with($data);
     }
@@ -130,12 +132,16 @@ class CategoryController extends Controller
             return trans('messages.error_not_found');
         }
         
-        $promotions = $this->category->find($id)->promotions;
-        $children = $this->category->find($id)->children;
-        if (count($promotions) > 0 || count($children) > 0) {
+        $promotions = $this->category->find($id)->promotions->count();
+        if ($promotions > 0) {
             return trans('messages.not_allow_delete_category');
         }
         
+        $children = $this->category->find($id)->children->count();
+        if ($children > 0) {
+            return trans('messages.not_allow_delete_category');
+        }
+
         $result = $this->category->delete($id);
         if ($result) {
             return trans('messages.delete_category_successfull');

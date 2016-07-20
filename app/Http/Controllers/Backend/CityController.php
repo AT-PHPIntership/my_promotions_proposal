@@ -13,6 +13,7 @@ class CityController extends Controller
      * @var City
      */
     private $city;
+    
     /**
      * Create a new CityRepository instance.
      *
@@ -24,6 +25,7 @@ class CityController extends Controller
     {
         $this->city = $city;
     }
+    
     /**
      * Display a listing of the resource.
      *
@@ -80,6 +82,7 @@ class CityController extends Controller
         }
         return redirect()->route('admin.city.index');
     }
+    
     /**
      * Store a newly created resource in storage.
      *
@@ -97,6 +100,7 @@ class CityController extends Controller
         }
         return redirect()->route('admin.city.index');
     }
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -106,9 +110,14 @@ class CityController extends Controller
      */
     public function destroy($id)
     {
-        $business = $this->county->find($id)->businesses;
+        $cate = $this->city->find($id);
+        if (empty($cate)) {
+            return trans('messages.error_not_found');
+        }
+        
+        $business = $this->city->find($id)->businesses;
         if (count($business) > 0) {
-            return trans('messages.not_allow_delete_city');
+            return trans('messages.not_allow_delete_county');
         }
         
         $result = $this->city->delete($id);

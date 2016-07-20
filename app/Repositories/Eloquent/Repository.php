@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
@@ -132,7 +133,7 @@ abstract class Repository implements RepositoryInterface
     {
         return $this->model->where($attribute, '=', $value)->first($columns);
     }
-
+    
     /**
      * Function makeModel
      *
