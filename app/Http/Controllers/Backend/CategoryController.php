@@ -135,13 +135,13 @@ class CategoryController extends Controller
         $promotions = $this->category->find($id)->promotions->count();
         if ($promotions > 0) {
             return trans('messages.not_allow_delete_category');
+        } else {
+            $children = $this->category->find($id)->children->count();
+            if ($children > 0) {
+                return trans('messages.not_allow_delete_category');
+            }
         }
         
-        $children = $this->category->find($id)->children->count();
-        if ($children > 0) {
-            return trans('messages.not_allow_delete_category');
-        }
-
         $result = $this->category->delete($id);
         if ($result) {
             return trans('messages.delete_category_successfull');
