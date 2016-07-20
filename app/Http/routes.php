@@ -54,4 +54,9 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('user/register', ['as' => 'user.get.register', 'uses' => 'AuthController@getRegister']);
 
     Route::post('user/register', ['as' => 'user.post.register', 'uses' => 'AuthController@postRegister']);
+
+    // Forget password
+    // Password reset link request routes...
+    Route::get('password/email', 'PasswordController@getEmail');
+    Route::post('password/email', 'PasswordController@postEmail');
 });
