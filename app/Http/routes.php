@@ -51,7 +51,11 @@ Route::get('/', function () {
 });
 
 Route::group(['namespace' => 'Frontend'], function () {
-    Route::get('user/register', ['as' => 'user.get.register', 'uses' => 'AuthController@getRegister']);
 
+    // Login user
+    Route::get('login', ['as' => 'getlogin', 'uses' => 'AuthController@getLogin']);
+    Route::post('login', ['as' => 'postlogin', 'uses' => 'AuthController@postLogin']);
+    Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@getLogout']);
+    Route::get('user/register', ['as' => 'user.get.register', 'uses' => 'AuthController@getRegister']);
     Route::post('user/register', ['as' => 'user.post.register', 'uses' => 'AuthController@postRegister']);
 });

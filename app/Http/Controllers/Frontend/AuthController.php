@@ -8,6 +8,13 @@ class AuthController extends Auth
 {
 
     /**
+     * Where to redirect users after login / registration.
+     *
+     * @var string
+     */
+    protected $loginView = 'frontend.layouts.login';
+
+    /**
      * Where to store view register.
      *
      * @var string
