@@ -54,7 +54,7 @@ class Category extends Model
      */
     public function getCategoryParentAttribute()
     {
-        if ($this->parent_id == 0) {
+        if ($this->parent_id == config('app.parent')) {
             return trans('labels.root');
         } else {
             return $this->parent['name'];
