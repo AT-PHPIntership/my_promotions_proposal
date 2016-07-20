@@ -28,7 +28,7 @@
         </div>
         <div class="form-group">
             <div class="col-md-10 col-sm-12 col-xs-12 col-md-offset-2">
-                <a href="{{ route('getemail') }}">Forget password!</a>
+                <a href="{{ route('getemail') }}">{!! trans('labels.forget_password') !!}</a>
             </div>
         </div>
         <div class="form-group">
