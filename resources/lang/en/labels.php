@@ -73,4 +73,6 @@ return [
     'sign_in'               =>  'Sign In',
     'sign_up'               =>  'Sign Up',
     'read_more'             =>  'read more',
+    'reset_password'        =>  'Reset Password',
+    'forget_password'       =>  'Forget Password',
 ];

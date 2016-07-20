@@ -57,6 +57,10 @@ Route::group(['namespace' => 'Frontend'], function () {
 
     // Forget password
     // Password reset link request routes...
-    Route::get('password/email', 'PasswordController@getEmail');
-    Route::post('password/email', 'PasswordController@postEmail');
+    Route::get('password/email', ['as' => 'getemail', 'uses' => 'PasswordController@getEmail']);
+    Route::post('password/email', ['as' => 'postemail', 'uses' => 'PasswordController@postEmail']);
+
+    // Password reset routes...
+    Route::get('password/reset/{token}', ['as' => 'getreset', 'uses' => 'PasswordController@getReset']);
+    Route::post('password/reset', ['as' => 'postreset', 'uses' => 'PasswordController@postReset']);
 });

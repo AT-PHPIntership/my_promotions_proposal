@@ -6,5 +6,26 @@ use App\Http\Controllers\Auth\PasswordController as Password;
 
 class PasswordController extends Password {
 
-    protected $linkRequestView = 'frontend.layouts.password';
+    /**
+     * Where to redirect login.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/login';
+
+    /**
+     * Where to store view send mail forget password.
+     *
+     * @var string
+     */
+    protected $linkRequestView = 'frontend.layouts.email';
+
+    /**
+     * Where to store view reset password.
+     *
+     * @var string
+     */
+    protected $resetView = 'frontend.layouts.reset';
+    
+    
 }
