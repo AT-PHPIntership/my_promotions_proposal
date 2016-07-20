@@ -9,7 +9,7 @@ use File;
 
 class UserController extends Controller
 {
-	/**
+    /**
      * User
      *
      * @var user
@@ -37,13 +37,13 @@ class UserController extends Controller
      */
     public function getProfile($id)
     {
-    	$data['user'] = $this->user->find($id);
+        $data['user'] = $this->user->find($id);
 
-    	if (empty($data['user'])) {
-    		flash(trans('messages.error_not_found'), 'danger');
+        if (empty($data['user'])) {
+            flash(trans('messages.error_not_found'), 'danger');
             return back();
-    	}
-    	return view('frontend.user.profile')->with($data);
+        }
+        return view('frontend.user.profile')->with($data);
     }
 
     /**

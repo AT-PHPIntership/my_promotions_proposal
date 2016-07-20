@@ -61,7 +61,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('user/register', ['as' => 'user.get.register', 'uses' => 'AuthController@getRegister']);
     Route::post('user/register', ['as' => 'user.post.register', 'uses' => 'AuthController@postRegister']);
 
-    Route::group(['middleware' => ['auth']], function() {
+    Route::group(['middleware' => ['auth']], function () {
 
         // Update profile user
         Route::get('user/profile/{profile}', ['as' => 'user.get.profile', 'uses' => 'UserController@getProfile']);
