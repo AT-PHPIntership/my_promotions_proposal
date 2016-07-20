@@ -72,5 +72,6 @@ return [
     'contact'               =>  'Contact',
     'sign_in'               =>  'Sign In',
     'sign_up'               =>  'Sign Up',
-    'reset'                 =>  'Reset',
+    'profile'               =>  'Profile',
+    'logout'                =>  'Logout',
 ];

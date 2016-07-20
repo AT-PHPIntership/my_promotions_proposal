@@ -31,9 +31,9 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="#">{!! trans('labels.profile') !!}</a></li>
                             <li class="divider"></li>
-                            <li><a href="{{ route('logout') }}">Logout</a></li>
+                            <li><a href="{{ route('logout') }}">{!! trans('labels.logout') !!}</a></li>
                         </ul>
                     </li>
                 @else
