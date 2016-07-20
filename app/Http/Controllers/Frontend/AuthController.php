@@ -13,4 +13,11 @@ class AuthController extends Auth
      * @var string
      */
     protected $loginView = 'frontend.layouts.login';
+
+    /**
+     * Where to store view register.
+     *
+     * @var string
+     */
+    protected $registerView = "frontend.layouts.register";
 }

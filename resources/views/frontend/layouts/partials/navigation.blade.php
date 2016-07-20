@@ -28,17 +28,17 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Profile</a></li>
-                        <li class="divider"></li>
-                        <li><a href="{{ route('logout') }}">Logout</a></li>
-                    </ul>
-                </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Profile</a></li>
+                            <li class="divider"></li>
+                            <li><a href="{{ route('logout') }}">Logout</a></li>
+                        </ul>
+                    </li>
                 @else
                     <li><a href="{{ route('getlogin') }}">{!! trans('labels.sign_in') !!}</a></li>
-                    <li><a href="#">{!! trans('labels.sign_up') !!}</a></li>
+                    <li><a href="{{ route('user.get.register') }}">{!! trans('labels.sign_up') !!}</a></li>
                 @endif
             </ul>
 
