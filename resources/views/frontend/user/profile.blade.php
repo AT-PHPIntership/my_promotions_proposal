@@ -3,7 +3,6 @@
 @section('content')
 
 	<legend>{!! trans('labels.update_profile') !!}</legend>
-
 	{!! Form::open(['route' => ['user.post.profile', Auth::user()->id], 'files' => true, 'class' => 'form-horizontal form-label-left', 'id' => 'frmUpdateProfile']) !!}
 	<div class="form-group">
 		{{ Form::label('name', trans('labels.user_name'), ['class' => 'control-label col-md-3 col-sm-3 col-xs-12']) }}
