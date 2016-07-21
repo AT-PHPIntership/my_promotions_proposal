@@ -59,3 +59,8 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('user/register', ['as' => 'user.get.register', 'uses' => 'AuthController@getRegister']);
     Route::post('user/register', ['as' => 'user.post.register', 'uses' => 'AuthController@postRegister']);
 });
+
+view()->composer('frontend.layouts.partials.side_bar', function($view) {
+    $categories = App\Models\Category::all();
+    $view->with(['categories'=> $categories]);
+});

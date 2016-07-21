@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use App\Repositories\CategoryRepository as Category;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,9 +13,9 @@ class AppServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot(Category $category)
+    public function boot()
     {
-        view()->share('categories', $category->all());
+        //
     }
 
     /**
