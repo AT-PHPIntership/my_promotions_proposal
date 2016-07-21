@@ -32,8 +32,6 @@ class CategoryController extends Controller
      */
     public function index()
     {
-//        $promotions = $this->category->find(14)->promotions;
-//        dd($promotions);
         $data['categories'] = $this->category->all();
         return view('backend.category.list')->with($data);
     }
