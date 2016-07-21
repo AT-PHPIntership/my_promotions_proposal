@@ -13,5 +13,8 @@
     </div>
 </footer>
 <script src="{{ asset('frontend/js/bower.js') }}"></script>
+<!-- Laravel Javascript Validation -->
+<script src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+@yield('script')
 </body>
 </html>

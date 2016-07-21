@@ -8,4 +8,5 @@ return [
     |
     */
     'path' => 'backend/upload/',
+    'user_path' => 'frontend/upload/',
 ];
