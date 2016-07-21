@@ -77,8 +77,8 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::post('user/profile/{profile}', ['as' => 'user.post.profile', 'uses' => 'UserController@postProfile']);
     });
 });
-
-view()->composer('frontend.layouts.partials.side_bar', function ($view) {
-    $categories = App\Models\Category::all();
-    $view->with(['categories'=> $categories]);
-});
+    //Category list all frontend
+    view()->composer('frontend.layouts.partials.side_bar', function ($view) {
+        $categories = App\Models\Category::all();
+        $view->with(['categories'=> $categories]);
+    });
