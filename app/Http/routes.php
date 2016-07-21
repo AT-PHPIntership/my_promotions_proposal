@@ -75,5 +75,21 @@ Route::group(['namespace' => 'Frontend'], function () {
         // Update profile user
         Route::get('user/profile/{profile}', ['as' => 'user.get.profile', 'uses' => 'UserController@getProfile']);
         Route::post('user/profile/{profile}', ['as' => 'user.post.profile', 'uses' => 'UserController@postProfile']);
+
+        // Register business
+        Route::get('business/register', ['as' => 'business.get.register', 'uses' => 'BusinessController@getRegister']);
+
+        // API
+        Route::group(['prefix' => 'api/v1'], function() {
+
+            // Get cities
+            Route::post('city', ['as' => 'get.ciy', 'uses' => 'CityController@getCity']);
+
+            // Get counties
+            Route::post('county', ['as' => 'get.county', 'uses' => 'CityController@getCounty']);
+
+            // Post register business
+            Route::post('business/register', ['as' => 'business.post.register', 'uses' => 'BusinessController@postRegister']);
+        });
     });
 });
