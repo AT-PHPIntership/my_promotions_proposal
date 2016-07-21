@@ -7,38 +7,28 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\BusinessRepository as Business;
-use App\Repositories\BusinessCityReponsitory as BusinessCity;
-use App\Repositories\BusinessCountyReponsitory as BusinessCounty;
 use File;
 use Auth;
 
 class BusinessController extends Controller
 {
     /**
-     * Business, BusinessCity, BusinessCounty
+     * Business
      *
      * @var business
-     * @var businessCity
-     * @var busiCounty
      */
     private $business;
-    private $businessCity;
-    private $businessCounty;
 
     /**
      * Function construct of BusinessController
      *
      * @param BusinessRepository        $business       business
-     * @param BusinessCityReponsitory   $businessCity   businessCity
-     * @param BusinessCountyReponsitory $businessCounty businessCounty
      *
      * @return void
      */
-    public function __construct(Business $business, BusinessCity $businessCity, BusinessCounty $businessCounty)
+    public function __construct(Business $business)
     {
         $this->business = $business;
-        $this->businessCity = $businessCity;
-        $this->businessCounty = $businessCounty;
     }
 
     /**
@@ -61,8 +51,9 @@ class BusinessController extends Controller
 
         $data['user_id'] = Auth::user()->id;
 
-        // Save business
+        // Save business & city
         $result = $this->business->create($data);
+        $result->cities()->attach($request->city);
 
         if (!$result) {
             return response()->json([
@@ -70,47 +61,17 @@ class BusinessController extends Controller
                 ], 500);
         }
         
-        // Save city and counties
-        $store = $this->storeCityCounty($request->city, $request->county, $result->id);
+        // Save county
+        $resultCounty = $result->counties()->sync($request->county);
 
-        if (!$store) {
+        if (!$resultCounty) {
             return response()->json([
                 'message' => trans('messages.error_update_profile')
-                ], 500);
+            ], 500);
         }
 
         return response()->json([
             'message' => trans('messages.update_profile_successfull')
-            ], 200);
-    }
-
-    /**
-     * Store a newly created city and counties.
-     *
-     * @param Array   $city     city
-     * @param Array   $counties counties
-     * @param Integer $business business
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function storeCityCounty($city, $counties, $business)
-    {
-        // save city
-        $resultCity = $this->businessCity->create(['business_id' => $business, 'city_id' => $city]);
-
-        if (!$resultCity) {
-            return false;
-        }
-
-        // save counties
-        foreach ($counties as $county) {
-            $resultCounty = $this->businessCounty->create(['business_id' => $business, 'county_id' => $county]);
-
-            if (!$resultCounty) {
-                return false;
-            }
-        }
-
-        return true;
+        ], 200);
     }
 }
