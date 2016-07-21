@@ -23,7 +23,7 @@ class CityController extends Controller
     /**
      * Function construct of CityController
      *
-     * @param CityRepository $city city
+     * @param CityRepository   $city   city
      * @param CountyRepository $county county
      *
      * @return void
@@ -34,22 +34,34 @@ class CityController extends Controller
         $this->county = $county;
     }
 
+    /**
+     * Get a listing of cities.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getCity()
     {
-    	$cities = $this->city->all(['id', 'name']);
-    	return response()->json([
+        $cities = $this->city->all(['id', 'name']);
+        return response()->json([
             'cities' => $cities
-    	], 200);
+        ], 200);
     }
 
+    /**
+     * Get a listing of counties with city.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function getCounty(Request $request)
     {
-    	$city = $this->city->find($request->id, ['id', 'name']);
+        $city = $this->city->find($request->id, ['id', 'name']);
 
         if ($city) {
-        	return response()->json([
+            return response()->json([
                 'counties' => $city->counties
-        	], 200);
+            ], 200);
         }
 
         return response()->json([

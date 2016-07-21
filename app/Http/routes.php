@@ -77,10 +77,12 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::post('user/profile/{profile}', ['as' => 'user.post.profile', 'uses' => 'UserController@postProfile']);
 
         // Register business
-        Route::get('business/register', ['as' => 'business.get.register', 'uses' => 'BusinessController@getRegister']);
+        Route::get('business/register', function () {
+            return view('frontend.business.register');
+        })->name('business.get.register');
 
         // API
-        Route::group(['prefix' => 'api/v1'], function() {
+        Route::group(['prefix' => 'api/v1'], function () {
 
             // Get cities
             Route::post('city', ['as' => 'get.ciy', 'uses' => 'CityController@getCity']);

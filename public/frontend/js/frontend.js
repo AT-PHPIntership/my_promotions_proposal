@@ -74,7 +74,6 @@ $(document).ready(function() {
 		    processData: false,
 		    contentType: false,
 			success: function(result) {
-				console.log(result);
 				$('#message').html(result.message);
 	            $('#message').css('display', 'block');
 			},
