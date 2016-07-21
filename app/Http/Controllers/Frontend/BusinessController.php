@@ -22,7 +22,7 @@ class BusinessController extends Controller
     /**
      * Function construct of BusinessController
      *
-     * @param BusinessRepository        $business       business
+     * @param BusinessRepository $business business
      *
      * @return void
      */
