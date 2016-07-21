@@ -9,8 +9,6 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
-     * @param App $category category
-     *
      * @return void
      */
     public function boot()
