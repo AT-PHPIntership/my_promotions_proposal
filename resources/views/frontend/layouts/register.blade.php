@@ -68,8 +68,6 @@
 			</div>
 
 			{!! Form::close() !!}
-                        
-                        @include('frontend.layouts.partials.side_bar')
 		</div>
 	</div>
 </div>
