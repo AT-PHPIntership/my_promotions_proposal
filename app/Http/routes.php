@@ -58,5 +58,4 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('logout', ['as' => 'logout', 'uses' => 'AuthController@getLogout']);
     Route::get('user/register', ['as' => 'user.get.register', 'uses' => 'AuthController@getRegister']);
     Route::post('user/register', ['as' => 'user.post.register', 'uses' => 'AuthController@postRegister']);
-    
 });

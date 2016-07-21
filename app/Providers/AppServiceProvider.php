@@ -11,11 +11,13 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
+     * @param App $category category
+     *
      * @return void
      */
     public function boot(Category $category)
     {
-       view()->share('categories', $category->all());
+        view()->share('categories', $category->all());
     }
 
     /**
