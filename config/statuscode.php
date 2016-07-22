@@ -1,5 +1,4 @@
 <?php
-
 return [
 	'unprocessable_entity' => 422,
 	'internal_server_error' => 500,

@@ -16,7 +16,8 @@ class PromotionsTableSeeder extends Seeder
         for($i = 0; $i < 20; $i++){
             DB::table('promotions')->insert([
                 'title'      => $faker->name,
-                'content'    => $faker->realText(rand(10, 20)),
+                'intro'      => $faker->realText(rand(20, 30)),
+                'content'    => $faker->realText(rand(50, 70)),
                 'image'      => '',
                 'expired_day'=> Carbon\Carbon::now(),
                 'business_id'=> rand(1, 20),

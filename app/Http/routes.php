@@ -94,6 +94,12 @@ Route::group(['namespace' => 'Frontend'], function () {
             Route::post('business/register', ['as' => 'business.post.register', 'uses' => 'BusinessController@postRegister']);
         });
     });
+
+    Route::group(['prefix' => 'api/v1'], function () {
+
+        // API List new promotion
+        Route::post('promotion', ['as' => 'postpromotion', 'uses' =>'PromotionController@postPromotion']);
+    });
 });
 
 //Category list all frontend
