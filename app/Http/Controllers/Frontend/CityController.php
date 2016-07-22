@@ -44,7 +44,7 @@ class CityController extends Controller
         $cities = $this->city->all(['id', 'name']);
         return response()->json([
             'cities' => $cities
-        ], 200);
+        ], config('statuscode.ok'));
     }
 
     /**
@@ -61,11 +61,11 @@ class CityController extends Controller
         if ($city) {
             return response()->json([
                 'counties' => $city->counties
-            ], 200);
+            ], config('statuscode.ok'));
         }
 
         return response()->json([
             'error' => trans('messages.error_not_found')
-        ], 404);
+        ], config('statuscode.not_found'));
     }
 }

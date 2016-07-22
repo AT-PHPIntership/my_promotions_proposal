@@ -52,7 +52,7 @@ class BusinessController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json($validator->errors()->all(), 422);
+            return response()->json($validator->errors()->all(), config('statuscode.unprocessable_entity'));
         }
 
         $data = $request->all();
@@ -73,7 +73,7 @@ class BusinessController extends Controller
         if (!$result) {
             return response()->json([
                 'message' => trans('messages.error_update_profile')
-                ], 500);
+                ], config('statuscode.internal_server_error'));
         }
         
         // Save county
@@ -82,11 +82,11 @@ class BusinessController extends Controller
         if (!$resultCounty) {
             return response()->json([
                 'message' => trans('messages.error_update_profile')
-            ], 500);
+            ], config('statuscode.internal_server_error'));
         }
 
         return response()->json([
             'message' => trans('messages.update_profile_successfull')
-        ], 200);
+        ], config('statuscode.ok'));
     }
 }
