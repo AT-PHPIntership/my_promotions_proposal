@@ -76,4 +76,10 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('user/profile/{profile}', ['as' => 'user.get.profile', 'uses' => 'UserController@getProfile']);
         Route::post('user/profile/{profile}', ['as' => 'user.post.profile', 'uses' => 'UserController@postProfile']);
     });
+
+    Route::group(['prefix' => 'api/v1'], function () {
+
+        // API List new promotion
+        Route::post('promotion', ['as' => 'postpromotion', 'uses' =>'PromotionController@postPromotion']);
+    });
 });
