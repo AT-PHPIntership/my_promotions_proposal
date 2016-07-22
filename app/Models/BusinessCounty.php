@@ -14,6 +14,6 @@ class BusinessCounty extends Model
     * @var array
     */
     protected $fillable = [
-        'businessi_id', 'county_id'
+        'business_id', 'county_id'
     ];
 }

@@ -13,3 +13,5 @@ test:
     - ./vendor/bin/phpmd app text phpmd.xml
     # phpunit
     - ./vendor/bin/phpunit
+    #migrate database
+    - php artisan migrate

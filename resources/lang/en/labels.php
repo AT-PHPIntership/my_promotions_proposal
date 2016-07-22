@@ -77,4 +77,8 @@ return [
     'forget_password'       =>  'Forget Password',
     'profile'               =>  'Profile',
     'update_profile'        =>  'Update Profile',
+    'register_business'     =>  'Register business',
+    'description'           =>  'Description',
+    'logo'                  =>  'Logo',
+    'choose_city'           =>  'Please choose City',
 ];
