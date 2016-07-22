@@ -15,6 +15,7 @@
 <script src="{{ asset('frontend/js/bower.js') }}"></script>
 <!-- Laravel Javascript Validation -->
 <script src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+<script src="{{ asset('frontend/js/frontend.js') }}"></script>
 @yield('script')
 </body>
 </html>
