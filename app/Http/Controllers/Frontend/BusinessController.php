@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\BusinessRepository as Business;
+use Validator;
 use File;
 use Auth;
 
@@ -40,6 +41,20 @@ class BusinessController extends Controller
      */
     public function postRegister(Request $request)
     {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|unique:businesses,name',
+            'email' => 'required|email',
+            'phone' => 'required|numeric|min:9',
+            'logo' => 'required|image',
+            'description' => 'required',
+            'city' => 'required',
+            'county' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->all(), 422);
+        }
+
         $data = $request->all();
 
         // Save image if has

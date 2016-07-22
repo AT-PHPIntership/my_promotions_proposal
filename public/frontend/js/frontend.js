@@ -79,7 +79,11 @@ $(document).ready(function() {
 			},
 			error: function (data) {
 	            var err = eval("(" + data.responseText + ")");
-	            $('#message').html(err.message);
+	            var $errors = $('#errors');
+	            $errors.empty();
+				$.each (err, function(key, item) {
+					$errors.append(('<li>' + item + '</li>'));
+				});
 	            $('#message').css('display', 'block');
 			}
 		});

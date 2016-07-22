@@ -2,7 +2,11 @@
 @section('title', trans('labels.promotions'))
 @section('content')
 	<legend>{!! trans('labels.register_business') !!}</legend>
-	<div id="message" class="alert alert-danger"></div>
+
+    <div class="alert alert-danger" id="message" style="display: none">
+        <ul id="errors"></ul>
+    </div>
+
 	{!! Form::open(['class' => 'form-horizontal', 'id' => 'frmRegBusiness', 'files' => true] ) !!}
 	
 	{!! Form::hidden('route', route('business.post.register'), ['id' => 'route_create']) !!}
