@@ -44,6 +44,19 @@ class PromotionController extends Controller
             );
         }
         
-        return response()->json($promotions, config('statuscode.ok'));
+    return response()->json($promotions, config('statuscode.ok'));
+    }
+    /**
+     * Get a listing of new promotion.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postPromotion()
+    {
+        $promotions = $this->promotion->all()->take(config('define.paginate'));
+        $promotions->load('business', 'category');
+        return response()->json([
+            'promotions' => $promotions
+        ], config('statuscode.ok'));
     }
 }

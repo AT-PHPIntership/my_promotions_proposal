@@ -16,8 +16,9 @@
 <!-- Laravel Javascript Validation -->
 <script src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
 <script>
-    var labels= {!! json_encode( trans('labels') ) !!}
+    var labels= {!! json_encode( trans('labels') ) !!};
     var image= {!! json_encode( config('define.image_default') ) !!};
+    var increment= {!! json_encode( config('define.increment') ) !!};
 </script>
 @yield('script')
 </body>

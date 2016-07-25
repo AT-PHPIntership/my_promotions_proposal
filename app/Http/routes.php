@@ -105,6 +105,9 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::group(['prefix' => 'api/v1'], function () {
         // post show promotion
         Route::post('promotion/{id}', ['as' => 'promotion.post.show', 'uses' => 'PromotionController@postShow']);
+
+        // API List new promotion
+        Route::post('promotion', ['as' => 'postpromotion', 'uses' =>'PromotionController@postPromotion']);
     });
 });
 
