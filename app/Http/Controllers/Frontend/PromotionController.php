@@ -44,7 +44,7 @@ class PromotionController extends Controller
             );
         }
         
-    return response()->json($promotions, config('statuscode.ok'));
+        return response()->json($promotions, config('statuscode.ok'));
     }
     /**
      * Get a listing of new promotion.
