@@ -99,6 +99,9 @@ Route::group(['namespace' => 'Frontend'], function () {
 
         // API List new promotion
         Route::post('promotion', ['as' => 'postpromotion', 'uses' =>'PromotionController@postPromotion']);
+
+        //  API List featured promotion
+        Route::post('promotion/featured', ['as' => 'promotionfeatured', 'uses' => 'PromotionController@postRatingPromotion']);
     });
 });
 
