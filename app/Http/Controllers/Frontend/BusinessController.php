@@ -66,9 +66,8 @@ class BusinessController extends Controller
 
         $data['user_id'] = Auth::user()->id;
 
-        // Save business & city
+        // Save business
         $result = $this->business->create($data);
-        $result->cities()->attach($request->city);
 
         if (!$result) {
             return response()->json([
@@ -76,8 +75,19 @@ class BusinessController extends Controller
                 ], config('statuscode.internal_server_error'));
         }
         
-        // Save county
-        $resultCounty = $result->counties()->sync($request->county);
+        // Save cities
+        $cities = array_unique($request->city);
+        $resultCity = $result->cities()->sync($cities);
+
+        if (!$resultCity) {
+            return response()->json([
+                'message' => trans('messages.error_update_profile')
+            ], config('statuscode.internal_server_error'));
+        }
+
+        // Save counties
+        $counties = array_unique($request->county);
+        $resultCounty = $result->counties()->sync($counties);
 
         if (!$resultCounty) {
             return response()->json([
