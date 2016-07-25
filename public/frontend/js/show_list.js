@@ -9,7 +9,7 @@ $(document).ready(function() {
 
     $.ajax({
         url: url_new_pormotion,
-        type: 'post',
+        type: 'POST',
         dataType: 'json',
         success: function(result) {
             var div = $('#list_new_promotions');
@@ -42,7 +42,7 @@ $(document).ready(function() {
 
     $.ajax({
         url: url_rating_promtion,
-        type: 'post',
+        type: 'POST',
         dataType: 'json',
         success: function(result) {
             console.log(result);
