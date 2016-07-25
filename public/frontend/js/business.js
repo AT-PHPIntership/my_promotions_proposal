@@ -1,46 +1,33 @@
 $(document).ready(function() {
+	// url get city.
 	var url_cities = $('#cities').val();
 
-	$.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
-    })
-	$.ajax({
-		url: url_cities, 
-		type: 'post', 
-		dataType: 'json',
-		success: function(result) {
-			var $city = $('#city');
-			$city.empty();
+	// run get city when load page.
+	window.onload = function() {
+		get_city(url_cities);
+	};
 
-			$.each (result.cities, function(key, item) {
-				$city.append($('<option>',
-				{
-					value: item.id,
-					text : item.name
-				}));
-			});
-		}
-	});
+	// even when selected in element select city. 
+	$( 'select[id^="city"]' ).change(function () {
+		// get address num
+		var address_num = get_num_id($(this));
 
-	$( "#city" ).change(function () {
-		$("#city option:selected").each(function() {
+		// find option selected in element select.
+		$(this).find(":selected").each(function() {
+			// url get county with id city.
 			var url_counties = $('#counties').val();
-			$.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                }
-            })
-			$.ajax({
+			// get id city in value of option selected.
+			var id_city = $(this).prop('value');
+
+            $.ajax({
+            	headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
 				url: url_counties, 
 				type: 'post', 
-				data: {
-					'id': $(this).prop('value')
-				},
+				data: {'id': id_city},
 				dataType: 'json',
 				success: function(result) {
-					var $county = $('#county');
+					// get element select county in address.
+					var $county = $('#county'+address_num);
 					$county.empty();
 					$.each (result.counties, function(key, item) {
 						$county.append($('<option>',
@@ -56,14 +43,15 @@ $(document).ready(function() {
 		            $('#message').css('display', 'block');
 				}
 			})
-		});
-	}).change();;
+		})
+	}).change();
 
 	$('#frmRegBusiness').submit(function(event) {
+		// form don't submit.
 		event.preventDefault();
-
+		// get data in form.
 		var formData = new FormData(this);
-       
+        // url register.
 		var url_register = $('#route_create').val();
 		
 		$.ajax({
@@ -88,4 +76,57 @@ $(document).ready(function() {
 			}
 		});
 	});
+
+	// Add element div address.
+	$('#add').click(function(){
+		// get div address last.
+		var $div = $('div[id^="address"]:last');
+		// create number for element div address.
+		var num = get_num_id($div) + increment;
+		// create new div address with address number.
+		var $address = $div.clone(true, true).prop('id', 'address'+num );
+		// set id of select city with number.
+		$address.find('select[id^="city"]').prop('id', 'city'+num);
+		// set id of select county with number, and clear county.
+		$address.find('select[id^="county"]').prop('id', 'county'+num).empty();
+		// append div address.
+		$div.after( $address );
+		// set value for element select city.
+		get_city(url_cities);
+	});
 });
+
+// function get city.
+function get_city(url_cities) {
+	$.ajax({
+		headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+		url: url_cities, 
+		type: 'post', 
+		dataType: 'json',
+		success: function(result) {
+			// get element div address last.
+			var $div = $('div[id^="address"]:last');
+			// get number of addrerss.
+			var num = get_num_id($div);
+			// get element select city of div address.
+			var $city = $('#city'+num);
+			// clear select city.
+			$city.empty();
+
+			$.each (result.cities, function(key, item) {
+				$city.append($('<option>',
+				{
+					value: item.id,
+					text : item.name
+				}));
+			});
+			// set value default of select city is null.
+			$city.val(null);
+		}
+	});
+}
+
+// function get number in atribute id of element.
+function get_num_id(element){
+	return parseInt( element.prop("id").match(/\d+/g) );
+}
