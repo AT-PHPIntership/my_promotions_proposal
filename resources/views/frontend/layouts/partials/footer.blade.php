@@ -15,6 +15,11 @@
 <script src="{{ asset('frontend/js/bower.js') }}"></script>
 <!-- Laravel Javascript Validation -->
 <script src="{{ asset('vendor/jsvalidation/js/jsvalidation.js')}}"></script>
+<script>
+    var labels= {!! json_encode( trans('labels') ) !!}
+    var image= {!! json_encode( config('define.image_default') ) !!};
+</script>
 @yield('script')
 </body>
 </html>
+    

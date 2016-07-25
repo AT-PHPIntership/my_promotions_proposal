@@ -80,7 +80,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('business/register', function () {
             return view('frontend.business.register');
         })->name('business.get.register');
-
+        
+        
+        
         // API
         Route::group(['prefix' => 'api/v1'], function () {
 
@@ -94,10 +96,20 @@ Route::group(['namespace' => 'Frontend'], function () {
             Route::post('business/register', ['as' => 'business.post.register', 'uses' => 'BusinessController@postRegister']);
         });
     });
+    
+    // Show promotion
+    Route::get('promotion/{id}', function ($id) {
+        return view('frontend.promotion.show')->with('id', $id);
+    })->name('promotion.get.show');
+            
+    Route::group(['prefix' => 'api/v1'], function () {
+        // post show promotion
+        Route::post('promotion/{id}', ['as' => 'promotion.post.show', 'uses' => 'PromotionController@postShow']);
+    });
 });
 
-//Category list all frontend
-view()->composer('frontend.layouts.partials.side_bar', function ($view) {
-    $categories = App\Models\Category::all();
-    $view->with(['categories'=> $categories]);
-});
+        //Category list all frontend
+        view()->composer('frontend.layouts.partials.side_bar', function ($view) {
+            $categories = App\Models\Category::all();
+            $view->with(['categories'=> $categories]);
+        });
