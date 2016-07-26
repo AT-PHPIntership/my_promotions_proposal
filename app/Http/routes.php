@@ -101,29 +101,28 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('promotion/{id}', function ($id) {
         return view('frontend.promotion.show')->with('id', $id);
     })->name('promotion.get.show');
-
     // List promotions of category
     Route::get('category/{id}', function ($id) {
         return view('frontend.category.list_promotions')->with('id', $id);
     })->name('get.category');
 
     Route::group(['prefix' => 'api/v1'], function () {
-        // post show promotion
-        Route::get('promotion/{id}', ['as' => 'promotion.post.show', 'uses' => 'PromotionController@postShow']);
-
         // API List new promotion
         Route::post('promotion', ['as' => 'postpromotion', 'uses' =>'PromotionController@postPromotion']);
 
-        //  API List featured promotion
+        // API List featured promotion
         Route::post('promotion/featured', ['as' => 'promotionfeatured', 'uses' => 'PromotionController@postRatingPromotion']);
         
         // API get list promotion of category
         Route::post('category/{id}', ['as' => 'post.category', 'uses' =>'CategoryController@postCategory']);
+        
+        // API post show promotion
+        Route::post('promotion/{id}', ['as' => 'promotion.post.show', 'uses' => 'PromotionController@postShow']);
     });
 });
 
-        //Category list all frontend
-        view()->composer('frontend.layouts.partials.side_bar', function ($view) {
-            $categories = App\Models\Category::all();
-            $view->with(['categories'=> $categories]);
-        });
+//Category list all frontend
+view()->composer('frontend.layouts.partials.side_bar', function ($view) {
+    $categories = App\Models\Category::all();
+    $view->with(['categories'=> $categories]);
+});
