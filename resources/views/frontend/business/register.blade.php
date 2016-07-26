@@ -47,15 +47,19 @@
 		</div>
 	</div>
 	
-	<div class="form-group">
+	<button type="button" class="btn btn-success btn-md" id="add">
+	  <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add
+	</button>
+
+	<div class="form-group" id="address1">
 		{!! Form::label('city', trans('labels.city'), ['class' => 'col-lg-2 control-label']) !!}
 		<div class="col-lg-10">
-			{!! Form::select('city', [], null, ['class' => 'form-control']) !!}
+			{!! Form::select('city[]', [], null, ['class' => 'form-control', 'id' => 'city1']) !!}
 			<br>
 		</div>
 		{!! Form::label('county', trans('labels.county'), ['class' => 'col-lg-2 control-label']) !!}
 		<div class="col-lg-10">
-			{!! Form::select('county[]', [], null, ['placeholder' => trans('labels.choose_city'), 'multiple' => 'multiple', 'size' => 5, 'class' => 'form-control', 'id' => 'county']) !!} 		
+			{!! Form::select('county[]', [], null, ['multiple' => 'multiple', 'size' => 5, 'class' => 'form-control', 'id' => 'county1']) !!} 		
 		</div>
 	</div>
 

@@ -45,8 +45,6 @@ $(document).ready(function() {
         type: 'POST',
         dataType: 'json',
         success: function(result) {
-        //    console.log(JSON.stringify(result));
-            console.log(result);
             var div = $('#list_featured_promotion');
             var index = order_number;
             $.each(result.rating_promotions, function(key, value) {
@@ -64,8 +62,3 @@ $(document).ready(function() {
 
     });
 });
-
-// function get number in atribute id of element.
-function get_num_id(element){
-    return parseInt( element.prop("id").match(/\d+/g) );
-}

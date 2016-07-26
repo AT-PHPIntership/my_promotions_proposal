@@ -251,3 +251,7 @@ a:hover, a:focus {
     text-transform: uppercase;
     margin: 0;
 }
+
+#promotion0 {
+	display: none;
+}
