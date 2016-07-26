@@ -61,6 +61,24 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
     }
 
     /**
+     * Eager load the relationships for the models.
+     *
+     * @param array          $models    models
+     * @param string         $table     table
+     * @param string         $attribute attribute
+     * @param integer/string $value     value
+     * @param integer        $perPage   perPage
+     *
+     * @return array
+     */
+    public function eagerLoadRelations(array $models, $table, $attribute, $value, $perPage = 15)
+    {
+        return $this->model->with($models)->whereHas($table, function ($query) use ($value, $attribute) {
+            $query->where($attribute, $value);
+        })->paginate($perPage);
+    }
+
+    /**
      * Function makeModel
      *
      * @return \Illuminate\Database\Eloquent\Builder

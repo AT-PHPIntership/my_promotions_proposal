@@ -33,8 +33,8 @@
 				</div>
 			</div>
 		</div>
-		<ul class="pagination" id="hidden">
-			<li><a href="#">1</a></li>
+		<ul class="pagination">
+			<li id="page0"><a href="#"></a></li>
 		</ul>
 		{{-- class="active" --}}
 	</div>

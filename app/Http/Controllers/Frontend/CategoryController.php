@@ -3,8 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\PromotionRepository as Promotion;
-use App\Models\Promotion as MD;
+use App\Repositories\RelationRepository as Promotion;
 
 class CategoryController extends Controller
 {
@@ -18,7 +17,7 @@ class CategoryController extends Controller
     /**
      * Function construct of CategoryController
      *
-     * @param PromotionRepository $promotion promotion
+     * @param RelationRepository $promotion promotion
      *
      * @return void
      */
@@ -36,10 +35,7 @@ class CategoryController extends Controller
      */
     public function postCategory($id)
     {
-        $promotions = MD::with('business', 'category')
-        ->whereHas('category', function($query) use ($id) {
-            $query->where('id', $id);
-        })->paginate(2);
+        $promotions = $this->promotion->eagerLoadRelations(['business', 'category'], 'category', 'id', $id, config('define.paginate'));
 
         if (count($promotions) == 0) {
             return response()->json(
@@ -49,19 +45,5 @@ class CategoryController extends Controller
         }
         
         return response()->json($promotions, config('statuscode.ok'));
-
-        // $promotions = $this->promotion->findBy('category_id', $id, ['*'], 2);
-
-        // if (count($promotions) == 0) {
-        //     return response()->json(
-        //         ['error' => trans('messages.error_not_found')],
-        //         config('statuscode.not_found')
-        //     );
-        // }
-
-        // return response()->json([
-        //     'paginate' => $promotions,
-        //     'data' => $promotions->load('business', 'category')
-        // ], config('statuscode.ok'));
     }
 }
