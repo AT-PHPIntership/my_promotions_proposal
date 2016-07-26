@@ -18,6 +18,7 @@
 <script>
     var labels= {!! json_encode( trans('labels') ) !!}
     var image= {!! json_encode( config('define.image_default') ) !!};
+    var increment= {!! json_encode( config('define.increment') ) !!};
 </script>
 @yield('script')
 </body>
