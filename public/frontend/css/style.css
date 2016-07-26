@@ -215,6 +215,10 @@ a:hover, a:focus {
 	}
 }
 
+.promotion-items{
+	display: none;
+}
+
 .entry-full .entry-meta a {
 	color: #d9d9d9;
 }
@@ -246,4 +250,8 @@ a:hover, a:focus {
     color: #fff;
     text-transform: uppercase;
     margin: 0;
+}
+
+#promotion0 {
+	display: none;
 }
