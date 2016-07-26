@@ -71,7 +71,9 @@ class PromotionController extends Controller
      */
     public function postRatingPromotion()
     {
+        
         $ratings = $this->rating->groupBy('sum(score) as total_score, promotion_id', 'promotion_id', 'total_score')->take(config('define.paginate'));
+        
         foreach ($ratings as $value) {
             $data[] = $this->promotion->find($value->promotion_id)->load('business', 'category');
         }

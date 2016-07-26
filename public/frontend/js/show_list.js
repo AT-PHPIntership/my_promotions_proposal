@@ -41,12 +41,14 @@ $(document).ready(function() {
     });
 
     $.ajax({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        },
         url: url_rating_promtion,
         type: 'POST',
         dataType: 'json',
         success: function(result) {
             console.log(result);
-            alert('aaaa');
             var div = $('#list_featured_promotion');
             var index = order_number;
             $.each(result.rating_promotions, function(key, value) {

@@ -100,7 +100,7 @@ Route::group(['namespace' => 'Frontend'], function () {
     // Show promotion
     Route::get('promotion/{id}', function ($id) {
         return view('frontend.promotion.show')->with('id', $id);
-    })->name('promotion.get.show');          
+    })->name('promotion.get.show');
 
     // List promotions of category
     Route::get('category/{id}', function ($id) {
@@ -109,7 +109,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
     Route::group(['prefix' => 'api/v1'], function () {
         // post show promotion
-        Route::post('promotion/{id}', ['as' => 'promotion.post.show', 'uses' => 'PromotionController@postShow']);
+        Route::get('promotion/{id}', ['as' => 'promotion.post.show', 'uses' => 'PromotionController@postShow']);
 
         // API List new promotion
         Route::post('promotion', ['as' => 'postpromotion', 'uses' =>'PromotionController@postPromotion']);

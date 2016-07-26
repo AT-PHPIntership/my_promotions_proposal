@@ -1,12 +1,8 @@
 $(document).ready(function () {
     var url_promoion = $('#show_promotion').val();
-    $.ajaxSetup({
-    });
-
     $.ajax({
-        headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
         url: url_promoion,
-        type: 'POST',
+        type: 'get',
         dataType: 'json',
         success: function (result) {
                 var promotion = $('#promotions');
