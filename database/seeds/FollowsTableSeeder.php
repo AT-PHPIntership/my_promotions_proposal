@@ -13,7 +13,7 @@ class FollowsTableSeeder extends Seeder
     {
         $faker = Faker\Factory::create();
                
-        for ($i = 0; $i < 200; $i++){
+        for ($i = 0; $i < 40; $i++){
             DB::table('follows')->insert([
                 'user_id'     => rand(1, 20),
                 'business_id' => rand(1, 20),

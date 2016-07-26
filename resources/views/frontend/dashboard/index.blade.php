@@ -32,7 +32,8 @@
 
                     </div>
                     <h1><a href="#">{!! trans('labels.promotion_follow') !!}</a></h1>
-                    <div class="row">
+                    <input type="hidden" id="follow_promotion" value="{{ route('promotionfollow') }}" />
+                    <div id="list_follow_promotion" class="row">
                         <div class="col-lg-3 col-md-4 col-sm-7">
                             <div class="post-card">
                                 <a href="#" class="entry-thumb-link">

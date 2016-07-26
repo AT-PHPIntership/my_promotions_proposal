@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var url_new_pormotion = $('#new_promotion').val();
-    var url_rating_promtion = $('#featured_promotion').val();
+    var url_rating_promotion = $('#featured_promotion').val();
+    var url_follow_promotion = $('#follow_promotion').val();
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -41,7 +42,7 @@ $(document).ready(function() {
     });
 
     $.ajax({
-        url: url_rating_promtion,
+        url: url_rating_promotion,
         type: 'POST',
         dataType: 'json',
         success: function(result) {
@@ -59,6 +60,28 @@ $(document).ready(function() {
                 div.append(promotion_item);
             });
         }
+    });
 
+    $.ajax({
+        url: url_follow_promotion,
+        type: 'POST',
+        dataType: 'json',
+        success: function(result) {
+            //console.log(result);
+            // var div = $('#list_follow_promotion');
+            // var index = order_number;
+            $.each(result, function(key, value) {
+                console.log(value.promotions);
+                // index++;
+                // var promotion_item = $("div .promotion-items").clone().attr("id", "promotion_" + index);
+                // promotion_item.removeClass("promotion-items");
+                // promotion_item.find(".img-promotion").attr("src", image);
+                // promotion_item.find(".business-promotion").text(value.business.name);
+                // promotion_item.find(".category-promotion").text(value.category.name);
+                // promotion_item.find(".title-promotion").text(value.title);
+                // promotion_item.find(".intro-promotion > p").text(value.intro);
+                // div.append(promotion_item);
+            });
+        }
     });
 });

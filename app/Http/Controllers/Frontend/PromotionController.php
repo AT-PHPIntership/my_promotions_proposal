@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\PromotionRepository as Promotion;
 use App\Repositories\RatingRepository as Rating;
+use App\Repositories\UserRepository as User;
+use Auth;
 
 class PromotionController extends Controller
 {
@@ -18,6 +20,7 @@ class PromotionController extends Controller
      */
     private $promotion;
     private $rating;
+    private $user;
 
     /**
      * Function construct of PromotionController
@@ -27,10 +30,11 @@ class PromotionController extends Controller
      *
      * @return void
      */
-    public function __construct(Promotion $promotion, Rating $rating)
+    public function __construct(Promotion $promotion, Rating $rating,User $user)
     {
         $this->promotion = $promotion;
         $this->rating = $rating;
+        $this->user = $user;
     }
 
     /**
@@ -61,5 +65,12 @@ class PromotionController extends Controller
         return response()->json([
             'rating_promotions' => $data
         ], config('statuscode.ok'));
+    }
+
+    public function postFollowPromotion()
+    {
+        $follows = $this->user->find(Auth::user()->id)->followedBusinesses->load('promotions');
+        //$follows
+        return response()->json($follows, config('statuscode.ok'));
     }
 }
