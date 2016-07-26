@@ -45,33 +45,27 @@ $(document).ready(function() {
         type: 'POST',
         dataType: 'json',
         success: function(result) {
+        //    console.log(JSON.stringify(result));
             console.log(result);
             var div = $('#list_featured_promotion');
+            var index = order_number;
             $.each(result.rating_promotions, function(key, value) {
-                var promotion = '<div class="col-lg-3 col-md-4 col-sm-7">' +
-                    '<div class="post-card">' +
-                    '<a href="#" class="entry-thumb-link">' +
-                    '<div class="entry-thumb-wrapper">' +
-                    '<img src="'+ image +'">' +
-                    '<div class="entry-thumb-overlay"></div>' +
-                    '</div>' +
-                    '</a>' +
-                    '<div class="entry-meta">' +
-                    '<span class="entry-date"><a href="#" id="'+ value.business.id +'">'+ value.business.name +'</a></span>' +
-                    '<span class="entry-cats"><a href="#" rel="category tag" id="'+ value.category.id +'">'+ value.category.name +'</a></span>' +
-                    '</div>' +
-                    '<h1 class="entry-title"><a href="#" id='+ value.id +'>' + value.title +'</a></h1>' +
-                    '<div class="entry-excerpt">' +
-                    '<p>'+ value.intro +'</p>' +
-                    '<div class="more-link-holder">' +
-                    '<a href="#" class="more-link">' + labels.read_more + '<i class="fa fa-angle-double-right"></i></a>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>' +
-                    '</div>';
-                div.append(promotion);
-            })
+                index++;
+                var promotion_item = $("div .promotion-items").clone().attr("id", "promotion_" + index);
+                promotion_item.removeClass("promotion-items");
+                promotion_item.find(".img-promotion").attr("src", image);
+                promotion_item.find(".business-promotion").text(value.business.name);
+                promotion_item.find(".category-promotion").text(value.category.name);
+                promotion_item.find(".title-promotion").text(value.title);
+                promotion_item.find(".intro-promotion > p").text(value.intro);
+                div.append(promotion_item);
+            });
         }
 
     });
 });
+
+// function get number in atribute id of element.
+function get_num_id(element){
+    return parseInt( element.prop("id").match(/\d+/g) );
+}

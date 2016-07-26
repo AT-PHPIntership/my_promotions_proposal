@@ -18,6 +18,7 @@
 <script>
     var labels= {!! json_encode( trans('labels') ) !!}
     var image= {!! json_encode( config('define.image_default') ) !!};
+    var order_number= {!! json_encode( config('define.order_number') ) !!};
 </script>
 @yield('script')
 </body>

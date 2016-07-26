@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Eloquent\Repository2;
+use App\Repositories\Eloquent\RepositoryGroup;
 
-class RatingRepository extends Repository2
+class RatingRepository extends RepositoryGroup
 {
 
     /**

@@ -4,7 +4,7 @@ namespace App\Repositories\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Container\Container as App;
-use App\Repositories\Contracts\RepositoryInterface2;
+use App\Repositories\Contracts\RepositoryInterfaceGroup;
 use Exception;
 
 /**
@@ -12,7 +12,7 @@ use Exception;
  *
  * @package Bosnadev\Repositories\Eloquent
  */
-abstract class Repository2 implements RepositoryInterface2
+abstract class RepositoryGroup implements RepositoryInterfaceGroup
 {
     /**
      * App
@@ -20,7 +20,7 @@ abstract class Repository2 implements RepositoryInterface2
      * @var App
      */
     private $app;
-    /**
+    /** 
      * Model
      *
      * @var Model
