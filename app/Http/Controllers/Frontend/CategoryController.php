@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\PromotionRepository as Promotion;
+use App\Models\Promotion as MD;
 
 class CategoryController extends Controller
 {
@@ -35,7 +36,10 @@ class CategoryController extends Controller
      */
     public function postCategory($id)
     {
-        $promotions = $this->promotion->findBy('category_id', $id);
+        $promotions = MD::with('business', 'category')
+        ->whereHas('category', function($query) use ($id) {
+            $query->where('id', $id);
+        })->paginate(2);
 
         if (count($promotions) == 0) {
             return response()->json(
@@ -43,7 +47,21 @@ class CategoryController extends Controller
                 config('statuscode.not_found')
             );
         }
+        
+        return response()->json($promotions, config('statuscode.ok'));
 
-        return response()->json($promotions->load('business', 'category'), config('statuscode.ok'));
+        // $promotions = $this->promotion->findBy('category_id', $id, ['*'], 2);
+
+        // if (count($promotions) == 0) {
+        //     return response()->json(
+        //         ['error' => trans('messages.error_not_found')],
+        //         config('statuscode.not_found')
+        //     );
+        // }
+
+        // return response()->json([
+        //     'paginate' => $promotions,
+        //     'data' => $promotions->load('business', 'category')
+        // ], config('statuscode.ok'));
     }
 }

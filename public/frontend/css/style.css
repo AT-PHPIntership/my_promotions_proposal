@@ -248,6 +248,6 @@ a:hover, a:focus {
     margin: 0;
 }
 
-#promotion0 {
+#promotion0, #hidden {
 	display: none;
 }
