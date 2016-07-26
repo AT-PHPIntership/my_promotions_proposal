@@ -20,7 +20,7 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
      * @var App
      */
     private $app;
-    /** 
+    /**
      * Model
      *
      * @var Model
