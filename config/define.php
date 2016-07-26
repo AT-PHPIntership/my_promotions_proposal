@@ -4,4 +4,5 @@ return [
     'paginate'      => 4,
     'order_number'  => 0,
     'increment'     => 1,
+    'save_num_column'=> 1,
 ];
