@@ -67,20 +67,17 @@ $(document).ready(function() {
         type: 'POST',
         dataType: 'json',
         success: function(result) {
-            //console.log(result);
-            // var div = $('#list_follow_promotion');
-            // var index = order_number;
+            var div = $('#list_follow_business');
+            var index = order_number;
+            var link_business = $("#detail_promotion").val() +'/business/';
             $.each(result, function(key, value) {
-                console.log(value.promotions);
-                // index++;
-                // var promotion_item = $("div .promotion-items").clone().attr("id", "promotion_" + index);
-                // promotion_item.removeClass("promotion-items");
-                // promotion_item.find(".img-promotion").attr("src", image);
-                // promotion_item.find(".business-promotion").text(value.business.name);
-                // promotion_item.find(".category-promotion").text(value.category.name);
-                // promotion_item.find(".title-promotion").text(value.title);
-                // promotion_item.find(".intro-promotion > p").text(value.intro);
-                // div.append(promotion_item);
+                console.log(value);
+                index++;
+                var business_item = $("a.follow-items").clone().attr("id", "business_" + index);
+                business_item.removeClass("follow-items");
+                business_item.find("p").text(value.name);
+                business_item.attr("href",link_business + value.id);
+                div.append(business_item);
             });
         }
     });

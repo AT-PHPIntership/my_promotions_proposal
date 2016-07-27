@@ -27,10 +27,11 @@ class PromotionController extends Controller
      *
      * @param PromotionRepository $promotion promotion
      * @param RatingRepository    $rating    rating
+     * @param UserRepository      $user      user
      *
      * @return void
      */
-    public function __construct(Promotion $promotion, Rating $rating,User $user)
+    public function __construct(Promotion $promotion, Rating $rating, User $user)
     {
         $this->promotion = $promotion;
         $this->rating = $rating;
@@ -67,10 +68,14 @@ class PromotionController extends Controller
         ], config('statuscode.ok'));
     }
 
+    /**
+     * Get a list of business get user follows.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function postFollowPromotion()
     {
         $follows = $this->user->find(Auth::user()->id)->followedBusinesses->load('promotions');
-        //$follows
         return response()->json($follows, config('statuscode.ok'));
     }
 }
