@@ -76,7 +76,6 @@ $(document).ready(function() {
             var index = order_number;
             var link_business = $("#link_index").val() +'/business/';
             $.each(result, function(key, value) {
-                console.log(value);
                 index++;
                 var business_item = $("a.follow-items").clone().attr("id", "business_" + index);
                 business_item.removeClass("follow-items");
