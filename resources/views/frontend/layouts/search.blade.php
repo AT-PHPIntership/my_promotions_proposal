@@ -33,6 +33,9 @@
 				</div>
 			</div>
 		</div>
+		<ul class="pagination">
+			<li id="page0"><a href="#"></a></li>
+		</ul>
 	</div>
 	@include('frontend.layouts.partials.side_bar')
 </div>
