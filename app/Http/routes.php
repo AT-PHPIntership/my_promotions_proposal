@@ -80,7 +80,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('business/register', function () {
             return view('frontend.business.register');
         })->name('business.get.register');
-
+        
+        
+        
         // API
         Route::group(['prefix' => 'api/v1'], function () {
 
@@ -95,6 +97,10 @@ Route::group(['namespace' => 'Frontend'], function () {
         });
     });
 
+    // Show promotion
+    Route::get('promotion/{id}', function ($id) {
+        return view('frontend.promotion.show')->with('id', $id);
+    })->name('promotion.get.show');
     // List promotions of category
     Route::get('category/{id}', function ($id) {
         return view('frontend.category.list_promotions')->with('id', $id);
@@ -106,15 +112,20 @@ Route::group(['namespace' => 'Frontend'], function () {
     })->name('post.search.show');
 
     Route::group(['prefix' => 'api/v1'], function () {
-
         // API List new promotion
         Route::post('promotion', ['as' => 'postpromotion', 'uses' =>'PromotionController@postPromotion']);
 
-        //  API List featured promotion
+        // API List featured promotion
         Route::post('promotion/featured', ['as' => 'promotionfeatured', 'uses' => 'PromotionController@postRatingPromotion']);
         
         // API get list promotion of category
         Route::post('category/{id}', ['as' => 'post.category', 'uses' =>'CategoryController@postCategory']);
+
+        // API List follow promotion
+        Route::post('promotion/follow', ['as' => 'promotionfollow', 'uses' => 'PromotionController@postFollowPromotion']);
+        
+        // API post show promotion
+        Route::post('promotion/{id}', ['as' => 'promotion.post.show', 'uses' => 'PromotionController@postShow']);
 
         // API search promotion
         Route::post('search/{info}', ['as' => 'post.search', 'uses' =>'PromotionController@postSearch']);

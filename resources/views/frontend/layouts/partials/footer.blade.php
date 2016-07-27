@@ -20,7 +20,9 @@
     var image= {!! json_encode( config('define.image_default') ) !!};
     var order_number= {!! json_encode( config('define.order_number') ) !!};
     var increment= {!! json_encode( config('define.increment') ) !!};
+    var num_column= {!! json_encode( config('define.save_num_column') ) !!};
 </script>
 @yield('script')
 </body>
 </html>
+    

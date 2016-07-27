@@ -23,7 +23,7 @@
             <form class="navbar-form navbar-left" role="search" method="POST" action="{{ route('post.search.show') }}">
                 {!! csrf_field() !!}
                 <div class="form-group">
-                    <input type="text" class="form-control" id="search" required="required" name="info" value="{{ old('info') }}">
+                    <input type="text" class="form-control" id="search" required="required" name="info">
                 </div>
                 <button type="submit" class="btn btn-default">{!! trans('labels.submit') !!}</button>
             </form>

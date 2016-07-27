@@ -16,7 +16,7 @@ class CountiesTableSeeder extends Seeder
         for($i = 0; $i < 20; $i++){
             DB::table('counties')->insert([
                 'name'      => $faker->name,
-                'city_id'   => rand(1, 20),
+                'city_id'   => $i + 1,
                 'created_at'=> Carbon\Carbon::now() 
             ]);
         }

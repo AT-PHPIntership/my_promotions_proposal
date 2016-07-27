@@ -34,7 +34,7 @@ class Business extends Model
      */
     public function followedUsers()
     {
-        return $this->belongToMany('App\Models\Business', 'follows');
+        return $this->belongsToMany('App\Models\User', 'follows');
     }
     
     /**
