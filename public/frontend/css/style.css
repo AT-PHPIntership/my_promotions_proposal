@@ -255,3 +255,21 @@ a:hover, a:focus {
 #promotion0, #page0 {
 	display: none;
 }
+.container .jumbo-business {
+	float: left;
+	padding: 15px;
+}
+.jumbo-business img {
+	float: left;
+	padding-right: 15px;
+
+}
+.jumbo-business h1{
+	margin: 0px
+}
+.clearleft {
+	clear: left;
+}
+.jumbo-business p{
+	margin-bottom: 10px;
+}
