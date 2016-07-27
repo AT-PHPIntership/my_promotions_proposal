@@ -20,9 +20,10 @@
                     <a href="#">{!! trans('labels.contact') !!}</a>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left" role="search">
+            <form class="navbar-form navbar-left" role="search" method="POST" action="{{ route('post.search.show') }}">
+                {!! csrf_field() !!}
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" id="search" required="required" name="info" value="{{ old('info') }}">
                 </div>
                 <button type="submit" class="btn btn-default">{!! trans('labels.submit') !!}</button>
             </form>

@@ -100,6 +100,11 @@ Route::group(['namespace' => 'Frontend'], function () {
         return view('frontend.category.list_promotions')->with('id', $id);
     })->name('get.category');
 
+    // Show page search
+    Route::post('search', function (\Illuminate\Http\Request $request) {
+        return view('frontend.layouts.search')->with('info', $request->info);
+    })->name('post.search.show');
+
     Route::group(['prefix' => 'api/v1'], function () {
 
         // API List new promotion
@@ -110,6 +115,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         
         // API get list promotion of category
         Route::post('category/{id}', ['as' => 'post.category', 'uses' =>'CategoryController@postCategory']);
+
+        // API search promotion
+        Route::post('search/{info}', ['as' => 'post.search', 'uses' =>'PromotionController@postSearch']);
     });
 });
 

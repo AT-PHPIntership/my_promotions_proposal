@@ -62,4 +62,16 @@ class PromotionController extends Controller
             'rating_promotions' => $data
         ], config('statuscode.ok'));
     }
+
+    /**
+     * Search promotion.
+     *
+     * @param info $info info
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postSearch($info)
+    {
+        return response()->json($info, 200);
+    }
 }
