@@ -1,6 +1,7 @@
 $(document).ready(function() {
     var url_new_pormotion = $('#new_promotion').val();
-    var url_rating_promtion = $('#featured_promotion').val();
+    var url_rating_promotion = $('#featured_promotion').val();
+    var url_follow_promotion = $('#follow_promotion').val();
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -41,18 +42,14 @@ $(document).ready(function() {
     });
 
     $.ajax({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        },
-        url: url_rating_promtion,
+        url: url_rating_promotion,
         type: 'POST',
         dataType: 'json',
         success: function(result) {
-            console.log(result);
             var div = $('#list_featured_promotion');
             var index = order_number;
-            var link_promotion = $("#detail_promotion").val() +'/promotion/';
-            var link_category = $("#detail_promotion").val() +'/category/';
+            var link_promotion = $("#link_index").val() +'/promotion/';
+            var link_category = $("#link_index").val() +'/category/';
             $.each(result.rating_promotions, function(key, value) {
                 index++;
                 var promotion_item = $("div .promotion-items").clone().attr("id", "promotion_" + index);
@@ -68,6 +65,24 @@ $(document).ready(function() {
                 div.append(promotion_item);
             });
         }
+    });
 
+    $.ajax({
+        url: url_follow_promotion,
+        type: 'POST',
+        dataType: 'json',
+        success: function(result) {
+            var div = $('#list_follow_business');
+            var index = order_number;
+            var link_business = $("#link_index").val() +'/business/';
+            $.each(result, function(key, value) {
+                index++;
+                var business_item = $("a.follow-items").clone().attr("id", "business_" + index);
+                business_item.removeClass("follow-items");
+                business_item.find("p").text(value.name);
+                business_item.attr("href",link_business + value.id);
+                div.append(business_item);
+            });
+        }
     });
 });

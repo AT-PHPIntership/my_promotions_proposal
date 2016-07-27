@@ -81,4 +81,5 @@ return [
     'description'           =>  'Description',
     'logo'                  =>  'Logo',
     'choose_city'           =>  'Please choose City',
+    'businesses_following'  =>  'Businesses Following',
 ];

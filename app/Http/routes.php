@@ -115,6 +115,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         
         // API get list promotion of category
         Route::post('category/{id}', ['as' => 'post.category', 'uses' =>'CategoryController@postCategory']);
+
+        // API List follow promotion
+        Route::post('promotion/follow', ['as' => 'promotionfollow', 'uses' => 'PromotionController@postFollowPromotion']);
         
         // API post show promotion
         Route::post('promotion/{id}', ['as' => 'promotion.post.show', 'uses' => 'PromotionController@postShow']);

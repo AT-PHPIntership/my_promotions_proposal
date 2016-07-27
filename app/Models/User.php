@@ -41,7 +41,7 @@ class User extends Authenticatable
      */
     public function followedBusinesses()
     {
-        return $this->belongToMany('App\Models\Business', 'follows');
+        return $this->belongsToMany('App\Models\Business', 'follows');
     }
     
     /**
