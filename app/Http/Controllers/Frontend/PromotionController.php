@@ -8,7 +8,6 @@ use App\Repositories\RelationRepository as Relation;
 use App\Repositories\RatingRepository as Rating;
 use App\Repositories\UserRepository as User;
 use Auth;
-use App\Models\Promotion as Md;
 
 class PromotionController extends Controller
 {
