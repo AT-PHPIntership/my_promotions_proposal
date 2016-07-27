@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers\Frontend;
 
-use Illuminate\Http\Request;
-
-use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\PromotionRepository as Promotion;
 use App\Repositories\RatingRepository as Rating;
@@ -37,7 +34,27 @@ class PromotionController extends Controller
         $this->rating = $rating;
         $this->user = $user;
     }
-
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param int $id id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postShow($id)
+    {
+        $promotions = $this->promotion->find($id);
+        
+        if (empty($promotions)) {
+            return response()->json(
+                ['error' => trans('messages.error_not_found')],
+                config('statuscode.not_found')
+            );
+        }
+        
+        return response()->json($promotions, config('statuscode.ok'));
+    }
     /**
      * Get a listing of new promotion.
      *
@@ -76,6 +93,12 @@ class PromotionController extends Controller
     public function postFollowPromotion()
     {
         $follows = $this->user->find(Auth::user()->id)->followedBusinesses->load('promotions');
+        if (empty($follows)) {
+            return response()->json(
+                ['error' => trans('messages.error_not_found')],
+                config('statuscode.not_found')
+            );
+        }
         return response()->json($follows, config('statuscode.ok'));
     }
 }
