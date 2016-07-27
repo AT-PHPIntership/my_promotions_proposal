@@ -6,7 +6,7 @@
 	<ul id="errors"></ul>
 </div>
 <div class="row">
-	<div class="col-lg-9 col-md-8 col-sm-7">
+	<div class="col-lg-9 col-md-8 col-sm-7" align="center">
 		<div class="row">
 			<div class="col-lg-3 col-md-4 col-sm-7" id="promotion0">
 				<div class="post-card">
@@ -33,6 +33,9 @@
 				</div>
 			</div>
 		</div>
+		<ul class="pagination">
+			<li id="page0"><a href="#"></a></li>
+		</ul>
 	</div>
 	@include('frontend.layouts.partials.side_bar')
 </div>

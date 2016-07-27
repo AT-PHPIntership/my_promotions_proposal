@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\PromotionRepository as Promotion;
+use App\Repositories\RelationRepository as Promotion;
 
 class CategoryController extends Controller
 {
@@ -17,7 +17,7 @@ class CategoryController extends Controller
     /**
      * Function construct of CategoryController
      *
-     * @param PromotionRepository $promotion promotion
+     * @param RelationRepository $promotion promotion
      *
      * @return void
      */
@@ -35,7 +35,7 @@ class CategoryController extends Controller
      */
     public function postCategory($id)
     {
-        $promotions = $this->promotion->findBy('category_id', $id);
+        $promotions = $this->promotion->eagerLoadRelations(['business', 'category'], 'category', 'id', $id, config('define.paginate'));
 
         if (count($promotions) == 0) {
             return response()->json(
@@ -43,7 +43,7 @@ class CategoryController extends Controller
                 config('statuscode.not_found')
             );
         }
-
-        return response()->json($promotions->load('business', 'category'), config('statuscode.ok'));
+        
+        return response()->json($promotions, config('statuscode.ok'));
     }
 }
