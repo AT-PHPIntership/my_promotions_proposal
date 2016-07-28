@@ -85,5 +85,7 @@ return [
     'business_manager'      =>  'Business manager',
     'user_following'        =>  'User following',
     'rating'                =>  'Rating',
-    'promotion'             =>  'Promotion'
+    'promotion'             =>  'Promotion',
+    'previous'              =>  'Previous',
+    'next'                  =>  'Next',
 ];
