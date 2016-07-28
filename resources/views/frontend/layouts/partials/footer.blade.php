@@ -22,6 +22,9 @@
     var increment= {!! json_encode( config('define.increment') ) !!};
     var num_column= {!! json_encode( config('define.save_num_column') ) !!};
 </script>
+@if(Auth::guard('web')->check())
+<script src="{{ asset('frontend/js/show_follow.js') }}"></script>
+@endif
 @yield('script')
 </body>
 </html>

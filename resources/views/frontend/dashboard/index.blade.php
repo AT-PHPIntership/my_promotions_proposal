@@ -52,9 +52,6 @@
                     </div>
                 </div>
                 @include('frontend.layouts.partials.side_bar')
-                @if(Auth::guard('web')->check())
-                    @include('frontend.follow.index')
-                @endif
             </div>
 @endsection
 @section('script')

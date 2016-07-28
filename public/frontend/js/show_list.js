@@ -19,7 +19,6 @@ $(document).ready(function() {
             var div = $('#list_new_promotions');
             var index = order_number;
             $.each(result.promotions, function(key, value) {
-                console.log(value);
                 index++;
                 var promotion_item = $("div .promotion-new").clone().attr("id", "promotion_new" + index);
                 promotion_item.removeClass("promotion-new");
@@ -62,22 +61,4 @@ $(document).ready(function() {
         }
     });
 
-    $.ajax({
-        url: url_follow_promotion,
-        type: 'POST',
-        dataType: 'json',
-        success: function(result) {
-            var div = $('#list_follow_business');
-            var index = order_number;
-            var link_business = $("#link_index").val() +'/business/';
-            $.each(result, function(key, value) {
-                index++;
-                var business_item = $("a.follow-items").clone().attr("id", "business_" + index);
-                business_item.removeClass("follow-items");
-                business_item.find("p").text(value.name);
-                business_item.attr("href",link_business + value.id);
-                div.append(business_item);
-            });
-        }
-    });
 });

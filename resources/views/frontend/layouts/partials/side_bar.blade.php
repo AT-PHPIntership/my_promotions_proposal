@@ -5,4 +5,7 @@
                 <a class="list-group-item" href="{{ route('get.category', $category->id) }}">{{ $category->name }}</a>
             @endforeach
     </div>
+    @if(Auth::guard('web')->check())
+        @include('frontend.follow.index')
+    @endif
 </div>
