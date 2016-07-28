@@ -1,6 +1,9 @@
 $(document).ready(function () {
     
 	var url = $('#url_cate').val();
+    var link_promotion = $("#link_index").val() +'/promotion/';
+    var link_category = $("#link_index").val() +'/category/';
+    var link_business = $("#link_index").val() +'/business/';
 	$.ajax({
 		headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
 		url: url,
@@ -14,8 +17,12 @@ $(document).ready(function () {
                 var promotion = div.clone(true, true).prop('id', 'promotion'+num);
                 promotion.find('#image').prop('src', item.image);
                 promotion.find('#business').text(item.business.name);
+                promotion.find("a#business").attr("href",link_business + item.business.id);
                 promotion.find('#category').text(item.category.name);
+                promotion.find("a#category").attr("href",link_category + item.category.id);
                 promotion.find('#title').text(item.title);
+                    promotion.find("a#title").attr("href",link_promotion + item.id);
+                    promotion.find("a.more-link").attr("href",link_promotion + item.id);
                 promotion.find('#intro').text(item.intro);
                 div.after(promotion); 
             });
@@ -39,6 +46,7 @@ $(document).ready(function () {
 
     $('li[id^="page"]').click(function(){
         var num_page = get_num_id($(this));
+        $(this).find('a').attr('href','javascript:void(0)');
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
             url: url + '?page=' + num_page,
@@ -54,8 +62,12 @@ $(document).ready(function () {
                     var promotion = div.clone(true, true).prop('id', 'promotion'+num);
                     promotion.find('#image').prop('src', item.image);
                     promotion.find('#business').text(item.business.name);
+                    promotion.find("a#business").attr("href",link_business + item.business.id);
                     promotion.find('#category').text(item.category.name);
+                    promotion.find("a#category").attr("href",link_category + item.category.id);
                     promotion.find('#title').text(item.title);
+                    promotion.find("a#title").attr("href",link_promotion + item.id);
+                    promotion.find("a.more-link").attr("href",link_promotion + item.id);
                     promotion.find('#intro').text(item.intro);
                     div.after(promotion); 
                 });

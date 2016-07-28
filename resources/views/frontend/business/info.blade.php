@@ -8,21 +8,22 @@
     <div class="col-lg-9 col-md-8 col-sm-7">
         <input type="hidden" id="detail_business" value="{{ route('postbusiness', $id) }}" />
         <input type="hidden" id="link_index" value="{{ route('index') }}"/>
-        <div id="info_business">
-            <div class="jumbotron jumbo-business">
+        <div id="intro-business">
+            <div class="jumbotron jumbo-business detail-business">
                 <img id="business-logo" src="{{ config('define.image_default') }}"/>
-                <h1 id="business-nane">Jumbotron</h1>
-                <p><a href="#" class="btn btn-success btn-sm">Follow</a></p>
-                <p id="business-create">20/12/2016</p>
-                <p id="business-email">ngk.quan@gmail.com</p>
-                <p id="business-phone">1234566</p>
-                <p id="business-description">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac
-                    cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta
-                    sem malesuada magna mollis euismod. Donec sed odio dui.</p>
+                <h1 id="business-nane"></h1>
+                <p><a href="#" class="btn btn-success btn-sm">{!! trans('labels.follow') !!}</a></p>
+                <p id="business-create"></p>
+                <p id="business-email"></p>
+                <p id="business-phone"></p>
+                <p id="business-description"></p>
             </div>
+            <div class="clearleft"></div>
         </div>
+
+        <h1><a href="#">{!! trans('labels.promotion_business') !!}</a></h1>
         <div id="list_business_promotion" class="row">
-            <div class="col-lg-3 col-md-4 col-sm-7 promotion-items">
+            <div class="col-lg-3 col-md-4 col-sm-7 promotion-business">
                 <div class="post-card">
                     <a href="#" class="entry-thumb-link">
                         <div class="entry-thumb-wrapper"><img class = "img-promotion" href="#" src="">
@@ -42,7 +43,9 @@
                 </div>
             </div>
         </div>
-        <h1><a href="#">{!! trans('labels.promotion_business') !!}</a></h1>
+        <ul class="pagination">
+            <li id="page0"><a href="#"></a></li>
+        </ul>
     </div>
     @include('frontend.layouts.partials.side_bar')
 </div>

@@ -26,11 +26,12 @@ class BusinessController extends Controller
     /**
      * Function construct of BusinessController
      *
-     * @param BusinessRepository $business business
+     * @param BusinessRepository $business  business
+     * @param BusinessRepository $promotion promotion
      *
      * @return void
      */
-    public function __construct(Business $business,Promotion $promotion)
+    public function __construct(Business $business, Promotion $promotion)
     {
         $this->business = $business;
         $this->promotion = $promotion;
@@ -104,6 +105,13 @@ class BusinessController extends Controller
         ], config('statuscode.ok'));
     }
 
+    /**
+     * Store a newly created Bussiness.
+     *
+     * @param int $id show
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function postShowBusinessPromotion($id)
     {
         $business = $this->promotion->eagerLoadRelations(['business', 'category'], 'business', 'id', $id, config('define.paginate'));

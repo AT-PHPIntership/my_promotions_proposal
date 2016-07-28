@@ -83,4 +83,5 @@ return [
     'choose_city'           =>  'Please choose City',
     'businesses_following'  =>  'Businesses Following',
     'promotion_business'    =>  'Business Promotion >>',
+    'follow'                =>  'Follow',
 ];
