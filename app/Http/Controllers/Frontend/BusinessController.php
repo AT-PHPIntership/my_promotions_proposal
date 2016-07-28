@@ -115,6 +115,12 @@ class BusinessController extends Controller
     public function postShowBusinessPromotion($id)
     {
         $business = $this->promotion->eagerLoadRelations(['business', 'category'], 'business', 'id', $id, config('define.paginate'));
+        if ($business->count() == 0) {
+            return response()->json(
+                ['error' => trans('messages.error_not_found')],
+                config('statuscode.not_found')
+            );
+        }
         return response()->json($business, config('statuscode.ok'));
     }
 }
