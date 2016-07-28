@@ -82,4 +82,8 @@ return [
     'logo'                  =>  'Logo',
     'choose_city'           =>  'Please choose City',
     'businesses_following'  =>  'Businesses Following',
+    'business_manager'      =>  'Business manager',
+    'user_following'        =>  'User following',
+    'rating'                =>  'Rating',
+    'promotion'             =>  'Promotion'
 ];

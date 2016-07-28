@@ -105,6 +105,11 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('category/{id}', function ($id) {
         return view('frontend.category.list_promotions')->with('id', $id);
     })->name('get.category');
+    
+    //show business
+    Route::get('user/business/{id}', function ($id) {
+        return view('frontend.business.show')->with('id', $id);
+    })->name('business.get.show');
 
     Route::group(['prefix' => 'api/v1'], function () {
         // API List new promotion
@@ -121,6 +126,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         
         // API post show promotion
         Route::post('promotion/{id}', ['as' => 'promotion.post.show', 'uses' => 'PromotionController@postShow']);
+        
+        //API Show Business
+        Route::post('user/business/{id}', ['as' => 'showBusiness', 'uses' => 'BusinessManagerController@showBusiness']);
     });
 });
 
