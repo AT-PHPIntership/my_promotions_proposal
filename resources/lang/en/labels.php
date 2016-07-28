@@ -84,4 +84,6 @@ return [
     'businesses_following'  =>  'Businesses Following',
     'promotion_business'    =>  'Business Promotion >>',
     'follow'                =>  'Follow',
+    'previous'              =>  'Previous',
+    'next'                  =>  'Next',
 ];

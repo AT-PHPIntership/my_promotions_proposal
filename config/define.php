@@ -5,4 +5,6 @@ return [
     'order_number'  => 0,
     'increment'     => 1,
     'save_num_column'=> 1,
+    'current_page'  => 1,
+    'page_from'     => 1,
 ];

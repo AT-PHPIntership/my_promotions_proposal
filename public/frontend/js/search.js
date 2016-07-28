@@ -1,30 +1,23 @@
-$(document).ready(function () {
-    
-	var url = $('#url_cate').val();
-    var link_promotion = $("#link_index").val() +'/promotion/';
-    var link_category = $("#link_index").val() +'/category/';
-    var link_business = $("#link_index").val() +'/business/';
+$(document).ready(function(){
+	var url_search = $('#url_search').val();
+    var cur_page = current_page;
 	$.ajax({
 		headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
-		url: url,
+		url: url_search,
 		type: 'POST',
 		dataType: 'json',
-		success: function(result) {
-            // show data
+		success: function(result){
+			// show data
             $.each (result.data, function(key, item) {
                 var div = $('div[id^="promotion"]:last');
                 var num = get_num_id(div) + increment;
                 var promotion = div.clone(true, true).prop('id', 'promotion'+num);
                 promotion.find('#image').prop('src', item.image);
                 promotion.find('#business').text(item.business.name);
-                promotion.find("a#business").attr("href",link_business + item.business.id);
                 promotion.find('#category').text(item.category.name);
-                promotion.find("a#category").attr("href",link_category + item.category.id);
                 promotion.find('#title').text(item.title);
-                    promotion.find("a#title").attr("href",link_promotion + item.id);
-                    promotion.find("a.more-link").attr("href",link_promotion + item.id);
                 promotion.find('#intro').text(item.intro);
-                div.after(promotion); 
+                div.after(promotion);
             });
 
             // show paginate
@@ -35,20 +28,37 @@ $(document).ready(function () {
                 page.find('a').text(i);
                 li.after(page); 
             };
+
+            // set active for paginate when load page.
+            $('#page1').prop('class', 'active');
+            set_disabled(page_from, result.last_page, cur_page);
 		},
 		error: function(data) {
 			var err = eval("(" + data.responseText + ")");
             $('#message').html(err.error);
             $('#message').css('display', 'block');
 		}
-	})
+	});
+    
 
-    $('li[id^="page"]').click(function(){
-        var num_page = get_num_id($(this));
-        $(this).find('a').attr('href','javascript:void(0)');
+
+    $('ul.pagination li').click(function () {
+
+        var id = $(this).prop('id');
+        // set number of page
+        if(id != 'next' && id != 'pre'){
+            var num_page = get_num_id($(this));
+        } else {
+            var num_page = $(this).prop('value');
+        }
+
+        $('#page'+cur_page).prop('class', '');
+        $('#page'+num_page).prop('class', 'active');
+        cur_page = num_page;
+
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
-            url: url + '?page=' + num_page,
+            url: url_search + '?page=' + num_page,
             type: 'POST',
             dataType: 'json',
             success: function(result){
@@ -61,21 +71,35 @@ $(document).ready(function () {
                     var promotion = div.clone(true, true).prop('id', 'promotion'+num);
                     promotion.find('#image').prop('src', item.image);
                     promotion.find('#business').text(item.business.name);
-                    promotion.find("a#business").attr("href",link_business + item.business.id);
                     promotion.find('#category').text(item.category.name);
-                    promotion.find("a#category").attr("href",link_category + item.category.id);
                     promotion.find('#title').text(item.title);
-                    promotion.find("a#title").attr("href",link_promotion + item.id);
-                    promotion.find("a.more-link").attr("href",link_promotion + item.id);
                     promotion.find('#intro').text(item.intro);
                     div.after(promotion); 
                 });
+                set_disabled(page_from, result.last_page, cur_page);
             }
         })
     });
-});
+})
 
 // function get number in atribute id of element.
 function get_num_id(element){
     return parseInt( element.prop("id").match(/\d+/g) );
+}
+
+// function set disabled for button next and pre.
+function set_disabled(page_from, page_to, current_page) {
+    if (current_page == page_from) {
+       $('#pre').prop('class', 'disabled'); 
+    } else {
+       $('#pre').prop('class', '');
+       $('#pre').prop('value', parseInt(current_page)-1); 
+    }
+
+    if (current_page == page_to) {
+       $('#next').prop('class', 'disabled'); 
+    } else {
+       $('#next').prop('class', '');
+       $('#next').prop('value', parseInt(current_page)+1); 
+    }
 }

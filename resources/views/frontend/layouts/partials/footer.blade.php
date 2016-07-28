@@ -21,6 +21,8 @@
     var order_number= {!! json_encode( config('define.order_number') ) !!};
     var increment= {!! json_encode( config('define.increment') ) !!};
     var num_column= {!! json_encode( config('define.save_num_column') ) !!};
+    var current_page= {!! json_encode( config('define.current_page') ) !!};
+    var page_from= {!! json_encode( config('define.page_from') ) !!};
 </script>
 @if(Auth::guard('web')->check())
 <script src="{{ asset('frontend/js/show_follow.js') }}"></script>

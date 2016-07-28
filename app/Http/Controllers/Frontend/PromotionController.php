@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\PromotionRepository as Promotion;
+use App\Repositories\RelationRepository as Relation;
 use App\Repositories\RatingRepository as Rating;
 use App\Repositories\UserRepository as User;
 use Auth;
@@ -11,13 +12,17 @@ use Auth;
 class PromotionController extends Controller
 {
     /**
-     * Promotion
+     * Promotion, Rating, User, Relation
      *
      * @var promotion
+     * @var rating
+     * @var user
+     * @var relation
      */
     private $promotion;
     private $rating;
     private $user;
+    private $relation;
 
     /**
      * Function construct of PromotionController
@@ -25,14 +30,16 @@ class PromotionController extends Controller
      * @param PromotionRepository $promotion promotion
      * @param RatingRepository    $rating    rating
      * @param UserRepository      $user      user
+     * @param RelationRepository  $relation  relation
      *
      * @return void
      */
-    public function __construct(Promotion $promotion, Rating $rating, User $user)
+    public function __construct(Promotion $promotion, Rating $rating, User $user, Relation $relation)
     {
         $this->promotion = $promotion;
         $this->rating = $rating;
         $this->user = $user;
+        $this->relation = $relation;
     }
     
     /**
@@ -66,7 +73,7 @@ class PromotionController extends Controller
         $promotions->load('business', 'category');
         return response()->json([
             'promotions' => $promotions
-        ], config('statuscode.ok'));
+            ], config('statuscode.ok'));
     }
 
     /**
@@ -82,7 +89,7 @@ class PromotionController extends Controller
         }
         return response()->json([
             'rating_promotions' => $data
-        ], config('statuscode.ok'));
+            ], config('statuscode.ok'));
     }
 
     /**
@@ -94,5 +101,26 @@ class PromotionController extends Controller
     {
         $follows = $this->user->find(Auth::user()->id)->followedBusinesses;
         return response()->json($follows, config('statuscode.ok'));
+    }
+
+    /**
+     * Search promotion.
+     *
+     * @param info $info info
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postSearch($info)
+    {
+        $promotions = $this->relation->search(['business', 'category'], 'business', 'title', 'name', "%$info%", 'like', config('define.paginate'));
+
+        if (count($promotions) == 0) {
+            return response()->json(
+                ['error' => trans('messages.error_not_found')],
+                config('statuscode.not_found')
+            );
+        }
+        
+        return response()->json($promotions, config('statuscode.ok'));
     }
 }
