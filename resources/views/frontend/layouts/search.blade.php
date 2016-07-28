@@ -34,7 +34,9 @@
 			</div>
 		</div>
 		<ul class="pagination">
+			<li id="pre" class="next-pre"><a href="#">{!! trans('labels.previous') !!}</a></li>
 			<li id="page0"><a href="#"></a></li>
+			<li id="next" class="next-pre"><a href="#">{!! trans('labels.next') !!}</a></li>
 		</ul>
 	</div>
 	@include('frontend.layouts.partials.side_bar')
