@@ -4,6 +4,6 @@
       </div>
         <input type="hidden" id="follow_promotion" value="{{ route('promotionfollow') }}" />
       <div class="panel-body" id="list_follow_business">
-        <a href="#" class="follow-items"><p>sssssssssssssss</p></a>
+        <a href="#" class="follow-items"><p></p></a>
       </div>
     </div>
