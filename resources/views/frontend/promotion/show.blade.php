@@ -1,6 +1,10 @@
 @extends('frontend.layouts.master')
 @section('title', trans('labels.promotions'))
 @section('content')
+    <div class="alert alert-danger" id="message">
+        <ul id="errors"></ul>
+    </div>
+<div class="row">
     <div class="col-lg-9 col-md-8 col-sm-7">
         <input type="hidden" id="show_promotion" value="{{ route('promotion.post.show', $id) }}" /> 
         <div class="row" id="promotions">

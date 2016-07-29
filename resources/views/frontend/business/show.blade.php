@@ -44,5 +44,5 @@
     </div>
 @endsection
 @section('script')
-<script src="{{ asset('frontend/js/show_business.js') }}"></script>
+<script src="{{ asset('frontend/js/show_business_manager.js') }}"></script>
 @endsection

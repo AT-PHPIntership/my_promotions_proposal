@@ -99,13 +99,7 @@ class PromotionController extends Controller
      */
     public function postFollowPromotion()
     {
-        $follows = $this->user->find(Auth::user()->id)->followedBusinesses->load('promotions');
-        if (empty($follows)) {
-            return response()->json(
-                ['error' => trans('messages.error_not_found')],
-                config('statuscode.not_found')
-            );
-        }
+        $follows = $this->user->find(Auth::user()->id)->followedBusinesses;
         return response()->json($follows, config('statuscode.ok'));
     }
 
