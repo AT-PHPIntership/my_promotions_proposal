@@ -113,4 +113,22 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
         }
         return $this->model = $model;
     }
+
+    /**
+     * Function check followed.
+     *
+     * @param object  $relation   relation
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function checkFollowed($relation, $idUser, $idBusiness)
+    {
+        $check = $this->model->find($idUser)->$relation->find($idBusiness);
+        if (is_null($check)) {
+            return false;
+        }
+        return true;
+    }
 }

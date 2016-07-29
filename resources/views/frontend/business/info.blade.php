@@ -12,7 +12,7 @@
             <div class="jumbotron jumbo-business detail-business">
                 <img id="business-logo" src="{{ config('define.image_default') }}"/>
                 <h1 id="business-nane"></h1>
-                <p><a href="#" class="btn btn-success btn-sm">{!! trans('labels.follow') !!}</a></p>
+                <p><a id="follow"></a></p>
                 <p id="business-create"></p>
                 <p id="business-email"></p>
                 <p id="business-phone"></p>

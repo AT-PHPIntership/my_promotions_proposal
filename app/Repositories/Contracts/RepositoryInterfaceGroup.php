@@ -42,4 +42,15 @@ interface RepositoryInterfaceGroup
      * @return mixed
      */
     public function search(array $models, $table, $attrPro, $attrBus, $value, $operator = '=', $perPage = 15);
+
+    /**
+     * Function check followed.
+     *
+     * @param object  $relation   relation
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function checkFollowed($relation, $idUser, $idBusiness);
 }

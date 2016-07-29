@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\BusinessRepository as Business;
 use App\Repositories\RelationRepository as Promotion;
+use App\Repositories\RelationUserRepository as User;
 use Validator;
 use File;
 use Auth;
@@ -15,26 +16,29 @@ use Auth;
 class BusinessController extends Controller
 {
     /**
-     * Business
+     * Business, Promotion, User
      *
-     * @var business
+     * @var business, promotion, user
      */
     private $business;
     private $promotion;
+    private $user;
 
 
     /**
      * Function construct of BusinessController
      *
      * @param BusinessRepository $business  business
-     * @param BusinessRepository $promotion promotion
+     * @param RelationRepository $promotion promotion
+     * @param UserRepository     $user      user
      *
      * @return void
      */
-    public function __construct(Business $business, Promotion $promotion)
+    public function __construct(Business $business, Promotion $promotion, User $user)
     {
         $this->business = $business;
         $this->promotion = $promotion;
+        $this->user = $user;
     }
 
     /**
@@ -115,12 +119,14 @@ class BusinessController extends Controller
     public function postShowBusinessPromotion($id)
     {
         $business = $this->promotion->eagerLoadRelations(['business', 'category'], 'business', 'id', $id, config('define.paginate'));
+        $follow = $this->user->checkFollowed('followedBusinesses', Auth::user()->id, $id);
+
         if ($business->count() == 0) {
             return response()->json(
                 ['error' => trans('messages.error_not_found')],
                 config('statuscode.not_found')
             );
         }
-        return response()->json($business, config('statuscode.ok'));
+        return response()->json(['data' => $business,'followed' => $follow], config('statuscode.ok'));
     }
 }

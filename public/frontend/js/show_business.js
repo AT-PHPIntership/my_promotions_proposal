@@ -14,16 +14,22 @@ $('document').ready(function() {
         type: 'POST',
         dataType: 'json',
         success: function(result) {
-            var div = $('#intro-business')
-            var business = $('div .detail-business').clone().attr("id","business")
-            business.removeClass("detail-business");
+            var business = $('.detail-business');
+            
+            // set button follow
+            if (result.followed == false) {
+                business.find("#follow").prop({'text':labels.follow, 'class':'btn btn-success btn-sm', 'name':result.followed});
+            } else {
+                business.find("#follow").prop({'text':labels.unfollow, 'class':'btn btn-default btn-sm', 'name':result.followed});
+            }
+
+            var result = result.data;
             business.find("#business-logo").prop('src', image);
             business.find("#business-nane").text(result.data[1].business.name);
             business.find("#business-create").text(result.data[1].business.created_at);
             business.find("#business-email").text(result.data[1].business.email);
             business.find("#business-phone").text(result.data[1].business.phone);
             business.find("#business-description").text(result.data[1].business.description);
-            div.append(business)
         },
         error: function (result) {
             var err = eval("(" + result.responseText + ")");
@@ -36,6 +42,7 @@ $('document').ready(function() {
         type: 'POST',
         dataType: 'json',
         success: function(result) {
+            var result = result.data;
             var div = $('#list_business_promotion');
             var index = order_number;
             $.each(result.data, function(key, value) {
@@ -95,6 +102,10 @@ $('document').ready(function() {
                 });
             }
         })
+    });
+
+    $('#follow').click(function(){
+        alert('xxx');
     });
 });
 
