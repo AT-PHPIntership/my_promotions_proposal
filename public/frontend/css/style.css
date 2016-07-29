@@ -215,7 +215,7 @@ a:hover, a:focus {
 	}
 }
 
-.promotion-items, .promotion-business, .promotion-featured, .promotion-new, .follow-items, .detail-business{
+.promotion-items, .promotion-business, .promotion-featured, .promotion-new, .follow-items, .detail-business, .review-items{
 	display: none;
 }
 

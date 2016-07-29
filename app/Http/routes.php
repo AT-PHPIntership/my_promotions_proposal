@@ -136,6 +136,9 @@ Route::group(['namespace' => 'Frontend'], function () {
 
         // API search promotion
         Route::post('search/{info}', ['as' => 'post.search', 'uses' =>'PromotionController@postSearch']);
+
+        // API List promotion review rating
+        Route::post('promotion/{id}/review/', ['as' => 'post.promotion.review', 'uses' => 'RatingController@show']);
     });
 });
 

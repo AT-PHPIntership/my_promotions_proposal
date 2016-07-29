@@ -16,6 +16,20 @@ interface RepositoryInterfaceGroup
     public function groupBy($columns, $groupby, $orderby = 'id', $sort = 'desc');
 
     /**
+     * Funciton groupByHaving
+     *
+     * @param array  $columns   columns
+     * @param string $groupby   groupby
+     * @param string $field     field
+     * @param string $attribute attribute
+     * @param string $orderby   orderby
+     * @param string $sort      sort
+     *
+     * @return mixed
+     */
+    public function groupByHaving($columns, $groupby, $field, $attribute, $orderby = 'id', $sort = 'desc');
+
+    /**
      * Eager load the relationships for the models.
      *
      * @param array          $models    models

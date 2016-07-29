@@ -61,6 +61,23 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
     }
 
     /**
+     * Function group by
+     *
+     * @param array  $columns   columns
+     * @param string $groupby   groupby
+     * @param string $field     field
+     * @param string $attribute attribute
+     * @param string $orderby   orderby
+     * @param string $sort      sort
+     *
+     * @return mixed
+     */
+    public function groupByHaving($columns, $groupby, $field, $attribute, $orderby = 'id', $sort = 'desc')
+    {
+        return $this->model->selectRaw($columns)->groupBy($groupby)->having($field, '=', $attribute)->orderBy($orderby, $sort)->get();
+    }
+
+    /**
      * Eager load the relationships for the models.
      *
      * @param array          $models    models

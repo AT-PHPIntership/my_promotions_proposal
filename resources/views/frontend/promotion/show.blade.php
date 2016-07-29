@@ -26,7 +26,28 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#rating" data-toggle="tab" aria-expanded="false">Rating</a></li>
+                <li class=""><a href="#reviews" data-toggle="tab" aria-expanded="true">Reviews</a></li>
+            </ul>
+            <div id="myTabContent" class="tab-content">
+                <div class="tab-pane fade active in" id="rating">
+                    <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</p>
+                </div>
+                <input type="hidden" id="review_rating" value="{{ route('post.promotion.review', $id) }}" />
+                <div class="tab-pane fade" id="reviews">
+                    <h3>Total rating: <a id="total"></a></h3>
+                    <div class="review-items">
+                        <p></p><b class="username"></b> | rating: <a class="rating"></a></p>
+                        <i class="content"></i>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     @include('frontend.layouts.partials.side_bar')
 </div>
 @endsection
