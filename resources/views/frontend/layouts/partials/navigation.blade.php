@@ -32,8 +32,18 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{ Auth::user()->name }} <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="{{ route('business.get.register') }}">{!! trans('labels.register_business') !!}</a></li>
-                            <li><a href="{{ route('user.get.profile', Auth::user()->id) }}">{!! trans('labels.profile') !!}</a></li>
+                            <li> 
+                                @if(!empty(Auth::user()->business->id))
+                                <a href="{{ route('business.get.show', Auth::user()->business->id) }}">
+                                    {!! trans('labels.business_manager') !!} 
+                                </a>
+                                @else
+                                <a href="{{ route('business.get.register') }}">
+                                    {!! trans('labels.register_business') !!}
+                                @endif
+                                </a>
+                            </li>
+                            <li><a href="{{ route('user.get.profile', Auth::user()->id ) }}">{!! trans('labels.profile') !!}</a></li>
                             <li class="divider"></li>
                             <li><a href="{{ route('logout') }}">{!! trans('labels.logout') !!}</a></li>
                         </ul>
