@@ -2,6 +2,7 @@
 @section('title', trans('labels.promotions'))
 @section('content')
 <input type="hidden" id="url_cate" value="{{ route('post.category', $id) }}">
+<input type="hidden" id="link_index" value="{{ route('index') }}"/>
 <div class="alert alert-danger" id="message">
 	<ul id="errors"></ul>
 </div>

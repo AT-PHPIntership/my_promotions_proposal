@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\BusinessRepository as Business;
+use App\Repositories\RelationRepository as Promotion;
 use Validator;
 use File;
 use Auth;
@@ -19,17 +20,21 @@ class BusinessController extends Controller
      * @var business
      */
     private $business;
+    private $promotion;
+
 
     /**
      * Function construct of BusinessController
      *
-     * @param BusinessRepository $business business
+     * @param BusinessRepository $business  business
+     * @param BusinessRepository $promotion promotion
      *
      * @return void
      */
-    public function __construct(Business $business)
+    public function __construct(Business $business, Promotion $promotion)
     {
         $this->business = $business;
+        $this->promotion = $promotion;
     }
 
     /**
@@ -98,5 +103,24 @@ class BusinessController extends Controller
         return response()->json([
             'message' => trans('messages.update_profile_successfull')
         ], config('statuscode.ok'));
+    }
+
+    /**
+     * Store a newly created Bussiness.
+     *
+     * @param int $id show
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postShowBusinessPromotion($id)
+    {
+        $business = $this->promotion->eagerLoadRelations(['business', 'category'], 'business', 'id', $id, config('define.paginate'));
+        if ($business->count() == 0) {
+            return response()->json(
+                ['error' => trans('messages.error_not_found')],
+                config('statuscode.not_found')
+            );
+        }
+        return response()->json($business, config('statuscode.ok'));
     }
 }
