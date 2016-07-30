@@ -2,11 +2,17 @@
 @section('title', trans('labels.promotions'))
 @section('content')
 <input type="hidden" id="url_search" value="{{ route('post.search', $info) }}">
+<input type="hidden" id="cities" value="{{ route('get.ciy') }}">
+<input type="hidden" id="counties" value="{{ route('get.county') }}">
 <div class="alert alert-danger" id="message">
 	<ul id="errors"></ul>
 </div>
 <div class="row">
 	<div class="col-lg-9 col-md-8 col-sm-7">
+		<div class="row">
+			<select name="city" id="city"></select>
+			<select name="county" id="county"></select>
+		</div>
 		<div class="row">
 			<div class="col-lg-3 col-md-4 col-sm-7" id="promotion0">
 				<div class="post-card">

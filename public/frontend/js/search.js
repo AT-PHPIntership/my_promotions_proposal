@@ -1,13 +1,16 @@
 $(document).ready(function(){
 	var url_search = $('#url_search').val();
     var cur_page = current_page;
+    var url_cities = $('#cities').val();
+    var url_counties = $('#counties').val();
+
 	$.ajax({
-		headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
-		url: url_search,
-		type: 'POST',
-		dataType: 'json',
-		success: function(result){
-			// show data
+        headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+        url: url_search,
+        type: 'POST',
+        dataType: 'json',
+        success: function(result){
+            // show data
             $.each (result.data, function(key, item) {
                 var div = $('div[id^="promotion"]:last');
                 var num = get_num_id(div) + increment;
@@ -32,15 +35,60 @@ $(document).ready(function(){
             // set active for paginate when load page.
             $('#page1').prop('class', 'active');
             set_disabled(page_from, result.last_page, cur_page);
-		},
-		error: function(data) {
-			var err = eval("(" + data.responseText + ")");
+        },
+        error: function(data) {
+            var err = eval("(" + data.responseText + ")");
             $('#message').html(err.error);
             $('#message').css('display', 'block');
-		}
-	});
-    
+        }
+    });
 
+    $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+        url: url_cities, 
+        type: 'post', 
+        dataType: 'json',
+        success: function(result) {
+            $.each (result.cities, function(key, item) {
+                $('#city').append($('<option>',
+                {
+                    value: item.id,
+                    text : item.name
+                }));
+            });
+        }
+    });
+
+    // even when selected in element select city. 
+    $('#city').change(function () {
+        $(this).find(":selected").each(function() {
+            var id_city = $(this).prop('value');
+
+            $.ajax({
+                headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+                url: url_counties, 
+                type: 'post', 
+                data: {'id': id_city},
+                dataType: 'json',
+                success: function(result) {
+                    var $county = $('#county');
+                    $county.empty();
+                    $.each (result.counties, function(key, item) {
+                        $county.append($('<option>',
+                        {
+                            value: item.id,
+                            text : item.name
+                        }));
+                    });
+                },
+                error: function (data) {
+                    var err = eval("(" + data.responseText + ")");
+                    $('#message').html(err.error);
+                    $('#message').css('display', 'block');
+                }
+            })
+        })
+    }).change();
 
     $('ul.pagination li').click(function () {
 
