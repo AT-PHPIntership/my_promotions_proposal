@@ -14,16 +14,15 @@ $('document').ready(function() {
         type: 'POST',
         dataType: 'json',
         success: function(result) {
-            var business = $('.detail-business');
-            
             // set button follow
             if (result.followed == false) {
-                business.find("#follow").prop({'text':labels.follow, 'class':'btn btn-success btn-sm', 'name':result.followed});
+                $("#follow").prop({'text':labels.follow, 'class':'btn btn-success btn-sm', 'name':result.followed});
             } else {
-                business.find("#follow").prop({'text':labels.unfollow, 'class':'btn btn-default btn-sm', 'name':result.followed});
+                $("#follow").prop({'text':labels.unfollow, 'class':'btn btn-default btn-sm', 'name':result.followed});
             }
 
             var result = result.data;
+            var business = $('.detail-business');
             business.find("#business-logo").prop('src', image);
             business.find("#business-nane").text(result.data[1].business.name);
             business.find("#business-create").text(result.data[1].business.created_at);
@@ -105,7 +104,27 @@ $('document').ready(function() {
     });
 
     $('#follow').click(function(){
-        alert('xxx');
+        var followed = $(this).prop('name');
+        var url_follow = $("#update_follow").val();
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+            url: url_follow,
+            type: 'POST',
+            data: {'follow': followed},
+            dataType: 'json',
+            success: function(result){
+                if (result == follow) {
+                    $("#follow").prop({'text':labels.unfollow, 'class':'btn btn-default btn-sm', 'name':true});
+                } else {
+                    $("#follow").prop({'text':labels.follow, 'class':'btn btn-success btn-sm', 'name':false});
+                }
+            },
+            error: function (result) {
+                var err = eval("(" + result.responseText + ")");
+                $('#message').html(err.error);
+                $('#message').css("display", "block");
+            }
+        });
     });
 });
 

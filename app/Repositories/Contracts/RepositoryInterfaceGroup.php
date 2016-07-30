@@ -53,4 +53,24 @@ interface RepositoryInterfaceGroup
      * @return mixed
      */
     public function checkFollowed($relation, $idUser, $idBusiness);
+
+    /**
+     * Function detach followed.
+     *
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function detachFollowed($idUser, $idBusiness);
+
+    /**
+     * Function attach followed.
+     *
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function attachFollowed($idUser, $idBusiness);
 }

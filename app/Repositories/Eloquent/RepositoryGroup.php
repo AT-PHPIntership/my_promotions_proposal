@@ -15,17 +15,14 @@ use Exception;
 abstract class RepositoryGroup implements RepositoryInterfaceGroup
 {
     /**
-     * App
+     * App, Model
      *
      * @var App
-     */
-    private $app;
-    /**
-     * Model
-     *
      * @var Model
      */
+    private $app;
     protected $model;
+
     /**
      * Construct
      *
@@ -38,6 +35,7 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
         $this->app = $app;
         $this->makeModel();
     }
+
     /**
      * Specify Model class name
      *
@@ -99,22 +97,6 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
     }
 
     /**
-     * Function makeModel
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
-     * @throws RepositoryException
-     */
-    public function makeModel()
-    {
-        $model = $this->app->make($this->model());
-        if (!$model instanceof Model) {
-            //return Exception
-            throw new Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
-        }
-        return $this->model = $model;
-    }
-
-    /**
      * Function check followed.
      *
      * @param object  $relation   relation
@@ -130,5 +112,47 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
             return false;
         }
         return true;
+    }
+
+    /**
+     * Function detach followed.
+     *
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function detachFollowed($idUser, $idBusiness)
+    {
+        return $this->model->find($idUser)->followedBusinesses()->detach($idBusiness);
+    }
+
+    /**
+     * Function attach followed.
+     *
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function attachFollowed($idUser, $idBusiness)
+    {
+        return $this->model->find($idUser)->followedBusinesses()->attach($idBusiness);
+    }
+
+    /**
+     * Function makeModel
+     *
+     * @return \Illuminate\Database\Eloquent\Builder
+     * @throws RepositoryException
+     */
+    public function makeModel()
+    {
+        $model = $this->app->make($this->model());
+        if (!$model instanceof Model) {
+            //return Exception
+            throw new Exception("Class {$this->model()} must be an instance of Illuminate\\Database\\Eloquent\\Model");
+        }
+        return $this->model = $model;
     }
 }

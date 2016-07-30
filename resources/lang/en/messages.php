@@ -34,5 +34,9 @@ return [
     "error_delete_county"      => "Wrong! couldn't delete county, please try again.",
     "error_delete_category"      => "Wrong! couldn't delete category, please try again.",
     "error_update_profile"      => "Wrong! couldn't update profile, please try again.",
+    "error_not_unfollow"      => "Wrong! couldn't unfollow business, please try again.",
+    "error_not_follow"        => "Wrong! couldn't follow business, please try again.",
     "update_profile_successfull"  => "Your profile was updated successfully!",
+    "unfollow"  => "unfollow",
+    "follow"    => "follow",
 ];

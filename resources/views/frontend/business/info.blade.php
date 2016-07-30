@@ -8,11 +8,12 @@
     <div class="col-lg-9 col-md-8 col-sm-7">
         <input type="hidden" id="detail_business" value="{{ route('postbusiness', $id) }}" />
         <input type="hidden" id="link_index" value="{{ route('index') }}"/>
+        <input type="hidden" id="update_follow" value="{!! route('post.update.follow', [Auth::user()->id, $id]) !!}"/>
         <div id="intro-business">
             <div class="jumbotron jumbo-business detail-business">
                 <img id="business-logo" src="{{ config('define.image_default') }}"/>
                 <h1 id="business-nane"></h1>
-                <p><a id="follow"></a></p>
+                <p><a id="follow"></a>{!! trans('labels.space') !!}</p>
                 <p id="business-create"></p>
                 <p id="business-email"></p>
                 <p id="business-phone"></p>
@@ -51,5 +52,9 @@
 </div>
 @endsection
 @section('script')
+    <script>
+        var follow= {!! json_encode( trans('messages.follow') ) !!};
+        var unfollow= {!! json_encode( trans('messages.unfollow') ) !!};
+    </script>
     <script src="{{ asset('frontend/js/show_business.js') }}"></script>
 @endsection

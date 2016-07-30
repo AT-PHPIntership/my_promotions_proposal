@@ -110,7 +110,7 @@ class BusinessController extends Controller
     }
 
     /**
-     * Store a newly created Bussiness.
+     * Show Bussiness.
      *
      * @param int $id show
      *
@@ -127,6 +127,37 @@ class BusinessController extends Controller
                 config('statuscode.not_found')
             );
         }
-        return response()->json(['data' => $business,'followed' => $follow], config('statuscode.ok'));
+        return response()->json([
+            'data'         => $business,
+            'followed'     => $follow
+        ], config('statuscode.ok'));
+    }
+
+    /**
+     * Update follow
+     *
+     * @param \Illuminate\Http\Request $request  request
+     * @param int                      $user     user     id
+     * @param int                      $business business id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateFollow(Request $request, $user, $business)
+    {
+        // unfollow
+        if ($request->follow === 'true') {
+            $result = $this->user->detachFollowed($user, $business);
+            if ($result == 0) {
+                return response()->json(
+                    ['error' => trans('messages.error_not_unfollow')],
+                    config('statuscode.internal_server_error')
+                );
+            }
+            return response()->json(trans('messages.unfollow'), config('statuscode.ok'));
+        }
+        
+        // follow
+        $result = $this->user->attachFollowed($user, $business);
+        return response()->json(trans('messages.follow'), config('statuscode.ok'));
     }
 }
