@@ -73,4 +73,14 @@ interface RepositoryInterfaceGroup
      * @return mixed
      */
     public function attachFollowed($idUser, $idBusiness);
+
+    /**
+     * Function count with condition.
+     *
+     * @param string         $attribute attribute
+     * @param integer/string $value     value
+     *
+     * @return mixed
+     */
+    public function count($attribute, $value);
 }

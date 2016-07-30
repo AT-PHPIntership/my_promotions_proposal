@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use App\Repositories\BusinessRepository as Business;
 use App\Repositories\RelationRepository as Promotion;
 use App\Repositories\RelationUserRepository as User;
+use App\Repositories\RelationFollowRepository as Follow;
 use Validator;
 use File;
 use Auth;
@@ -16,29 +17,32 @@ use Auth;
 class BusinessController extends Controller
 {
     /**
-     * Business, Promotion, User
+     * Business, Promotion, User, Follow
      *
-     * @var business, promotion, user
+     * @var business, promotion, user, follow
      */
     private $business;
     private $promotion;
     private $user;
+    private $follow;
 
 
     /**
      * Function construct of BusinessController
      *
-     * @param BusinessRepository $business  business
-     * @param RelationRepository $promotion promotion
-     * @param UserRepository     $user      user
+     * @param BusinessRepository       $business  business
+     * @param RelationRepository       $promotion promotion
+     * @param RelationUserRepository   $user      user
+     * @param RelationFollowRepository $follow    follow
      *
      * @return void
      */
-    public function __construct(Business $business, Promotion $promotion, User $user)
+    public function __construct(Business $business, Promotion $promotion, User $user, Follow $follow)
     {
-        $this->business = $business;
+        $this->business  = $business;
         $this->promotion = $promotion;
-        $this->user = $user;
+        $this->user      = $user;
+        $this->follow    = $follow;
     }
 
     /**
@@ -119,17 +123,26 @@ class BusinessController extends Controller
     public function postShowBusinessPromotion($id)
     {
         $business = $this->promotion->eagerLoadRelations(['business', 'category'], 'business', 'id', $id, config('define.paginate'));
-        $follow = $this->user->checkFollowed('followedBusinesses', Auth::user()->id, $id);
-
+        $totalFollow = $this->follow->count('business_id', $id);
         if ($business->count() == 0) {
             return response()->json(
                 ['error' => trans('messages.error_not_found')],
                 config('statuscode.not_found')
             );
         }
+
+        if (Auth::guard('web')->check()) {
+            $follow = $this->user->checkFollowed('followedBusinesses', Auth::user()->id, $id);
+            return response()->json([
+                'data'         => $business,
+                'followed'     => $follow,
+                'total_follow' => $totalFollow
+            ], config('statuscode.ok'));
+        }
+
         return response()->json([
             'data'         => $business,
-            'followed'     => $follow
+            'total_follow' => $totalFollow
         ], config('statuscode.ok'));
     }
 
@@ -147,17 +160,19 @@ class BusinessController extends Controller
         // unfollow
         if ($request->follow === 'true') {
             $result = $this->user->detachFollowed($user, $business);
+            $totalFollow = $this->follow->count('business_id', $business);
             if ($result == 0) {
                 return response()->json(
                     ['error' => trans('messages.error_not_unfollow')],
                     config('statuscode.internal_server_error')
                 );
             }
-            return response()->json(trans('messages.unfollow'), config('statuscode.ok'));
+            return response()->json(['result' => trans('messages.unfollow'),'total_follow' => $totalFollow], config('statuscode.ok'));
         }
         
         // follow
         $result = $this->user->attachFollowed($user, $business);
-        return response()->json(trans('messages.follow'), config('statuscode.ok'));
+        $totalFollow = $this->follow->count('business_id', $business);
+        return response()->json(['result' => trans('messages.follow'), 'total_follow' => $totalFollow], config('statuscode.ok'));
     }
 }

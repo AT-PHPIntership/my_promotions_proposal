@@ -3,13 +3,9 @@ $('document').ready(function() {
     var link_promotion = $("#link_index").val() +'/promotion/';
     var link_category = $("#link_index").val() +'/category/';
     var link_business = $("#link_index").val() +'/business/';
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr("content")
-        }
-    });
-    
+   
     $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr("content")},
         url: url_info_business,
         type: 'POST',
         dataType: 'json',
@@ -21,14 +17,16 @@ $('document').ready(function() {
                 $("#follow").prop({'text':labels.unfollow, 'class':'btn btn-default btn-sm', 'name':result.followed});
             }
 
+            // set total follow
+            $('#total_follow').text(result.total_follow);
+
             var result = result.data;
-            var business = $('.detail-business');
-            business.find("#business-logo").prop('src', image);
-            business.find("#business-nane").text(result.data[1].business.name);
-            business.find("#business-create").text(result.data[1].business.created_at);
-            business.find("#business-email").text(result.data[1].business.email);
-            business.find("#business-phone").text(result.data[1].business.phone);
-            business.find("#business-description").text(result.data[1].business.description);
+            $("#business-logo").prop('src', image);
+            $("#business-nane").text(result.data[1].business.name);
+            $("#business-create").text(result.data[1].business.created_at);
+            $("#business-email").text(result.data[1].business.email);
+            $("#business-phone").text(result.data[1].business.phone);
+            $("#business-description").text(result.data[1].business.description);
         },
         error: function (result) {
             var err = eval("(" + result.responseText + ")");
@@ -36,7 +34,9 @@ $('document').ready(function() {
             $('#message').css("display", "block");
         }
     });
+
     $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr("content")},
         url: url_info_business,
         type: 'POST',
         dataType: 'json',
@@ -70,6 +70,7 @@ $('document').ready(function() {
             };
         },
     });
+
     $('li[id^="page"]').click(function(){
         var num_page = get_num_id($(this));
         $(this).find('a').attr('href','javascript:void(0)');
@@ -113,11 +114,14 @@ $('document').ready(function() {
             data: {'follow': followed},
             dataType: 'json',
             success: function(result){
-                if (result == follow) {
+                // set button follow
+                if (result.result == follow) {
                     $("#follow").prop({'text':labels.unfollow, 'class':'btn btn-default btn-sm', 'name':true});
                 } else {
                     $("#follow").prop({'text':labels.follow, 'class':'btn btn-success btn-sm', 'name':false});
                 }
+                // set total follow
+                $('#total_follow').text(result.total_follow);
             },
             error: function (result) {
                 var err = eval("(" + result.responseText + ")");

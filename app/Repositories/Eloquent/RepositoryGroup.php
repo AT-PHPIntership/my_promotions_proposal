@@ -141,6 +141,19 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
     }
 
     /**
+     * Function count with condition.
+     *
+     * @param string         $attribute attribute
+     * @param integer/string $value     value
+     *
+     * @return mixed
+     */
+    public function count($attribute, $value)
+    {
+        return $this->model->where($attribute, $value)->count();
+    }
+
+    /**
      * Function makeModel
      *
      * @return \Illuminate\Database\Eloquent\Builder
