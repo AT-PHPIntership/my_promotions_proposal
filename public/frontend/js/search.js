@@ -1,10 +1,10 @@
 $(document).ready(function(){
-	var url_search = $('#url_search').val();
+    var url_search = $('#url_search').val();
     var cur_page = current_page;
     var url_cities = $('#cities').val();
     var url_counties = $('#counties').val();
 
-	$.ajax({
+    $.ajax({
         headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
         url: url_search,
         type: 'POST',
