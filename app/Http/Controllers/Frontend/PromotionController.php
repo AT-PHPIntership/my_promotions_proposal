@@ -7,6 +7,8 @@ use App\Repositories\PromotionRepository as Promotion;
 use App\Repositories\RelationRepository as Relation;
 use App\Repositories\RatingRepository as Rating;
 use App\Repositories\UserRepository as User;
+use App\Models\Promotion as MD;
+use App\Models\Business as MD2;
 use Auth;
 
 class PromotionController extends Controller
@@ -112,7 +114,7 @@ class PromotionController extends Controller
      */
     public function postSearch($info)
     {
-        $promotions = $this->relation->search(['business', 'category'], 'business', 'title', 'name', "%$info%", 'like', config('define.paginate'));
+        $promotions = $this->relation->search(['business', 'category'], 'business', 'title', 'name', "%$info%", config('define.paginate'));
 
         if (count($promotions) == 0) {
             return response()->json(
@@ -135,6 +137,19 @@ class PromotionController extends Controller
      */
     public function postSearchAdvance($info, $city, $county = '')
     {
-        return response()->json($info.'-'.$city.'-'.$county, config('statuscode.ok'));
+        if (empty($county)) {
+            $promotions = $this->relation->searchAdvance(['business', 'category'], 'business', 'cities', 'title', 'name', 'city_id', "%$info%", $city, config('define.paginate'));
+        } else {
+            $promotions = $this->relation->searchAdvance(['business', 'category'], 'business', 'counties', 'title', 'name', 'county_id', "%$info%", $county, config('define.paginate'));
+        }
+
+        if (count($promotions) == 0) {
+            return response()->json(
+                ['error' => trans('messages.error_not_found')],
+                config('statuscode.not_found')
+            );
+        }
+        
+        return response()->json($promotions, config('statuscode.ok'));
     }
 }
