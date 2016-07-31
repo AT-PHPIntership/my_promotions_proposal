@@ -133,7 +133,7 @@ class PromotionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function postSearchAdvance($info, $city = '', $county = '')
+    public function postSearchAdvance($info, $city, $county = '')
     {
         return response()->json($info.'-'.$city.'-'.$county, config('statuscode.ok'));
     }

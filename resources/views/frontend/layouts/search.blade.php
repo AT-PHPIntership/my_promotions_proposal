@@ -13,7 +13,7 @@
 			{!! Form::hidden('cities', route('get.ciy'), ['id' => 'cities']) !!}
 			{!! Form::hidden('counties', route('get.county'), ['id' => 'counties']) !!}
 			<div class="col-lg-3">
-			{!! Form::text('info', $info, ['class' => 'form-control', 'required'=>true]) !!}
+			{!! Form::text('info', $info, ['class' => 'form-control', 'required' => true, 'id' => 'info']) !!}
 			</div>
 			<div class="col-lg-3">
 				{!! Form::select('city', [], null, ['class' => 'form-control', 'id' => 'city']) !!}
@@ -63,5 +63,8 @@
 </div>
 @endsection
 @section('script')
+<script>
+	var url_index = {!! json_encode(route('index')) !!};
+</script>
 <script src="{{ asset('frontend/js/search.js') }}"></script>
 @endsection

@@ -1,6 +1,7 @@
 $(document).ready(function(){
     var url_search = $('#url_search').val();
     var cur_page = current_page;
+    var form_page = page_from;
     var url_cities = $('#cities').val();
     var url_counties = $('#counties').val();
 
@@ -34,7 +35,10 @@ $(document).ready(function(){
 
             // set active for paginate when load page.
             $('#page1').prop('class', 'active');
-            set_disabled(page_from, result.last_page, cur_page);
+            set_disabled(form_page, result.last_page, cur_page);
+
+            // set url for paginate
+            $('ul.pagination').prop('id', url_search);
         },
         error: function(data) {
             var err = eval("(" + data.responseText + ")");
@@ -106,9 +110,11 @@ $(document).ready(function(){
         $('#page'+num_page).prop('class', 'active');
         cur_page = num_page;
 
+        var url_paginate = $('ul.pagination').prop('id') + '?page=' + num_page;
+
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
-            url: url_search + '?page=' + num_page,
+            url: url_paginate,
             type: 'POST',
             dataType: 'json',
             success: function(result){
@@ -126,7 +132,7 @@ $(document).ready(function(){
                     promotion.find('#intro').text(item.intro);
                     div.after(promotion); 
                 });
-                set_disabled(page_from, result.last_page, cur_page);
+                set_disabled(form_page, result.last_page, cur_page);
             }
         })
     });
@@ -134,13 +140,12 @@ $(document).ready(function(){
     $('#frmSearchAdvance').submit(function(event) {
         // form don't submit.
         event.preventDefault();
-
-        var url_search_advance = url_search;
+        var url_search_advance = url_index +'/api/v1/search/'+ $('#info').val();
 
         // url search advance.
         if ($('#city').val() !== null) {
             
-            url_search_advance = url_search + '/city/' + $('#city').val() +'/county/';
+            url_search_advance += '/city/' + $('#city').val() +'/county/';
             
             if ($('#county').val() !== null) {
                 url_search_advance += $('#county').val();
@@ -148,11 +153,44 @@ $(document).ready(function(){
         }
 
         $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
             url: url_search_advance, 
             type: 'post', 
             dataType: 'json',
             success: function(result) {
-                console.log(result);
+                // show data
+                var div = $('div[id^="promotion"]');
+                div.slice(num_column).remove();
+                $.each (result.data, function(key, item) {
+                    var pro = $('div[id^="promotion"]:last');
+                    var num = get_num_id(pro) + increment;
+                    var promotion = pro.clone(true, true).prop('id', 'promotion'+num);
+                    promotion.find('#image').prop('src', item.image);
+                    promotion.find('#business').text(item.business.name);
+                    promotion.find('#category').text(item.category.name);
+                    promotion.find('#title').text(item.title);
+                    promotion.find('#intro').text(item.intro);
+                    pro.after(promotion);
+                });
+                // show paginate
+                cur_page = current_page;
+                form_page = page_from;
+                var li = $('li[id^="page"]');
+                li.slice(num_column).remove();
+                for (var i = 1; i <= result.last_page; i++) {
+                    var li = $('li[id^="page"]:last');
+                    var num = get_num_id(li) + increment;
+                    var page = li.clone(true, true).prop('id', 'page'+num);
+                    page.find('a').text(i);
+                    li.after(page); 
+                };
+
+                // set active for paginate when load page.
+                $('#page1').prop('class', 'active');
+                set_disabled(form_page, result.last_page, cur_page);
+
+                // set url for paginate
+                $('ul.pagination').prop('id', url_search_advance);
             },
             error: function (data) {
                 var err = eval("(" + data.responseText + ")");
@@ -169,8 +207,8 @@ function get_num_id(element){
 }
 
 // function set disabled for button next and pre.
-function set_disabled(page_from, page_to, current_page) {
-    if (current_page == page_from) {
+function set_disabled(form_page, page_to, current_page) {
+    if (current_page == form_page) {
        $('#pre').prop('class', 'disabled'); 
     } else {
        $('#pre').prop('class', '');
