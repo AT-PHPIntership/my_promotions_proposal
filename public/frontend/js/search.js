@@ -56,6 +56,7 @@ $(document).ready(function(){
                     text : item.name
                 }));
             });
+            $('#city').val(null);
         }
     });
 
@@ -80,6 +81,7 @@ $(document).ready(function(){
                             text : item.name
                         }));
                     });
+                    $county.val(null);
                 },
                 error: function (data) {
                     var err = eval("(" + data.responseText + ")");
@@ -127,6 +129,37 @@ $(document).ready(function(){
                 set_disabled(page_from, result.last_page, cur_page);
             }
         })
+    });
+
+    $('#frmSearchAdvance').submit(function(event) {
+        // form don't submit.
+        event.preventDefault();
+
+        var url_search_advance = url_search;
+
+        // url search advance.
+        if ($('#city').val() !== null) {
+            
+            url_search_advance = url_search + '/city/' + $('#city').val() +'/county/';
+            
+            if ($('#county').val() !== null) {
+                url_search_advance += $('#county').val();
+            }
+        }
+
+        $.ajax({
+            url: url_search_advance, 
+            type: 'post', 
+            dataType: 'json',
+            success: function(result) {
+                console.log(result);
+            },
+            error: function (data) {
+                var err = eval("(" + data.responseText + ")");
+                $('#message').html(err.error);
+                $('#message').css('display', 'block');
+            }
+        });
     });
 })
 

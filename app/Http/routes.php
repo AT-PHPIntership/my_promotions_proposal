@@ -139,6 +139,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         // API search promotion
         Route::post('search/{info}', ['as' => 'post.search', 'uses' =>'PromotionController@postSearch']);
 
+        // API search advance promotion
+        Route::post('search/{info}/city/{city}/county/{county?}', ['as' => 'post.search.advance', 'uses' =>'PromotionController@postSearchAdvance']);
+
         // API get cities
         Route::post('city', ['as' => 'get.ciy', 'uses' => 'CityController@getCity']);
 

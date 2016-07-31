@@ -123,4 +123,18 @@ class PromotionController extends Controller
         
         return response()->json($promotions, config('statuscode.ok'));
     }
+
+    /**
+     * Search advance promotion.
+     *
+     * @param info   $info   info
+     * @param city   $city   city
+     * @param county $county county
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postSearchAdvance($info, $city = '', $county = '')
+    {
+        return response()->json($info.'-'.$city.'-'.$county, config('statuscode.ok'));
+    }
 }

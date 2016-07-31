@@ -90,4 +90,5 @@ return [
     'follow'                =>  'Follow',
     'previous'              =>  'Previous',
     'next'                  =>  'Next',
+    'search'                =>  'Search',
 ];
