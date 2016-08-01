@@ -40,8 +40,8 @@
                                 @else
                                 <a href="{{ route('business.get.register') }}">
                                     {!! trans('labels.register_business') !!}
-                                @endif
                                 </a>
+                                @endif
                             </li>
                             <li><a href="{{ route('user.get.profile', Auth::user()->id ) }}">{!! trans('labels.profile') !!}</a></li>
                             <li class="divider"></li>
