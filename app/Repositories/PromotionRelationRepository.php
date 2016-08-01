@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Eloquent\RepositoryGroup;
+use App\Repositories\Eloquent\RepositoryRelation;
 
-class RelationRepository extends RepositoryGroup
+class PromotionRelationRepository extends RepositoryRelation
 {
 
     /**

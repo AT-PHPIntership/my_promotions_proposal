@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Repositories\PromotionRepository as Promotion;
-use App\Repositories\RelationRepository as Relation;
+use App\Repositories\PromotionRelationRepository as Relation;
 use App\Repositories\RatingRepository as Rating;
 use App\Repositories\UserRepository as User;
 use Auth;
