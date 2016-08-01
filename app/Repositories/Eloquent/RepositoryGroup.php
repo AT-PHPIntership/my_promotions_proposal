@@ -77,49 +77,6 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
     }
 
     /**
-     * Function search.
-     *
-     * @param array          $models  models
-     * @param string         $table   table
-     * @param string         $attrPro attrPro
-     * @param string         $attrBus attrBus
-     * @param integer/string $value   value
-     * @param integer        $perPage perPage
-     *
-     * @return array
-     */
-    public function search(array $models, $table, $attrPro, $attrBus, $value, $perPage = 15)
-    {
-        return $this->model->where($attrPro, 'like', $value)->with($models)->orWhereHas($table, function ($query) use ($value, $attrBus) {
-            $query->where($attrBus, 'like', $value);
-        })->paginate($perPage);
-    }
-
-    /**
-     * Function search advance.
-     *
-     * @param array          $models     models
-     * @param string         $tableBus   tableBus
-     * @param string         $tablePivot tablePivot
-     * @param string         $attrPro    attrPro
-     * @param string         $attrBus    attrBus
-     * @param string         $attrPivot  attrPivot
-     * @param integer/string $value      value
-     * @param integer/string $valuePivot valuePivot
-     * @param integer        $perPage    perPage
-     *
-     * @return mixed
-     */
-    public function searchAdvance(array $models, $tableBus, $tablePivot, $attrPro, $attrBus, $attrPivot, $value, $valuePivot, $perPage = 15)
-    {
-        return $this->model->where($attrPro, 'like', $value)->with($models)->orWhereHas($tableBus, function ($query) use ($attrBus, $value, $tablePivot, $attrPivot, $valuePivot) {
-                                    $query->where($attrBus, 'like', $value)->orWhereHas($tablePivot, function ($q) use ($attrPivot, $valuePivot) {
-                                        $q->where($attrPivot, '=', $valuePivot);
-                                    });
-        })->paginate($perPage);
-    }
-
-    /**
      * Function check followed.
      *
      * @param object  $relation   relation
