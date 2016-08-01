@@ -86,4 +86,7 @@ return [
     'follow'                =>  'Follow',
     'previous'              =>  'Previous',
     'next'                  =>  'Next',
+    'rating'                =>  'Rating',
+    'reviews'               =>  'Reviews',
+    'comment'               =>  'Comment',
 ];

@@ -35,4 +35,5 @@ return [
     "error_delete_category"      => "Wrong! couldn't delete category, please try again.",
     "error_update_profile"      => "Wrong! couldn't update profile, please try again.",
     "update_profile_successfull"  => "Your profile was updated successfully!",
+    "rating_successfull"        => "Thanks you for rating!"
 ];

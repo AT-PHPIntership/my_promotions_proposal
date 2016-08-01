@@ -94,6 +94,9 @@ Route::group(['namespace' => 'Frontend'], function () {
 
             // Post register business
             Route::post('business/register', ['as' => 'business.post.register', 'uses' => 'BusinessController@postRegister']);
+
+            //Post rating
+            Route::post('promotion/{id}/rating/', ['as' => 'post.rating', 'uses' => 'RatingController@postRating']);
         });
     });
 
