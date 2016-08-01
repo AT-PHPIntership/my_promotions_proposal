@@ -94,6 +94,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         
             //API Show Business
             Route::post('user/business/{id}', ['as' => 'showBusiness', 'uses' => 'BusinessManagerController@showBusiness']);
+
+            //API Update follow business
+            Route::post('user/{user}/business/{business}/follow', ['as' => 'post.update.follow', 'uses' => 'BusinessController@updateFollow']);
         });
     });
 

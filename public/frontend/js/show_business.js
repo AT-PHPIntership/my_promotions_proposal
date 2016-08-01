@@ -3,27 +3,30 @@ $('document').ready(function() {
     var link_promotion = $("#link_index").val() +'/promotion/';
     var link_category = $("#link_index").val() +'/category/';
     var link_business = $("#link_index").val() +'/business/';
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="_token"]').attr("content")
-        }
-    });
-    
+   
     $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr("content")},
         url: url_info_business,
         type: 'POST',
         dataType: 'json',
         success: function(result) {
-            var div = $('#intro-business')
-            var business = $('div .detail-business').clone().attr("id","business")
-            business.removeClass("detail-business");
-            business.find("#business-logo").prop('src', image);
-            business.find("#business-nane").text(result.data[1].business.name);
-            business.find("#business-create").text(result.data[1].business.created_at);
-            business.find("#business-email").text(result.data[1].business.email);
-            business.find("#business-phone").text(result.data[1].business.phone);
-            business.find("#business-description").text(result.data[1].business.description);
-            div.append(business)
+            // set button follow
+            if (result.followed == false) {
+                $("#follow").prop({'text':labels.follow, 'class':'btn btn-success btn-sm', 'name':result.followed});
+            } else {
+                $("#follow").prop({'text':labels.unfollow, 'class':'btn btn-default btn-sm', 'name':result.followed});
+            }
+
+            // set total follow
+            $('#total_follow').text(result.total_follow);
+
+            var result = result.data;
+            $("#business-logo").prop('src', image);
+            $("#business-nane").text(result.data[1].business.name);
+            $("#business-create").text(result.data[1].business.created_at);
+            $("#business-email").text(result.data[1].business.email);
+            $("#business-phone").text(result.data[1].business.phone);
+            $("#business-description").text(result.data[1].business.description);
         },
         error: function (result) {
             var err = eval("(" + result.responseText + ")");
@@ -31,11 +34,14 @@ $('document').ready(function() {
             $('#message').css("display", "block");
         }
     });
+
     $.ajax({
+        headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr("content")},
         url: url_info_business,
         type: 'POST',
         dataType: 'json',
         success: function(result) {
+            var result = result.data;
             var div = $('#list_business_promotion');
             var index = order_number;
             $.each(result.data, function(key, value) {
@@ -64,6 +70,7 @@ $('document').ready(function() {
             };
         },
     });
+
     $('li[id^="page"]').click(function(){
         var num_page = get_num_id($(this));
         $(this).find('a').attr('href','javascript:void(0)');
@@ -95,6 +102,33 @@ $('document').ready(function() {
                 });
             }
         })
+    });
+
+    $('#follow').click(function(){
+        var followed = $(this).prop('name');
+        var url_follow = $("#update_follow").val();
+        $.ajax({
+            headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')},
+            url: url_follow,
+            type: 'POST',
+            data: {'follow': followed},
+            dataType: 'json',
+            success: function(result){
+                // set button follow
+                if (result.result == follow) {
+                    $("#follow").prop({'text':labels.unfollow, 'class':'btn btn-default btn-sm', 'name':true});
+                } else {
+                    $("#follow").prop({'text':labels.follow, 'class':'btn btn-success btn-sm', 'name':false});
+                }
+                // set total follow
+                $('#total_follow').text(result.total_follow);
+            },
+            error: function (result) {
+                var err = eval("(" + result.responseText + ")");
+                $('#message').html(err.error);
+                $('#message').css("display", "block");
+            }
+        });
     });
 });
 

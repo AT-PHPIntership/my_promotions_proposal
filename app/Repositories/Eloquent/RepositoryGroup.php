@@ -15,17 +15,14 @@ use Exception;
 abstract class RepositoryGroup implements RepositoryInterfaceGroup
 {
     /**
-     * App
+     * App, Model
      *
      * @var App
-     */
-    private $app;
-    /**
-     * Model
-     *
      * @var Model
      */
+    private $app;
     protected $model;
+
     /**
      * Construct
      *
@@ -38,6 +35,7 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
         $this->app = $app;
         $this->makeModel();
     }
+
     /**
      * Specify Model class name
      *
@@ -119,6 +117,63 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
                                         $q->where($attrPivot, '=', $valuePivot);
                                     });
         })->paginate($perPage);
+    }
+
+    /**
+     * Function check followed.
+     *
+     * @param object  $relation   relation
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function checkFollowed($relation, $idUser, $idBusiness)
+    {
+        $check = $this->model->find($idUser)->$relation->find($idBusiness);
+        if (is_null($check)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Function detach followed.
+     *
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function detachFollowed($idUser, $idBusiness)
+    {
+        return $this->model->find($idUser)->followedBusinesses()->detach($idBusiness);
+    }
+
+    /**
+     * Function attach followed.
+     *
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function attachFollowed($idUser, $idBusiness)
+    {
+        return $this->model->find($idUser)->followedBusinesses()->attach($idBusiness);
+    }
+
+    /**
+     * Function count with condition.
+     *
+     * @param string         $attribute attribute
+     * @param integer/string $value     value
+     *
+     * @return mixed
+     */
+    public function count($attribute, $value)
+    {
+        return $this->model->where($attribute, $value)->count();
     }
 
     /**
