@@ -17,6 +17,7 @@ return [
     'list'            => 'List',
     'id'              => 'ID',
     'name'            => 'Name',
+    'title'           => 'Title',
 
     'create'          => 'Create New',
     'user_name'       => 'User Name',

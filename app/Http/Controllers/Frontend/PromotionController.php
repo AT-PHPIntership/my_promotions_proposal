@@ -7,6 +7,7 @@ use App\Repositories\PromotionRepository as Promotion;
 use App\Repositories\RelationRepository as Relation;
 use App\Repositories\RatingRepository as Rating;
 use App\Repositories\UserRepository as User;
+use Yajra\Datatables\Facades\Datatables;
 use Auth;
 
 class PromotionController extends Controller
@@ -122,5 +123,22 @@ class PromotionController extends Controller
         }
         
         return response()->json($promotions, config('statuscode.ok'));
+    }
+
+    /**
+     * Show list promotion with id business.
+     *
+     * @param business $business business
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showPromotion($business)
+    {
+         $promotions = \App\Models\Promotion::with(['business', 'category'])->whereHas('business', function ($query) use ($business) {
+            $query->where('id', $business);
+         })->get();
+
+            return Datatables::of($promotions)->make(true);
+            return response()->json($promotions, config('statuscode.ok'));
     }
 }
