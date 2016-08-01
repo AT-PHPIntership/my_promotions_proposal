@@ -41,11 +41,11 @@
                         {!! Form::hidden(null, route('post.rating', $id), ['id' => 'route_rating']) !!}
                         {!! Form::label('name', trans('labels.rating'), ['class' => 'control-label label-rating']) !!}
                         <fieldset class="rating">
-                            <input type="radio" id="star5" name="score" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                            <input type="radio" id="star4" name="score" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                            <input type="radio" id="star3" name="score" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                            <input type="radio" id="star2" name="score" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                            <input type="radio" id="star1" name="score" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
+                            <input type="radio" id="star5" name="score" value="5" /><label class = "full" for="star5"></label>
+                            <input type="radio" id="star4" name="score" value="4" /><label class = "full" for="star4"></label>
+                            <input type="radio" id="star3" name="score" value="3" /><label class = "full" for="star3"></label>
+                            <input type="radio" id="star2" name="score" value="2" /><label class = "full" for="star2"></label>
+                            <input type="radio" id="star1" name="score" value="1" /><label class = "full" for="star1"></label>
                         </fieldset>
                         <div class="clearleft"></div>
                         {!! Form::label('name', trans('labels.comment'), ['class' => 'control-label']) !!}
@@ -53,11 +53,8 @@
                         {!! Form::reset( trans('labels.reset') , array('class' => 'btn btn-default')) !!}
                         {!! Form::submit( trans('labels.submit') , array('class' => 'btn btn-primary')) !!}
                         {!! Form::close() !!}
-                        {{--@else--}}
-                            {{--<p><b>You has rating this promotion</b></p>--}}
-                        {{--@endif--}}
                     @else
-                        <p><b>Please login to rating this promotion</b></p>
+                        <p><b>{!! trans('messages.please_login') !!}</b></p>
                     @endif
                 </div>
                 <input type="hidden" id="review_rating" value="{{ route('post.promotion.review', $id) }}" />
