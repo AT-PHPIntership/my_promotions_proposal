@@ -94,5 +94,6 @@ return [
     'rating'                =>  'Rating',
     'reviews'               =>  'Reviews',
     'comment'               =>  'Comment',
+    'search'                =>  'Search',
     'space'                 =>  ' - ',
 ];
