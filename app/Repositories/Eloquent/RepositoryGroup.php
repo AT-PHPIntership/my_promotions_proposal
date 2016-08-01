@@ -15,17 +15,14 @@ use Exception;
 abstract class RepositoryGroup implements RepositoryInterfaceGroup
 {
     /**
-     * App
+     * App, Model
      *
      * @var App
-     */
-    private $app;
-    /**
-     * Model
-     *
      * @var Model
      */
+    private $app;
     protected $model;
+
     /**
      * Construct
      *
@@ -38,6 +35,7 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
         $this->app = $app;
         $this->makeModel();
     }
+
     /**
      * Specify Model class name
      *
@@ -79,23 +77,60 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
     }
 
     /**
-     * Function search.
+     * Function check followed.
      *
-     * @param array          $models   models
-     * @param string         $table    table
-     * @param string         $attrPro  attrPro
-     * @param string         $attrBus  attrBus
-     * @param integer/string $value    value
-     * @param string         $operator operator
-     * @param integer        $perPage  perPage
+     * @param object  $relation   relation
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
      *
-     * @return array
+     * @return mixed
      */
-    public function search(array $models, $table, $attrPro, $attrBus, $value, $operator = '=', $perPage = 15)
+    public function checkFollowed($relation, $idUser, $idBusiness)
     {
-        return $this->model->where($attrPro, $operator, $value)->with($models)->orWhereHas($table, function ($query) use ($value, $attrBus, $operator) {
-            $query->where($attrBus, $operator, $value);
-        })->paginate($perPage);
+        $check = $this->model->find($idUser)->$relation->find($idBusiness);
+        if (is_null($check)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Function detach followed.
+     *
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function detachFollowed($idUser, $idBusiness)
+    {
+        return $this->model->find($idUser)->followedBusinesses()->detach($idBusiness);
+    }
+
+    /**
+     * Function attach followed.
+     *
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function attachFollowed($idUser, $idBusiness)
+    {
+        return $this->model->find($idUser)->followedBusinesses()->attach($idBusiness);
+    }
+
+    /**
+     * Function count with condition.
+     *
+     * @param string         $attribute attribute
+     * @param integer/string $value     value
+     *
+     * @return mixed
+     */
+    public function count($attribute, $value)
+    {
+        return $this->model->where($attribute, $value)->count();
     }
 
     /**

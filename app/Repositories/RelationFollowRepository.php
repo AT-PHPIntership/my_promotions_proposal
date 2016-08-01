@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Eloquent\RepositoryRelation;
+use App\Repositories\Eloquent\RepositoryGroup;
 
-class RelationRepository extends RepositoryRelation
+class RelationFollowRepository extends RepositoryGroup
 {
 
     /**
@@ -14,6 +14,6 @@ class RelationRepository extends RepositoryRelation
      */
     public function model()
     {
-        return 'App\Models\Promotion';
+        return 'App\Models\Follow';
     }
 }
