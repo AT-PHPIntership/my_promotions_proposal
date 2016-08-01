@@ -29,21 +29,6 @@ interface RepositoryInterfaceGroup
     public function eagerLoadRelations(array $models, $table, $attribute, $value, $perPage = 15);
 
     /**
-     * Function search.
-     *
-     * @param array          $models   models
-     * @param string         $table    table
-     * @param string         $attrPro  attrPro
-     * @param string         $attrBus  attrBus
-     * @param integer/string $value    value
-     * @param string         $operator operator
-     * @param integer        $perPage  perPage
-     *
-     * @return mixed
-     */
-    public function search(array $models, $table, $attrPro, $attrBus, $value, $operator = '=', $perPage = 15);
-
-    /**
      * Function check followed.
      *
      * @param object  $relation   relation

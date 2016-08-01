@@ -112,7 +112,34 @@ class PromotionController extends Controller
      */
     public function postSearch($info)
     {
-        $promotions = $this->relation->search(['business', 'category'], 'business', 'title', 'name', "%$info%", 'like', config('define.paginate'));
+        $promotions = $this->relation->search(['business', 'category'], 'business', 'title', 'name', "%$info%", config('define.paginate'));
+
+        if (count($promotions) == 0) {
+            return response()->json(
+                ['error' => trans('messages.error_not_found')],
+                config('statuscode.not_found')
+            );
+        }
+        
+        return response()->json($promotions, config('statuscode.ok'));
+    }
+
+    /**
+     * Search advance promotion.
+     *
+     * @param info   $info   info
+     * @param city   $city   city
+     * @param county $county county
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function postSearchAdvance($info, $city, $county = '')
+    {
+        if (empty($county)) {
+            $promotions = $this->relation->searchAdvance(['business', 'category'], 'business', 'cities', 'title', 'name', 'city_id', "%$info%", $city, config('define.paginate'));
+        } else {
+            $promotions = $this->relation->searchAdvance(['business', 'category'], 'business', 'counties', 'title', 'name', 'county_id', "%$info%", $county, config('define.paginate'));
+        }
 
         if (count($promotions) == 0) {
             return response()->json(

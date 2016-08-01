@@ -89,12 +89,6 @@ Route::group(['namespace' => 'Frontend'], function () {
         // API
         Route::group(['prefix' => 'api/v1'], function () {
 
-            // Get cities
-            Route::post('city', ['as' => 'get.ciy', 'uses' => 'CityController@getCity']);
-
-            // Get counties
-            Route::post('county', ['as' => 'get.county', 'uses' => 'CityController@getCounty']);
-
             // Post register business
             Route::post('business/register', ['as' => 'business.post.register', 'uses' => 'BusinessController@postRegister']);
         
@@ -147,6 +141,15 @@ Route::group(['namespace' => 'Frontend'], function () {
 
         // API search promotion
         Route::post('search/{info}', ['as' => 'post.search', 'uses' =>'PromotionController@postSearch']);
+
+        // API search advance promotion
+        Route::post('search/{info}/city/{city}/county/{county?}', ['as' => 'post.search.advance', 'uses' =>'PromotionController@postSearchAdvance']);
+
+        // API get cities
+        Route::post('city', ['as' => 'get.ciy', 'uses' => 'CityController@getCity']);
+
+        // API get counties
+        Route::post('county', ['as' => 'get.county', 'uses' => 'CityController@getCounty']);
     });
 });
 

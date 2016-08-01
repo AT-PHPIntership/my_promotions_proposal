@@ -77,26 +77,6 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
     }
 
     /**
-     * Function search.
-     *
-     * @param array          $models   models
-     * @param string         $table    table
-     * @param string         $attrPro  attrPro
-     * @param string         $attrBus  attrBus
-     * @param integer/string $value    value
-     * @param string         $operator operator
-     * @param integer        $perPage  perPage
-     *
-     * @return array
-     */
-    public function search(array $models, $table, $attrPro, $attrBus, $value, $operator = '=', $perPage = 15)
-    {
-        return $this->model->where($attrPro, $operator, $value)->with($models)->orWhereHas($table, function ($query) use ($value, $attrBus, $operator) {
-            $query->where($attrBus, $operator, $value);
-        })->paginate($perPage);
-    }
-
-    /**
      * Function check followed.
      *
      * @param object  $relation   relation

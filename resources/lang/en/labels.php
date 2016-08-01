@@ -91,5 +91,6 @@ return [
     'unfollow'              =>  'Unfollow',
     'previous'              =>  'Previous',
     'next'                  =>  'Next',
+    'search'                =>  'Search',
     'space'                 =>  ' - ',
 ];
