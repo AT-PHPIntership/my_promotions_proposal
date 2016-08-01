@@ -126,12 +126,14 @@ abstract class Repository implements RepositoryInterface
      * @param string $attribute attribute
      * @param string $value     value
      * @param array  $columns   columns
+     * @param string $field     field
+     * @param array  $sort      sort
      *
      * @return mixed
      */
-    public function findBy($attribute, $value, $columns = array('*'))
+    public function findBy($attribute, $value, $columns = array('*'), $field = 'id', $sort = 'desc')
     {
-        return $this->model->where($attribute, '=', $value)->select($columns)->get();
+        return $this->model->where($attribute, '=', $value)->select($columns)->orderBy($field, $sort)->get();
     }
     
     /**

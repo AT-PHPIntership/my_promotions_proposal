@@ -91,6 +91,9 @@ Route::group(['namespace' => 'Frontend'], function () {
 
             // Post register business
             Route::post('business/register', ['as' => 'business.post.register', 'uses' => 'BusinessController@postRegister']);
+
+            //Post rating
+            Route::post('promotion/{id}/rating/', ['as' => 'post.rating', 'uses' => 'RatingController@postRating']);
         
             //API Show Business
             Route::post('user/business/{id}', ['as' => 'showBusiness', 'uses' => 'BusinessManagerController@showBusiness']);
@@ -142,6 +145,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         // API search promotion
         Route::post('search/{info}', ['as' => 'post.search', 'uses' =>'PromotionController@postSearch']);
 
+        // API List promotion review rating
+        Route::post('promotion/{id}/review/', ['as' => 'post.promotion.review', 'uses' => 'RatingController@show']);
+        
         // API search advance promotion
         Route::post('search/{info}/city/{city}/county/{county?}', ['as' => 'post.search.advance', 'uses' =>'PromotionController@postSearchAdvance']);
 
