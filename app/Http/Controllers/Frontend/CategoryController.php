@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\Repositories\RelationRepository as Promotion;
+use App\Repositories\CategoryRelationRepository as Promotion;
 
 class CategoryController extends Controller
 {
@@ -35,7 +35,7 @@ class CategoryController extends Controller
      */
     public function postCategory($id)
     {
-        $promotions = $this->promotion->eagerLoadRelations(['business', 'category'], 'category', 'id', $id, config('define.paginate'));
+        $promotions = $this->promotion->eagerLoadRelations(['business', 'category'], 'category', 'id', $id, true, config('define.paginate'));
 
         if (count($promotions) == 0) {
             return response()->json(

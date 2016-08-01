@@ -104,7 +104,7 @@ Route::group(['namespace' => 'Frontend'], function () {
             Route::post('user/{user}/business/{business}/follow', ['as' => 'post.update.follow', 'uses' => 'BusinessController@updateFollow']);
             
             // API get list promotions
-            Route::get('business/{business}/promotion', ['as' => 'get.promotion', 'uses' => 'PromotionController@showPromotion']);
+            Route::get('business/{business}/promotion', ['as' => 'get.promotion', 'uses' => 'BusinessManagerController@showPromotion']);
         });
     });
 

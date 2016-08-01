@@ -69,11 +69,16 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
      *
      * @return array
      */
-    public function eagerLoadRelations(array $models, $table, $attribute, $value, $perPage = 15)
+    public function eagerLoadRelations(array $models, $table, $attribute, $value, $paginate = true, $perPage = 15)
     {
+        if ($paginate) {
+            return $this->model->with($models)->whereHas($table, function ($query) use ($value, $attribute) {
+                $query->where($attribute, $value);
+            })->paginate($perPage);
+        }
         return $this->model->with($models)->whereHas($table, function ($query) use ($value, $attribute) {
-            $query->where($attribute, $value);
-        })->paginate($perPage);
+                $query->where($attribute, $value);
+            })->get();
     }
 
     /**

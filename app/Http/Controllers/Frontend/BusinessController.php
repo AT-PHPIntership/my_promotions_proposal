@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\BusinessRepository as Business;
-use App\Repositories\RelationRepository as Promotion;
+use App\Repositories\CategoryRelationRepository as Promotion;
 use App\Repositories\RelationUserRepository as User;
 use App\Repositories\RelationFollowRepository as Follow;
 use Validator;
@@ -122,7 +122,7 @@ class BusinessController extends Controller
      */
     public function postShowBusinessPromotion($id)
     {
-        $business = $this->promotion->eagerLoadRelations(['business', 'category'], 'business', 'id', $id, config('define.paginate'));
+        $business = $this->promotion->eagerLoadRelations(['business', 'category'], 'business', 'id', $id, true, config('define.paginate'));
         $totalFollow = $this->follow->count('business_id', $id);
         if ($business->count() == 0) {
             return response()->json(

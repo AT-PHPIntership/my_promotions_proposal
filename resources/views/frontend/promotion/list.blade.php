@@ -5,7 +5,7 @@
     <input type="hidden" id="url_promotion" value="{{ route('get.promotion', $id) }}">
     <div class="col-lg-9 col-md-8 col-sm-7">
     	<div class="x_title">
-            <a href="#" class="btn btn-primary"><i class="fa fa-pencil"></i> {!! trans('labels.add_new') !!} </a>
+            <a href="" class="btn btn-primary"><i class="fa fa-pencil"></i> {!! trans('labels.add_new') !!} </a>
         </div>
         <br>
         <div class="x_content">
@@ -13,9 +13,8 @@
                 <thead>
 	                <tr>
 	                    <th>{!! trans('labels.id') !!}</th>
-	                    <th>{!! trans('labels.title') !!}</th>
+                        <th>{!! trans('labels.title') !!}</th>
 	                    <th>{!! trans('labels.category') !!}</th>
-	                    <th>{!! trans('labels.image') !!}</th>
 	                    <th>{!! trans('labels.action') !!}</th>
 	                </tr>
                 </thead>

@@ -1,18 +1,19 @@
 $(document).ready(function(){
 	var url_pro = $('#url_promotion').val();
-	var table = $('#list_promotions').DataTable({
+
+	$('#list_promotions').DataTable({
 		processing: true,
 		serverSide: true,
 		ajax: url_pro,
 		columns: [
 			{ data: 'id', name: 'id' },
 			{ data: 'title', name: 'title' },
-			{ data: 'image', name: 'image' },
+			{ data: 'category.name', name: 'category.name' },
 	        {data:'action',width:'5%',
-	            mRender: function (data, type, full)
+	            mRender: function (data)
 	            {
-	            var action = '<button class="btn btn-danger btn-xs delete" value="'+ url_delete + '/' + full['id']+'">Delete</button>';
-	            action += '<button class="btn btn-warning btn-xs edit open-modal" value="'+ url_edit + '/' + full['id']+'" id="'+ url_update + '/' + full['id'] +'">Edit</button>';
+	            var action = '<button class="btn btn-danger btn-xs">Delete</button>';
+	            	action += '<button class="btn btn-warning btn-xs">Edit</button>';
 	            return action;
 	            }
 	        }
