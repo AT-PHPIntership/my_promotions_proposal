@@ -88,6 +88,8 @@ return [
     'promotion'             =>  'Promotion',
     'promotion_business'    =>  'Business Promotion >>',
     'follow'                =>  'Follow',
+    'unfollow'              =>  'Unfollow',
     'previous'              =>  'Previous',
     'next'                  =>  'Next',
+    'space'                 =>  ' - ',
 ];
