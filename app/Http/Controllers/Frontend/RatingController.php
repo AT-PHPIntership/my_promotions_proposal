@@ -45,13 +45,9 @@ class RatingController extends Controller
      */
     public function listRating($id)
     {
-//       $ratings = $this->rating->all();
-//       $ratings->load('user', 'promotion');
-//       return response()->json([
-//           'ratings' => $ratings
-//               ], config('statuscode.ok'));
-        
-        $rating = $this->rating->find($id);
+        $rating = \App\Models\Rating::with(['promotion', 'user'])->whereHas('promotion', function($query)use($id){
+           $query->where('business_id', $id); 
+        })->get();
         if (empty($rating)) {
             return response()->json(
                 ['error' => trans('messages.error_not_found')],

@@ -18,7 +18,7 @@ class RatingsTableSeeder extends Seeder
                 'content'      => $faker->realText(rand(10,20)),
                 'score'        => rand(1, 5),
                 'user_id'      => rand(1, 20),
-                'promotion_id' => rand(1, 5),
+                'promotion_id' => rand(1, 20),
                 'created_at'   => Carbon\Carbon::now()
             ]);
         }

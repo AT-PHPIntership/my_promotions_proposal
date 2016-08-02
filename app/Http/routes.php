@@ -107,7 +107,7 @@ Route::group(['namespace' => 'Frontend'], function () {
             Route::post('user/business/{id}', ['as' => 'showBusiness', 'uses' => 'BusinessManagerController@showBusiness']);
         
             //API List Rating
-            Route::post('user/business/{id}/rating', ['as' => 'list.Rating', 'uses' => 'RatingController@listRating']);
+            Route::post('user/{user}/business/{business}/rating', ['as' => 'list.Rating', 'uses' => 'RatingController@listRating']);
         });
     });
 
