@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/bower.css') }}" media="screen">
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-datepicker3.min.css') }}">
   </head>
     <body>
        

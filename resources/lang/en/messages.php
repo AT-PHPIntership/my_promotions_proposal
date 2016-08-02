@@ -39,4 +39,6 @@ return [
     "update_profile_successfull"  => "Your profile was updated successfully!",
     "unfollow"  => "unfollow",
     "follow"    => "follow",
+    "create_promotion_successfull" => "You was created promotion successfully!",
+    "error_create_promotion"    => "Error created promotion",
 ];
