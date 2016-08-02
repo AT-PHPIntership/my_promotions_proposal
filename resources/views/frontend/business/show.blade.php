@@ -1,16 +1,9 @@
 @extends('frontend.layouts.master')
 @section('title', trans('labels.promotions'))
 @section('content')
-<div class="col-lg-3 col-md-4 col-sm-5">
-    <h1>{!! trans('labels.list') !!}</h1>
-    <div class="list-group table-of-contents">
-        <a class="list-group-item" href="#">{!! trans('labels.user_following') !!}</a>
-        <a class="list-group-item" href="#">{!! trans('labels.rating') !!}</a>
-        <a class="list-group-item" href="#">{!! trans('labels.promotion') !!}</a>
-    </div>
-</div>
+    @include('frontend.business.partials.side_bar')
     <div class="col-lg-9 col-md-8 col-sm-7">
-        <input type="hidden" id="show_business" value="{{ route('showBusiness', $id) }}" /> 
+        <input type="hidden" id="show_business" value="{{ route('showBusiness', $id) }}" />
         <div class="profile_img" id="businesses">
             
             <!-- end of image cropping -->
