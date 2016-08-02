@@ -72,15 +72,20 @@ Route::group(['namespace' => 'Frontend'], function () {
 
     Route::group(['middleware' => ['auth']], function () {
 
+        //show create promotion
+        Route::get('user/{user}/business/{business}/promotion/create', function ($business) {
+            return view('frontend.promotion.create')->with('id',$business);
+        })->name('promotion.get.create');
+
         // Update profile user
         Route::get('user/profile/{profile}', ['as' => 'user.get.profile', 'uses' => 'UserController@getProfile']);
         Route::post('user/profile/{profile}', ['as' => 'user.post.profile', 'uses' => 'UserController@postProfile']);
-    
+
         // Register business
         Route::get('business/register', function () {
             return view('frontend.business.register');
         })->name('business.get.register');
-        
+
         //show business
         Route::get('user/business/{id}', function ($id) {
             return view('frontend.business.show')->with('id', $id);
@@ -95,16 +100,18 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('user/{user}/business/{business}/follow', function ($business) {
             return view('frontend.follow.list')->with('id', $business);
         })->name('get.business.follow');
-        
+
         // API
         Route::group(['prefix' => 'api/v1'], function () {
+            //API Create promotion
+            Route::post('user/{user}/business/{business}/promotion/', ['as' => 'promotion.create', 'uses' => 'BusinessManagerController@create']);
 
             // Post register business
             Route::post('business/register', ['as' => 'business.post.register', 'uses' => 'BusinessController@postRegister']);
 
             //Post rating
             Route::post('promotion/{id}/rating/', ['as' => 'post.rating', 'uses' => 'RatingController@postRating']);
-        
+
             //API Show Business
             Route::post('user/business/{id}', ['as' => 'showBusiness', 'uses' => 'BusinessManagerController@showBusiness']);
 
@@ -172,11 +179,12 @@ Route::group(['namespace' => 'Frontend'], function () {
 
         // API get counties
         Route::post('county', ['as' => 'get.county', 'uses' => 'CityController@getCounty']);
+
+        // API get category
+        Route::post('category', ['as' => 'get.category.list', 'uses' => 'CategoryController@getCategory']);
     });
 });
 
 //Category list all frontend
-view()->composer('frontend.layouts.partials.side_bar', function ($view) {
-    $categories = App\Models\Category::all();
-    $view->with(['categories'=> $categories]);
-});
+$categories = App\Models\Category::lists('name', 'id');
+view()->share('categories', $categories);

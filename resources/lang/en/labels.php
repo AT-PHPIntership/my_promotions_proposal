@@ -97,4 +97,10 @@ return [
     'comment'               =>  'Comment',
     'search'                =>  'Search',
     'space'                 =>  ' - ',
+    'title'                 =>  'Title',
+    'intro'                 =>  'Intro',
+    'content'               =>  'Content',
+    'add_promotion'         =>  'Create promotion',
+    'choose_category'       =>  'Please choose category',
+    'expired_day'           =>  'Expired day',
 ];

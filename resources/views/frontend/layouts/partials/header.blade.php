@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" media="screen">
     <link rel="stylesheet" href="{{ asset('frontend/css/custom.min.css') }}">
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bootstrap-datepicker3.min.css') }}">
   </head>
     <body>
        
