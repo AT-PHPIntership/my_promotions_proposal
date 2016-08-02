@@ -6,34 +6,39 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Repositories\BusinessRepository as Business;
-use App\Repositories\PromotionRepository as Promotion;
+use App\Repositories\RelationRepository as Promotion;
+use App\Repositories\PromotionRepository as ManagerPromotion;
 use App\Http\Controllers\Controller;
+use Yajra\Datatables\Facades\Datatables;
 use Validator;
 use Auth;
 
 class BusinessManagerController extends Controller
 {
     /**
-     * Business
+     * Business, Promotion
      *
      * @var business
      * @var promotion
      */
     private $business;
     private $promotion;
+    private $managerpromotion;
 
     /**
      * Function construct of BusinessController
      *
-     * @param BusinessRepository $business  business
-     * @param BusinessRepository $promotion promotion
+     * @param BusinessRepository  $business         business
+     * @param RelationRepository  $promotion        promotion
+     * @param PromotionRepository $managerpromotion managerpromotion
      *
      * @return void
      */
-    public function __construct(Business $business, Promotion $promotion)
+    public function __construct(Business $business, Promotion $promotion, ManagerPromotion $managerpromotion)
     {
         $this->business = $business;
         $this->promotion = $promotion;
+        $this->managerpromotion = $managerpromotion;
     }
     
      /**
@@ -88,7 +93,7 @@ class BusinessManagerController extends Controller
             $img->move(public_path(config('upload.user_path')), $data['image']);
         }
 
-        $result = $this->promotion->create($data);
+        $result = $this->managerpromotion->create($data);
 
         if (!$result) {
             return respone()->json([
@@ -99,5 +104,47 @@ class BusinessManagerController extends Controller
         return response()->json([
             'message' => trans('messages.create_promotion_successfull')
         ], config('statuscode.ok'));
+    }
+
+    /**
+     * Show list promotion with id business.
+     *
+     * @param business $business business
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showPromotion($business)
+    {
+        $promotions = $this->promotion->eagerLoadRelations(['business', 'category'], 'business', 'id', $business, false);
+
+        if (empty($promotions)) {
+            return response()->json(
+                ['error' => trans('messages.error_not_found')],
+                config('statuscode.not_found')
+            );
+        }
+
+        return Datatables::of($promotions)->make(true);
+    }
+
+    /**
+     * Show list follow with id business.
+     *
+     * @param business $business business
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showFollow($business)
+    {
+        $follows = $this->business->find($business)->followedUsers;
+
+        if (empty($follows)) {
+            return response()->json(
+                ['error' => trans('messages.error_not_found')],
+                config('statuscode.not_found')
+            );
+        }
+        
+        return Datatables::of($follows)->make(true);
     }
 }

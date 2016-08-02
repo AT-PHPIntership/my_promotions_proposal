@@ -90,6 +90,16 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('user/business/{id}', function ($id) {
             return view('frontend.business.show')->with('id', $id);
         })->name('business.get.show');
+        
+        //show list promotions
+        Route::get('user/{user}/business/{business}/promotion', function ($business) {
+            return view('frontend.promotion.list')->with('id', $business);
+        })->name('get.business.promotion');
+
+        //show list followed business
+        Route::get('user/{user}/business/{business}/follow', function ($business) {
+            return view('frontend.follow.list')->with('id', $business);
+        })->name('get.business.follow');
 
         // API
         Route::group(['prefix' => 'api/v1'], function () {
@@ -99,11 +109,20 @@ Route::group(['namespace' => 'Frontend'], function () {
             // Post register business
             Route::post('business/register', ['as' => 'business.post.register', 'uses' => 'BusinessController@postRegister']);
 
+            //Post rating
+            Route::post('promotion/{id}/rating/', ['as' => 'post.rating', 'uses' => 'RatingController@postRating']);
+
             //API Show Business
             Route::post('user/business/{id}', ['as' => 'showBusiness', 'uses' => 'BusinessManagerController@showBusiness']);
 
             //API Update follow business
             Route::post('user/{user}/business/{business}/follow', ['as' => 'post.update.follow', 'uses' => 'BusinessController@updateFollow']);
+
+            // API get list promotions
+            Route::get('business/{business}/promotion', ['as' => 'get.promotion', 'uses' => 'BusinessManagerController@showPromotion']);
+
+            // API get list promotions
+            Route::get('business/{business}/follow', ['as' => 'get.follow', 'uses' => 'BusinessManagerController@showFollow']);
         });
     });
 
@@ -149,6 +168,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         // API search promotion
         Route::post('search/{info}', ['as' => 'post.search', 'uses' =>'PromotionController@postSearch']);
 
+        // API List promotion review rating
+        Route::post('promotion/{id}/review/', ['as' => 'post.promotion.review', 'uses' => 'RatingController@show']);
+        
         // API search advance promotion
         Route::post('search/{info}/city/{city}/county/{county?}', ['as' => 'post.search.advance', 'uses' =>'PromotionController@postSearchAdvance']);
 

@@ -59,21 +59,44 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
     }
 
     /**
+     * Function group by
+     *
+     * @param array  $columns   columns
+     * @param string $groupby   groupby
+     * @param string $field     field
+     * @param string $attribute attribute
+     * @param string $orderby   orderby
+     * @param string $sort      sort
+     *
+     * @return mixed
+     */
+    public function groupByHaving($columns, $groupby, $field, $attribute, $orderby = 'id', $sort = 'desc')
+    {
+        return $this->model->selectRaw($columns)->groupBy($groupby)->having($field, '=', $attribute)->orderBy($orderby, $sort)->get();
+    }
+
+    /**
      * Eager load the relationships for the models.
      *
      * @param array          $models    models
      * @param string         $table     table
      * @param string         $attribute attribute
      * @param integer/string $value     value
+     * @param boolean        $paginate  paginate
      * @param integer        $perPage   perPage
      *
      * @return array
      */
-    public function eagerLoadRelations(array $models, $table, $attribute, $value, $perPage = 15)
+    public function eagerLoadRelations(array $models, $table, $attribute, $value, $paginate = true, $perPage = 15)
     {
+        if ($paginate) {
+            return $this->model->with($models)->whereHas($table, function ($query) use ($value, $attribute) {
+                $query->where($attribute, $value);
+            })->paginate($perPage);
+        }
         return $this->model->with($models)->whereHas($table, function ($query) use ($value, $attribute) {
-            $query->where($attribute, $value);
-        })->paginate($perPage);
+                $query->where($attribute, $value);
+        })->get();
     }
 
     /**

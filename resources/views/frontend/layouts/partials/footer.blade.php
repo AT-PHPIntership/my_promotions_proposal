@@ -11,6 +11,7 @@
         </div><!-- /.col-sm-8 -->
       </div><!-- /.row -->
     </div>
+    <input type="hidden" id="link_index" value="{{ route('index') }}"/>
 </footer>
 <script src="{{ asset('frontend/js/bower.js') }}"></script>
 <!-- Laravel Javascript Validation -->

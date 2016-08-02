@@ -17,6 +17,7 @@ return [
     'list'            => 'List',
     'id'              => 'ID',
     'name'            => 'Name',
+    'title'           => 'Title',
 
     'create'          => 'Create New',
     'user_name'       => 'User Name',
@@ -91,6 +92,9 @@ return [
     'unfollow'              =>  'Unfollow',
     'previous'              =>  'Previous',
     'next'                  =>  'Next',
+    'rating'                =>  'Rating',
+    'reviews'               =>  'Reviews',
+    'comment'               =>  'Comment',
     'search'                =>  'Search',
     'space'                 =>  ' - ',
     'title'                 =>  'Title',

@@ -35,7 +35,8 @@ elixir(function(mix) {
   mix.scripts([
 
       'jquery/dist/jquery.js',
-      'bootswatch-dist/js/bootstrap.js'
+      'bootswatch-dist/js/bootstrap.js',
+      'datatables.net/js/jquery.dataTables.min.js'
     ],
     'public/frontend/js/bower.js',
     'vendor/bower_dl'
@@ -57,6 +58,7 @@ elixir(function(mix) {
   
   mix.styles([
       'bootswatch-dist/css/bootstrap.min.css',
+      'datatables.net-dt/css/jquery.dataTables.min.css'
   ], 
   'public/frontend/css/bower.css',
   'vendor/bower_dl'

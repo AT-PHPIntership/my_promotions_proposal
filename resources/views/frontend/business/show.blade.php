@@ -3,7 +3,7 @@
 @section('content')
     @include('frontend.business.partials.side_bar')
     <div class="col-lg-9 col-md-8 col-sm-7">
-        <input type="hidden" id="show_business" value="{{ route('showBusiness', $id) }}" /> 
+        <input type="hidden" id="show_business" value="{{ route('showBusiness', $id) }}" />
         <div class="profile_img" id="businesses">
             
             <!-- end of image cropping -->
