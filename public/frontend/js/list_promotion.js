@@ -11,8 +11,8 @@ $(document).ready(function(){
 	        {data:'action',width:'15%',
 	            mRender: function (data, type, full)
 	            {
-	            var action = '<button class="btn btn-danger btn-xs delete" value="'+ full['id'] + '">Delete</button> ';
-	            	action += '<button class="btn btn-warning btn-xs edit" value="'+ full['id'] + '">Edit</button>';
+	            var action = '<button class="btn btn-danger btn-xs delete" value="'+ full['id'] + '">'+ labels.delete +'</button> ';
+	            	action += '<button class="btn btn-warning btn-xs edit" value="'+ full['id'] + '">'+ labels.edit +'</button>';
 	            return action;
 	            }
 	        }
