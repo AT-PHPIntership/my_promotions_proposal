@@ -1,13 +1,5 @@
 $(document).ready(function(){
 	var url_pro = $('#url_promotion').val();
-	$.ajax({
-		url: url_pro,
-		type: 'get',
-		dataTyep: 'json',
-		success: function(result){
-			console.log(result);
-		}
-	})
 	$('#list_promotions').DataTable({
 		processing: true,
 		serverSide: true,
