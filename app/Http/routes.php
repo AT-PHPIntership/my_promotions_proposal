@@ -73,8 +73,8 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::group(['middleware' => ['auth']], function () {
 
         //show create promotion
-        Route::get('user/{user}/business/{business}/promotion/create', function () {
-            return view('frontend.promotion.create');
+        Route::get('user/{user}/business/{business}/promotion/create', function ($business) {
+            return view('frontend.promotion.create')->with('id',$business);
         })->name('promotion.get.create');
 
         // Update profile user
@@ -90,7 +90,7 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('user/business/{id}', function ($id) {
             return view('frontend.business.show')->with('id', $id);
         })->name('business.get.show');
-        
+
         //show list promotions
         Route::get('user/{user}/business/{business}/promotion', function ($business) {
             return view('frontend.promotion.list')->with('id', $business);
