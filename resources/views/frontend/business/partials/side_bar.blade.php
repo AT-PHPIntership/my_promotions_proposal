@@ -3,6 +3,6 @@
     <div class="list-group table-of-contents">
         <a class="list-group-item" href="{{ route('get.business.follow', [ Auth::user()->id, $id]) }}">{!! trans('labels.user_following') !!}</a>
         <a class="list-group-item" href="#">{!! trans('labels.rating') !!}</a>
-        <a class="list-group-item" href="{{ route('get.business.promotion', [ Auth::user()->id, $id]) }}">{!! trans('labels.promotion') !!}</a>
+        <a class="list-group-item" href="{{ route('get.business.promotion', [ Auth::user()->id, $id]) }}">{!! trans('labels.promotion') !!}</a> 
     </div>
 </div>
