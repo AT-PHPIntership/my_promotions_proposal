@@ -36,11 +36,12 @@ interface RepositoryInterfaceGroup
      * @param string         $table     table
      * @param string         $attribute attribute
      * @param integer/string $value     value
+     * @param boolean        $paginate  paginate
      * @param integer        $perPage   perPage
      *
      * @return mixed
      */
-    public function eagerLoadRelations(array $models, $table, $attribute, $value, $perPage = 15);
+    public function eagerLoadRelations(array $models, $table, $attribute, $value, $paginate = true, $perPage = 15);
 
     /**
      * Function check followed.

@@ -122,7 +122,7 @@ class BusinessController extends Controller
      */
     public function postShowBusinessPromotion($id)
     {
-        $business = $this->promotion->eagerLoadRelations(['business', 'category'], 'business', 'id', $id, config('define.paginate'));
+        $business = $this->promotion->eagerLoadRelations(['business', 'category'], 'business', 'id', $id, true, config('define.paginate'));
         $totalFollow = $this->follow->count('business_id', $id);
         if ($business->count() == 0) {
             return response()->json(
