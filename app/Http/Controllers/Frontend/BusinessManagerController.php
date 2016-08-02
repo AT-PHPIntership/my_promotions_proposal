@@ -17,6 +17,7 @@ class BusinessManagerController extends Controller
      * Business
      *
      * @var business
+     * @var promotion
      */
     private $business;
     private $promotion;
@@ -24,7 +25,8 @@ class BusinessManagerController extends Controller
     /**
      * Function construct of BusinessController
      *
-     * @param BusinessRepository $business business
+     * @param BusinessRepository $business  business
+     * @param BusinessRepository $promotion promotion
      *
      * @return void
      */
@@ -55,6 +57,13 @@ class BusinessManagerController extends Controller
         return response()->json($business, config('statuscode.ok'));
     }
 
+    /**
+     * Store a newly created Promotion.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function create(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -91,5 +100,4 @@ class BusinessManagerController extends Controller
             'message' => trans('messages.create_promotion_successfull')
         ], config('statuscode.ok'));
     }
-
 }

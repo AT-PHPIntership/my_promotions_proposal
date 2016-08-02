@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Repositories\RelationRepository as Promotion;
 use App\Repositories\CategoryRepository as Category;
 
-
 class CategoryController extends Controller
 {
     /**

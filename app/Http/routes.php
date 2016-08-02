@@ -104,7 +104,6 @@ Route::group(['namespace' => 'Frontend'], function () {
 
             //API Update follow business
             Route::post('user/{user}/business/{business}/follow', ['as' => 'post.update.follow', 'uses' => 'BusinessController@updateFollow']);
-
         });
     });
 
@@ -165,5 +164,5 @@ Route::group(['namespace' => 'Frontend'], function () {
 });
 
 //Category list all frontend
-$categories = App\Models\Category::lists('name','id');
+$categories = App\Models\Category::lists('name', 'id');
 view()->share('categories', $categories);
