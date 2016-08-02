@@ -73,4 +73,25 @@ class BusinessManagerController extends Controller
 
         return Datatables::of($promotions)->make(true);
     }
+
+    /**
+     * Show list follow with id business.
+     *
+     * @param business $business business
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showFollow($business)
+    {
+        $follows = $this->business->find($business)->followedUsers;
+
+        if (empty($follows)) {
+            return response()->json(
+                ['error' => trans('messages.error_not_found')],
+                config('statuscode.not_found')
+            );
+        }
+        
+        return Datatables::of($follows)->make(true);
+    }
 }
