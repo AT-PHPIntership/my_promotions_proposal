@@ -15,17 +15,14 @@ use Exception;
 abstract class RepositoryGroup implements RepositoryInterfaceGroup
 {
     /**
-     * App
+     * App, Model
      *
      * @var App
-     */
-    private $app;
-    /**
-     * Model
-     *
      * @var Model
      */
+    private $app;
     protected $model;
+
     /**
      * Construct
      *
@@ -38,6 +35,7 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
         $this->app = $app;
         $this->makeModel();
     }
+
     /**
      * Specify Model class name
      *
@@ -61,41 +59,101 @@ abstract class RepositoryGroup implements RepositoryInterfaceGroup
     }
 
     /**
+     * Function group by
+     *
+     * @param array  $columns   columns
+     * @param string $groupby   groupby
+     * @param string $field     field
+     * @param string $attribute attribute
+     * @param string $orderby   orderby
+     * @param string $sort      sort
+     *
+     * @return mixed
+     */
+    public function groupByHaving($columns, $groupby, $field, $attribute, $orderby = 'id', $sort = 'desc')
+    {
+        return $this->model->selectRaw($columns)->groupBy($groupby)->having($field, '=', $attribute)->orderBy($orderby, $sort)->get();
+    }
+
+    /**
      * Eager load the relationships for the models.
      *
      * @param array          $models    models
      * @param string         $table     table
      * @param string         $attribute attribute
      * @param integer/string $value     value
+     * @param boolean        $paginate  paginate
      * @param integer        $perPage   perPage
      *
      * @return array
      */
-    public function eagerLoadRelations(array $models, $table, $attribute, $value, $perPage = 15)
+    public function eagerLoadRelations(array $models, $table, $attribute, $value, $paginate = true, $perPage = 15)
     {
+        if ($paginate) {
+            return $this->model->with($models)->whereHas($table, function ($query) use ($value, $attribute) {
+                $query->where($attribute, $value);
+            })->paginate($perPage);
+        }
         return $this->model->with($models)->whereHas($table, function ($query) use ($value, $attribute) {
-            $query->where($attribute, $value);
-        })->paginate($perPage);
+                $query->where($attribute, $value);
+        })->get();
     }
 
     /**
-     * Function search.
+     * Function check followed.
      *
-     * @param array          $models   models
-     * @param string         $table    table
-     * @param string         $attrPro  attrPro
-     * @param string         $attrBus  attrBus
-     * @param integer/string $value    value
-     * @param string         $operator operator
-     * @param integer        $perPage  perPage
+     * @param object  $relation   relation
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
      *
-     * @return array
+     * @return mixed
      */
-    public function search(array $models, $table, $attrPro, $attrBus, $value, $operator = '=', $perPage = 15)
+    public function checkFollowed($relation, $idUser, $idBusiness)
     {
-        return $this->model->where($attrPro, $operator, $value)->with($models)->orWhereHas($table, function ($query) use ($value, $attrBus, $operator) {
-            $query->where($attrBus, $operator, $value);
-        })->paginate($perPage);
+        $check = $this->model->find($idUser)->$relation->find($idBusiness);
+        if (is_null($check)) {
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Function detach followed.
+     *
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function detachFollowed($idUser, $idBusiness)
+    {
+        return $this->model->find($idUser)->followedBusinesses()->detach($idBusiness);
+    }
+
+    /**
+     * Function attach followed.
+     *
+     * @param integer $idUser     idUser
+     * @param integer $idBusiness idBusiness
+     *
+     * @return mixed
+     */
+    public function attachFollowed($idUser, $idBusiness)
+    {
+        return $this->model->find($idUser)->followedBusinesses()->attach($idBusiness);
+    }
+
+    /**
+     * Function count with condition.
+     *
+     * @param string         $attribute attribute
+     * @param integer/string $value     value
+     *
+     * @return mixed
+     */
+    public function count($attribute, $value)
+    {
+        return $this->model->where($attribute, $value)->count();
     }
 
     /**

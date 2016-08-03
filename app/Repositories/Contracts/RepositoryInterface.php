@@ -63,11 +63,13 @@ interface RepositoryInterface
     /**
      * Funciton findBy key
      *
-     * @param string $field   field
-     * @param string $value   value
-     * @param array  $columns columns
+     * @param string $attribute attribute
+     * @param string $value     value
+     * @param array  $columns   columns
+     * @param string $field     field
+     * @param string $sort      sort
      *
      * @return mixed
      */
-    public function findBy($field, $value, $columns = array('*'));
+    public function findBy($attribute, $value, $columns = array('*'), $field = 'id', $sort = 'desc');
 }

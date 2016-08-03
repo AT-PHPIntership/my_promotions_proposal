@@ -1,12 +1,32 @@
 @extends('frontend.layouts.master')
 @section('title', trans('labels.promotions'))
 @section('content')
-<input type="hidden" id="url_search" value="{{ route('post.search', $info) }}">
 <div class="alert alert-danger" id="message">
 	<ul id="errors"></ul>
 </div>
 <div class="row">
 	<div class="col-lg-9 col-md-8 col-sm-7">
+		<div class="row">
+			{!! Form::open(['class' => 'form-horizontal', 'id' => 'frmSearchAdvance'] ) !!}
+			
+			{!! Form::hidden('url_search', route('post.search', $info), ['id' => 'url_search']) !!}
+			{!! Form::hidden('cities', route('get.ciy'), ['id' => 'cities']) !!}
+			{!! Form::hidden('counties', route('get.county'), ['id' => 'counties']) !!}
+			<div class="col-lg-3">
+			{!! Form::text('info', $info, ['class' => 'form-control', 'required' => true, 'id' => 'info']) !!}
+			</div>
+			<div class="col-lg-3">
+				{!! Form::select('city', [], null, ['class' => 'form-control', 'id' => 'city']) !!}
+			</div>
+			<div class="col-lg-3">
+				{!! Form::select('county', [], null, ['class' => 'form-control', 'id' => 'county']) !!} 		
+			</div>
+
+			<div class="col-lg-3">
+			{!! Form::submit( trans('labels.search') , array('class' => 'btn btn-primary')) !!}
+			</div>
+			{!! Form::close() !!}
+		</div><br>
 		<div class="row">
 			<div class="col-lg-3 col-md-4 col-sm-7" id="promotion0">
 				<div class="post-card">
@@ -43,5 +63,8 @@
 </div>
 @endsection
 @section('script')
+<script>
+	var url_index = {!! json_encode(route('index')) !!};
+</script>
 <script src="{{ asset('frontend/js/search.js') }}"></script>
 @endsection

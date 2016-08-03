@@ -85,6 +85,11 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('user/business/{id}', function ($id) {
             return view('frontend.business.show')->with('id', $id);
         })->name('business.get.show');
+
+        //show list promotions
+        Route::get('user/{user}/business/{business}/promotion', function ($business) {
+            return view('frontend.promotion.list')->with('id', $business);
+        })->name('get.business.promotion');
         
         // List rating
         Route::get('user/business/{id}/rating', function ($id) {
@@ -94,20 +99,23 @@ Route::group(['namespace' => 'Frontend'], function () {
         // API
         Route::group(['prefix' => 'api/v1'], function () {
 
-            // Get cities
-            Route::post('city', ['as' => 'get.ciy', 'uses' => 'CityController@getCity']);
-
-            // Get counties
-            Route::post('county', ['as' => 'get.county', 'uses' => 'CityController@getCounty']);
-
             // Post register business
             Route::post('business/register', ['as' => 'business.post.register', 'uses' => 'BusinessController@postRegister']);
+
+            //Post rating
+            Route::post('promotion/{id}/rating/', ['as' => 'post.rating', 'uses' => 'RatingController@postRating']);
         
             //API Show Business
             Route::post('user/business/{id}', ['as' => 'showBusiness', 'uses' => 'BusinessManagerController@showBusiness']);
         
             //API List Rating
-            Route::post('user/{user}/business/{business}/rating', ['as' => 'list.Rating', 'uses' => 'RatingController@listRating']);
+            Route::get('user/{user}/business/{business}/rating', ['as' => 'list.Rating', 'uses' => 'RatingController@listRating']);
+
+            //API Update follow business
+            Route::post('user/{user}/business/{business}/follow', ['as' => 'post.update.follow', 'uses' => 'BusinessController@updateFollow']);
+
+            // API get list promotions
+            Route::get('business/{business}/promotion', ['as' => 'get.promotion', 'uses' => 'BusinessManagerController@showPromotion']);
         });
     });
 
@@ -152,6 +160,18 @@ Route::group(['namespace' => 'Frontend'], function () {
 
         // API search promotion
         Route::post('search/{info}', ['as' => 'post.search', 'uses' =>'PromotionController@postSearch']);
+
+        // API List promotion review rating
+        Route::post('promotion/{id}/review/', ['as' => 'post.promotion.review', 'uses' => 'RatingController@show']);
+        
+        // API search advance promotion
+        Route::post('search/{info}/city/{city}/county/{county?}', ['as' => 'post.search.advance', 'uses' =>'PromotionController@postSearchAdvance']);
+
+        // API get cities
+        Route::post('city', ['as' => 'get.ciy', 'uses' => 'CityController@getCity']);
+
+        // API get counties
+        Route::post('county', ['as' => 'get.county', 'uses' => 'CityController@getCounty']);
     });
 });
 

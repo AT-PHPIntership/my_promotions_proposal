@@ -8,6 +8,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Repositories\BusinessRepository as Business;
 use App\Repositories\RelationRepository as Promotion;
+use App\Repositories\RelationUserRepository as User;
+use App\Repositories\RelationFollowRepository as Follow;
 use Validator;
 use File;
 use Auth;
@@ -15,26 +17,32 @@ use Auth;
 class BusinessController extends Controller
 {
     /**
-     * Business
+     * Business, Promotion, User, Follow
      *
-     * @var business
+     * @var business, promotion, user, follow
      */
     private $business;
     private $promotion;
+    private $user;
+    private $follow;
 
 
     /**
      * Function construct of BusinessController
      *
-     * @param BusinessRepository $business  business
-     * @param BusinessRepository $promotion promotion
+     * @param BusinessRepository       $business  business
+     * @param RelationRepository       $promotion promotion
+     * @param RelationUserRepository   $user      user
+     * @param RelationFollowRepository $follow    follow
      *
      * @return void
      */
-    public function __construct(Business $business, Promotion $promotion)
+    public function __construct(Business $business, Promotion $promotion, User $user, Follow $follow)
     {
-        $this->business = $business;
+        $this->business  = $business;
         $this->promotion = $promotion;
+        $this->user      = $user;
+        $this->follow    = $follow;
     }
 
     /**
@@ -106,7 +114,7 @@ class BusinessController extends Controller
     }
 
     /**
-     * Store a newly created Bussiness.
+     * Show Bussiness.
      *
      * @param int $id show
      *
@@ -114,13 +122,57 @@ class BusinessController extends Controller
      */
     public function postShowBusinessPromotion($id)
     {
-        $business = $this->promotion->eagerLoadRelations(['business', 'category'], 'business', 'id', $id, config('define.paginate'));
+        $business = $this->promotion->eagerLoadRelations(['business', 'category'], 'business', 'id', $id, true, config('define.paginate'));
+        $totalFollow = $this->follow->count('business_id', $id);
         if ($business->count() == 0) {
             return response()->json(
                 ['error' => trans('messages.error_not_found')],
                 config('statuscode.not_found')
             );
         }
-        return response()->json($business, config('statuscode.ok'));
+
+        if (Auth::guard('web')->check()) {
+            $follow = $this->user->checkFollowed('followedBusinesses', Auth::user()->id, $id);
+            return response()->json([
+                'data'         => $business,
+                'followed'     => $follow,
+                'total_follow' => $totalFollow
+            ], config('statuscode.ok'));
+        }
+
+        return response()->json([
+            'data'         => $business,
+            'total_follow' => $totalFollow
+        ], config('statuscode.ok'));
+    }
+
+    /**
+     * Update follow
+     *
+     * @param \Illuminate\Http\Request $request  request
+     * @param int                      $user     user     id
+     * @param int                      $business business id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function updateFollow(Request $request, $user, $business)
+    {
+        // unfollow
+        if ($request->follow === 'true') {
+            $result = $this->user->detachFollowed($user, $business);
+            $totalFollow = $this->follow->count('business_id', $business);
+            if ($result == 0) {
+                return response()->json(
+                    ['error' => trans('messages.error_not_unfollow')],
+                    config('statuscode.internal_server_error')
+                );
+            }
+            return response()->json(['result' => trans('messages.unfollow'),'total_follow' => $totalFollow], config('statuscode.ok'));
+        }
+        
+        // follow
+        $result = $this->user->attachFollowed($user, $business);
+        $totalFollow = $this->follow->count('business_id', $business);
+        return response()->json(['result' => trans('messages.follow'), 'total_follow' => $totalFollow], config('statuscode.ok'));
     }
 }

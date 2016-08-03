@@ -5,7 +5,6 @@
                 <div class="col-lg-9 col-md-8 col-sm-7">
                     <h1><a href="#">{!! trans('labels.promotion_featured') !!}</a></h1>
                     <input type="hidden" id="featured_promotion" value="{{ route('promotionfeatured') }}" />
-                    <input type="hidden" id="link_index" value="{{ route('index') }}"/>
                     <div id="list_featured_promotion" class="row">
                         <div class="col-lg-3 col-md-4 col-sm-7 promotion-featured">
                             <div class="post-card">

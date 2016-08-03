@@ -1,29 +1,14 @@
-$('div.alert').delay(time).slideUp();
-
-$(document).ready(function() {
-   $('#list_ratings').DataTable();
-   var url_rating = $('#list_rating').val();
-   
-   $ajaxSetup({
-       headers: {
-           'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-       }
-   });
-   
-   $ajax({
-       url: url_rating,
-       type: 'POST',
-       datatype: 'json',
-       success:function(result){
-           var div = $('#ratings');
-           $.each(result.ratings, function(key, value){
-               var rating_item = $("div. list-rating").clone().attr("id", "list_rating" + index);
-               rating_item.removeClass("list-rating");
-               rating_item.find(".user").text(value.user.name);
-            div.append(rating_item);   
-           });
-       }
-   });
+$(document).ready(function(){
+	var url_list_ratings = $('#url_list_ratings').val();
+	$('#list_ratings').DataTable({
+		processing: true,
+		serverSide: true,
+		ajax: url_list_ratings,
+		columns: [
+			{ data: 'user.name', name: 'user.name' },
+			{ data: 'promotion.title', name: 'promotion.title' },
+			{ data: 'content', name: 'content' },
+			{ data: 'score', name: 'score' }
+		]
+	});
 });
-
-
