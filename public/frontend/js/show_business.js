@@ -45,8 +45,9 @@ $('document').ready(function() {
             var div = $('#list_business_promotion');
             var index = order_number;
             $.each(result.data, function(key, value) {
+                console.log(result.data);
                 index++;
-                var promotion_item = $("div .promotion-business").clone().attr("id", "promotion_business" + index);
+                var promotion_item = $("div .promotion-business").clone().attr("id", "promotion_business_" + index);
                 promotion_item.removeClass("promotion-business");
                 promotion_item.find(".img-promotion").attr("src", image);
                 promotion_item.find(".business-promotion").text(value.business.name);
@@ -85,13 +86,15 @@ $('document').ready(function() {
                 var index = order_number;
                 var link_promotion = $("#link_index").val() +'/promotion/';
                 var link_category = $("#link_index").val() +'/category/';
-                $('div[id^="promotion_"]').remove();
-                $.each (result.data, function(key, value) {
+                $('div[id^="promotion_business_"]').remove();
+                $.each (result.data.data, function(key, value) {
+                    console.log(value);
                     index++;
-                    var promotion_item = $("div .promotion-business").clone().attr("id", "promotion_business" + index);
+                    var promotion_item = $("div .promotion-business").clone().attr("id", "promotion_business_" + index);
                     promotion_item.removeClass("promotion-business");
                     promotion_item.find(".img-promotion").attr("src", image);
                     promotion_item.find(".business-promotion").text(value.business.name);
+                    promotion_item.find("a.business-promotion").attr("href",link_business + value.business.id);
                     promotion_item.find(".category-promotion").text(value.category.name);
                     promotion_item.find("a.title-promotion").attr("href",link_promotion + value.id);
                     promotion_item.find("a.more-link").attr("href",link_promotion + value.id);

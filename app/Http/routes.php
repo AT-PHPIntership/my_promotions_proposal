@@ -187,9 +187,3 @@ view()->composer(['frontend.layouts.partials.side_bar', 'frontend.promotion.crea
     $categories = App\Models\Category::lists('name', 'id');
     $view->with(['categories'=> $categories]);
 });
-
-//Category list of create promotion
-//view()->composer('frontend.promotion.create', function ($view) {
-//    $categories = App\Models\Category::lists('name','id');
-//    $view->with(['categories'=> $categories]);
-//});
