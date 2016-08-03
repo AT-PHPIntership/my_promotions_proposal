@@ -183,5 +183,13 @@ Route::group(['namespace' => 'Frontend'], function () {
 });
 
 //Category list all frontend
-$categories = App\Models\Category::lists('name', 'id');
-view()->share('categories', $categories);
+view()->composer(['frontend.layouts.partials.side_bar', 'frontend.promotion.create'], function ($view) {
+    $categories = App\Models\Category::lists('name', 'id');
+    $view->with(['categories'=> $categories]);
+});
+
+//Category list of create promotion
+//view()->composer('frontend.promotion.create', function ($view) {
+//    $categories = App\Models\Category::lists('name','id');
+//    $view->with(['categories'=> $categories]);
+//});

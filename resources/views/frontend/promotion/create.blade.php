@@ -12,7 +12,7 @@
         <div class="form-group">
             {!! Form::label('category', trans('labels.category'), ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
-                {!! Form::select('category_id', $categories, null, ['placeholder' => trans('labels.choose_category'),'class' => 'form-control', 'id' => 'category_id']) !!}
+                {!! Form::select('category_id', $categories, null, ['placeholder' => trans('labels.choose_category'),'class' => 'form-control']) !!}
             </div>
         </div>
         <div class="form-group">
