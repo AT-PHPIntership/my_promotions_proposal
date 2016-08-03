@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	var url_pro = $('#url_promotion').val();
-	$('#list_promotions').DataTable({
+	var table = $('#list_promotions').DataTable({
 		processing: true,
 		serverSide: true,
 		ajax: url_pro,
@@ -18,4 +18,25 @@ $(document).ready(function(){
 	        }
 		]
 	});
+
+	// display modal form when click button edit
+    table.on('click', 'button.delete', function(e){
+        var id_delete = $(this).val();
+        var url_del = $('#url_delete').val() + '/' + id_delete;
+        $.ajax({
+            url : url_del,
+            type : 'DELETE',
+            dataType: 'json',
+            success : function (result) {
+            	table.clear().draw();
+                $('#message').html(result.message);
+	            $('#message').css('display', 'block');
+            },
+            error : function (data) {
+	            var err = eval("(" + data.responseText + ")");
+	            $('#message').html(err.error);
+	            $('#message').css('display', 'block');
+            }
+        });
+    });
 });

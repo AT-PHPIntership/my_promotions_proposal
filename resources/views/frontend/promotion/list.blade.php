@@ -3,9 +3,13 @@
 @section('content')
     @include('frontend.business.partials.side_bar')
     <input type="hidden" id="url_promotion" value="{{ route('get.promotion', $id) }}">
+    <input type="hidden" id="url_delete" value="{{ route('postpromotion') }}">
     <div class="col-lg-9 col-md-8 col-sm-7">
+        <div class="alert alert-danger" id="message">
+            <ul id="errors"></ul>
+        </div>
     	<div class="x_title">
-            <a href="{{ route('promotion.get.create', [Auth::user()->id, $id]) }}" class="btn btn-primary"><i class="fa fa-pencil"></i> {!! trans('labels.add_new') !!} </a>
+            <a href="" class="btn btn-primary"><i class="fa fa-pencil"></i> {!! trans('labels.add_new') !!} </a>
         </div>
         <br>
         <div class="x_content">

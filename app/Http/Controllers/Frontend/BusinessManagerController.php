@@ -4,32 +4,37 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Repositories\BusinessRepository as Business;
 use App\Repositories\RelationRepository as Promotion;
+use App\Repositories\PromotionRepository as PromotionRepo;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Facades\Datatables;
 
 class BusinessManagerController extends Controller
 {
     /**
-     * Business, Promotion
+     * Business, Promotion, PromotionRepo
      *
      * @var business
      * @var promotion
+     * @var promotionRepo
      */
     private $business;
     private $promotion;
+    private $promotionRepo;
 
     /**
      * Function construct of BusinessController
      *
-     * @param BusinessRepository $business  business
-     * @param RelationRepository $promotion promotion
+     * @param BusinessRepository  $business      business
+     * @param RelationRepository  $promotion     promotion
+     * @param PromotionRepository $promotionRepo promotionRepo
      *
      * @return void
      */
-    public function __construct(Business $business, Promotion $promotion)
+    public function __construct(Business $business, Promotion $promotion, PromotionRepo $promotionRepo)
     {
         $this->business = $business;
         $this->promotion = $promotion;
+        $this->promotionRepo = $promotionRepo;
     }
     
      /**
@@ -93,5 +98,26 @@ class BusinessManagerController extends Controller
         }
         
         return Datatables::of($follows)->make(true);
+    }
+
+    /**
+     * Delete promotion.
+     *
+     * @param promotion $promotion promotion
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyPromotion($promotion)
+    {
+        $result = $this->promotionRepo->delete($promotion);
+
+        if (empty($result)) {
+            return response()->json(
+                ['error' => trans('messages.error_delete_promotion')],
+                config('statuscode.not_found')
+            );
+        }
+        
+        return response()->json(['message' => trans('messages.delete_promotion_successfull')], config('statuscode.ok'));
     }
 }

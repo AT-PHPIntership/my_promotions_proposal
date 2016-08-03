@@ -116,6 +116,9 @@ Route::group(['namespace' => 'Frontend'], function () {
 
             // API get list promotions
             Route::get('business/{business}/follow', ['as' => 'get.follow', 'uses' => 'BusinessManagerController@showFollow']);
+
+            // API delete promotion
+            Route::delete('promotion/{promotion}', ['as' => 'delete.promotion', 'uses' => 'BusinessManagerController@destroyPromotion']);
         });
     });
 
