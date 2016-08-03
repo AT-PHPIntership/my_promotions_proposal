@@ -75,7 +75,12 @@ Route::group(['namespace' => 'Frontend'], function () {
         // Update profile user
         Route::get('user/profile/{profile}', ['as' => 'user.get.profile', 'uses' => 'UserController@getProfile']);
         Route::post('user/profile/{profile}', ['as' => 'user.post.profile', 'uses' => 'UserController@postProfile']);
-    
+
+        //show create promotion
+        Route::get('user/{user}/business/{business}/promotion/{promotion}/edit', function ($user, $business, $promotion) {
+            return view('frontend.promotion.edit')->with(['user_id' => $user,'id' => $business, 'promotion_id' => $promotion]);
+        })->name('promotion.get.edit');
+
         // Register business
         Route::get('business/register', function () {
             return view('frontend.business.register');
@@ -98,6 +103,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         
         // API
         Route::group(['prefix' => 'api/v1'], function () {
+
+            //API update promotion
+            Route::post('promotion/{promotion}/edit', ['as' => 'promotion.edit', 'uses' => 'BusinessManagerController@edit']);
 
             // Post register business
             Route::post('business/register', ['as' => 'business.post.register', 'uses' => 'BusinessController@postRegister']);
@@ -176,7 +184,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 });
 
 //Category list all frontend
-view()->composer('frontend.layouts.partials.side_bar', function ($view) {
-    $categories = App\Models\Category::all();
+view()->composer(['frontend.layouts.partials.side_bar','frontend.promotion.edit'], function ($view) {
+    $categories = App\Models\Category::lists('name','id');
     $view->with(['categories'=> $categories]);
 });
