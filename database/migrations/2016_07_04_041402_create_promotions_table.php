@@ -18,7 +18,7 @@ class CreatePromotionsTable extends Migration
             $table->text('intro');
             $table->text('content');
             $table->string('image');
-            $table->timestamp('expired_day');
+            $table->date('expired_day');
             $table->integer('business_id')->unsigned();
             $table->foreign('business_id')->references('id')->on('businesses')->onDelete('cascade');
             $table->integer('category_id')->unsigned();
