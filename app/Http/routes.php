@@ -90,6 +90,11 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::get('user/{user}/business/{business}/promotion', function ($business) {
             return view('frontend.promotion.list')->with('id', $business);
         })->name('get.business.promotion');
+
+        //show list followed business
+        Route::get('user/{user}/business/{business}/follow', function ($business) {
+            return view('frontend.follow.list')->with('id', $business);
+        })->name('get.business.follow');
         
         // List rating
         Route::get('user/business/{id}/rating', function ($id) {
@@ -116,6 +121,9 @@ Route::group(['namespace' => 'Frontend'], function () {
 
             // API get list promotions
             Route::get('business/{business}/promotion', ['as' => 'get.promotion', 'uses' => 'BusinessManagerController@showPromotion']);
+
+            // API get list promotions
+            Route::get('business/{business}/follow', ['as' => 'get.follow', 'uses' => 'BusinessManagerController@showFollow']);
         });
     });
 
