@@ -24,6 +24,7 @@
     var num_column= {!! json_encode( config('define.save_num_column') ) !!};
     var current_page= {!! json_encode( config('define.current_page') ) !!};
     var page_from= {!! json_encode( config('define.page_from') ) !!};
+    var messages={!! json_encode( trans('messages') ) !!};
 </script>
 @if(Auth::guard('web')->check())
 <script src="{{ asset('frontend/js/show_follow.js') }}"></script>

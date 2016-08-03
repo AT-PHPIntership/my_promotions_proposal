@@ -17,6 +17,7 @@ return [
     "create_category_successfully" => "Category was create successfully!",
     "confirm_delete_title"     => "Are you sure?",
     "confirm_delete_text"      => "You want delete this ",
+    "confirm_delete_promotion" => "You want delete this promotion!",
     "delete"                   => "Yes, delete it!",
     "delete_city_successfully" => "City was delete successfully!",
     "ok"                       => "Ok",
