@@ -134,12 +134,12 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('promotion/{id}', function ($id) {
         return view('frontend.promotion.show')->with('id', $id);
     })->name('promotion.get.show');
-    
+
     // List promotions of category
     Route::get('category/{id}', function ($id) {
         return view('frontend.category.list_promotions')->with('id', $id);
     })->name('get.category');
-    
+
     // Show promotion
     Route::get('business/{id}', function ($id) {
         return view('frontend.business.info')->with('id', $id);
@@ -155,13 +155,13 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::post('promotion', ['as' => 'postpromotion', 'uses' =>'PromotionController@postPromotion']);
 
         // API List featured promotion
-        Route::post('promotion/featured', ['as' => 'promotionfeatured', 'uses' => 'PromotionController@postRatingPromotion']);
-        
+        Route::get('promotion/featured', ['as' => 'promotionfeatured', 'uses' => 'PromotionController@postRatingPromotion']);
+
         // API get list promotion of category
         Route::post('category/{id}', ['as' => 'post.category', 'uses' =>'CategoryController@postCategory']);
 
         // API List follow promotion
-        Route::post('promotion/follow', ['as' => 'promotionfollow', 'uses' => 'PromotionController@postFollowPromotion']);
+        Route::get('promotion/follow', ['as' => 'promotionfollow', 'uses' => 'PromotionController@postFollowPromotion']);
 
         // API get list promotion of category
         Route::post('business/{id}', ['as' => 'postbusiness', 'uses' =>'BusinessController@postShowBusinessPromotion']);
@@ -174,7 +174,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
         // API List promotion review rating
         Route::post('promotion/{id}/review/', ['as' => 'post.promotion.review', 'uses' => 'RatingController@show']);
-        
+
         // API search advance promotion
         Route::post('search/{info}/city/{city}/county/{county?}', ['as' => 'post.search.advance', 'uses' =>'PromotionController@postSearchAdvance']);
 
