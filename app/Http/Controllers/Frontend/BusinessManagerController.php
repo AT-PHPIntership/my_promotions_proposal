@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Repositories\BusinessRepository as Business;
 use App\Repositories\RelationRepository as Promotion;
-use App\Repositories\PromotionRepository as ManagerPromotion;
+use App\Repositories\PromotionRelationRepository as ManagerPromotion;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Facades\Datatables;
 use Validator;
@@ -27,8 +27,8 @@ class BusinessManagerController extends Controller
     /**
      * Function construct of BusinessController
      *
-     * @param BusinessRepository $business  business
-     * @param RelationRepository $promotion promotion
+     * @param BusinessRepository  $business         business
+     * @param RelationRepository  $promotion        promotion
      * @param PromotionRepository $managerpromotion managerpromotion
      *
      * @return void
@@ -103,11 +103,18 @@ class BusinessManagerController extends Controller
         return Datatables::of($follows)->make(true);
     }
 
+    /**
+     * Show promotion with id .
+     *
+     * @param \Illuminate\Http\Request $promotion promotion
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function edit($promotion)
     {
-        $editPromotion = $this->managerpromotion->find($promotion);
+        $editPromotion = $this->managerpromotion->findWhere('business_id', Auth::user()->business->id, $promotion);
 
-        if(empty($editPromotion)){
+        if (empty($editPromotion)) {
             return response()->json([
                 'error' => trans('messages.error_not_found')
             ], config('statuscode.not_found'));
@@ -118,8 +125,43 @@ class BusinessManagerController extends Controller
         ], config('statuscode.ok'));
     }
 
-    public function update()
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request   request
+     * @param \Illuminate\Http\Request $promotion promotion
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $promotion)
     {
+        $validator = Validator::make($request->all(), [
+            'category_id' => 'required',
+            'title' => 'required|min:5|unique:promotions,title,' . $promotion,
+            'intro' => 'required|min:5',
+            'content' => 'required|min:5',
+            'expired_day' => 'required',
+        ]);
 
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->all(), config('statuscode.unprocessable_entity'));
+        }
+        $data = $request->except('_method', '_token');
+        // Save image if has
+        if ($request->hasFile('image')) {
+            $img = $request->file('image');
+            $data['image'] = time() . '_' . $img->getClientOriginalName();
+            $img->move(public_path(config('upload.user_path')), $data['image']);
+        }
+         $result = $this->managerpromotion->update($data, $promotion);
+
+        if (!$result) {
+            return respone()->json([
+               'message' => trans('messages.error_update_promotion')
+            ], config('statuscode.internal_server_error'));
+        }
+         return response()->json([
+             'message' => trans('messages.update_promotion_successfull')
+         ], config('statuscode.ok'));
     }
 }

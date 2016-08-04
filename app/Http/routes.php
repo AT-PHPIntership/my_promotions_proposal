@@ -104,8 +104,11 @@ Route::group(['namespace' => 'Frontend'], function () {
         // API
         Route::group(['prefix' => 'api/v1'], function () {
 
-            //API update promotion
+            //API edit promotion
             Route::post('promotion/{promotion}/edit', ['as' => 'promotion.edit', 'uses' => 'BusinessManagerController@edit']);
+
+            //API update promotion
+            Route::post('promotion/{promotion}', ['as' => 'promotion.update', 'uses' => 'BusinessManagerController@update']);
 
             // Post register business
             Route::post('business/register', ['as' => 'business.post.register', 'uses' => 'BusinessController@postRegister']);
@@ -185,6 +188,6 @@ Route::group(['namespace' => 'Frontend'], function () {
 
 //Category list all frontend
 view()->composer(['frontend.layouts.partials.side_bar','frontend.promotion.edit'], function ($view) {
-    $categories = App\Models\Category::lists('name','id');
+    $categories = App\Models\Category::lists('name', 'id');
     $view->with(['categories'=> $categories]);
 });

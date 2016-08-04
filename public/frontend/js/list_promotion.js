@@ -1,6 +1,6 @@
 $(document).ready(function(){
 	var url_pro = $('#url_promotion').val();
-	$('#list_promotions').DataTable({
+	var table = $('#list_promotions').DataTable({
 		processing: true,
 		serverSide: true,
 		ajax: url_pro,
@@ -17,5 +17,10 @@ $(document).ready(function(){
 	            }
 	        }
 		]
+	});
+	table.on('click', 'button.edit', function(e){
+		var id_edit = $(this).val();
+		var url_edit = $('#url_edit').val() + '/' + id_edit + '/edit';
+		$(location).attr('href',url_edit);
 	});
 });

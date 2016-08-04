@@ -33,4 +33,16 @@ interface RepositoryInterfaceRelation
      * @return mixed
      */
     public function searchAdvance(array $models, $tableBus, $tablePivot, $attrPro, $attrBus, $attrPivot, $value, $valuePivot, $perPage = 15);
+
+    /**
+     * Function find
+     *
+     * @param string $attribute attribute
+     * @param int    $value     value
+     * @param int    $id        id
+     * @param array  $columns   columns
+     *
+     * @return mixed
+     */
+    public function findWhere($attribute, $value, $id, $columns = array('*'));
 }

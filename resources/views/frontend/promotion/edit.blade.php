@@ -1,5 +1,5 @@
 @extends('frontend.layouts.master')
-@section('title', trans('labels.add_promotion'))
+@section('title', trans('labels.edit_promotion'))
 @section('content')
     @include('frontend.business.partials.side_bar')
     <div class="col-lg-9 col-md-8 col-sm-7">
@@ -9,10 +9,12 @@
         <h1>{!! trans('labels.add_promotion') !!}</h1>
         {!! Form::open(['class' => 'form-horizontal', 'id' => 'frmEditPromotion',  'files' => true] ) !!}
         {!! Form::hidden(null, route('promotion.edit', $promotion_id), ['id' => 'route_promotion_edit']) !!}
+        {!! Form::hidden(null, route('promotion.update', $promotion_id), ['id' => 'route_promotion_update']) !!}
+        {!! Form::hidden(null, route('get.business.promotion', [Auth::user()->id, Auth::user()->business->id]), ['id' => 'route_promotion_show']) !!}
         <div class="form-group">
             {!! Form::label('category', trans('labels.category'), ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
-                {!! Form::select('category_id', $categories ,null, ['placeholder' => trans('labels.choose_category'),'class' => 'form-control']) !!}
+                {!! Form::select('category_id', $categories ,null, ['class' => 'form-control', 'id' => 'category_id']) !!}
             </div>
         </div>
         <div class="form-group">
@@ -33,15 +35,11 @@
                 {!! Form::textarea('content', old('content'), ['class' => 'form-control', 'id' => 'content']) !!}
             </div>
         </div>
-        <div class="col-lg-10">
-            <div class="class-control">
-                <img src="" id="image-photo" alt="">
-            </div>
-        </div>
         <div class="form-group">
             {!! Form::label('name', trans('labels.image'), ['class' => 'col-lg-2 control-label']) !!}
             <div class="col-lg-10">
-                {!! Form::file('image', ['class' => 'form-control', 'id' => 'image']) !!}
+                {!! Form::file('image', ['class' => 'form-control', 'id' => 'image']) !!} <br />
+                <img src="" id="image-photo">
             </div>
         </div>
         <div class="form-group">

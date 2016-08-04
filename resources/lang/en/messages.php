@@ -41,4 +41,5 @@ return [
     "please_login"              => "Please login to rating this promotion",
     "unfollow"  => "unfollow",
     "follow"    => "follow",
+    "update_promotion_successfull" => "You updated successfully!",
 ];
