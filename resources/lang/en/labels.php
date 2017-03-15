@@ -97,4 +97,6 @@ return [
     'comment'               =>  'Comment',
     'search'                =>  'Search',
     'space'                 =>  ' - ',
+    'content'               =>  'Content',
+    'score'                 =>  'Score'
 ];

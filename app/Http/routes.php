@@ -81,7 +81,7 @@ Route::group(['namespace' => 'Frontend'], function () {
             return view('frontend.business.register');
         })->name('business.get.register');
         
-        //show business
+        // Show business
         Route::get('user/business/{id}', function ($id) {
             return view('frontend.business.show')->with('id', $id);
         })->name('business.get.show');
@@ -96,6 +96,11 @@ Route::group(['namespace' => 'Frontend'], function () {
             return view('frontend.follow.list')->with('id', $business);
         })->name('get.business.follow');
         
+        // List rating
+        Route::get('user/business/{id}/rating', function ($id) {
+            return view('frontend.rating.list')->with('id', $id);
+        })->name('get.rating');
+        
         // API
         Route::group(['prefix' => 'api/v1'], function () {
 
@@ -107,6 +112,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         
             //API Show Business
             Route::post('user/business/{id}', ['as' => 'showBusiness', 'uses' => 'BusinessManagerController@showBusiness']);
+        
+            //API List Rating
+            Route::get('user/{user}/business/{business}/rating', ['as' => 'list.Rating', 'uses' => 'RatingController@listRating']);
 
             //API Update follow business
             Route::post('user/{user}/business/{business}/follow', ['as' => 'post.update.follow', 'uses' => 'BusinessController@updateFollow']);
