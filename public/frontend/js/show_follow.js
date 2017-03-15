@@ -9,7 +9,7 @@ $(document).ready(function() {
 
     $.ajax({
         url: url_follow_promotion,
-        type: 'POST',
+        type: 'GET',
         dataType: 'json',
         success: function(result) {
             var div = $('#list_follow_business');

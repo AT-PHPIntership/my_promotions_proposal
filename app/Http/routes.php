@@ -75,13 +75,23 @@ Route::group(['namespace' => 'Frontend'], function () {
         // Update profile user
         Route::get('user/profile/{profile}', ['as' => 'user.get.profile', 'uses' => 'UserController@getProfile']);
         Route::post('user/profile/{profile}', ['as' => 'user.post.profile', 'uses' => 'UserController@postProfile']);
-    
+
+        //show create promotion
+        Route::get('user/{user}/business/{business}/promotion/create', function ($business) {
+            return view('frontend.promotion.create')->with('id', $business);
+        })->name('promotion.get.create');
+
+        //show edit promotion
+        Route::get('user/{user}/business/{business}/promotion/{promotion}/edit', function ($user, $business, $promotion) {
+            return view('frontend.promotion.edit')->with(['user_id' => $user,'id' => $business, 'promotion_id' => $promotion]);
+        })->name('promotion.get.edit');
+
         // Register business
         Route::get('business/register', function () {
             return view('frontend.business.register');
         })->name('business.get.register');
         
-        //show business
+        // Show business
         Route::get('user/business/{id}', function ($id) {
             return view('frontend.business.show')->with('id', $id);
         })->name('business.get.show');
@@ -96,8 +106,21 @@ Route::group(['namespace' => 'Frontend'], function () {
             return view('frontend.follow.list')->with('id', $business);
         })->name('get.business.follow');
         
+        // List rating
+        Route::get('user/business/{id}/rating', function ($id) {
+            return view('frontend.rating.list')->with('id', $id);
+        })->name('get.rating');
+        
         // API
         Route::group(['prefix' => 'api/v1'], function () {
+            //API Create promotion
+            Route::post('user/{user}/business/{business}/promotion/', ['as' => 'promotion.create', 'uses' => 'BusinessManagerController@create']);
+
+            //API edit promotion
+            Route::post('promotion/{promotion}/edit', ['as' => 'promotion.edit', 'uses' => 'BusinessManagerController@edit']);
+
+            //API update promotion
+            Route::post('promotion/{promotion}', ['as' => 'promotion.update', 'uses' => 'BusinessManagerController@update']);
 
             // Post register business
             Route::post('business/register', ['as' => 'business.post.register', 'uses' => 'BusinessController@postRegister']);
@@ -107,6 +130,9 @@ Route::group(['namespace' => 'Frontend'], function () {
         
             //API Show Business
             Route::post('user/business/{id}', ['as' => 'showBusiness', 'uses' => 'BusinessManagerController@showBusiness']);
+        
+            //API List Rating
+            Route::get('user/{user}/business/{business}/rating', ['as' => 'list.Rating', 'uses' => 'RatingController@listRating']);
 
             //API Update follow business
             Route::post('user/{user}/business/{business}/follow', ['as' => 'post.update.follow', 'uses' => 'BusinessController@updateFollow']);
@@ -126,12 +152,12 @@ Route::group(['namespace' => 'Frontend'], function () {
     Route::get('promotion/{id}', function ($id) {
         return view('frontend.promotion.show')->with('id', $id);
     })->name('promotion.get.show');
-    
+
     // List promotions of category
     Route::get('category/{id}', function ($id) {
         return view('frontend.category.list_promotions')->with('id', $id);
     })->name('get.category');
-    
+
     // Show promotion
     Route::get('business/{id}', function ($id) {
         return view('frontend.business.info')->with('id', $id);
@@ -147,13 +173,13 @@ Route::group(['namespace' => 'Frontend'], function () {
         Route::post('promotion', ['as' => 'postpromotion', 'uses' =>'PromotionController@postPromotion']);
 
         // API List featured promotion
-        Route::post('promotion/featured', ['as' => 'promotionfeatured', 'uses' => 'PromotionController@postRatingPromotion']);
-        
+        Route::get('promotion/featured', ['as' => 'promotionfeatured', 'uses' => 'PromotionController@postRatingPromotion']);
+
         // API get list promotion of category
         Route::post('category/{id}', ['as' => 'post.category', 'uses' =>'CategoryController@postCategory']);
 
         // API List follow promotion
-        Route::post('promotion/follow', ['as' => 'promotionfollow', 'uses' => 'PromotionController@postFollowPromotion']);
+        Route::get('promotion/follow', ['as' => 'promotionfollow', 'uses' => 'PromotionController@postFollowPromotion']);
 
         // API get list promotion of category
         Route::post('business/{id}', ['as' => 'postbusiness', 'uses' =>'BusinessController@postShowBusinessPromotion']);
@@ -166,7 +192,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 
         // API List promotion review rating
         Route::post('promotion/{id}/review/', ['as' => 'post.promotion.review', 'uses' => 'RatingController@show']);
-        
+
         // API search advance promotion
         Route::post('search/{info}/city/{city}/county/{county?}', ['as' => 'post.search.advance', 'uses' =>'PromotionController@postSearchAdvance']);
 
@@ -179,7 +205,7 @@ Route::group(['namespace' => 'Frontend'], function () {
 });
 
 //Category list all frontend
-view()->composer('frontend.layouts.partials.side_bar', function ($view) {
-    $categories = App\Models\Category::all();
+view()->composer(['frontend.layouts.partials.side_bar', 'frontend.promotion.create', 'frontend.promotion.edit'], function ($view) {
+    $categories = App\Models\Category::lists('name', 'id');
     $view->with(['categories'=> $categories]);
 });

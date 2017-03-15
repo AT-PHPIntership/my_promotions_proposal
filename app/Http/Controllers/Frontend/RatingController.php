@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Frontend;
 
+use App\Repositories\PromotionRepository as Promotion;
+use App\Repositories\UserRepository as User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
@@ -10,32 +12,40 @@ use App\Http\Controllers\Controller;
 use App\Repositories\PromotionRatingRepository as PromotionRating;
 use App\Repositories\RatingRepository as Rating;
 use Validator;
+use Yajra\Datatables\Facades\Datatables;
 use Auth;
 
 class RatingController extends Controller
 {
     /**
-     * Promotion Rating
+     * Promotion, Rating, User, Promotion Rating
      *
      * @var rating
+     * @var promotion
+     * @var user
      */
+    private $promotion;
     private $rating;
-
+    private $user;
 
     /**
-     * Function construct of RatingController
+     * Function construct of PromotionController
      *
-     * @param PromotionRatingRepository $promotionrating promotionrating
+     * @param PromotionRepository       $promotion       promotion
      * @param RatingRepository          $rating          rating
+     * @param UserRepository            $user            user
+     * @param PromotionRatingRepository $promotionrating promotionrating
      *
      * @return void
      */
-    public function __construct(PromotionRating $promotionrating, Rating $rating)
+    public function __construct(Promotion $promotion, Rating $rating, User $user, PromotionRating $promotionrating)
     {
-        $this->promotonrating = $promotionrating;
+        $this->promotion = $promotion;
         $this->rating = $rating;
+        $this->user = $user;
+        $this->promotonrating = $promotionrating;
     }
-
+    
     /**
      * Display the specified resource.
      *
@@ -75,5 +85,27 @@ class RatingController extends Controller
         return response()->json([
             'message' => trans('messages.rating_successfull'),
         ], config('statuscode.ok'));
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param function $id id
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function listRating($id)
+    {
+        $rating = \App\Models\Rating::with(['promotion', 'user'])->whereHas('promotion', function ($q) use ($id) {
+            $q->where('business_id', $id);
+        })->get();
+        if (empty($rating)) {
+            return response()->json(
+                ['error' => trans('messages.error_not_found')],
+                config('statuscode.not_found')
+            );
+        }
+        
+        return Datatables::of($rating)->make(true);
     }
 }

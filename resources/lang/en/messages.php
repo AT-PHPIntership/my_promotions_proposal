@@ -44,4 +44,7 @@ return [
     "please_login"              => "Please login to rating this promotion",
     "unfollow"  => "unfollow",
     "follow"    => "follow",
+    "create_promotion_successfull" => "You was created promotion successfully!",
+    "error_create_promotion"    => "Error created promotion",
+    "update_promotion_successfull" => "You updated successfully!",
 ];

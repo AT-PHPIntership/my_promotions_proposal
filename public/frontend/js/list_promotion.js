@@ -18,6 +18,11 @@ $(document).ready(function(){
 	        }
 		]
 	});
+	table.on('click', 'button.edit', function(e){
+		var id_edit = $(this).val();
+		var url_edit = $('#url_edit').val() + '/' + id_edit + '/edit';
+		$(location).attr('href',url_edit);
+	});
 
 	// display modal form when click button edit
     table.on('click', 'button.delete', function(e){
@@ -49,8 +54,8 @@ $(document).ready(function(){
 		            $('#message').html(err.error);
 		            $('#message').css('display', 'block');
 	            }
-	        });  
+	        });
         });
-        
+
     });
 });

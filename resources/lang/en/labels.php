@@ -92,9 +92,15 @@ return [
     'unfollow'              =>  'Unfollow',
     'previous'              =>  'Previous',
     'next'                  =>  'Next',
-    'rating'                =>  'Rating',
     'reviews'               =>  'Reviews',
     'comment'               =>  'Comment',
     'search'                =>  'Search',
     'space'                 =>  ' - ',
+    'intro'                 =>  'Intro',
+    'add_promotion'         =>  'Create promotion',
+    'choose_category'       =>  'Please choose category',
+    'expired_day'           =>  'Expired day',
+    'content'               =>  'Content',
+    'score'                 =>  'Score',
+    'edit_promotion'        =>  'Edit promotion'
 ];

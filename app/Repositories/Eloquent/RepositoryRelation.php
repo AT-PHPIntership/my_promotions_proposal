@@ -87,6 +87,21 @@ abstract class RepositoryRelation implements RepositoryInterfaceRelation
     }
 
     /**
+     * Function find
+     *
+     * @param string $attribute attribute
+     * @param int    $value     value
+     * @param int    $id        id
+     * @param array  $columns   columns
+     *
+     * @return mixed
+     */
+    public function findWhere($attribute, $value, $id, $columns = array('*'))
+    {
+        return $this->model->where($attribute, '=', $value)->find($id, $columns);
+    }
+
+    /**
      * Function makeModel
      *
      * @return \Illuminate\Database\Eloquent\Builder
