@@ -20,6 +20,7 @@ class BusinessManagerController extends Controller
      *
      * @var business
      * @var promotion
+     * @var managerpromotion
      */
     private $business;
     private $promotion;
@@ -108,6 +109,46 @@ class BusinessManagerController extends Controller
     }
 
     /**
+     * Store a newly created Promotion.
+     *
+     * @param \Illuminate\Http\Request $request request
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'category_id' => 'required',
+            'title' => 'required|min:5|unique:promotionsg,title',
+            'intro' => 'required|min:5',
+            'content' => 'required|min:5',
+            'image' => 'required|image',
+            'expired_day' => 'required',
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors()->all(), config('statuscode.unprocessable_entity'));
+        }
+        $data = $request->all();
+        $data['business_id'] = Auth::user()->business->id;
+        // Save image if has
+        if ($request->hasFile('image')) {
+            $img = $request->file('image');
+            $data['image'] = time() . '_' . $img->getClientOriginalName();
+            $img->move(public_path(config('upload.user_path')), $data['image']);
+        }
+        $result = $this->managerpromotion->create($data);
+
+        if (!$result) {
+            return respone()->json([
+                'message' => trans('messages.error_create_promotion')
+            ], config('statuscode.internal_server_error'));
+        }
+        return response()->json([
+            'message' => trans('messages.create_promotion_successfull')
+        ], config('statuscode.ok'));
+    }
+
+    /**
      * Show promotion with id .
      *
      * @param \Illuminate\Http\Request $promotion promotion
@@ -157,15 +198,15 @@ class BusinessManagerController extends Controller
             $data['image'] = time() . '_' . $img->getClientOriginalName();
             $img->move(public_path(config('upload.user_path')), $data['image']);
         }
-         $result = $this->updatepromotion->update($data, $promotion);
+        $result = $this->updatepromotion->update($data, $promotion);
 
         if (!$result) {
             return respone()->json([
-               'message' => trans('messages.error_update_promotion')
+                'message' => trans('messages.error_update_promotion')
             ], config('statuscode.internal_server_error'));
         }
-         return response()->json([
-             'message' => trans('messages.update_promotion_successfull')
-         ], config('statuscode.ok'));
+        return response()->json([
+            'message' => trans('messages.update_promotion_successfull')
+        ], config('statuscode.ok'));
     }
 }

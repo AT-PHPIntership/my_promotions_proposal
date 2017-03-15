@@ -96,5 +96,11 @@ return [
     'comment'               =>  'Comment',
     'search'                =>  'Search',
     'space'                 =>  ' - ',
-    'edit_promotion'        =>  'Edit promotion',
+    'intro'                 =>  'Intro',
+    'add_promotion'         =>  'Create promotion',
+    'choose_category'       =>  'Please choose category',
+    'expired_day'           =>  'Expired day',
+    'content'               =>  'Content',
+    'score'                 =>  'Score',
+    'edit_promotion'        =>  'Edit promotion'
 ];
