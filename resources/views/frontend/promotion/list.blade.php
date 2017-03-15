@@ -3,6 +3,7 @@
 @section('content')
     @include('frontend.business.partials.side_bar')
     <input type="hidden" id="url_promotion" value="{{ route('get.promotion', $id) }}">
+    <input type="hidden" id="url_edit" value="{{ route('get.business.promotion', [Auth::user()->id, $id]) }}">
     <div class="col-lg-9 col-md-8 col-sm-7">
     	<div class="x_title">
             <a href="{{ route('promotion.get.create', [Auth::user()->id, $id]) }}" class="btn btn-primary"><i class="fa fa-pencil"></i> {!! trans('labels.add_new') !!} </a>

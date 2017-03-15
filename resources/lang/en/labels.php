@@ -101,5 +101,6 @@ return [
     'choose_category'       =>  'Please choose category',
     'expired_day'           =>  'Expired day',
     'content'               =>  'Content',
-    'score'                 =>  'Score'
+    'score'                 =>  'Score',
+    'edit_promotion'        =>  'Edit promotion'
 ];
