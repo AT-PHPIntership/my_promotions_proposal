@@ -7,7 +7,7 @@ use App\Http\Requests;
 use App\Repositories\BusinessRepository as Business;
 use App\Repositories\RelationRepository as Promotion;
 use App\Repositories\PromotionRelationRepository as ManagerPromotion;
-use App\Repositories\PromotionRepository as UpdatePromotion;
+use App\Repositories\PromotionRepository as PromotionRepo;
 use App\Http\Controllers\Controller;
 use Yajra\Datatables\Facades\Datatables;
 use Validator;
@@ -16,16 +16,17 @@ use Auth;
 class BusinessManagerController extends Controller
 {
     /**
-     * Business, Promotion, ManagerPromotion, UpdatePromotion
+     * Business, Promotion, ManagerPromotion, PromotionRepo
      *
      * @var business
      * @var promotion
      * @var managerpromotion
+     * @var promotionRepo
      */
     private $business;
     private $promotion;
     private $managerpromotion;
-    private $updatepromotion;
+    private $promotionRepo;
 
     /**
      * Function construct of BusinessController
@@ -33,16 +34,16 @@ class BusinessManagerController extends Controller
      * @param BusinessRepository          $business         business
      * @param RelationRepository          $promotion        promotion
      * @param PromotionRelationRepository $managerpromotion managerpromotion
-     * @param PromotionRepository         $updatepromotion  updatepromotion
+     * @param PromotionRepository         $promotionRepo    promotionRepo
      *
      * @return void
      */
-    public function __construct(Business $business, Promotion $promotion, ManagerPromotion $managerpromotion, UpdatePromotion $updatepromotion)
+    public function __construct(Business $business, Promotion $promotion, ManagerPromotion $managerpromotion, PromotionRepo $promotionRepo)
     {
         $this->business = $business;
         $this->promotion = $promotion;
         $this->managerpromotion = $managerpromotion;
-        $this->updatepromotion = $updatepromotion;
+        $this->promotionRepo = $promotionRepo;
     }
     
      /**
@@ -119,7 +120,7 @@ class BusinessManagerController extends Controller
     {
         $validator = Validator::make($request->all(), [
             'category_id' => 'required',
-            'title' => 'required|min:5|unique:promotionsg,title',
+            'title' => 'required|min:5|unique:promotions,title',
             'intro' => 'required|min:5',
             'content' => 'required|min:5',
             'image' => 'required|image',
@@ -198,7 +199,7 @@ class BusinessManagerController extends Controller
             $data['image'] = time() . '_' . $img->getClientOriginalName();
             $img->move(public_path(config('upload.user_path')), $data['image']);
         }
-        $result = $this->updatepromotion->update($data, $promotion);
+        $result = $this->promotionRepo->update($data, $promotion);
 
         if (!$result) {
             return respone()->json([
@@ -208,5 +209,26 @@ class BusinessManagerController extends Controller
         return response()->json([
             'message' => trans('messages.update_promotion_successfull')
         ], config('statuscode.ok'));
+    }
+
+    /**
+     * Delete promotion.
+     *
+     * @param promotion $promotion promotion
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroyPromotion($promotion)
+    {
+        $result = $this->promotionRepo->delete($promotion);
+
+        if (empty($result)) {
+            return response()->json(
+                ['error' => trans('messages.error_delete_promotion')],
+                config('statuscode.not_found')
+            );
+        }
+
+        return response()->json(['message' => trans('messages.delete_promotion_successfull')], config('statuscode.ok'));
     }
 }

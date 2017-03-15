@@ -23,4 +23,39 @@ $(document).ready(function(){
 		var url_edit = $('#url_edit').val() + '/' + id_edit + '/edit';
 		$(location).attr('href',url_edit);
 	});
+
+	// display modal form when click button edit
+    table.on('click', 'button.delete', function(e){
+        var id_delete = $(this).val();
+        var url_del = $('#url_delete').val() + '/' + id_delete;
+        swal({
+            title: messages.confirm_delete_title,
+            text: messages.confirm_delete_promotion,
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: messages.delete,
+            closeOnConfirm: false
+        }, function () {
+            $.ajax({
+	            url : url_del,
+	            type : 'DELETE',
+	            dataType: 'json',
+	            success : function (result) {
+	            	table.clear().draw();
+	            	swal({
+                        title: result.message,
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: messages.ok,
+                    });
+	            },
+	            error : function (data) {
+		            var err = eval("(" + data.responseText + ")");
+		            $('#message').html(err.error);
+		            $('#message').css('display', 'block');
+	            }
+	        });
+        });
+
+    });
 });

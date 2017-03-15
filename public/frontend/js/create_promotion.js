@@ -10,7 +10,7 @@ $(document).ready(function() {
         $.ajax({
             headers: {'X-CSRF-TOKEN': $('meta[name="_token"]').attr("content")},
             url: url_create_promotion,
-            type: 'post',
+            type: 'POST',
             data: formData,
             dataType: 'json',
             processData: false,
